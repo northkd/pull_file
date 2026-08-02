@@ -1,0 +1,96 @@
+# Na离子导体描述符搜索配置
+# 基于 automat 框架，针对 Na 离子固态电解质结构描述符与电导率关系研究
+
+task:
+  name: naconductor
+  description: >
+    搜索 Na 离子固态导体的局域结构描述符组合，
+    使其与 log10(σ/S·cm⁻¹) 的去混杂 Spearman 相关性最大化。
+    描述符从 CIF 结构文件计算，禁止使用 log/√/幂运算构造新特征。
+    目标是找到物理可解释、统计稳健的描述符组合，
+    而非单纯追求预测精度。
+
+data:
+  raw_file: data/naconductor_raw.csv
+  target_column: log_sigma
+  structure_column: cif_path
+  material_id_column: material_id
+  formula_column: formula
+  system_column: system
+  anion_type_column: anion_type
+  # 不做 train/val/test 预拆分——用 CV 策略替代
+  # 原始数据 84 行，全量参与交叉验证
+
+cv_strategies:
+  # 策略 1：分层 K 折（按体系分类分层）
+  - name: stratified_kfold
+    folds: 5
+    stratify_by: system
+    random_seed: 42
+  # 策略 2：留一体系交叉验证（LOSO-CV）
+  # 每次留出一个体系（NASICON/sulfide/halide）作为验证集
+  - name: leave_one_system_out
+    group_column: system
+  # 策略 3：重复随机子采样
+  - name: repeated_subsample
+    n_repeats: 10
+    test_fraction: 0.2
+    stratify_by: system
+    random_seed: 42
+
+deconfound:
+  # 混杂变量列表——这些变量与目标相关但不是因果通路
+  # 在计算描述符-目标相关性时需要控制
+  confounders:
+    - system          # 体系类型（NASICON/sulfide/halide）是强混杂
+    - anion_type      # 阴离子类型与结构描述符强相关
+  # 去混杂方法：偏相关 / DML（Double Machine Learning）
+  method: partial_correlation  # 可选: partial_correlation, dml
+  # 去混杂后的 Spearman rho 作为主要评价指标
+  primary_metric: deconfounded_spearman
+
+stability_selection:
+  # 稳定性选择参数——控制描述符选择的稳定性
+  n_bootstrap: 100
+  threshold: 0.6          # 被选中的频率阈值
+  fraction: 0.5           # 每次自举采样比例
+  random_seed: 42
+
+combination:
+  # 描述符组合搜索策略
+  method: forward_selection  # 可选: forward_selection, backward_elimination, exhaustive
+  max_descriptors: 5        # 组合中最大描述符数
+  min_descriptors: 1        # 组合中最小描述符数
+  # 禁止的运算符——描述符构造中不允许使用
+  forbidden_operators:
+    - log          # 禁止对原始描述符取对数（因为目标已是 log）
+    - sqrt         # 禁止开方（物理意义不明确）
+    - power        # 禁止幂运算（过拟合风险高）
+  # 物理约束——组合描述符必须满足
+  physical_constraints:
+    monotonic_with_ion_size: true    # 与离子尺寸单调性一致
+    positive_correlation_with_vacancy: true  # 与空位浓度正相关
+
+evaluation:
+  # 主要评价指标
+  primary: deconfounded_spearman
+  # 辅助评价指标
+  secondary:
+    - cv_spearman       # 交叉验证 Spearman rho
+    - cv_mae            # 交叉验证 MAE
+    - cv_rmse           # 交叉验证 RMSE
+    - stability_score   # 稳定性选择得分
+  # 模型
+  model:
+    # Ridge 回归：84 样本用 RF 容易过拟合，Ridge 正则化更稳健
+    name: ridge
+    alpha: 1.0          # L2 正则化强度
+    random_seed: 42
+  # 相关性方法
+  correlation_method: spearman   # 使用 Spearman 秩相关（非参数，适合小样本）
+
+output:
+  results_file: results.tsv
+  ideas_file: ideas.tsv
+  figures_dir: figures/
+  descriptor_registry: descriptors/__init__.py
