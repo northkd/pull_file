@@ -1,0 +1,13 @@
+\begin{tikzpicture}[font=\sffamily,>=Latex]
+\definecolor{pblue}{HTML}{2F5597}
+\definecolor{pred}{HTML}{A74444}
+\definecolor{pgray}{HTML}{6A6A6A}
+\node[font=\bfseries\large] at (4.0,5.0) {体系类型会同时改变描述符分布与电导率分布};
+\node[ellipse,draw=pred,fill=red!5,minimum width=3.25cm,minimum height=1.35cm,align=center,line width=0.8pt] (z) at (4.0,3.75) {\textbf{体系类型与阴离子}\\混杂因子 $Z$};
+\node[ellipse,draw=pblue,fill=blue!4,minimum width=3.0cm,minimum height=1.25cm,align=center,line width=0.8pt] (x) at (1.55,1.3) {局域结构描述符\\$X$};
+\node[ellipse,draw=pblue,fill=blue!4,minimum width=3.0cm,minimum height=1.25cm,align=center,line width=0.8pt] (y) at (6.45,1.3) {室温离子电导率\\$Y$};
+\draw[->,pred,line width=0.9pt] (z)--(x);
+\draw[->,pred,line width=0.9pt] (z)--(y);
+\draw[->,pblue,dashed,line width=0.9pt] (x)--(y);
+\node[pgray,font=\small,align=center] at (4.0,0.18) {分析目标：在移除 $Z$ 可解释的变异后，\\评估 $X$ 与 $Y$ 的剩余单调关联。};
+\end{tikzpicture}
