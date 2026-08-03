@@ -1,0 +1,55 @@
+name: Build paper PDF
+
+on:
+  push:
+    paths:
+      - '.github/workflows/build-paper-pdf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install XeLaTeX, Biber and Chinese fonts
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            latexmk \
+            biber \
+            texlive-xetex \
+            texlive-lang-chinese \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            fonts-liberation \
+            fonts-noto-cjk
+          fc-cache -f -v
+          fc-match 'Noto Serif CJK SC'
+          fc-match 'Noto Sans CJK SC'
+          fc-match 'Noto Sans Mono CJK SC'
+
+      - name: Compile manuscript
+        working-directory: paper_latex
+        run: |
+          latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex
+          cp main.pdf Na_ion_solid_electrolyte_Nature_CN.pdf
+          pdfinfo Na_ion_solid_electrolyte_Nature_CN.pdf | head -n 20
+
+      - name: Commit generated PDF
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add paper_latex/Na_ion_solid_electrolyte_Nature_CN.pdf
+          if git diff --cached --quiet; then
+            echo 'PDF is already up to date.'
+          else
+            git commit -m 'Build Chinese Nature-style manuscript PDF'
+            git push origin HEAD:main
+          fi
