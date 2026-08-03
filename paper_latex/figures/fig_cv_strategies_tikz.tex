@@ -1,0 +1,40 @@
+\begin{tikzpicture}[font=\sffamily]
+\definecolor{pblue}{HTML}{6F8FBE}
+\definecolor{pgreen}{HTML}{7FA48F}
+\definecolor{porange}{HTML}{C58962}
+\definecolor{pred}{HTML}{A74444}
+\definecolor{plight}{HTML}{E5E5E5}
+\definecolor{pgray}{HTML}{666666}
+\node[font=\bfseries\Large] at (10.0,5.55) {三种正交验证策略分别检验分布平衡、体系外推和划分稳定性};
+% panel a
+\node[font=\bfseries\large] at (3.0,4.75) {a\quad 阴离子分层 3 折};
+\foreach \lab/\y/\test/\col in {O/3.8/1/pblue,S/2.95/2/porange,卤素/2.10/3/pgreen}{
+  \node[anchor=east] at (0.65,\y) {\lab};
+  \foreach \k in {1,2,3}{
+    \ifnum\k=\test
+      \filldraw[fill=plight,draw=white] (0.9+0.95*\k,\y-0.28) rectangle +(0.78,0.56);
+      \node[pred,font=\bfseries\small] at (1.29+0.95*\k,\y) {测};
+    \else
+      \filldraw[fill=\col,draw=white] (0.9+0.95*\k,\y-0.28) rectangle +(0.78,0.56);
+    \fi
+  }
+}
+\node[pgray,font=\small] at (3.0,1.22) {保持各折的阴离子比例};
+% panel b
+\node[font=\bfseries\large] at (10.0,4.75) {b\quad 留一体系验证};
+\node[anchor=east] at (8.1,3.8) {NASICON};
+\fill[pblue] (8.35,3.52) rectangle +(3.1,0.56); \node[white,font=\bfseries\small] at (9.9,3.8) {训练};
+\node[anchor=east] at (8.1,2.95) {硫化物};
+\fill[plight] (8.35,2.67) rectangle +(3.1,0.56); \node[pred,font=\bfseries\small] at (9.9,2.95) {测试};
+\node[anchor=east] at (8.1,2.10) {卤化物};
+\fill[pgreen] (8.35,1.82) rectangle +(3.1,0.56); \node[white,font=\bfseries\small] at (9.9,2.10) {训练};
+\node[pgray,font=\small] at (10.0,1.22) {直接检验未见体系上的迁移能力};
+% panel c
+\node[font=\bfseries\large] at (17.0,4.75) {c\quad 重复分层子采样};
+\foreach \r/\y/\w in {1/3.90/3.10,2/3.35/3.20,3/2.80/3.15,4/2.25/3.05,5/1.70/2.85}{
+  \node[pgray,font=\scriptsize,anchor=east] at (14.65,\y) {R\r};
+  \fill[pblue] (14.85,\y-0.19) rectangle +(\w,0.38);
+  \fill[porange] (14.85+\w,\y-0.19) rectangle +(1.45,0.38);
+}
+\node[pgray,font=\small] at (17.0,1.05) {10 次 80\%/20\% 分割估计波动};
+\end{tikzpicture}
