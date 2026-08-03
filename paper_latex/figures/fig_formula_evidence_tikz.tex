@@ -1,0 +1,34 @@
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize,
+  box/.style={draw=NatureDark, rounded corners=2pt, align=center, minimum height=10mm, fill=white},
+  rule/.style={box, fill=NaturePale, text width=29mm},
+  evidence/.style={box, text width=27mm, minimum height=22mm},
+  arrow/.style={-{Latex[length=2mm]}, draw=NatureGray, line width=0.7pt}
+]
+
+\node[rule] (raw) {原始物理值\\NaN 原样保留};
+\node[rule, right=4mm of raw] (pair) {二元规则\\同族 $+,\times$\\显式跨族表};
+\node[rule, right=4mm of pair] (triple) {受限三元\\同族两个 +\\显式相邻族一个};
+\node[rule, right=4mm of triple] (prov) {严格 provenance\\组分、运算符、维度\\规则 ID 与缺失策略};
+
+\draw[arrow] (raw) -- (pair);
+\draw[arrow] (pair) -- (triple);
+\draw[arrow] (triple) -- (prov);
+
+\node[evidence, draw=NatureBlue, fill=NatureBlue!6, below=12mm of raw] (v1) {\textbf{V1}\par 匹配噪声基线\par system 内逐分量置换\par 100 draws};
+\node[evidence, draw=NatureGreen, fill=NatureGreen!7, right=4mm of v1] (v2) {\textbf{V2}\par 折安全目标残差预测\par rank-aware controls\par OOF Spearman};
+\node[evidence, draw=NatureDark, fill=NaturePale, right=4mm of v2] (v3) {\textbf{V3}\par 每个 system 内\par raw Spearman\par 独立可用状态};
+\node[evidence, draw=NatureRed, fill=NatureRed!6, right=4mm of v3] (v4) {\textbf{V4}\par system 分层 bootstrap\par 500 draws\par 95\% CI};
+
+\draw[arrow] (prov.south) |- ($(v2.north)!0.5!(v3.north)$);
+\draw[arrow] ($(v2.north)!0.5!(v3.north)$) -| (v1.north);
+\draw[arrow] ($(v2.north)!0.5!(v3.north)$) -- (v2.north);
+\draw[arrow] ($(v2.north)!0.5!(v3.north)$) -- (v3.north);
+\draw[arrow] ($(v2.north)!0.5!(v3.north)$) -| (v4.north);
+
+\node[box, below=8mm of $(v2.south)!0.5!(v3.south)$, text width=105mm, fill=NaturePale] (cv) {三种 CV 独立运行：anion-stratified（不足则 skip/降折）｜LOSO｜10 次 system 分层 80/20 子采样。综合分只平均有限且未 skip 的绝对 Spearman，并报告可用策略数。};
+\draw[arrow] (v1.south) |- (cv.west);
+\draw[arrow] (v2.south) -- (cv.north west);
+\draw[arrow] (v3.south) -- (cv.north east);
+\draw[arrow] (v4.south) |- (cv.east);
+\end{tikzpicture}
