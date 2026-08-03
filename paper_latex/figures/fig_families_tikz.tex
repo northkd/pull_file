@@ -1,0 +1,20 @@
+\begin{tikzpicture}[font=\sffamily]
+\definecolor{pblue}{HTML}{2F5597}
+\definecolor{pgreen}{HTML}{4F8066}
+\definecolor{porange}{HTML}{B66A3C}
+\definecolor{pred}{HTML}{A74444}
+\definecolor{pgray}{HTML}{777777}
+\node[font=\bfseries\Large] at (8.7,7.05) {局域结构描述符的八个物理族};
+\node[rounded corners=4pt,fill=black!86,text=white,minimum width=4.3cm,minimum height=1.45cm,align=center] (c) at (8.7,3.75) {\textbf{Na 离子固态电解质}\\[-1pt]\small 41 个候选描述符};
+\tikzset{fam/.style={rounded corners=3pt,minimum width=4.2cm,minimum height=1.25cm,align=center,fill=white,line width=0.8pt}}
+\node[fam,draw=pblue] (a) at (2.5,5.7) {\textbf{A\quad Na 配位多面体}\\\small 11 个描述符};
+\node[fam,draw=pblue] (b) at (8.7,5.9) {\textbf{B\quad Na--Na 网络}\\\small 5 个描述符};
+\node[fam,draw=pblue] (cc) at (14.9,5.7) {\textbf{C\quad Na 浓度}\\\small 3 个描述符};
+\node[fam,draw=pgreen] (d) at (15.8,3.65) {\textbf{D$'$\quad 空位拓扑}\\\small 5 个描述符};
+\node[fam,draw=pgreen] (e) at (14.9,1.55) {\textbf{E\quad 骨架刚性}\\\small 4 个描述符};
+\node[fam,draw=pgreen] (f) at (8.7,1.15) {\textbf{F\quad 长程关联}\\\small 4 个描述符};
+\node[fam,draw=porange] (g) at (2.5,1.55) {\textbf{G\quad 电子代理}\\\small 4 个描述符};
+\node[fam,draw=pred] (h) at (1.6,3.65) {\textbf{H\quad 对称性代理}\\\small 5 个描述符};
+\foreach \n in {a,b,cc,d,e,f,g,h}{\draw[black!25,line width=0.6pt] (c)--(\n);}
+\node[pgray,font=\small] at (8.7,0.05) {A--F 族直接对应迁移几何与载流子条件；G--H 族作为高混杂风险代理变量单独审查。};
+\end{tikzpicture}
