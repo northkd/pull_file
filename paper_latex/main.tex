@@ -1,0 +1,93 @@
+\documentclass[12pt,a4paper]{book}
+
+% ========================================
+% 字体设置（XeTeX 原生命令，避免 fontspec 崩溃）
+% ========================================
+% 注意：MiKTeX 21.12 的 xelatex 加载 fontspec 会导致 heap corruption 崩溃
+% 因此改用 XeTeX 原生 \font 命令
+% 中文断行设置
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+
+% 用 NFSS 注册 SimSun 为 TU 编码下的 roman 字体族
+% 这样 LaTeX 的字体切换（\bfseries, \itshape 等）都会使用 SimSun
+\DeclareFontFamily{TU}{simsun}{}
+\DeclareFontShape{TU}{simsun}{m}{n}{<->"SimSun"}{}
+\DeclareFontShape{TU}{simsun}{m}{it}{<->"SimSun"}{}
+\DeclareFontShape{TU}{simsun}{m}{sl}{<->"SimSun"}{}
+\DeclareFontShape{TU}{simsun}{bx}{n}{<->"SimSun"}{}
+\DeclareFontShape{TU}{simsun}{b}{n}{<->"SimSun"}{}
+\DeclareFontShape{TU}{simsun}{bx}{it}{<->"SimSun"}{}
+\DeclareFontShape{TU}{simsun}{bx}{sl}{<->"SimSun"}{}
+\DeclareFontFamily{TU}{msyh}{}
+\DeclareFontShape{TU}{msyh}{m}{n}{<->"Microsoft YaHei"}{}
+\DeclareFontShape{TU}{msyh}{bx}{n}{<->"Microsoft YaHei"}{}
+\DeclareFontFamily{TU}{fangsong}{}
+\DeclareFontShape{TU}{fangsong}{m}{n}{<->"FangSong"}{}
+\DeclareFontShape{TU}{fangsong}{m}{it}{<->"FangSong"}{}
+% 将默认字体族设为 simsun
+\renewcommand{\rmdefault}{simsun}
+\renewcommand{\sfdefault}{msyh}
+\renewcommand{\ttdefault}{fangsong}
+
+% ========================================
+% 页面布局（TeX 原生参数，替代 geometry 宏包）
+% ========================================
+\setlength{\oddsidemargin}{2.5cm}
+\addtolength{\oddsidemargin}{-1in}
+\setlength{\evensidemargin}{2.5cm}
+\addtolength{\evensidemargin}{-1in}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-5cm}
+\setlength{\topmargin}{2.5cm}
+\addtolength{\topmargin}{-1in}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-5cm}
+
+% ========================================
+% 已安装的宏包
+% ========================================
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% ========================================
+% 最小替代包（因网络不通无法安装，使用本地 stub）
+% ========================================
+\usepackage{booktabs}     % stub: \toprule=\hline 等
+\usepackage{caption}      % stub: 不修改默认格式
+\usepackage{subcaption}   % stub: 不提供子图功能
+\usepackage{titlesec}     % stub: \titleformat/\titlespacing
+\usepackage{fancyhdr}     % stub: \fancyhf/\fancyhead
+\usepackage{enumitem}     % stub: 不提供额外功能
+
+% ========================================
+% 页眉设置
+% ========================================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\leftmark}
+
+% ========================================
+% 章节标题格式
+% ========================================
+\renewcommand{\@makechapterhead}[1]{%
+  \vspace*{0pt}%
+  {\parindent \z@ \centering \Huge \bfseries
+   第\,\thechapter\,章\quad #1\par\nobreak\vskip 20pt}}
+
+\renewcommand{\baselinestretch}{1.8}
+\graphicspath{{figures/}}
+
+\title{Na离子固态电解质结构描述符的因果去混杂搜索方法}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\input{chapters/chapter1}
+\input{chapters/chapter2}
+\bibliographystyle{unsrt}
+\bibliography{refs}
+\end{document}
