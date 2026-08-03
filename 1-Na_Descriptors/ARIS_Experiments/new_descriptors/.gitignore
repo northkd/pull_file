@@ -8,7 +8,6 @@ __pycache__/
 .ruff_cache/
 
 # 工具目录（不推送）
-.omo/
 .aris/
 .codegraph/
 .codex/

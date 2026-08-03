@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "active_work_id": "automat-reform-08223c15",
+  "works": {
+    "automat-reform-08223c15": {
+      "work_id": "automat-reform-08223c15",
+      "active_plan": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\.omo\\plans\\automat-reform.md",
+      "plan_name": "automat-reform",
+      "status": "active",
+      "started_at": "2026-08-02T09:43:17.334Z",
+      "updated_at": "2026-08-02T09:43:17.334Z",
+      "session_ids": [
+        "opencode:ses_0484f30caffekXjnL1qS0ppAUq"
+      ],
+      "session_origins": {
+        "opencode:ses_0484f30caffekXjnL1qS0ppAUq": "direct"
+      },
+      "agent": "atlas",
+      "task_sessions": {}
+    }
+  },
+  "active_plan": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\.omo\\plans\\automat-reform.md",
+  "started_at": "2026-08-02T09:43:17.334Z",
+  "status": "active",
+  "updated_at": "2026-08-02T09:43:17.334Z",
+  "session_ids": [
+    "opencode:ses_0484f30caffekXjnL1qS0ppAUq"
+  ],
+  "session_origins": {
+    "opencode:ses_0484f30caffekXjnL1qS0ppAUq": "direct"
+  },
+  "plan_name": "automat-reform",
+  "task_sessions": {},
+  "agent": "atlas"
+}
