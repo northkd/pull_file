@@ -1,7 +1,8 @@
-\documentclass[9pt,a4paper,twocolumn]{article}
+\documentclass[10pt,a4paper]{article}
 
 % ============================================================
-% Nature-style Chinese manuscript (not an official Nature template)
+% Nature-style Chinese review manuscript with a wide annotation margin
+% (not an official Nature template)
 % ============================================================
 \usepackage[UTF8,scheme=plain]{ctex}
 \usepackage{fontspec}
@@ -13,7 +14,8 @@
 \setCJKsansfont{Noto Sans CJK SC}
 \setCJKmonofont{Noto Sans Mono CJK SC}
 
-\usepackage[a4paper,top=15mm,bottom=17mm,left=16mm,right=16mm,columnsep=7.5mm]{geometry}
+% 18 mm left margin + 134 mm text block + 58 mm annotation margin = A4 width.
+\usepackage[a4paper,top=17mm,bottom=18mm,left=18mm,right=58mm,headsep=5mm,footskip=9mm]{geometry}
 \usepackage{amsmath,amssymb,bm}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -22,36 +24,41 @@
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{caption}
-\usepackage{subcaption}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{lineno}
+\usepackage{eso-pic}
 \usepackage[backend=biber,style=numeric-comp,sorting=none,maxbibnames=4,minbibnames=3,doi=false,url=false,isbn=false]{biblatex}
 \addbibresource{refs.bib}
 \renewcommand*{\bibfont}{\footnotesize}
-\setlength{\bibitemsep}{0.15\baselineskip}
+\setlength{\bibitemsep}{0.18\baselineskip}
 \usepackage[hidelinks]{hyperref}
-\usepackage{url}
-\usepackage{balance}
-\usepackage{stfloats}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,decorations.pathreplacing,matrix}
 
 \graphicspath{{figures/}}
 \definecolor{NatureBlue}{HTML}{2F5597}
-\definecolor{NatureGray}{HTML}{555555}
-\definecolor{NatureLight}{HTML}{E7E7E7}
+\definecolor{NatureDark}{HTML}{25364A}
+\definecolor{NatureGray}{HTML}{666666}
+\definecolor{NatureLight}{HTML}{D8DCE2}
+\definecolor{NaturePale}{HTML}{F3F5F7}
+\definecolor{NatureRed}{HTML}{A23B3B}
+\definecolor{NatureGreen}{HTML}{347A5A}
 
-\setlength{\parindent}{1em}
+\setlength{\parindent}{1.6em}
 \setlength{\parskip}{0pt}
-\setlength{\columnsep}{7.5mm}
-\renewcommand{\baselinestretch}{1.08}
-\setlist{nosep,leftmargin=1.45em}
+\setstretch{1.28}
+\setlist{nosep,leftmargin=1.55em}
+\setlength{\emergencystretch}{2em}
 
-\titleformat{\section}{\sffamily\bfseries\large}{ }{0pt}{}
-\titleformat{\subsection}{\sffamily\bfseries\normalsize}{ }{0pt}{}
-\titlespacing*{\section}{0pt}{1.15em}{0.35em}
-\titlespacing*{\subsection}{0pt}{0.95em}{0.25em}
+\titleformat{\section}{\sffamily\bfseries\Large\color{NatureDark}}{}{0pt}{}
+\titleformat{\subsection}{\sffamily\bfseries\large\color{NatureDark}}{}{0pt}{}
+\titleformat{\subsubsection}{\sffamily\bfseries\normalsize\color{NatureDark}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.45em}{0.45em}
+\titlespacing*{\subsection}{0pt}{1.15em}{0.28em}
+\titlespacing*{\subsubsection}{0pt}{0.9em}{0.2em}
 
 \captionsetup{font=small,labelfont=bf,labelsep=period,justification=justified,singlelinecheck=false}
 \renewcommand{\figurename}{图}
@@ -59,47 +66,59 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\sffamily\scriptsize ARTICLE}
-\fancyhead[R]{\sffamily\scriptsize Na 离子固态电解质结构描述符}
+\fancyhead[L]{\sffamily\scriptsize ARTICLE | 方法与软件修复稿}
+\fancyhead[R]{\sffamily\scriptsize codex/naconductor-repair}
+\fancyfoot[L]{\sffamily\scriptsize 单栏批注版}
 \fancyfoot[C]{\sffamily\scriptsize\thepage}
 \renewcommand{\headrulewidth}{0.3pt}
 \renewcommand{\footrulewidth}{0pt}
 
+% A faint divider marks the printable annotation area without occupying it.
+\AddToShipoutPictureBG{%
+  \AtPageLowerLeft{%
+    \put(438,42){\color{NatureLight}\rule{0.35pt}{760pt}}%
+    \put(455,802){\color{NatureGray}\sffamily\scriptsize 批注区}%
+  }%
+}
+
 \newcommand{\code}[1]{\texttt{\small #1}}
-\newcommand{\dd}{\mathrm{d}}
 \newcommand{\rhoRaw}{\rho_{\mathrm{raw}}}
 \newcommand{\rhoDeconf}{\rho_{\mathrm{deconf}}}
+\newcommand{\statusbox}[1]{%
+  \par\vspace{0.45em}
+  \noindent\colorbox{NaturePale}{\parbox{0.965\textwidth}{\small #1}}
+  \par\vspace{0.45em}
+}
 
 \makeatletter
 \renewcommand{\maketitle}{%
-  \twocolumn[\begin{@twocolumnfalse}
-  \vspace*{-5mm}
-  {\sffamily\bfseries\fontsize{21}{25}\selectfont
-  去混杂的局域结构描述符揭示钠离子固态电解质的跨体系传输规律\par}
-  \vspace{4mm}
+  \vspace*{-7mm}
+  {\sffamily\bfseries\fontsize{20}{24}\selectfont\color{NatureDark}
+  一个失败关闭、秩感知且可审计的钠离子固态电解质结构描述符搜索框架\par}
+  \vspace{3.5mm}
   {\sffamily\fontsize{10.5}{13}\selectfont 作者信息待补充$^{1,*}$\par}
-  \vspace{1mm}
-  {\sffamily\fontsize{8.5}{10.5}\selectfont
+  \vspace{0.8mm}
+  {\sffamily\fontsize{8.8}{11}\selectfont
   $^{1}$单位信息待补充；$^{*}$通信作者信息待补充\par}
-  \vspace{4mm}
+  \vspace{3.5mm}
   \noindent\rule{\textwidth}{0.6pt}
-  \vspace{3mm}
+  \vspace{2.8mm}
   \noindent\textbf{摘要}\quad
-  固态电解质的宏观离子电导率由局域配位、可达空位、迁移网络和骨架响应共同决定，但跨材料体系的统计分析容易把体系类型误识别为普适结构规律。本文建立一套面向小样本、多体系数据的混杂感知描述符搜索框架：对原始晶体结构进行质量控制，从局域几何中构建八类物理描述符；以体系类型和阴离子类别作为混杂变量实施 Ridge 残差化；通过随机噪声校准的稳定性筛选和物理约束组合搜索压缩候选空间；最后利用阴离子分层交叉验证、留一体系验证和重复子采样评估可迁移性。当前分析表明，未经控制的高相关描述符中包含明显的体系代理信号，而去混杂后保持稳定的候选主要来自 Na 配位多面体、Na--Na 网络和载流子条件。该框架不以追求最高预测精度为首要目标，而强调可解释性、跨体系稳健性和完整复现，为后续第一性原理或分子动力学验证提供可审计的候选排序。\par
-  \vspace{3mm}
+  从晶体结构中搜索可迁移的离子传输描述符，容易同时受到输入缺失、化学物种解析错误、训练--测试泄漏、体系类别混杂和无界代数组合的影响。本文依据 \code{codex/naconductor-repair} 分支的实际实现，给出一个面向钠离子固态电解质的小样本、跨体系结构描述符框架。该框架首先对原始 CSV、全部 CIF、描述符注册表和输出路径实施失败关闭的冻结输入契约；随后在原始物理值上计算八类结构描述符，以体系类型为主控制并仅保留增加设计矩阵秩的阴离子对比项，实施 Ridge 残差化和去混杂 Spearman 分析。稳定性阶段在每个无放回子样本内部独立执行中位数插补、标准化和 Lasso，以固定噪声列的第 95 百分位数校准选择频率。组合搜索由声明式规则表限制为二元或受限三元公式，比例方向、量纲相容性、零分母和完整 provenance 均显式审计。候选公式通过匹配噪声基线、已知因素后的折安全预测、体系内相关和体系分层 bootstrap 四类探索性证据，以及三种可独立跳过的交叉验证策略进行评估。另设单描述符 Agent 轨道，与组合 Pipeline 只共享冻结输入，在用户授权的 C9 之前不得交叉读取结果。当前 checkout 所引用的 84 个 CIF 不可用，因此本稿报告的是经 70 项测试验证的软件与方法逻辑，而不是新的最佳描述符或材料学机制结论。\par
+  \vspace{2.8mm}
   \noindent\rule{\textwidth}{0.6pt}
-  \vspace{5mm}
-  \end{@twocolumnfalse}]%
+  \vspace{4mm}
 }
 \makeatother
 
 \begin{document}
 \maketitle
+\modulolinenumbers[5]
+\linenumbers
 
 \input{chapters/chapter1}
 \input{chapters/chapter2}
 
-\balance
 \printbibliography[title={参考文献}]
 
 \end{document}
