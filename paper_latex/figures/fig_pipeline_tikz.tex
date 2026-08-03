@@ -1,0 +1,20 @@
+\begin{tikzpicture}[font=\sffamily,>=Latex]
+\definecolor{pblue}{HTML}{2F5597}
+\definecolor{pgreen}{HTML}{4F8066}
+\definecolor{porange}{HTML}{B66A3C}
+\definecolor{pred}{HTML}{A74444}
+\definecolor{pgray}{HTML}{5A6268}
+\tikzset{stage/.style={rounded corners=2pt,minimum width=2.55cm,minimum height=1.48cm,align=center,line width=0.7pt,fill=white}}
+\node[font=\bfseries\Large] at (9.6,3.05) {从原始晶体结构到跨体系稳健描述符的六阶段分析框架};
+\node[stage,draw=porange] (s1) at (0.9,1.45) {\textbf{原始结构}\\[-1pt]\footnotesize 107 个 CIF};
+\node[stage,draw=pblue] (s2) at (4.0,1.45) {\textbf{质量控制}\\[-1pt]\footnotesize 84 个样本};
+\node[stage,draw=pblue] (s3) at (7.1,1.45) {\textbf{描述符构建}\\[-1pt]\footnotesize 8 族 / 41 项};
+\node[stage,draw=pgreen] (s4) at (10.2,1.45) {\textbf{去混杂}\\[-1pt]\footnotesize Ridge 残差化};
+\node[stage,draw=pgreen] (s5) at (13.3,1.45) {\textbf{稳定性筛选}\\[-1pt]\footnotesize 100 次子采样};
+\node[stage,draw=pblue] (s6) at (16.4,1.45) {\textbf{组合搜索}\\[-1pt]\footnotesize 物理约束};
+\node[stage,draw=pred] (s7) at (19.5,1.45) {\textbf{跨体系验证}\\[-1pt]\footnotesize 3 类 CV};
+\foreach \a/\b in {s1/s2,s2/s3,s3/s4,s4/s5,s5/s6,s6/s7}{\draw[->,pgray,line width=0.7pt] (\a.east)--(\b.west);}
+\foreach \n/\x/\c in {1/0.05/porange,2/3.15/pblue,3/6.25/pblue,4/9.35/pgreen,5/12.45/pgreen,6/15.55/pblue,7/18.65/pred}{
+  \node[circle,fill=\c,text=white,font=\bfseries\scriptsize,inner sep=1.8pt] at (\x,2.1) {\n};}
+\node[pgray,font=\small] at (10.2,0.15) {每一步均保留可追踪的输入、阈值、随机种子和输出表，以支持完整复现。};
+\end{tikzpicture}
