@@ -1,0 +1,25 @@
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize,
+  cell/.style={draw=NatureLight, minimum width=20mm, minimum height=8mm, align=center},
+  head/.style={cell, fill=NaturePale, font=\sffamily\bfseries\scriptsize},
+  rank/.style={draw=NatureBlue, rounded corners=2pt, fill=NatureBlue!6, align=left, text width=48mm, inner sep=3mm},
+  arrow/.style={-{Latex[length=2mm]}, draw=NatureGray, line width=0.7pt}
+]
+
+\matrix (m) [matrix of nodes, nodes={cell}, row sep=-\pgflinewidth, column sep=-\pgflinewidth] {
+ |[head]|system & |[head]|chloride & |[head]|iodide & |[head]|oxide & |[head]|sulfide \\
+ NASICON (30) & 0 & 0 & 30 & 0 \\
+ sulfide (41) & 0 & 0 & 0 & 41 \\
+ halide (13) & 12 & 1 & 0 & 0 \\
+};
+
+\node[rank, right=10mm of m] (r1) {\textbf{步骤 1：system 主控制}\\带截距、参考编码\\设计秩 $=3$};
+\node[rank, below=6mm of r1] (r2) {\textbf{步骤 2：逐列测试 anion 对比}\\oxide、sulfide：不增加秩\\iodide vs chloride：增加 1 个秩};
+\node[rank, below=6mm of r2] (r3) {\textbf{实际残差化矩阵}\\system + 唯一增量 anion 列\\combined rank $=4$\\anion independent control = false};
+\node[draw=NatureRed, rounded corners=2pt, fill=NatureRed!6, align=center, text width=48mm, below=6mm of r3] (skip) {iodide 仅 1 例\\阴离子分层 CV：\textbf{SKIPPED}\\不是 0 分，也不是失败证据};
+
+\draw[arrow] (m.east) -- (r1.west);
+\draw[arrow] (r1) -- (r2);
+\draw[arrow] (r2) -- (r3);
+\draw[arrow] (r3) -- (skip);
+\end{tikzpicture}
