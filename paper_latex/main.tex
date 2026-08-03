@@ -1,93 +1,105 @@
-\documentclass[12pt,a4paper]{book}
+\documentclass[9pt,a4paper,twocolumn]{article}
 
-% ========================================
-% 字体设置（XeTeX 原生命令，避免 fontspec 崩溃）
-% ========================================
-% 注意：MiKTeX 21.12 的 xelatex 加载 fontspec 会导致 heap corruption 崩溃
-% 因此改用 XeTeX 原生 \font 命令
-% 中文断行设置
-\XeTeXlinebreaklocale "zh"
-\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+% ============================================================
+% Nature-style Chinese manuscript (not an official Nature template)
+% ============================================================
+\usepackage[UTF8,scheme=plain]{ctex}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+\setmonofont{Liberation Mono}
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans Mono CJK SC}
 
-% 用 NFSS 注册 SimSun 为 TU 编码下的 roman 字体族
-% 这样 LaTeX 的字体切换（\bfseries, \itshape 等）都会使用 SimSun
-\DeclareFontFamily{TU}{simsun}{}
-\DeclareFontShape{TU}{simsun}{m}{n}{<->"SimSun"}{}
-\DeclareFontShape{TU}{simsun}{m}{it}{<->"SimSun"}{}
-\DeclareFontShape{TU}{simsun}{m}{sl}{<->"SimSun"}{}
-\DeclareFontShape{TU}{simsun}{bx}{n}{<->"SimSun"}{}
-\DeclareFontShape{TU}{simsun}{b}{n}{<->"SimSun"}{}
-\DeclareFontShape{TU}{simsun}{bx}{it}{<->"SimSun"}{}
-\DeclareFontShape{TU}{simsun}{bx}{sl}{<->"SimSun"}{}
-\DeclareFontFamily{TU}{msyh}{}
-\DeclareFontShape{TU}{msyh}{m}{n}{<->"Microsoft YaHei"}{}
-\DeclareFontShape{TU}{msyh}{bx}{n}{<->"Microsoft YaHei"}{}
-\DeclareFontFamily{TU}{fangsong}{}
-\DeclareFontShape{TU}{fangsong}{m}{n}{<->"FangSong"}{}
-\DeclareFontShape{TU}{fangsong}{m}{it}{<->"FangSong"}{}
-% 将默认字体族设为 simsun
-\renewcommand{\rmdefault}{simsun}
-\renewcommand{\sfdefault}{msyh}
-\renewcommand{\ttdefault}{fangsong}
-
-% ========================================
-% 页面布局（TeX 原生参数，替代 geometry 宏包）
-% ========================================
-\setlength{\oddsidemargin}{2.5cm}
-\addtolength{\oddsidemargin}{-1in}
-\setlength{\evensidemargin}{2.5cm}
-\addtolength{\evensidemargin}{-1in}
-\setlength{\textwidth}{\paperwidth}
-\addtolength{\textwidth}{-5cm}
-\setlength{\topmargin}{2.5cm}
-\addtolength{\topmargin}{-1in}
-\setlength{\textheight}{\paperheight}
-\addtolength{\textheight}{-5cm}
-
-% ========================================
-% 已安装的宏包
-% ========================================
-\usepackage{amsmath,amssymb}
+\usepackage[a4paper,top=15mm,bottom=17mm,left=16mm,right=16mm,columnsep=7.5mm]{geometry}
+\usepackage{amsmath,amssymb,bm}
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{microtype}
 \usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[backend=biber,style=numeric-comp,sorting=none,maxbibnames=4,minbibnames=3,doi=false,url=false,isbn=false]{biblatex}
+\addbibresource{refs.bib}
+\renewcommand*{\bibfont}{\footnotesize}
+\setlength{\bibitemsep}{0.15\baselineskip}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\usepackage{balance}
+\usepackage{stfloats}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
 
-% ========================================
-% 最小替代包（因网络不通无法安装，使用本地 stub）
-% ========================================
-\usepackage{booktabs}     % stub: \toprule=\hline 等
-\usepackage{caption}      % stub: 不修改默认格式
-\usepackage{subcaption}   % stub: 不提供子图功能
-\usepackage{titlesec}     % stub: \titleformat/\titlespacing
-\usepackage{fancyhdr}     % stub: \fancyhf/\fancyhead
-\usepackage{enumitem}     % stub: 不提供额外功能
+\graphicspath{{figures/}}
+\definecolor{NatureBlue}{HTML}{2F5597}
+\definecolor{NatureGray}{HTML}{555555}
+\definecolor{NatureLight}{HTML}{E7E7E7}
 
-% ========================================
-% 页眉设置
-% ========================================
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0pt}
+\setlength{\columnsep}{7.5mm}
+\renewcommand{\baselinestretch}{1.08}
+\setlist{nosep,leftmargin=1.45em}
+
+\titleformat{\section}{\sffamily\bfseries\large}{ }{0pt}{}
+\titleformat{\subsection}{\sffamily\bfseries\normalsize}{ }{0pt}{}
+\titlespacing*{\section}{0pt}{1.15em}{0.35em}
+\titlespacing*{\subsection}{0pt}{0.95em}{0.25em}
+
+\captionsetup{font=small,labelfont=bf,labelsep=period,justification=justified,singlelinecheck=false}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[C]{\leftmark}
+\fancyhead[L]{\sffamily\scriptsize ARTICLE}
+\fancyhead[R]{\sffamily\scriptsize Na 离子固态电解质结构描述符}
+\fancyfoot[C]{\sffamily\scriptsize\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
 
-% ========================================
-% 章节标题格式
-% ========================================
-\renewcommand{\@makechapterhead}[1]{%
-  \vspace*{0pt}%
-  {\parindent \z@ \centering \Huge \bfseries
-   第\,\thechapter\,章\quad #1\par\nobreak\vskip 20pt}}
+\newcommand{\code}[1]{\texttt{\small #1}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\rhoRaw}{\rho_{\mathrm{raw}}}
+\newcommand{\rhoDeconf}{\rho_{\mathrm{deconf}}}
 
-\renewcommand{\baselinestretch}{1.8}
-\graphicspath{{figures/}}
-
-\title{Na离子固态电解质结构描述符的因果去混杂搜索方法}
-\author{}
-\date{}
+\makeatletter
+\renewcommand{\maketitle}{%
+  \twocolumn[\begin{@twocolumnfalse}
+  \vspace*{-5mm}
+  {\sffamily\bfseries\fontsize{21}{25}\selectfont
+  去混杂的局域结构描述符揭示钠离子固态电解质的跨体系传输规律\par}
+  \vspace{4mm}
+  {\sffamily\fontsize{10.5}{13}\selectfont 作者信息待补充$^{1,*}$\par}
+  \vspace{1mm}
+  {\sffamily\fontsize{8.5}{10.5}\selectfont
+  $^{1}$单位信息待补充；$^{*}$通信作者信息待补充\par}
+  \vspace{4mm}
+  \noindent\rule{\textwidth}{0.6pt}
+  \vspace{3mm}
+  \noindent\textbf{摘要}\quad
+  固态电解质的宏观离子电导率由局域配位、可达空位、迁移网络和骨架响应共同决定，但跨材料体系的统计分析容易把体系类型误识别为普适结构规律。本文建立一套面向小样本、多体系数据的混杂感知描述符搜索框架：对原始晶体结构进行质量控制，从局域几何中构建八类物理描述符；以体系类型和阴离子类别作为混杂变量实施 Ridge 残差化；通过随机噪声校准的稳定性筛选和物理约束组合搜索压缩候选空间；最后利用阴离子分层交叉验证、留一体系验证和重复子采样评估可迁移性。当前分析表明，未经控制的高相关描述符中包含明显的体系代理信号，而去混杂后保持稳定的候选主要来自 Na 配位多面体、Na--Na 网络和载流子条件。该框架不以追求最高预测精度为首要目标，而强调可解释性、跨体系稳健性和完整复现，为后续第一性原理或分子动力学验证提供可审计的候选排序。\par
+  \vspace{3mm}
+  \noindent\rule{\textwidth}{0.6pt}
+  \vspace{5mm}
+  \end{@twocolumnfalse}]%
+}
+\makeatother
 
 \begin{document}
 \maketitle
-\tableofcontents
+
 \input{chapters/chapter1}
 \input{chapters/chapter2}
-\bibliographystyle{unsrt}
-\bibliography{refs}
+
+\balance
+\printbibliography[title={参考文献}]
+
 \end{document}
