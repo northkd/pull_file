@@ -1,114 +1,155 @@
+"""Stopping decision for the isolated structural Agent track."""
 from __future__ import annotations
 
 import argparse
-import csv
 from pathlib import Path
+from typing import Any
 
 import numpy as np
+import pandas as pd
 
-from run_config import DEFAULT_RUN_INFO, config_get, config_path, load_run_info
+from automat_utils import (
+    AgentContractError,
+    FrozenInputIdentity,
+    resolve_frozen_input_identity,
+    validate_agent_output_path,
+    validate_agent_result_frame_identity,
+)
+from run_config import DEFAULT_RUN_INFO, config_get, load_run_info
 
 
-def parse_args() -> argparse.Namespace:
+REQUIRED_AGENT_RESULT_COLUMNS = {
+    "descriptor_name",
+    "deconfounded_spearman",
+    "status",
+    "shared_raw_file",
+    "descriptor_registry",
+    "registry_revision",
+}
+METRIC_STATUSES = {"evaluated", "keep", "discard"}
+
+
+def resolve_results_file(config: dict[str, Any]) -> Path:
+    """Resolve the only results file the Agent status command may inspect."""
+    return validate_agent_output_path(config_get(config, "tracks.agent.results_file"))
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Inspect results.tsv and decide whether autoresearch should stop."
+        description=(
+            "Inspect structural Agent results and apply its deconfounded-Spearman "
+            "stopping policy. Pipeline outputs are never read."
+        )
     )
     parser.add_argument(
         "--run-info",
         type=Path,
         default=DEFAULT_RUN_INFO,
-        help="YAML file containing run metadata and stop criteria.",
+        help="YAML file containing tracks.agent.status settings.",
     )
     parser.add_argument(
         "--results-file",
         type=Path,
         default=None,
-        help="Override results TSV path.",
+        help="Optional Agent TSV override under results/agent/.",
     )
     parser.add_argument(
         "--quiet",
         action="store_true",
         help="Print only STOP or CONTINUE.",
     )
-    return parser.parse_args()
+    args = parser.parse_args(argv)
+    if args.results_file is not None:
+        try:
+            args.results_file = validate_agent_output_path(args.results_file)
+        except AgentContractError as exc:
+            parser.error(str(exc))
+    return args
 
 
 def parse_metric(value: str | None) -> float:
     if value is None:
         return float("nan")
-    value = value.strip()
-    if not value:
-        return float("nan")
     try:
-        return float(value)
-    except ValueError:
+        return float(value.strip())
+    except (AttributeError, ValueError):
         return float("nan")
 
 
-def read_results(path: Path) -> list[dict[str, str]]:
+def read_results(
+    path: Path, identity: FrozenInputIdentity
+) -> list[dict[str, str]]:
     if not path.exists():
         return []
-    with path.open(newline="") as handle:
-        return list(csv.DictReader(handle, delimiter="\t"))
+    frame = pd.read_csv(path, sep="\t")
+    missing = REQUIRED_AGENT_RESULT_COLUMNS - set(frame.columns)
+    if missing:
+        raise ValueError(
+            f"Agent results file {path} is missing required columns: {sorted(missing)}"
+        )
+    validate_agent_result_frame_identity(frame, identity, source=path)
+    return frame.fillna("").astype(str).to_dict(orient="records")
 
 
-def count_validation_since_last_improvement(
-    rows: list[dict[str, str]],
-    metric_name: str,
-    lower_is_better: bool,
-) -> tuple[int, float]:
-    best_value = float("inf") if lower_is_better else -float("inf")
+def count_since_last_improvement(
+    rows: list[dict[str, str]], metric_name: str
+) -> tuple[int, float, int]:
+    """Count finite completed evaluations since a strict metric improvement."""
+    best_value = -float("inf")
     since_improvement = 0
-
+    metric_observations = 0
     for row in rows:
-        value = parse_metric(row.get(metric_name))
-        if np.isnan(value):
+        if row.get("status", "").strip().lower() not in METRIC_STATUSES:
             continue
-
-        improved = value < best_value if lower_is_better else value > best_value
-        if improved:
+        value = parse_metric(row.get(metric_name))
+        if not np.isfinite(value):
+            continue
+        metric_observations += 1
+        if value > best_value:
             best_value = value
             since_improvement = 0
         else:
             since_improvement += 1
+    return since_improvement, best_value, metric_observations
 
-    return since_improvement, best_value
 
-
-def main() -> None:
-    args = parse_args()
+def main(argv: list[str] | None = None) -> None:
+    args = parse_args(argv)
     config = load_run_info(args.run_info)
-    results_file = args.results_file or config_path(config, "logging.results_file")
-    max_iterations = int(config_get(config, "autoresearch.max_iterations"))
-    validation_patience = int(config_get(config, "autoresearch.validation_patience"))
-    validation_metric = str(config_get(config, "autoresearch.validation_metric"))
-    lower_is_better = bool(config_get(config, "autoresearch.lower_is_better"))
+    results_file = args.results_file or resolve_results_file(config)
+    identity = resolve_frozen_input_identity(config, args.run_info)
+    status_config = config_get(config, "tracks.agent.status")
+    max_iterations = int(status_config["max_iterations"])
+    patience = int(status_config["patience"])
+    metric_name = str(status_config["primary_metric"])
+    if metric_name != "deconfounded_spearman":
+        raise ValueError(
+            "tracks.agent.status.primary_metric must be deconfounded_spearman; "
+            "Agent stopping is not based on raw correlation or prediction error."
+        )
 
-    rows = read_results(results_file)
+    rows = read_results(results_file, identity)
     iterations = len(rows)
-    since_improvement, best_value = count_validation_since_last_improvement(
-        rows=rows,
-        metric_name=validation_metric,
-        lower_is_better=lower_is_better,
+    since_improvement, best_value, metric_observations = count_since_last_improvement(
+        rows, metric_name
     )
-
     max_iterations_reached = max_iterations > 0 and iterations >= max_iterations
-    patience_reached = validation_patience > 0 and since_improvement >= validation_patience
+    patience_reached = patience > 0 and since_improvement >= patience
     decision = "STOP" if max_iterations_reached or patience_reached else "CONTINUE"
 
     if not args.quiet:
-        best_display = (
-            "nan" if np.isnan(best_value) or np.isinf(best_value) else f"{best_value:.6f}"
-        )
+        best_display = "nan" if not np.isfinite(best_value) else f"{best_value:.6f}"
         print(f"results_file: {results_file}")
-        print(f"iterations: {iterations}")
+        print("track: agent (pipeline results are intentionally excluded)")
+        print(f"iterations_recorded: {iterations}")
+        print(f"metric_observations: {metric_observations}")
+        print(f"primary_metric: {metric_name}")
+        print(f"best_deconfounded_spearman: {best_display}")
+        print(f"finite_evaluations_since_last_improvement: {since_improvement}")
         print(f"max_iterations: {max_iterations}")
-        print(f"validation_metric: {validation_metric}")
-        print(f"best_validation_metric: {best_display}")
-        print(f"non_nan_validation_since_last_improvement: {since_improvement}")
-        print(f"validation_patience: {validation_patience}")
+        print(f"patience: {patience}")
         print(f"max_iterations_reached: {str(max_iterations_reached).lower()}")
-        print(f"validation_patience_reached: {str(patience_reached).lower()}")
+        print(f"patience_reached: {str(patience_reached).lower()}")
     print(decision)
 
 

@@ -13,8 +13,10 @@ from descriptors._base import (
     ELECTRONEGATIVITY,
     _safe_mean,
     _shell_neighbors,
+    element_symbol,
     get_framework_sites,
     get_na_sites,
+    site_occupancies_by_symbol,
 )
 
 
@@ -25,7 +27,7 @@ def compute_na_x_en_diff(struct: Structure) -> float:
     计算 χ(X) - χ(Na)，然后取所有 Na 位点均值。
     """
     na_indices = get_na_sites(struct)
-    species_symbols = {str(el) for el in struct.composition.elements}
+    species_symbols = {element_symbol(el) for el in struct.composition.elements}
     anions = species_symbols & ANION_ELEMENTS
 
     if not na_indices or not anions:
@@ -50,35 +52,34 @@ def compute_charge_balance_deviation(struct: Structure) -> float:
     简化估计: 用占位加权和估算总正电荷和总负电荷的偏差。
     Na 贡献 +1，阴离子假设 -2 (O/S/Se) 或 -1 (F/Cl/Br/I/H/N)。
     """
-    total_positive = 0.0
-    total_negative = 0.0
+    fallback_oxidation_states = {
+        "Na": 1, "Li": 1, "K": 1, "Rb": 1, "Cs": 1,
+        "Mg": 2, "Ca": 2, "Sr": 2, "Ba": 2, "Zn": 2,
+        "Al": 3, "Fe": 3, "Cr": 3, "Ga": 3, "In": 3,
+        "Si": 4, "Ge": 4, "Sn": 4, "Ti": 4, "Zr": 4, "Hf": 4, "Mn": 4,
+        "P": 5, "V": 5, "As": 5, "Sb": 5, "Nb": 5, "Ta": 5,
+        "O": -2, "S": -2, "Se": -2,
+        "F": -1, "Cl": -1, "Br": -1, "I": -1, "H": -1, "N": -1,
+    }
+    net_charge = 0.0
+    total_absolute_charge = 0.0
 
     for site in struct:
-        species_dict = site.species.as_dict()
-        for el_sym, occ in species_dict.items():
-            if el_sym == "Na":
-                total_positive += occ * 1.0
-            elif el_sym in {"O", "S", "Se"}:
-                total_negative += occ * 2.0
-            elif el_sym in {"F", "Cl", "Br", "I", "H", "N"}:
-                total_negative += occ * 1.0
-            # 骨架阳离子假设: 常见价态估计
-            elif el_sym in {"Li", "K", "Rb", "Cs"}:
-                total_positive += occ * 1.0
-            elif el_sym in {"Mg", "Ca", "Sr", "Ba", "Zn"}:
-                total_positive += occ * 2.0
-            elif el_sym in {"Al", "Fe", "Cr", "Ga", "In"}:
-                total_positive += occ * 3.0
-            elif el_sym in {"Si", "Ge", "Sn", "Ti", "Zr", "Hf", "Mn"}:
-                total_positive += occ * 4.0
-            elif el_sym in {"P", "V", "As", "Sb", "Nb", "Ta"}:
-                total_positive += occ * 5.0
+        for species, occupancy in site.species.items():
+            symbol = element_symbol(species)
+            oxidation_state = getattr(species, "oxi_state", None)
+            if oxidation_state is None:
+                oxidation_state = fallback_oxidation_states.get(symbol)
+            if oxidation_state is None:
+                continue
+            charge = float(occupancy) * float(oxidation_state)
+            net_charge += charge
+            total_absolute_charge += abs(charge)
 
-    total = total_positive + total_negative
-    if abs(total) < 1e-12:
+    if total_absolute_charge < 1e-12:
         return float("nan")
 
-    return float(abs(total_positive + total_negative) / abs(total))
+    return float(abs(net_charge) / max(total_absolute_charge, 1e-12))
 
 
 def compute_covalency_index(struct: Structure) -> float:
@@ -88,7 +89,7 @@ def compute_covalency_index(struct: Structure) -> float:
     然后取均值。值越大说明共价性越强。
     """
     na_indices = get_na_sites(struct)
-    species_symbols = {str(el) for el in struct.composition.elements}
+    species_symbols = {element_symbol(el) for el in struct.composition.elements}
     anions = species_symbols & ANION_ELEMENTS
 
     if not na_indices or not anions:
@@ -133,7 +134,7 @@ def compute_framework_d_electron_weighted(struct: Structure) -> float:
 
     for fw_idx in fw_indices:
         site = struct[fw_idx]
-        species_dict = site.species.as_dict()
+        species_dict = site_occupancies_by_symbol(site)
         for el_sym, occ in species_dict.items():
             total_occ += occ
             if el_sym in d_block:

@@ -16,6 +16,7 @@ from descriptors._base import (
     _safe_mean,
     _shell_neighbors,
     compute_polyhedron_volume,
+    element_symbol,
     get_na_sites,
 )
 
@@ -23,7 +24,7 @@ from descriptors._base import (
 def _collect_na_x_data(struct: Structure) -> dict:
     """收集所有 Na 位点的 Na-X 键信息，返回中间数据字典。"""
     na_indices = get_na_sites(struct)
-    species_symbols = {str(el) for el in struct.composition.elements}
+    species_symbols = {element_symbol(el) for el in struct.composition.elements}
     anions = species_symbols & ANION_ELEMENTS
 
     if not na_indices or not anions:
@@ -207,7 +208,7 @@ def compute_direction_ratio(struct: Structure) -> float:
     反映瓶颈通道的方向性。
     """
     na_indices = get_na_sites(struct)
-    species_symbols = {str(el) for el in struct.composition.elements}
+    species_symbols = {element_symbol(el) for el in struct.composition.elements}
     anions = species_symbols & ANION_ELEMENTS
 
     if not na_indices or not anions:

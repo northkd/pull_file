@@ -41,13 +41,15 @@ def compute_interstitial_na_distance(struct: Structure) -> float:
     if not sites or not na_indices:
         return float("nan")
 
-    na_coords = np.array([struct[i].coords for i in na_indices], dtype=float)
     min_dists: list[float] = []
 
     for ist in sites:
-        ist_coords = ist["coords"]
-        dists = np.linalg.norm(na_coords - ist_coords, axis=1)
-        min_dists.append(float(np.min(dists)))
+        ist_frac = struct.lattice.get_fractional_coords(ist["coords"])
+        dists = [
+            float(struct.lattice.get_distance_and_image(ist_frac, struct[i].frac_coords)[0])
+            for i in na_indices
+        ]
+        min_dists.append(min(dists))
 
     return _safe_mean(min_dists)
 
@@ -63,14 +65,16 @@ def compute_interstitial_channel_access(struct: Structure) -> float:
     if not sites or not na_indices:
         return float("nan")
 
-    na_coords = np.array([struct[i].coords for i in na_indices], dtype=float)
     access_threshold = 3.0  # Å
     accessible = 0
 
     for ist in sites:
-        ist_coords = ist["coords"]
-        dists = np.linalg.norm(na_coords - ist_coords, axis=1)
-        if float(np.min(dists)) <= access_threshold:
+        ist_frac = struct.lattice.get_fractional_coords(ist["coords"])
+        dists = [
+            float(struct.lattice.get_distance_and_image(ist_frac, struct[i].frac_coords)[0])
+            for i in na_indices
+        ]
+        if min(dists) <= access_threshold:
             accessible += 1
 
     return float(accessible / len(sites))

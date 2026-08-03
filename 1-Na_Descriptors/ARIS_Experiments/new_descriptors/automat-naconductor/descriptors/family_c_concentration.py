@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from pymatgen.core import Structure
 
-from descriptors._base import get_na_sites
+from descriptors._base import get_na_sites, site_occupancies_by_symbol
 
 
 def compute_na_concentration(struct: Structure) -> float:
@@ -33,7 +33,7 @@ def compute_na_occupancy_sum(struct: Structure) -> float:
     total_occ = 0.0
     for idx in na_indices:
         site = struct[idx]
-        na_occ = site.species.as_dict().get("Na", 0.0)
+        na_occ = site_occupancies_by_symbol(site).get("Na", 0.0)
         total_occ += na_occ
 
     return float(total_occ)

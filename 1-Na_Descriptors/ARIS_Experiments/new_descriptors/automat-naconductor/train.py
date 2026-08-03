@@ -1,222 +1,137 @@
+"""Evaluate one explicit CIF-derived descriptor in the independent Agent track.
+
+This is intentionally not a train/validation/test-split runner.  It reads the
+frozen raw structural CSV, performs strict CIF preflight, and evaluates one
+registered descriptor using the shared fold-local Ridge CV and rank-aware
+deconfounding implementations.
 """
-Descriptor search runner on local composition-property data.
-
-By default this script evaluates a descriptor with 3-fold CV inside train.csv
-only. Use --evaluate-validation after a descriptor is kept to fit on all of
-train.csv and evaluate validation.csv.
-
-Usage:
-    uv run python train.py
-    uv run python train.py --evaluate-validation
-"""
-
 from __future__ import annotations
 
 import argparse
-import time
-
-import numpy as np
-import pandas as pd
-from sklearn.model_selection import KFold, StratifiedKFold
+import sys
+from pathlib import Path
+from typing import Any
 
 from automat_utils import (
-    build_model_from_config,
-    extract_xy,
-    load_local_frame,
-    make_featurizer,
-    mean_absolute_prediction_error,
-    predict_values,
+    AgentContractError,
+    format_agent_metrics,
+    prepare_structural_evaluation,
+    resolve_frozen_input_identity,
+    validate_agent_output_path,
+    validate_agent_audit_batch,
+    validate_agent_result_batch,
+    write_agent_result,
+    write_structural_audit,
 )
-from run_config import config_get, config_path, load_run_info_arg
+from run_config import DEFAULT_RUN_INFO, config_get, load_run_info
 
 
-def parse_args() -> argparse.Namespace:
-    run_info_parser, config = load_run_info_arg()
-
+def parse_agent_args(argv: list[str] | None = None) -> argparse.Namespace:
+    """Parse the explicit structural Agent contract without legacy defaults."""
     parser = argparse.ArgumentParser(
-        description="Evaluate a composition descriptor on a local train.csv split.",
-        parents=[run_info_parser],
+        description=(
+            "Evaluate one registered CIF-derived descriptor in the isolated "
+            "Agent track (results/agent only)."
+        )
+    )
+    parser.add_argument(
+        "--run-info",
+        type=Path,
+        default=DEFAULT_RUN_INFO,
+        help="YAML file with frozen shared inputs and Agent-track settings.",
     )
     parser.add_argument(
         "--descriptor-name",
-        default=config_get(config, "descriptor.default_name"),
-        help="Descriptor tag from descriptors.AVAILABLE_COMPOSITION_DESCRIPTORS.",
+        required=True,
+        help="Explicit key from descriptors.AVAILABLE_STRUCTURE_DESCRIPTORS.",
     )
     parser.add_argument(
-        "--evaluate-validation",
-        action="store_true",
-        help="Fit all train.csv rows and evaluate validation.csv. Use only for kept descriptors.",
+        "--results-file",
+        type=Path,
+        default=None,
+        help="Agent result TSV under results/agent/.",
     )
-    args = parser.parse_args()
+    parser.add_argument(
+        "--audit-file",
+        type=Path,
+        default=None,
+        help="Agent structural audit CSV under results/agent/.",
+    )
+    parser.add_argument(
+        "--run-id",
+        default="manual",
+        help="Opaque Agent iteration identifier recorded in results.tsv.",
+    )
+    parser.add_argument(
+        "--status",
+        choices=("evaluated", "keep", "discard", "crash"),
+        default="evaluated",
+        help="Human-reviewed iteration status; defaults to evaluated.",
+    )
+    args = parser.parse_args(argv)
+
+    config = load_run_info(args.run_info)
     args.run_config = config
-    args.data_dir = config_path(config, "data.dataset_dir")
-    args.train_file = config_get(config, "data.train_file")
-    args.validation_file = config_get(config, "data.validation_file")
-    args.target_column = config_get(config, "data.target_column")
-    args.composition_column = config_get(config, "data.composition_column")
-    args.stratification_bins = int(config_get(config, "cv.stratification_bins"))
-    args.cv_folds = int(config_get(config, "cv.folds"))
-    args.random_seed = int(config_get(config, "model.random_seed"))
+    try:
+        args.frozen_identity = resolve_frozen_input_identity(config, args.run_info)
+        args.raw_file = args.frozen_identity.raw_file
+        args.descriptor_registry = args.frozen_identity.descriptor_registry
+        args.registry_revision = args.frozen_identity.registry_revision
+        args.structure_column = config_get(config, "data.structure_column")
+        args.target_column = config_get(config, "data.target_column")
+        args.system_column = config_get(config, "data.system_column")
+        args.anion_column = config_get(config, "data.anion_type_column")
+        args.ridge_alpha = float(config_get(config, "evaluation.model.alpha"))
+        args.results_file = validate_agent_output_path(
+            args.results_file or config_get(config, "tracks.agent.results_file")
+        )
+        args.audit_file = validate_agent_output_path(
+            args.audit_file or config_get(config, "tracks.agent.feature_cache_file")
+        )
+    except (AgentContractError, KeyError, ValueError) as exc:
+        parser.error(str(exc))
     return args
 
 
-def make_stratification_labels(
-    y_values: np.ndarray,
-    n_splits: int,
-    max_bins: int,
-) -> np.ndarray | None:
-    max_usable_bins = min(max_bins, max(2, len(y_values) // n_splits))
-    for bins in range(max_usable_bins, 1, -1):
-        try:
-            labels = pd.qcut(y_values, q=bins, labels=False, duplicates="drop")
-        except ValueError:
-            continue
-        if labels is None:
-            continue
-        labels = np.asarray(labels, dtype=int)
-        unique, counts = np.unique(labels, return_counts=True)
-        if len(unique) >= 2 and int(counts.min()) >= n_splits:
-            return labels
-    return None
-
-
-def cross_validate_train_set(
-    args: argparse.Namespace,
-    x_train: np.ndarray,
-    y_train: np.ndarray,
-) -> dict[str, float]:
-    labels = make_stratification_labels(
-        y_train,
-        n_splits=args.cv_folds,
-        max_bins=args.stratification_bins,
-    )
-    if labels is None:
-        splitter = KFold(n_splits=args.cv_folds, shuffle=True, random_state=args.random_seed)
-        splits = splitter.split(x_train)
-    else:
-        splitter = StratifiedKFold(
-            n_splits=args.cv_folds,
-            shuffle=True,
-            random_state=args.random_seed,
-        )
-        splits = splitter.split(x_train, labels)
-
-    fold_maes = []
-    for fold_idx, (fit_idx, val_idx) in enumerate(splits, start=1):
-        model = build_model_from_config(
-            args.run_config,
-            random_state=args.random_seed + fold_idx,
-        )
-        model.fit(x_train[fit_idx], y_train[fit_idx])
-        mae = mean_absolute_prediction_error(
-            y_train[val_idx],
-            predict_values(model, x_train[val_idx]),
-        )
-        fold_maes.append(mae)
-        print(f"  cv_fold {fold_idx:02d} | cv_mae: {mae:.6f}")
-
-    return {
-        "cv_mae": float(np.mean(fold_maes)),
-        "cv_mae_std": float(np.std(fold_maes, ddof=0)),
-        "cv_folds": float(args.cv_folds),
-    }
-
-
-def evaluate_descriptor(args: argparse.Namespace) -> dict[str, float | str]:
-    featurize = make_featurizer(args.descriptor_name)
-    train_frame = load_local_frame(
-        data_dir=args.data_dir,
-        filename=args.train_file,
-        target_column=args.target_column,
-        composition_column=args.composition_column,
-    )
-    train_inputs, y_train = extract_xy(train_frame, args.target_column, args.composition_column)
-    x_train = featurize(train_inputs)
-
-    print(f"train_rows: {x_train.shape[0]}")
-    cv_metrics = cross_validate_train_set(
-        args=args,
-        x_train=x_train,
-        y_train=y_train,
-    )
-
-    model = build_model_from_config(args.run_config, random_state=args.random_seed)
-    model.fit(x_train, y_train)
-    train_mae = mean_absolute_prediction_error(y_train, predict_values(model, x_train))
-
-    metrics: dict[str, float | str] = {
-        "target_column": args.target_column,
-        "train_rows": float(x_train.shape[0]),
-        "train_mae": train_mae,
-        **cv_metrics,
-        "validation_rows": float("nan"),
-        "val_mae": float("nan"),
-    }
-
-    if args.evaluate_validation:
-        val_frame = load_local_frame(
-            data_dir=args.data_dir,
-            filename=args.validation_file,
-            target_column=args.target_column,
-            composition_column=args.composition_column,
-        )
-        val_inputs, y_val = extract_xy(val_frame, args.target_column, args.composition_column)
-        x_val = featurize(val_inputs)
-        val_mae = mean_absolute_prediction_error(y_val, predict_values(model, x_val))
-        print(f"validation_rows: {x_val.shape[0]}")
-        metrics.update(
-            {
-                "validation_rows": float(x_val.shape[0]),
-                "val_mae": val_mae,
-            }
-        )
-
+def evaluate_descriptor(args: argparse.Namespace) -> dict[str, Any]:
+    """Compatibility-named entry point for the structural Agent evaluator."""
+    _frame, metrics = prepare_structural_evaluation(args)
     return metrics
 
 
-def format_float(value: float | str) -> str:
-    if isinstance(value, str):
-        return value
-    if np.isnan(value):
-        return "nan"
-    return f"{value:.6f}"
+def main(argv: list[str] | None = None) -> None:
+    args = parse_agent_args(argv)
+    try:
+        frame, metrics = prepare_structural_evaluation(args)
+    except (FileNotFoundError, KeyError, ValueError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        raise SystemExit(2) from None
 
-
-def format_count(value: float | str) -> str:
-    if isinstance(value, str):
-        return value
-    if np.isnan(value):
-        return "nan"
-    return str(int(value))
-
-
-def main() -> None:
-    args = parse_args()
-
-    t_start = time.time()
-    print(f"Descriptor set: {args.descriptor_name}")
-    print(f"Model: {config_get(args.run_config, 'model.name')}")
-    print(f"Data directory: {args.data_dir}")
-    print(f"Run info: {args.run_info}")
-    print(
-        "Evaluation contract: use train.csv CV for keep/discard; "
-        "validation.csv only with --evaluate-validation."
-    )
-
-    metrics = evaluate_descriptor(args)
-    t_end = time.time()
-
-    print("---")
-    print(f"cv_mae:           {format_float(metrics['cv_mae'])}")
-    print(f"cv_mae_std:       {format_float(metrics['cv_mae_std'])}")
-    print(f"train_mae:        {format_float(metrics['train_mae'])}")
-    print(f"val_mae:          {format_float(metrics['val_mae'])}")
-    print(f"train_seconds:    {t_end - t_start:.1f}")
-    print(f"descriptor_set:   {args.descriptor_name}")
-    print(f"target_column:    {metrics['target_column']}")
-    print(f"train_rows:       {int(metrics['train_rows'])}")
-    print(f"validation_rows:  {format_count(metrics['validation_rows'])}")
-    print(f"cv_folds:         {int(metrics['cv_folds'])}")
+    try:
+        # This preflight must precede the audit write; a conflicting TSV must
+        # never overwrite the current batch's audit artifact.
+        validate_agent_result_batch(metrics, args.results_file)
+        validate_agent_audit_batch(metrics, args.audit_file)
+        audit_path = write_structural_audit(
+            frame,
+            descriptor_name=args.descriptor_name,
+            audit_file=args.audit_file,
+            metrics=metrics,
+        )
+        results_path = write_agent_result(
+            metrics,
+            results_file=args.results_file,
+            run_id=str(args.run_id),
+            status=str(args.status),
+        )
+    except AgentContractError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        raise SystemExit(2) from None
+    for line in format_agent_metrics(metrics):
+        print(line)
+    print(f"structural_audit_file:      {audit_path}")
+    print(f"agent_results_file:         {results_path}")
+    print("track_isolation:             agent writes results/agent only; no pipeline output read")
 
 
 if __name__ == "__main__":

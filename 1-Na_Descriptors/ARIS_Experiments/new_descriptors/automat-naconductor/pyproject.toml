@@ -1,12 +1,17 @@
 [project]
-name = "automat"
-version = "1.0.0"
-description = "Autoresearch Workflow for Designing Chemical Composition Descriptors."
+name = "automat-naconductor"
+version = "1.1.0"
+description = "Independent Agent and pipeline workflows for CIF-derived Na-ion conductor descriptors."
 requires-python = ">=3.10,<3.12"
 dependencies = [
     "numpy",
     "pandas",
     "pymatgen",
     "ruamel.yaml",
+    "scipy",
     "scikit-learn",
+    "matplotlib",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
