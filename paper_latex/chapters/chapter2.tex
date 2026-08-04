@@ -2,63 +2,67 @@
 
 \subsection{软件范围与冻结配置}
 
-本文方法使用 Pymatgen 解析晶体结构，并以 NumPy 与 scikit-learn 实现数值和模型流程\cite{Ong2013,Harris2020,Pedregosa2011}。方法对应仓库分支 \code{codex/naconductor-repair} 中的 \code{automat-naconductor} 实现。运行配置由 \code{run\_info.yaml} 提供，关键默认值包括：目标列 \code{log\_sigma}，结构列 \code{cif\_path}，体系列 \code{system}，阴离子列 \code{anion\_type}；Ridge 正则化系数 1.0；稳定性 Lasso 系数 0.05；100 次 50\% 无放回子采样；选择频率阈值 0.60；15 个固定标准正态噪声列；组合公式最少 2 个、最多 3 个描述符；重复子采样 10 次、测试比例 0.2、随机种子 42。
+本文对应仓库 \code{northkd/pull\_file} 的 \code{codex/naconductor-repair} 分支。Pymatgen 用于 CIF 解析和结构操作，NumPy、SciPy、pandas 与 scikit-learn 用于数值、统计和模型流程\cite{Ong2013,Harris2020,Pedregosa2011}。运行配置由 \code{run\_info.yaml} 提供：目标列为 \code{log\_sigma}，结构列为 \code{cif\_path}，体系列为 \code{system}，阴离子列为 \code{anion\_type}；Ridge 正则化系数为 1.0；稳定性 Lasso 系数为 0.05；100 次 50\% 无放回子采样；选择频率阈值为 0.60；15 个固定标准正态噪声列；组合公式含 2--3 个描述符；重复子采样执行 10 次，测试比例 0.2，随机种子 42。
 
-冻结身份由原始 CSV 的规范绝对路径、实际载入的 \code{descriptors/\_\_init\_\_.py} 路径和注册表修订号 \code{structural-registry-v1-2026-08-03} 组成。配置中的 \code{data.raw\_file} 与 \code{shared\_input.raw\_file} 必须解析为同一文件，注册表配置必须指向当前 Python 实际导入的模块。Pipeline 和 Agent 的所有持久化工件都保留该身份。
+冻结身份包含原始 CSV 的规范路径、实际载入的描述符注册表路径和注册表修订号。配置中的 raw 文件与 shared input 必须解析为同一文件，注册表配置必须指向当前 Python 导入模块。Pipeline 和 Agent 工件均保存该身份；混合批次或外来注册表被拒绝。
 
-\subsection{CIF 路径解析与失败关闭预检}
+\subsection{CIF预检与描述符注册}
 
-相对 CIF 路径始终相对于原始 CSV 所在目录解析，不回退到进程当前目录。Pipeline 在初始化描述符列和写入 CSV/JSON 之前检查所有路径；Agent 除路径存在外，还逐一调用 Pymatgen \code{CifParser} 解析结构。任一缺失路径或不可解析结构都会中止整批运行。单个描述符计算失败可以记录为 NaN 供审计，但若一个描述符不足 5 个有限值，或 Stage 0 没有任何达到覆盖阈值的真实活动描述符，则分析失败。
+相对 CIF 路径始终相对于原始 CSV 目录解析。Pipeline 在初始化描述符列及写 CSV/JSON 前检查全部路径；Agent 进一步逐一调用 Pymatgen 解析结构。任一缺失或不可解析结构均中止整批运行。单个描述符失败可以记录 NaN，但若一个描述符少于 5 个有限值，或 Stage 0 没有达到覆盖阈值的活动描述符，则停止分析。
 
-\subsection{化学物种、占位和周期几何}
+注册表保留 41 个公开 callable；\code{max\_bond\_length} 是 \code{a2\_max\_dist} 的兼容别名，\code{bottleneck\_anisotropy} 和 \code{bvse\_barrier\_estimate} 当前无有效实现，三者不进入自动搜索，其余 38 项为活动描述符。每项记录单位、物理维度、物理族、高风险状态、活动状态和别名关系。
 
-元素身份通过归一化元素符号识别，而不是比较带电物种的显示字符串。Na 总量、阴离子、框架元素和部分占位均按元素占位求和。周期性间隙候选来自实际 Voronoi 顶点；距离使用晶格最小像，并以周期最小像进行候选去重。Wyckoff 多样性定义为 \code{SpacegroupAnalyzer.get\_symmetrized\_structure()} 返回的 \code{equivalent\_indices} 组数。
+\subsection{化学物种、占位与周期几何}
 
-\subsection{描述符覆盖与噪声列}
+元素身份通过规范元素符号识别，而不是比较带电物种显示字符串。Na、阴离子、框架元素和部分占位均按元素占位求和。D$'$ 族间隙候选来自实际周期 Voronoi 顶点；距离使用晶格最小像并按周期最小像去重。Wyckoff 多样性通过 Pymatgen 的对称化结构接口获得，并定义为 \code{equivalent\_indices} 的等价位点组数。
 
-批量特征化默认只计算 38 个活动描述符。每列至少需要在 50\% 样本中为有限值，才能进入特征矩阵。描述符原始值与 NaN 原样保留。以固定种子 42 生成 15 列 $\mathcal N(0,1)$ 噪声，列名为 \code{noise\_000} 至 \code{noise\_014}。噪声列用于稳定性基线，不进入物理代表或组合候选。
+\subsection{特征覆盖与固定噪声}
 
-\subsection{秩感知去混杂}
+活动描述符至少需要在 50\% 样本中有限。原始值和 NaN 原样保留，不进行全局插补或标准化。以种子 42 生成 15 列 $\mathcal N(0,1)$ 噪声，仅用于稳定性经验基线，不进入物理代表和公式搜索。
 
-system 和 anion 均采用带参考类别的虚拟编码。构造带截距的 system 设计矩阵后，按固定列顺序逐一尝试加入 anion 对比；只有使矩阵秩增加的列才进入实际残差化。审计信息包括 system 秩、全部控制的秩、阴离子增量秩、冗余/增量列和最终控制列。
+\subsection{秩感知控制与Ridge残差化}
 
-对每个至少有 5 个有限描述符--目标配对的活动描述符，计算原始 Spearman 和 Ridge 残差上的 Spearman。Ridge 的输入为控制矩阵，不对结构描述符作全局标准化。分类规则和体系代理比边界处理与“结果”部分所述一致。分析结果按去混杂 Spearman 绝对值降序排列。
+system 与 anion 均采用参考类别虚拟编码。先构造带截距的 system 设计矩阵，再按固定列顺序尝试加入 anion 对比；只有增加矩阵秩的列进入实际控制矩阵。输出保存 system 秩、完整控制秩、阴离子增量秩、冗余列、增量列和最终残差化列。
 
-\subsection{子采样 Lasso 与物理族代表}
+对每个至少有 5 个有限 $X_j$--$Y$ 配对的描述符，以 Ridge($\alpha=1$) 分别拟合 $X_j\sim Z$ 和 $Y\sim Z$，计算残差 Spearman。原始相关接近零时体系代理比设为 0；原始和去混杂相关符号相反时设为 1；否则计算并截断 $1-\rho_{\mathrm{deconf}}^2/\rho_{\mathrm{raw}}^2$ 到 $[0,1]$。$|\rho_{\mathrm{raw}}|<0.2$ 标记噪声级；否则 $|\rho_{\mathrm{deconf}}|>0.3$ 标记强物理信号；其余按代理比阈值标记弱物理、混合或体系代理。这些标签用于候选压缩，不作为显著性检验。
 
-Stage 2 的真实特征池严格等于 Stage 1 标签为强物理、弱物理或混合信号的活动描述符；固定噪声全部加入 Lasso。每次子采样新建 \code{SimpleImputer(strategy=median)}、\code{StandardScaler} 和 \code{Lasso(max\_iter=20000)}。选择频率为非零系数出现次数除以 100。噪声基线为 15 个噪声频率的第 95 百分位数；真实特征必须同时超过固定阈值和噪声基线。
+\subsection{子采样Lasso与物理族代表}
 
-代表选择只在稳定且超过噪声基线的描述符中进行。每族按去混杂 Spearman 绝对值取前 $k$ 个，二元模式 $k=1$，三元模式 $k=2$。该容量为硬上限。
+Stage 2 只接受 Stage 1 标记为强物理、弱物理或混合信号的活动描述符，并加入全部固定噪声。每次无放回抽取一半样本，新建 \code{SimpleImputer(strategy=median)} -- \code{StandardScaler} -- \code{Lasso(alpha=0.05,max\_iter=20000)} 管线。系数绝对值大于 $10^{-12}$ 计为选择。100 次后，真实描述符需同时满足频率 $>0.60$ 和超过噪声频率第 95 百分位数。
 
-\subsection{受约束组合公式}
+在稳定且超过噪声基线的描述符中，按 $|\rho_{\mathrm{deconf}}|$ 选择物理族代表。二元模式每族最多一个，三元模式每族最多两个；该容量为硬上限。
 
-公式值按左结合顺序计算。加法和乘法使用无序组合避免交换律重复；比例根据有向族规则单独生成。分母必须有限且不等于零。加法要求两个已知物理维度相同；未知外部描述符可以保留以支持兼容注册表。候选至少需要 5 个有限公式--目标配对。
+\subsection{受约束公式搜索}
 
-二元和三元候选先按去混杂 Spearman 绝对值排序，最多保留 150 个。三元搜索先在同族两个代表之间应用加法或乘法，再与显式相邻族代表结合。候选结构字段用严格 JSON 写入 CSV；读取时校验 2--3 个组分、$n-1$ 个运算符、声明的 \code{n\_components}、兼容字段及 provenance。
+公式在原始物理值上按左结合顺序计算。加法和乘法使用无序组合避免交换律重复；比例只根据有向规则生成。分母必须有限且非零。加法要求两个已知维度一致；未知外部描述符可保留以兼容自定义注册表。禁止 log、sqrt 和 power。
 
-\subsection{交叉验证}
+二元候选来自同族或声明式跨族规则。三元候选固定为同族两个代表先以加法或乘法结合，再与显式相邻族一个代表结合。候选至少有 5 个有限公式--目标配对，按去混杂 Spearman 绝对值排序并最多保留 150 个。组分、运算符、物理族、规则、原始值来源、缺失策略和标准化时机使用严格 JSON 写入 CSV；读取时校验 2--3 个组分、$n-1$ 个运算符、兼容字段和 provenance 一致性。
 
-每个训练折独立拟合中位数插补、标准化和 Ridge。阴离子分层使用打乱的 \code{StratifiedKFold}，请求 3 折；最小类别不足 2 时跳过，支持 2 折时显式降折。LOSO 使用 \code{LeaveOneGroupOut}，按 system 留出整组。重复子采样使用 \code{StratifiedShuffleSplit}，精确执行 10 次、测试比例 0.2 和种子 42；若任一 system 不足 2 个样本或训练/测试规模不能覆盖全部类别，则跳过。
+\subsection{折内模型与三种交叉验证}
 
-单折报告测试 Spearman 和 MAE。每个策略的均值只使用有限折。综合分为所有未跳过且均值有限策略的绝对 Spearman 平均值，同时保存可用策略数、是否三种齐全和 skip 原因。
+每个训练折独立拟合中位数插补、标准化和 Ridge($\alpha=1$)。阴离子分层使用打乱的 \code{StratifiedKFold}，请求 3 折；最小类别少于 2 时跳过，支持 2 折时显式降折。LOSO 使用 \code{LeaveOneGroupOut}，按 system 留出整组。重复子采样使用 \code{StratifiedShuffleSplit}，精确执行 10 次、测试比例 0.2 和种子 42；若类别支持或训练/测试规模不足则跳过。
 
-\subsection{V1--V4 探索性证据}
+单折报告测试 Spearman 和 MAE。策略均值只使用有限折。综合分为所有未跳过且均值有限策略的绝对 Spearman 平均值，并保存可用策略数、是否完整和 skip 原因。
 
-V1 对每个公式分量分别在 system 内置换，保持体系构成和公式结构不变，生成 100 个匹配噪声公式。V2 首先仅在训练折用秩感知控制拟合目标；测试目标残差由训练控制模型产生。随后在训练折用公式值预测目标残差，并在 held-out 样本上汇总 OOF Spearman。若 system 类别支持分层，最多使用 5 折；否则使用打乱 K 折。至少需要 2 个可用折和有限 OOF Spearman 才标记可用。
+\subsection{V1--V4探索性证据}
 
-V3 在每个 system 内计算公式与目标的原始 Spearman。V4 在每个 system 内有放回抽样，默认 500 次，报告 2.5\% 和 97.5\% 分位数。V4 不重新选择描述符或公式，因此不包含选择不确定性。所有区块均返回 \code{status=exploratory}、\code{available}、\code{reason}，整体固定 \code{causal\_claim=false}。
+V1 在每个 system 内独立置换公式分量，保持公式结构并生成 100 个匹配噪声公式，报告噪声绝对 Spearman 中位数、第 95 百分位数和观测百分位。V2 在训练折内用秩感知控制拟合目标并形成训练和测试残差，再以折内插补--标准化--Ridge 让公式预测测试残差，汇总 OOF Spearman。V3 分别在各 system 内计算原始 Spearman。V4 在各 system 内有放回抽样，默认 500 次，报告 2.5\% 和 97.5\% 分位区间。V4 不重新执行描述符选择和公式搜索，因而不包含选择不确定性。所有区块返回 \code{status=exploratory}、\code{available} 和 \code{reason}，整体固定 \code{causal\_claim=false}。
 
-\subsection{Agent 单描述符审计}
+\subsection{Agent单描述符审计与双轨隔离}
 
-Agent CLI 要求 \code{--descriptor-name}，且名称必须是活动描述符。它对冻结 CSV 的所有 CIF 进行存在性和解析性预检，逐结构计算指定描述符，保存失败数量，并使用与 Pipeline 相同的去混杂和 CV 实现。Agent 结果 TSV 含原始/去混杂 Spearman、代理比、标签、各 CV 指标、综合分、数据覆盖和冻结身份；审计 CSV 保存材料、CIF、体系、阴离子、目标和描述符原始值。
+Agent CLI 要求显式 \code{--descriptor-name}，且名称必须为活动描述符。它对冻结 CSV 中全部 CIF 做存在性和解析性预检，逐结构计算指定描述符，并使用与 Pipeline 相同的秩感知去混杂和 CV 实现。Agent 结果 TSV 保存覆盖、失败数、原始/去混杂 Spearman、代理比、标签、CV 指标、综合分和冻结身份；审计 CSV 保存材料、CIF、体系、阴离子、目标和描述符原始值。
 
-\subsection{自动化测试与静态验证}
+Pipeline 只写 \code{results/pipeline/}，Agent 只写 \code{results/agent/}。绝对路径、父目录跳转和跨轨写入均被拒绝。在用户授权 C9 前，两轨不能读取对方结果；C9 只对已完成冻结工件进行只读比较。
 
-修复分支记录的验证命令包括 \code{pytest -q}（70 passed）、\code{python -m compileall -q .} 及五个 CLI 的 \code{--help}。额外冒烟测试验证：缺失 CIF 时不存在任何 Pipeline/Agent 结果目录；旧全缺失特征表被拒绝；合成数据可顺序执行 Stage 1--4，并生成真实三元候选、严格 JSON provenance、V1--V4 和策略 skip 状态。\code{git diff --check} 未发现空白错误。
+\subsection{测试、真实运行与结果冻结}
+
+修复分支记录 \code{pytest -q}（70 passed）、\code{python -m compileall -q .} 以及五个 CLI 帮助入口检查。额外冒烟验证缺失 CIF 时不创建 Pipeline/Agent 结果；旧全缺失特征表被拒绝；合成数值数据能够顺序执行 Stage 1--4，并产生真实三元候选、严格 JSON provenance、V1--V4 和策略 skip 状态。
+
+补齐真实 CIF 后，应保存结构文件哈希、raw CSV 哈希、注册表修订号、软件环境、随机种子、每阶段 CSV/JSON、每折索引和预测值。任何论文结果必须绑定一个冻结提交和运行目录。
 
 \section{数据与代码可用性}
 
-代码、配置、测试和本手稿位于 \code{northkd/pull\_file} 仓库的 \code{codex/naconductor-repair} 分支。当前修复提交没有补齐原始表引用的 84 个 CIF，也没有重新生成真实研究结果。补齐结构后应从冻结 raw CSV 重新运行特征化，保存结构文件哈希、软件环境、完整阶段工件和运行提交号。
+代码、配置、测试和手稿位于 \code{northkd/pull\_file} 仓库的 \code{codex/naconductor-repair} 分支。当前修复提交没有补齐 raw CSV 引用的 84 个 CIF，也没有重新生成真实 Stage 0--4 结果。补齐结构后必须从冻结 raw CSV 重新特征化，不能沿用旧全缺失特征表。
 
 \section{致谢}
 
@@ -74,4 +78,4 @@ Agent CLI 要求 \code{--descriptor-name}，且名称必须是活动描述符。
 
 \section{补充信息}
 
-建议补充材料包含：41 项公开描述符的完整定义与单位、38 项活动描述符清单、规则注册表、控制矩阵秩审计、全部回归测试目录、合成端到端工件示例，以及补齐 CIF 后的真实 Stage 0--4 输出。当前 PDF 不包含未运行的 DFT、NEB、BVSE 或 AIMD 结果。
+建议补充材料包括：41 个公开描述符的定义、单位和算法；38 个活动描述符清单；公式规则注册表；控制矩阵秩审计；全部测试目录；合成端到端输出；真实数据补齐后的 Stage 0--4 工件、结构哈希和环境锁定文件。当前 PDF 不包含未运行的 BVSE、DFT、NEB 或 AIMD 结果。
