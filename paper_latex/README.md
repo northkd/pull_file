@@ -1,33 +1,35 @@
-# codex/naconductor-repair 中文单栏批注稿
+# codex/naconductor-repair 中文单栏批注稿（模型逻辑重写版）
 
-此工程依据 `codex/naconductor-repair` 分支的实际代码逻辑重写，采用接近 Nature Article 的中文稿件结构，但不是 Nature 官方模板。
+本手稿依据 `codex/naconductor-repair` 分支的实际代码逻辑重写。文章围绕结构描述符 `X`、材料体系/阴离子背景 `Z` 与离子电导率 `Y` 的关系，解释 Pipeline 中各模型分别排除哪一种假发现来源。
 
-## 排版特点
+## 本版重点
+
+- 不再按代码 Stage 简单罗列算法，而是按科学困难组织正文；
+- 区分 Ridge 在去混杂和折外验证中的两种职责；
+- 解释 Lasso 只用于稳定选择，Spearman 只用于单调方向；
+- 结合 Na 配位、Na--Na 网络、空位、材料体系和 `log_sigma` 解释模型；
+- 比较未采用 OLS、RF/XGBoost、GNN、单次 Lasso 和无界符号回归的原因；
+- 说明 LOSO、阴离子分层和重复子采样分别回答不同问题；
+- 明确 V1--V4、双轨隔离和后续 AIMD/实验验证的证据边界；
+- 当前 CIF 不可用，因此所有散点图均为方法示意，不是材料学结果。
+
+## 排版
 
 - A4 单栏；
 - 正文右侧保留约 58 mm 空白批注区；
-- 每 5 行显示一次行号，便于纸面定位；
-- 图件全部由 TikZ 源码生成；
-- 正文明确区分软件验证与真实材料学结果。
+- 每 5 行显示一次行号；
+- 图件全部由 TikZ 源码生成。
 
 ## 编译
 
-需要 XeLaTeX、Biber、TikZ、ctex/xeCJK，以及：
-
-- Liberation Serif / Sans / Mono
-- Noto Serif CJK SC
-- Noto Sans CJK SC
-- Noto Sans Mono CJK SC
-
-执行：
+需要 XeLaTeX、Biber、TikZ、ctex/xeCJK，以及 Liberation 与 Noto CJK 字体。
 
 ```bash
 latexmk -xelatex main.tex
 ```
 
-输出文件在 GitHub Actions 中重命名为：
+GitHub Actions 输出：
 
 ```text
 Na_conductor_repair_annotation_CN.pdf
 ```
-现在的修改后的PDF和之前的PDF从根本上没有讲清楚这个工作是在干什么，pipeline中用到的各个模型在描述符筛选的流程中起到的实际作用是什么，一篇nature级别的文章这些工作原理和设计逻辑是要让外行人也能理解的，目前的内容显然没能做到。目前用到了多个算法，各个算法是用来解决什么问题的，这个算法之前是在哪个领域的起作用的，为什么现在应用到我工作中，选这个的优势，没选择别的原因，当前工作的目的是`寻找经过去混杂、稳定性校准和跨体系验证后仍然可解释的局域结构信号，而不是构建一个在训练集上性能最优但物理意义不透明的黑箱模型`那么这一目的会面临哪些问题，现在的pipeline是怎么解决的也要在文章中讲清楚
