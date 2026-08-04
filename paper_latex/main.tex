@@ -1,7 +1,7 @@
 \documentclass[10pt,a4paper]{article}
 
 % ============================================================
-% Nature-style Chinese review manuscript with a wide annotation margin
+% Chinese Nature-style methods manuscript with a wide annotation margin
 % (not an official Nature template)
 % ============================================================
 \usepackage[UTF8,scheme=plain]{ctex}
@@ -36,7 +36,7 @@
 \setlength{\bibitemsep}{0.18\baselineskip}
 \usepackage[hidelinks]{hyperref}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,decorations.pathreplacing,matrix}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,decorations.pathreplacing,matrix,backgrounds}
 
 \graphicspath{{figures/}}
 \definecolor{NatureBlue}{HTML}{2F5597}
@@ -46,6 +46,7 @@
 \definecolor{NaturePale}{HTML}{F3F5F7}
 \definecolor{NatureRed}{HTML}{A23B3B}
 \definecolor{NatureGreen}{HTML}{347A5A}
+\definecolor{NatureOrange}{HTML}{B96A2B}
 
 \setlength{\parindent}{1.6em}
 \setlength{\parskip}{0pt}
@@ -66,7 +67,7 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\sffamily\scriptsize ARTICLE | 方法与软件修复稿}
+\fancyhead[L]{\sffamily\scriptsize ARTICLE | 可解释结构规律发现框架}
 \fancyhead[R]{\sffamily\scriptsize codex/naconductor-repair}
 \fancyfoot[L]{\sffamily\scriptsize 单栏批注版}
 \fancyfoot[C]{\sffamily\scriptsize\thepage}
@@ -89,12 +90,20 @@
   \noindent\colorbox{NaturePale}{\parbox{0.965\textwidth}{\small #1}}
   \par\vspace{0.45em}
 }
+\newcommand{\designbox}[2]{%
+  \par\vspace{0.35em}
+  \noindent\fcolorbox{NatureLight}{NaturePale}{\parbox{0.94\textwidth}{\textbf{#1}\quad #2}}
+  \par\vspace{0.35em}
+}
 
 \makeatletter
 \renewcommand{\maketitle}{%
   \vspace*{-7mm}
   {\sffamily\bfseries\fontsize{20}{24}\selectfont\color{NatureDark}
-  一个失败关闭、秩感知且可审计的钠离子固态电解质结构描述符搜索框架\par}
+  从材料体系标签中分离可迁移的钠离子传输结构信号\par}
+  \vspace{1.2mm}
+  {\sffamily\bfseries\fontsize{13}{16}\selectfont\color{NatureGray}
+  一个去混杂、稳定性校准和跨体系验证的可解释发现框架\par}
   \vspace{3.5mm}
   {\sffamily\fontsize{10.5}{13}\selectfont 作者信息待补充$^{1,*}$\par}
   \vspace{0.8mm}
@@ -104,7 +113,7 @@
   \noindent\rule{\textwidth}{0.6pt}
   \vspace{2.8mm}
   \noindent\textbf{摘要}\quad
-  从晶体结构中搜索可迁移的离子传输描述符，容易同时受到输入缺失、化学物种解析错误、训练--测试泄漏、体系类别混杂和无界代数组合的影响。本文依据 \code{codex/naconductor-repair} 分支的实际实现，给出一个面向钠离子固态电解质的小样本、跨体系结构描述符框架。该框架首先对原始 CSV、全部 CIF、描述符注册表和输出路径实施失败关闭的冻结输入契约；随后在原始物理值上计算八类结构描述符，以体系类型为主控制并仅保留增加设计矩阵秩的阴离子对比项，实施 Ridge 残差化和去混杂 Spearman 分析。稳定性阶段在每个无放回子样本内部独立执行中位数插补、标准化和 Lasso，以固定噪声列的第 95 百分位数校准选择频率。组合搜索由声明式规则表限制为二元或受限三元公式，比例方向、量纲相容性、零分母和完整 provenance 均显式审计。候选公式通过匹配噪声基线、已知因素后的折安全预测、体系内相关和体系分层 bootstrap 四类探索性证据，以及三种可独立跳过的交叉验证策略进行评估。另设单描述符 Agent 轨道，与组合 Pipeline 只共享冻结输入，在用户授权的 C9 之前不得交叉读取结果。当前 checkout 所引用的 84 个 CIF 不可用，因此本稿报告的是经 70 项测试验证的软件与方法逻辑，而不是新的最佳描述符或材料学机制结论。\par
+  跨 NASICON、硫化物和卤化物汇总离子电导率数据，可以扩大候选结构空间，却也使“结构规律发现”退化为“材料体系识别”：例如较长的 Na--X 距离可能同时标记硫化物化学环境和较高电导率，而未必在各体系内部具有一致作用。本文提出一套面向小样本异质固态电解质数据的可解释发现框架，其目标不是获得最高预测分数，而是判断一个局域结构描述符是否在去除体系背景、扰动样本和留出完整材料体系后仍保留可解释方向。框架将晶体结构描述符记为 $X$、材料体系及阴离子背景记为 $Z$、室温离子电导率的对数记为 $Y$，并使每个算法只解决一种明确的假发现来源：秩感知控制先识别 $Z$ 中的重复化学标签；Ridge 残差化从 $X$ 与 $Y$ 中移除可由 $Z$ 解释的体系均值差异；Spearman 检查剩余结构偏离与电导率偏离是否保持单调关系；子采样 Lasso 和固定噪声列判断该关系是否依赖少数材料；物理族与量纲规则限制二元和三元组合，避免无界符号搜索；阴离子分层、留一体系和重复子采样分别检验体系内插值、未见体系迁移和划分敏感性；V1--V4 进一步审计随机公式、已知因素后的折外预测、体系内方向和重采样不确定性。Pipeline 与单描述符 Agent 只共享冻结输入，在授权比较前隔离结果。当前分支引用的 84 个 CIF 尚不可用，因此本文报告算法设计、软件契约和合成测试，而不宣称已经识别出新的最佳描述符或离子迁移机制。\par
   \vspace{2.8mm}
   \noindent\rule{\textwidth}{0.6pt}
   \vspace{4mm}
