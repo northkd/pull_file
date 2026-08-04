@@ -1,0 +1,35 @@
+\begin{tikzpicture}[font=\sffamily\scriptsize]
+% panel a
+\begin{scope}[shift={(0,0)}]
+\draw[->] (0,0) -- (3.4,0) node[right]{$X$: Na--X 距离};
+\draw[->] (0,0) -- (0,3.1) node[above]{$Y$: $\log\sigma$};
+\foreach \x/\y in {0.6/0.7,0.9/0.9,1.2/0.8,1.5/1.1} \fill[NatureBlue] (\x,\y) circle (1.6pt);
+\foreach \x/\y in {1.5/1.6,1.9/1.7,2.2/1.8,2.4/2.0} \fill[NatureGreen] (\x,\y) circle (1.6pt);
+\foreach \x/\y in {2.3/2.3,2.6/2.4,2.9/2.6,3.1/2.5} \fill[NatureOrange] (\x,\y) circle (1.6pt);
+\draw[thick,NatureRed] (0.45,0.55) -- (3.15,2.75);
+\node[anchor=west] at (0.1,3.45) {\textbf{a  全样本：看似强正相关}};
+\node[NatureBlue,anchor=west] at (0.2,-0.45) {NASICON};
+\node[NatureGreen,anchor=west] at (1.35,-0.45) {halide};
+\node[NatureOrange,anchor=west] at (2.35,-0.45) {sulfide};
+\end{scope}
+
+% panel b
+\begin{scope}[shift={(4.45,0)}]
+\node[draw=NatureLight,fill=NaturePale,rounded corners=2pt,minimum width=33mm,minimum height=10mm,align=center] (z) at (1.6,2.55) {体系 $Z$};
+\node[draw=NatureBlue!60,fill=NatureBlue!6,rounded corners=2pt,minimum width=30mm,minimum height=10mm,align=center] (x) at (0.5,1.15) {$\widehat X=f_{\rm Ridge}(Z)$};
+\node[draw=NatureOrange!60,fill=NatureOrange!7,rounded corners=2pt,minimum width=30mm,minimum height=10mm,align=center] (y) at (2.75,1.15) {$\widehat Y=g_{\rm Ridge}(Z)$};
+\draw[-{Latex[length=2mm]},thick] (z) -- (x); \draw[-{Latex[length=2mm]},thick] (z) -- (y);
+\node[align=center] at (1.6,0.15) {估计每个体系的“典型结构”\\和“典型电导率”};
+\node[anchor=west] at (0.1,3.45) {\textbf{b  Ridge：估计体系背景}};
+\end{scope}
+
+% panel c
+\begin{scope}[shift={(9.05,0)}]
+\draw[->] (0,0) -- (3.4,0) node[right]{$X-\widehat X$};
+\draw[->] (0,0) -- (0,3.1) node[above]{$Y-\widehat Y$};
+\foreach \x/\y in {0.45/0.55,0.9/0.95,1.35/1.2,1.8/1.65,2.2/1.8,2.65/2.3,3.0/2.55} \fill[NatureDark] (\x,\y) circle (1.7pt);
+\draw[thick,NatureGreen] (0.35,0.35) -- (3.1,2.7);
+\node[anchor=west] at (0.1,3.45) {\textbf{c  残差：比较同类材料内偏离}};
+\node[align=center] at (1.65,-0.55) {结构比同体系平均更开放时，\\电导率是否也高于同体系平均？};
+\end{scope}
+\end{tikzpicture}
