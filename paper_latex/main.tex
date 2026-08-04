@@ -1,7 +1,8 @@
-\documentclass[9pt,a4paper,twocolumn]{article}
+\documentclass[10pt,a4paper]{article}
 
 % ============================================================
-% Nature-style Chinese manuscript (not an official Nature template)
+% Chinese Nature-style methods manuscript with a wide annotation margin
+% (not an official Nature template)
 % ============================================================
 \usepackage[UTF8,scheme=plain]{ctex}
 \usepackage{fontspec}
@@ -13,7 +14,8 @@
 \setCJKsansfont{Noto Sans CJK SC}
 \setCJKmonofont{Noto Sans Mono CJK SC}
 
-\usepackage[a4paper,top=15mm,bottom=17mm,left=16mm,right=16mm,columnsep=7.5mm]{geometry}
+% 18 mm left margin + 134 mm text block + 58 mm annotation margin = A4 width.
+\usepackage[a4paper,top=17mm,bottom=18mm,left=18mm,right=58mm,headsep=5mm,footskip=9mm]{geometry}
 \usepackage{amsmath,amssymb,bm}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -22,36 +24,42 @@
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{caption}
-\usepackage{subcaption}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{lineno}
+\usepackage{eso-pic}
 \usepackage[backend=biber,style=numeric-comp,sorting=none,maxbibnames=4,minbibnames=3,doi=false,url=false,isbn=false]{biblatex}
 \addbibresource{refs.bib}
 \renewcommand*{\bibfont}{\footnotesize}
-\setlength{\bibitemsep}{0.15\baselineskip}
+\setlength{\bibitemsep}{0.18\baselineskip}
 \usepackage[hidelinks]{hyperref}
-\usepackage{url}
-\usepackage{balance}
-\usepackage{stfloats}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,decorations.pathreplacing,matrix,backgrounds}
 
 \graphicspath{{figures/}}
 \definecolor{NatureBlue}{HTML}{2F5597}
-\definecolor{NatureGray}{HTML}{555555}
-\definecolor{NatureLight}{HTML}{E7E7E7}
+\definecolor{NatureDark}{HTML}{25364A}
+\definecolor{NatureGray}{HTML}{666666}
+\definecolor{NatureLight}{HTML}{D8DCE2}
+\definecolor{NaturePale}{HTML}{F3F5F7}
+\definecolor{NatureRed}{HTML}{A23B3B}
+\definecolor{NatureGreen}{HTML}{347A5A}
+\definecolor{NatureOrange}{HTML}{B96A2B}
 
-\setlength{\parindent}{1em}
+\setlength{\parindent}{1.6em}
 \setlength{\parskip}{0pt}
-\setlength{\columnsep}{7.5mm}
-\renewcommand{\baselinestretch}{1.08}
-\setlist{nosep,leftmargin=1.45em}
+\setstretch{1.28}
+\setlist{nosep,leftmargin=1.55em}
+\setlength{\emergencystretch}{2em}
 
-\titleformat{\section}{\sffamily\bfseries\large}{ }{0pt}{}
-\titleformat{\subsection}{\sffamily\bfseries\normalsize}{ }{0pt}{}
-\titlespacing*{\section}{0pt}{1.15em}{0.35em}
-\titlespacing*{\subsection}{0pt}{0.95em}{0.25em}
+\titleformat{\section}{\sffamily\bfseries\Large\color{NatureDark}}{}{0pt}{}
+\titleformat{\subsection}{\sffamily\bfseries\large\color{NatureDark}}{}{0pt}{}
+\titleformat{\subsubsection}{\sffamily\bfseries\normalsize\color{NatureDark}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.45em}{0.45em}
+\titlespacing*{\subsection}{0pt}{1.15em}{0.28em}
+\titlespacing*{\subsubsection}{0pt}{0.9em}{0.2em}
 
 \captionsetup{font=small,labelfont=bf,labelsep=period,justification=justified,singlelinecheck=false}
 \renewcommand{\figurename}{图}
@@ -59,47 +67,67 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\sffamily\scriptsize ARTICLE}
-\fancyhead[R]{\sffamily\scriptsize Na 离子固态电解质结构描述符}
+\fancyhead[L]{\sffamily\scriptsize ARTICLE | 可解释结构规律发现框架}
+\fancyhead[R]{\sffamily\scriptsize codex/naconductor-repair}
+\fancyfoot[L]{\sffamily\scriptsize 单栏批注版}
 \fancyfoot[C]{\sffamily\scriptsize\thepage}
 \renewcommand{\headrulewidth}{0.3pt}
 \renewcommand{\footrulewidth}{0pt}
 
+% A faint divider marks the printable annotation area without occupying it.
+\AddToShipoutPictureBG{%
+  \AtPageLowerLeft{%
+    \put(438,42){\color{NatureLight}\rule{0.35pt}{760pt}}%
+    \put(455,802){\color{NatureGray}\sffamily\scriptsize 批注区}%
+  }%
+}
+
 \newcommand{\code}[1]{\texttt{\small #1}}
-\newcommand{\dd}{\mathrm{d}}
 \newcommand{\rhoRaw}{\rho_{\mathrm{raw}}}
 \newcommand{\rhoDeconf}{\rho_{\mathrm{deconf}}}
+\newcommand{\statusbox}[1]{%
+  \par\vspace{0.45em}
+  \noindent\colorbox{NaturePale}{\parbox{0.965\textwidth}{\small #1}}
+  \par\vspace{0.45em}
+}
+\newcommand{\designbox}[2]{%
+  \par\vspace{0.35em}
+  \noindent\fcolorbox{NatureLight}{NaturePale}{\parbox{0.94\textwidth}{\textbf{#1}\quad #2}}
+  \par\vspace{0.35em}
+}
 
 \makeatletter
 \renewcommand{\maketitle}{%
-  \twocolumn[\begin{@twocolumnfalse}
-  \vspace*{-5mm}
-  {\sffamily\bfseries\fontsize{21}{25}\selectfont
-  去混杂的局域结构描述符揭示钠离子固态电解质的跨体系传输规律\par}
-  \vspace{4mm}
+  \vspace*{-7mm}
+  {\sffamily\bfseries\fontsize{20}{24}\selectfont\color{NatureDark}
+  从材料体系标签中分离可迁移的钠离子传输结构信号\par}
+  \vspace{1.2mm}
+  {\sffamily\bfseries\fontsize{13}{16}\selectfont\color{NatureGray}
+  一个去混杂、稳定性校准和跨体系验证的可解释发现框架\par}
+  \vspace{3.5mm}
   {\sffamily\fontsize{10.5}{13}\selectfont 作者信息待补充$^{1,*}$\par}
-  \vspace{1mm}
-  {\sffamily\fontsize{8.5}{10.5}\selectfont
+  \vspace{0.8mm}
+  {\sffamily\fontsize{8.8}{11}\selectfont
   $^{1}$单位信息待补充；$^{*}$通信作者信息待补充\par}
-  \vspace{4mm}
+  \vspace{3.5mm}
   \noindent\rule{\textwidth}{0.6pt}
-  \vspace{3mm}
+  \vspace{2.8mm}
   \noindent\textbf{摘要}\quad
-  固态电解质的宏观离子电导率由局域配位、可达空位、迁移网络和骨架响应共同决定，但跨材料体系的统计分析容易把体系类型误识别为普适结构规律。本文建立一套面向小样本、多体系数据的混杂感知描述符搜索框架：对原始晶体结构进行质量控制，从局域几何中构建八类物理描述符；以体系类型和阴离子类别作为混杂变量实施 Ridge 残差化；通过随机噪声校准的稳定性筛选和物理约束组合搜索压缩候选空间；最后利用阴离子分层交叉验证、留一体系验证和重复子采样评估可迁移性。当前分析表明，未经控制的高相关描述符中包含明显的体系代理信号，而去混杂后保持稳定的候选主要来自 Na 配位多面体、Na--Na 网络和载流子条件。该框架不以追求最高预测精度为首要目标，而强调可解释性、跨体系稳健性和完整复现，为后续第一性原理或分子动力学验证提供可审计的候选排序。\par
-  \vspace{3mm}
+  跨 NASICON、硫化物和卤化物汇总离子电导率数据，可以扩大候选结构空间，却也使“结构规律发现”退化为“材料体系识别”：例如较长的 Na--X 距离可能同时标记硫化物化学环境和较高电导率，而未必在各体系内部具有一致作用。本文提出一套面向小样本异质固态电解质数据的可解释发现框架，其目标不是获得最高预测分数，而是判断一个局域结构描述符是否在去除体系背景、扰动样本和留出完整材料体系后仍保留可解释方向。框架将晶体结构描述符记为 $X$、材料体系及阴离子背景记为 $Z$、室温离子电导率的对数记为 $Y$，并使每个算法只解决一种明确的假发现来源：秩感知控制先识别 $Z$ 中的重复化学标签；Ridge 残差化从 $X$ 与 $Y$ 中移除可由 $Z$ 解释的体系均值差异；Spearman 检查剩余结构偏离与电导率偏离是否保持单调关系；子采样 Lasso 和固定噪声列判断该关系是否依赖少数材料；物理族与量纲规则限制二元和三元组合，避免无界符号搜索；阴离子分层、留一体系和重复子采样分别检验体系内插值、未见体系迁移和划分敏感性；V1--V4 进一步审计随机公式、已知因素后的折外预测、体系内方向和重采样不确定性。Pipeline 与单描述符 Agent 只共享冻结输入，在授权比较前隔离结果。当前分支引用的 84 个 CIF 尚不可用，因此本文报告算法设计、软件契约和合成测试，而不宣称已经识别出新的最佳描述符或离子迁移机制。\par
+  \vspace{2.8mm}
   \noindent\rule{\textwidth}{0.6pt}
-  \vspace{5mm}
-  \end{@twocolumnfalse}]%
+  \vspace{4mm}
 }
 \makeatother
 
 \begin{document}
 \maketitle
+\modulolinenumbers[5]
+\linenumbers
 
 \input{chapters/chapter1}
 \input{chapters/chapter2}
 
-\balance
 \printbibliography[title={参考文献}]
 
 \end{document}

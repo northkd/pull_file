@@ -1,0 +1,56 @@
+name: Build repair annotation PDF
+
+on:
+  push:
+    branches:
+      - codex/naconductor-repair
+    paths:
+      - 'paper_latex/**'
+      - '!paper_latex/*.pdf'
+      - '.github/workflows/build-repair-annotation-pdf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repair branch
+        uses: actions/checkout@v4
+        with:
+          ref: codex/naconductor-repair
+          fetch-depth: 0
+
+      - name: Compile single-column Chinese manuscript
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: paper_latex
+          latexmk_use_xelatex: true
+          args: -file-line-error -halt-on-error -interaction=nonstopmode
+          pre_compile: |
+            apk add --no-cache font-noto-cjk font-liberation
+            fc-cache -f
+            fc-match 'Noto Serif CJK SC'
+            fc-match 'Noto Sans CJK SC'
+            fc-match 'Noto Sans Mono CJK SC'
+
+      - name: Name and verify PDF
+        run: |
+          cp paper_latex/main.pdf paper_latex/Na_conductor_repair_annotation_CN.pdf
+          test -s paper_latex/Na_conductor_repair_annotation_CN.pdf
+
+      - name: Commit generated PDF to repair branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add paper_latex/Na_conductor_repair_annotation_CN.pdf
+          if git diff --cached --quiet; then
+            echo 'PDF is already up to date.'
+          else
+            git commit -m 'Build single-column annotation manuscript PDF'
+            git pull --rebase origin codex/naconductor-repair
+            git push origin HEAD:codex/naconductor-repair
+          fi

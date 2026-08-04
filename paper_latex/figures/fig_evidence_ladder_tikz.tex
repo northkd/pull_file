@@ -1,0 +1,22 @@
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize,
+  stair/.style={draw=NatureBlue!60,fill=NatureBlue!6,rounded corners=2pt,minimum height=10mm,align=left},
+  arr/.style={-{Latex[length=2mm]},thick,draw=NatureGray}
+]
+\node[stair,minimum width=32mm] (a) at (0,0) {1. 原始相关\\$X$ 与 $Y$ 是否同向？};
+\node[stair,minimum width=39mm] (b) at (1.1,1.45) {2. 去混杂\\移除体系 $Z$ 后是否保留？};
+\node[stair,minimum width=46mm] (c) at (2.2,2.9) {3. 稳定性\\半样本 Lasso 是否反复选择？};
+\node[stair,minimum width=53mm] (d) at (3.3,4.35) {4. 噪声与物理约束\\是否超过随机变量且公式可解释？};
+\node[stair,minimum width=60mm] (e) at (4.4,5.8) {5. 跨体系验证\\LOSO 中方向和排序是否保留？};
+\node[stair,minimum width=67mm] (f) at (5.5,7.25) {6. V1--V4\\随机公式、单体系驱动和不确定性是否可接受？};
+\node[draw=NatureGreen!70,fill=NatureGreen!8,rounded corners=3pt,minimum width=74mm,minimum height=12mm,align=center,font=\sffamily\small\bfseries] (g) at (6.6,8.95)
+{进入 AIMD / 势垒计算 / 实验验证的候选结构假设};
+\draw[arr] (a.north east) -- (b.south west);
+\draw[arr] (b.north east) -- (c.south west);
+\draw[arr] (c.north east) -- (d.south west);
+\draw[arr] (d.north east) -- (e.south west);
+\draw[arr] (e.north east) -- (f.south west);
+\draw[arr] (f.north east) -- (g.south west);
+\node[draw=NatureRed!60,fill=NatureRed!6,rounded corners=2pt,align=center,minimum width=35mm,minimum height=18mm] at (10.4,4.2)
+{任一步失败都对应\\不同的假发现来源\\而不是简单“低分”};
+\end{tikzpicture}

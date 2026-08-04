@@ -1,0 +1,44 @@
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize,
+  node distance=7mm and 8mm,
+  box/.style={draw=NatureDark, rounded corners=2pt, align=center, minimum height=10mm, text width=31mm, fill=white},
+  shared/.style={box, fill=NaturePale, line width=0.8pt},
+  pipeline/.style={box, draw=NatureBlue, fill=NatureBlue!6},
+  agent/.style={box, draw=NatureGreen, fill=NatureGreen!7},
+  stop/.style={box, draw=NatureRed, fill=NatureRed!7, text width=33mm},
+  arrow/.style={-{Latex[length=2mm]}, line width=0.7pt, draw=NatureGray},
+  dasharrow/.style={-{Latex[length=2mm]}, line width=0.7pt, dashed, draw=NatureGray}
+]
+
+\node[shared, text width=104mm] (frozen) {冻结共享输入：raw CSV 规范路径 + 活动描述符注册表 + registry revision};
+\node[shared, below=of frozen, text width=104mm] (preflight) {写前预检：CSV 列契约、全部 CIF 存在且可解析、结构描述符有有限值、输出路径不跨轨};
+\node[stop, right=7mm of preflight, text width=25mm] (fail) {任一条件失败\\退出码 2\\不创建结果工件};
+
+\node[pipeline, below left=10mm and 4mm of preflight] (p1) {Pipeline\\Stage 0--4};
+\node[pipeline, below=of p1] (p2) {去混杂筛选\\子采样 Lasso};
+\node[pipeline, below=of p2] (p3) {二/三元公式\\V1--V4 + CV};
+\node[pipeline, below=of p3] (pout) {只写\\results/pipeline/};
+
+\node[agent, below right=10mm and 4mm of preflight] (a1) {Agent\\显式单描述符};
+\node[agent, below=of a1] (a2) {同一秩感知控制\\同一折内 Ridge CV};
+\node[agent, below=of a2] (a3) {TSV 指标 +\\结构审计 CSV};
+\node[agent, below=of a3] (aout) {只写\\results/agent/};
+
+\node[shared, below=13mm of $(pout)!0.5!(aout)$, text width=80mm] (c9) {C9（需用户授权）：两轨均完成并冻结后，只读比较；一致仅为三角验证线索，causal claim = false};
+
+\draw[arrow] (frozen) -- (preflight);
+\draw[arrow] (preflight) -- (p1);
+\draw[arrow] (preflight) -- (a1);
+\draw[arrow] (p1) -- (p2);
+\draw[arrow] (p2) -- (p3);
+\draw[arrow] (p3) -- (pout);
+\draw[arrow] (a1) -- (a2);
+\draw[arrow] (a2) -- (a3);
+\draw[arrow] (a3) -- (aout);
+\draw[arrow] (pout) -- (c9);
+\draw[arrow] (aout) -- (c9);
+\draw[dasharrow] (preflight.east) -- (fail.west);
+
+\draw[decorate,decoration={brace,amplitude=4pt},NatureGray] ($(p1.north west)+(-2mm,2mm)$) -- ($(pout.south west)+(-2mm,-2mm)$) node[midway,left=5mm,align=center]{批量\\组合轨};
+\draw[decorate,decoration={brace,amplitude=4pt,mirror},NatureGray] ($(a1.north east)+(2mm,2mm)$) -- ($(aout.south east)+(2mm,-2mm)$) node[midway,right=5mm,align=center]{独立\\审计轨};
+\end{tikzpicture}
