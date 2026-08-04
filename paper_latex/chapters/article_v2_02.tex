@@ -1,0 +1,63 @@
+\section{框架总览：每一步只回答一个问题}
+
+图~\ref{fig:modelroles} 给出从结构到候选假设的完整逻辑。Stage 0 不做统计推断，只确保 $X$ 真正来自可解析结构；Stage 1 询问 $X$ 与 $Y$ 的关系在移除 $Z$ 后是否保留；Stage 2 询问这一关系在样本扰动下是否反复出现；Stage 3 询问多个物理环节能否通过简单、量纲合理的公式表达协同；Stage 4 询问该候选在不同体系划分下是否还能排序电导率。V1--V4 和 Agent 轨道提供额外审计，但均不能把关联提升为因果结论。
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{\input{figures/fig_model_roles_tikz.tex}}
+\caption{\textbf{各模型在描述符筛选中的实际作用。} Ridge 在 Stage 1 中估计体系背景，在 Stage 4 中作为低容量折外探针；Spearman 衡量结构偏离与电导率偏离的单调方向；Lasso 只负责产生稳定选择事件；规则组合和分组验证分别控制公式自由度与材料体系外推。}
+\label{fig:modelroles}
+\end{figure}
+
+\section{Stage 0：结构描述符不是普通特征，而是迁移机制假设}
+
+框架保留 41 个公开描述符 callable，其中 38 个为当前活动搜索项。它们被分为八个物理族。A 族描述 Na 配位多面体，例如 Na--X 键长、配位数、多面体体积和畸变；这些量对应 Na$^+$ 离开局域势阱时的束缚环境。B 族描述 Na--Na 网络，包括邻居数、最大连通分量和网络维度，用于判断局域位点能否连接成长程迁移网络。C 族描述 Na 浓度、占位和位点数，近似表征载流子与可用位点条件。D$'$ 族从周期性 Voronoi 顶点构造间隙候选，描述空位可达性与间隙网络。E 和 F 族分别描述骨架刚性、多面体共享和长程路径几何。G 和 H 族包含电负性、形式电荷、空间群和 Wyckoff 多样性等代理量，它们可能有效，但更容易成为材料体系标签，因此被预先标记为高风险。
+
+这种表示与图神经网络的差别在于，每个输入列都有明确的问题指向。例如，若 $d_{\mathrm{network}}$ 增大并与 $Y$ 同向变化，可以提出“更高维 Na 位点连通性可能支持长程迁移”的假设；若空间群编号获得高分，则首先应怀疑它在识别材料家族，而不是直接解释离子迁移。描述符族不是统计分组便利，而是后续避免重复发现和约束公式的物理先验。
+
+软件层面的失败关闭同样属于科学设计。带电 Pymatgen Species 必须按元素身份识别，部分占位按元素累计；相对 CIF 路径固定相对于原始 CSV 解析；全部 CIF 在写结果前检查存在性和可解析性；别名、未实现描述符和全缺失特征不能进入搜索。若 Stage 0 没有足够结构信息，正确结果是停止，而不是让插补器生成一张形式完整的排名表。
+
+\section{Stage 1：Ridge 去除体系背景，Spearman检查体系内结构趋势}
+
+\subsection{一个直观的混杂例子}
+
+图~\ref{fig:confoundingexample} 是概念示意而非真实结果。设 $X$ 为平均 Na--X 距离，$Z$ 为材料体系，$Y$ 为 $\log\sigma$。若硫化物整体位于“较长键、较高电导率”区域，NASICON 位于“较短键、较低电导率”区域，全样本会出现明显正相关。但在每个体系内部，点云斜率可能接近零。此时模型若直接使用 $X$ 预测 $Y$，实际上是在利用 $X$ 猜测 $Z$。
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{\input{figures/fig_confounding_example_tikz.tex}}
+\caption{\textbf{体系均值差如何伪造结构--电导率关系。} \textbf{a}，全样本中 Na--X 距离与 $\log\sigma$ 呈正相关；颜色揭示该趋势主要来自三类体系中心不同。\textbf{b}，Ridge 分别估计体系对描述符和电导率的期望。\textbf{c}，减去体系期望后，比较“相对同类材料结构更开放”是否对应“相对同类材料更导电”。图为方法示意，不代表当前 84 样本结果。}
+\label{fig:confoundingexample}
+\end{figure}
+
+\subsection{为什么先做秩感知控制}
+
+当前数据设计中，30 个 NASICON 样本全部标为 oxide，41 个 sulfide 样本全部标为 sulfide，13 个 halide 中有 12 个 chloride 和 1 个 iodide。若 system 与 anion 全部 one-hot 编码，oxide 和 sulfide 列可以由 system 列完全重构。将这些列机械地放入同一个回归，并不会增加化学信息，反而使参数依赖编码方式。
+
+因此，框架先放入 system，再逐列检查 anion 对比是否增加带截距设计矩阵的秩。当前只有 halide 内的 iodide--chloride 对比增加一个秩。该步骤来自线性模型的设计矩阵诊断，其作用不是“提高预测”，而是明确 $Z$ 中哪些化学标签真正提供独立背景信息。
+
+\subsection{Ridge在这里估计的不是结构效应，而是体系期望}
+
+对每个描述符 $X_j$，框架分别拟合
+\begin{align}
+\widehat{X}_j &= f_{\mathrm{Ridge}}(Z), \\
+\widehat{Y} &= g_{\mathrm{Ridge}}(Z).
+\end{align}
+这里 $\widehat{X}_j$ 可理解为“只知道材料属于哪一体系时，预计它具有怎样的描述符”；$\widehat{Y}$ 是“只知道体系背景时，预计它具有怎样的电导率”。残差
+\begin{align}
+X_j^{\mathrm{res}} &= X_j-\widehat{X}_j,\\
+Y^{\mathrm{res}} &= Y-\widehat{Y}
+\end{align}
+分别表示材料相对于同类材料的结构偏离和电导率偏离。最终问题变成：一个材料若比同体系平均水平具有更高的配位畸变、更连续的 Na 网络或更多可达间隙，它是否也比同体系平均水平更导电？
+
+Ridge 最初用于非正交预测变量下的稳定回归\cite{Hoerl1970}。本数据中的 system 和 anion 正是高度共线的分类变量。普通最小二乘可能产生高方差系数；Lasso 可能在相关控制列之间任意选择并删除某些背景；随机森林虽然能拟合更复杂的 $Z\rightarrow X$ 和 $Z\rightarrow Y$ 关系，但残差来源更难审计，且 84 行数据不足以支持高容量背景模型。因此选择 Ridge 作为保守的体系均值校正器。
+
+\subsection{为什么在残差上使用Spearman}
+
+框架计算
+\begin{equation}
+\rho_{\mathrm{deconf},j}=\rho_s(X_j^{\mathrm{res}},Y^{\mathrm{res}}).
+\end{equation}
+Spearman 相关源于等级关联统计\cite{Spearman1904}。它不要求描述符每增加一个固定单位，$\log\sigma$ 就线性改变；只要求结构偏离的排序与电导率偏离的排序具有一致方向。这适合离子传输问题，因为静态几何与电导率之间可能包含阈值、饱和和未观测温度动力学。Pearson 对直线关系更敏感；互信息可以发现更一般的非线性，却在小样本中估计不稳且不提供明确正负方向。对需要形成“增加或降低某结构量可能有利”的候选规则，Spearman 更合适。
+
+该残差相关仍不是因果效应。它只移除了已观测的体系与有效阴离子背景，无法排除密度、烧结工艺、相纯度、测量频率、晶界和未记录缺陷等混杂。框架因此使用“去混杂关联”而非“结构效应”或“机制证明”\cite{Pearl2009,Chernozhukov2018}。
