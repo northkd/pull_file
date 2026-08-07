@@ -1,0 +1,38 @@
+# AFLOW.org Repositories
+# Cl8Na2Ti3   [RHL,RHL1,hR13] (STD_PRIM do
+data_Cl8Na2Ti3
+_pd_phase_name Cl8Na2Ti3
+_cell_length_a  7.9607251989
+_cell_length_b  7.9607251989
+_cell_length_c  7.9607251989
+_cell_angle_alpha  57.6691579701
+_cell_angle_beta  57.6691579701
+_cell_angle_gamma  57.6691579701
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.5962995958 0.5962995958 0.5962995958  Biso 1.0 Cl
+Cl2 1.0000000000 0.4037004042 0.4037004042 0.4037004042  Biso 1.0 Cl
+Cl3 1.0000000000 0.8983277247 0.4255465743 0.8983277247  Biso 1.0 Cl
+Cl4 1.0000000000 0.4255465743 0.8983277247 0.8983277247  Biso 1.0 Cl
+Cl5 1.0000000000 0.8983277247 0.8983277247 0.4255465743  Biso 1.0 Cl
+Cl6 1.0000000000 0.1016722753 0.5744534257 0.1016722753  Biso 1.0 Cl
+Cl7 1.0000000000 0.1016722753 0.1016722753 0.5744534257  Biso 1.0 Cl
+Cl8 1.0000000000 0.5744534257 0.1016722753 0.1016722753  Biso 1.0 Cl
+Na9 1.0000000000 0.8425913311 0.8425913311 0.8425913311  Biso 1.0 Na
+Na10 1.0000000000 0.1574086689 0.1574086689 0.1574086689  Biso 1.0 Na
+Ti11 1.0000000000 0.0000000000 0.5000000000 0.5000000000  Biso 1.0 Ti
+Ti12 1.0000000000 0.5000000000 0.5000000000 0.0000000000  Biso 1.0 Ti
+Ti13 1.0000000000 0.5000000000 0.0000000000 0.5000000000  Biso 1.0 Ti

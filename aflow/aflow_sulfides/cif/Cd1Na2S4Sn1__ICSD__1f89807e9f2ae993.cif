@@ -1,0 +1,33 @@
+# AFLOW.org Repositories
+# Cd1Na2S4Sn1   [MCLC,MCLC5,mS16] (STD_PRI
+data_Cd1Na2S4Sn1
+_pd_phase_name Cd1Na2S4Sn1
+_cell_length_a  7.0460148224
+_cell_length_b  7.0460148224
+_cell_length_c  6.4197087222
+_cell_angle_alpha  63.1799465415
+_cell_angle_beta  63.1799465415
+_cell_angle_gamma  100.1065097915
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cd1 1.0000000000 0.9867842545 0.0132157455 0.5000000000  Biso 1.0 Cd
+Na2 1.0000000000 0.2327552211 0.7672447789 0.0000000000  Biso 1.0 Na
+Na3 1.0000000000 0.4832527406 0.5167472594 0.5000000000  Biso 1.0 Na
+S4 1.0000000000 0.8482796091 0.6234294833 0.5499379213  Biso 1.0 S
+S5 1.0000000000 0.3765705167 0.1517203909 0.4500620787  Biso 1.0 S
+S6 1.0000000000 0.0752256278 0.3527989679 0.0257260336  Biso 1.0 S
+S7 1.0000000000 0.6472010321 0.9247743722 0.9742739664  Biso 1.0 S
+Sn8 1.0000000000 0.7369809981 0.2630190019 0.0000000000  Biso 1.0 Sn

@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# AlClNa_sv/TFCC006.ABC - (TFCC006.ABC) - 
+data_AlClNa_sv
+_pd_phase_name TFCC006.ABC
+_cell_length_a  4.6519179420
+_cell_length_b  4.6519179420
+_cell_length_c  7.3172331377
+_cell_angle_alpha  88.4998792519
+_cell_angle_beta  88.4998792519
+_cell_angle_gamma  39.5778006527
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Al1 1.0000000000 0.9897489826 0.9897489826 0.2095106085  Biso 1.0 Al
+Al2 1.0000000000 0.2669777412 0.2669777412 0.0833140694  Biso 1.0 Al
+Cl3 1.0000000000 0.4834046921 0.4834046921 0.5193284595  Biso 1.0 Cl
+Na4 1.0000000000 0.7598685840 0.7598685840 0.6878468625  Biso 1.0 Na

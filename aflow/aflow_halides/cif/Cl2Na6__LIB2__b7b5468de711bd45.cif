@@ -1,0 +1,33 @@
+# AFLOW.org Repositories
+# ClNa_sv/271 - (271) - ???? [AB] (271)  (
+data_ClNa_sv
+_pd_phase_name 271
+_cell_length_a  9.9570694792
+_cell_length_b  9.9570694792
+_cell_length_c  3.9791215698
+_cell_angle_alpha  90.0000000000
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  137.4955109419
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.5879847361 0.4120152639 0.7500000000  Biso 1.0 Cl
+Cl2 1.0000000000 0.4120152639 0.5879847361 0.2500000000  Biso 1.0 Cl
+Na3 1.0000000000 0.2173423381 0.7826576619 0.7500000000  Biso 1.0 Na
+Na4 1.0000000000 0.7826576619 0.2173423381 0.2500000000  Biso 1.0 Na
+Na5 1.0000000000 0.6783968559 0.8366743867 0.7500000000  Biso 1.0 Na
+Na6 1.0000000000 0.3216031441 0.1633256133 0.2500000000  Biso 1.0 Na
+Na7 1.0000000000 0.8366743867 0.6783968559 0.2500000000  Biso 1.0 Na
+Na8 1.0000000000 0.1633256133 0.3216031441 0.7500000000  Biso 1.0 Na

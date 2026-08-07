@@ -1,0 +1,38 @@
+{
+  "run_id": "2026-08-07_run02",
+  "skill": "experiment-audit",
+  "checklist": "stat-pipeline",
+  "compact_level": 0,
+  "round": 2,
+  "reviewer_model": "claude-web",
+  "reviewer_backend": "manual-bridge",
+  "reviewer_reasoning": "manual-bridge",
+  "status": "completed",
+  "overall_verdict": "FAIL",
+  "reason_code": "feature_selection_leakage_H_FAIL_plus_deconfound_bias",
+  "checks_summary": {
+    "A_gt_provenance": "PASS",
+    "B_score_normalization": "WARN",
+    "C_result_existence": "WARN",
+    "D_dead_code": "WARN",
+    "E_scope": "WARN",
+    "F_eval_type": "real_gt",
+    "G_data_leakage_preprocessing": "WARN",
+    "H_feature_selection_leakage": "FAIL",
+    "I_deconfound_methodology": "WARN (reviewer: FAIL-level)",
+    "J_multiple_testing": "WARN (reviewer: FAIL-level)",
+    "K_target_metric": "WARN (reviewer: domain-level FAIL risk)",
+    "L_causal_boundary": "WARN (reviewer: most dangerous, conflicts with title)"
+  },
+  "claims": {
+    "C1_association_not_causal": "needs_qualifier",
+    "C2_signal_retention": "unsupported",
+    "C3_cv_consistency": "unsupported",
+    "C4_combo_beats_single": "unsupported"
+  },
+  "action_items_count": 20,
+  "blocking_action_items": 6,
+  "response_file": "001-experiment-audit.response.md",
+  "request_file": "001-experiment-audit.request.md",
+  "generated_at": "2026-08-07T22:30:00+08:00"
+}

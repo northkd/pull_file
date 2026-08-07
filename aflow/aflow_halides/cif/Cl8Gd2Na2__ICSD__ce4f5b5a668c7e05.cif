@@ -1,0 +1,37 @@
+# AFLOW.org Repositories
+# Cl4Gd1Na1   [TRI,TRI1b,aP12] (STD_PRIM d
+data_Cl4Gd1Na1
+_pd_phase_name Cl4Gd1Na1
+_cell_length_a  7.0863936835
+_cell_length_b  6.8267292802
+_cell_length_c  6.7396803414
+_cell_angle_alpha  101.4481536955
+_cell_angle_beta  91.8210786988
+_cell_angle_gamma  89.5916516555
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.3682690631 0.2063154510 0.3896529746  Biso 1.0 Cl
+Cl2 1.0000000000 0.6317309369 0.7936845490 0.6103470254  Biso 1.0 Cl
+Cl3 1.0000000000 0.1186557582 0.6873764070 0.4314474334  Biso 1.0 Cl
+Cl4 1.0000000000 0.8813442418 0.3126235930 0.5685525666  Biso 1.0 Cl
+Cl5 1.0000000000 0.2080266939 0.0022856354 0.9048179838  Biso 1.0 Cl
+Cl6 1.0000000000 0.7919733061 0.9977143646 0.0951820162  Biso 1.0 Cl
+Cl7 1.0000000000 0.2441608861 0.5032490595 0.9523342134  Biso 1.0 Cl
+Cl8 1.0000000000 0.7558391139 0.4967509405 0.0476657866  Biso 1.0 Cl
+Gd9 1.0000000000 0.0552146153 0.2994926872 0.2108857667  Biso 1.0 Gd
+Gd10 1.0000000000 0.9447853847 0.7005073128 0.7891142333  Biso 1.0 Gd
+Na11 1.0000000000 0.4644187163 0.8028227838 0.2319683754  Biso 1.0 Na
+Na12 1.0000000000 0.5355812837 0.1971772162 0.7680316246  Biso 1.0 Na

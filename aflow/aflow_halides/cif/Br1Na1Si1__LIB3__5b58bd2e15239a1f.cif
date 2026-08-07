@@ -1,0 +1,28 @@
+# AFLOW.org Repositories
+# BrNa_svSi/TBCC001.ABC - (TBCC001.ABC) - 
+data_BrNa_svSi
+_pd_phase_name TBCC001.ABC
+_cell_length_a  6.2211748251
+_cell_length_b  6.2177242897
+_cell_length_c  3.7889677142
+_cell_angle_alpha  72.3152225758
+_cell_angle_beta  72.2158255524
+_cell_angle_gamma  35.4689518718
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Br1 1.0000000000 0.0570957784 0.0570957784 0.9429042216  Biso 1.0 Br
+Na2 1.0000000000 0.6569301235 0.6569301235 0.3430698765  Biso 1.0 Na
+Si3 1.0000000000 0.2859740980 0.2859740980 0.7140259020  Biso 1.0 Si

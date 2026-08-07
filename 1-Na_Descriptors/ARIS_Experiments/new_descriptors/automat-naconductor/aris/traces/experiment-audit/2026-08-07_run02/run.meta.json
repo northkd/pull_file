@@ -1,0 +1,42 @@
+{
+    "compact_level":  0,
+    "run_id":  "2026-08-07_run02",
+    "user_include_override":  [
+                                  "descriptors/combination.py",
+                                  "descriptors/cv_strategies.py",
+                                  "descriptors/_base.py"
+                              ],
+    "included_files":  [
+                           "run_info.yaml",
+                           "README.md",
+                           "program.md",
+                           "pyproject.toml",
+                           "run_config.py",
+                           "descriptors/__init__.py",
+                           "descriptors/_base.py",
+                           "descriptors/featurizer.py",
+                           "descriptors/deconfound.py",
+                           "descriptors/stability.py",
+                           "descriptors/cv_strategies.py",
+                           "descriptors/combination.py",
+                           "compute_features.py",
+                           "run_pipeline.py",
+                           "train.py",
+                           "automat_utils.py"
+                       ],
+    "prompt_bytes":  226352,
+    "estimated_tokens":  56588,
+    "skill":  "experiment-audit",
+    "reviewer_reasoning":  "manual-bridge",
+    "prompt_file":  "aris/审稿桥接_prompt_experiment-audit_round2.md",
+    "generated_at":  "2026-08-07T14:29:07+08:00",
+    "checklist":  "stat-pipeline",
+    "excluded_paths":  [
+                           "results/",
+                           "data/naconductor_featurized.csv"
+                       ],
+    "reviewer_backend":  "manual-bridge",
+    "status":  "awaiting_user_paste",
+    "reviewer_model":  "claude-web",
+    "round":  2
+}

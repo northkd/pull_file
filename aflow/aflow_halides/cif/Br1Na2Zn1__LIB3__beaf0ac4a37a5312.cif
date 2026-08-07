@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# BrNa_svZn/TFCC011.BCA - (TFCC011.BCA) - 
+data_BrNa_svZn
+_pd_phase_name TFCC011.BCA
+_cell_length_a  3.9054556132
+_cell_length_b  3.9054556132
+_cell_length_c  8.7873325630
+_cell_angle_alpha  77.2958830377
+_cell_angle_beta  77.2958830377
+_cell_angle_gamma  60.1839257017
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Br1 1.0000000000 0.2500000000 0.2500000000 0.2500000000  Biso 1.0 Br
+Na2 1.0000000000 0.9885401508 0.9885401508 0.0264085281  Biso 1.0 Na
+Na3 1.0000000000 0.5114598492 0.5114598492 0.4735914719  Biso 1.0 Na
+Zn4 1.0000000000 0.7500000000 0.7500000000 0.7500000000  Biso 1.0 Zn

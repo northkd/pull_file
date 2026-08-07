@@ -1,0 +1,14 @@
+[
+  {
+    "page": 1,
+    "url": "https://aflow.org/API/aflux/?species(Na,P,O),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(1,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785893343.0528002
+  },
+  {
+    "page": 2,
+    "url": "https://aflow.org/API/aflux/?species(Na,P,O),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(2,100)",
+    "returned_records": 53,
+    "timestamp_unix": 1785893364.4467356
+  }
+]

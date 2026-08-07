@@ -1,0 +1,30 @@
+# AFLOW.org Repositories
+# AgBrNa_sv/T0011.BAC - (T0011.BAC) - As2C
+data_AgBrNa_sv
+_pd_phase_name T0011.BAC
+_cell_length_a  6.3851319871
+_cell_length_b  6.3851319871
+_cell_length_c  6.3851319871
+_cell_angle_alpha  126.5213565532
+_cell_angle_beta  126.5213565532
+_cell_angle_gamma  79.0329319235
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Ag1 1.0000000000 -0.0000000000 -0.0000000000 0.0000000000  Biso 1.0 Ag
+Br2 1.0000000000 0.7014422913 0.7014422913 0.0000000000  Biso 1.0 Br
+Br3 1.0000000000 0.2985577087 0.2985577087 -0.0000000000  Biso 1.0 Br
+Na4 1.0000000000 0.7500000000 0.2500000000 0.5000000000  Biso 1.0 Na
+Na5 1.0000000000 0.2500000000 0.7500000000 0.5000000000  Biso 1.0 Na

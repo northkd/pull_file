@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# AuClNa_sv/TBCC005.CAB - (TBCC005.CAB) - 
+data_AuClNa_sv
+_pd_phase_name TBCC005.CAB
+_cell_length_a  5.9687300771
+_cell_length_b  4.0895367602
+_cell_length_c  4.2051513280
+_cell_angle_alpha  89.9922024044
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  90.0000000000
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Au1 1.0000000000 0.0000000000 0.3976463002 0.3745086226  Biso 1.0 Au
+Cl2 1.0000000000 0.5000000000 0.8574933214 0.8750757403  Biso 1.0 Cl
+Na3 1.0000000000 0.0000000000 0.8968245165 0.8750094161  Biso 1.0 Na
+Na4 1.0000000000 0.5000000000 0.3480358619 0.3754062210  Biso 1.0 Na

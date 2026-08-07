@@ -1,0 +1,35 @@
+# AFLOW.org Repositories
+# ClNa_sv/366 - (366) - Al3Zr2 [A4B6] (366
+data_ClNa_sv
+_pd_phase_name 366
+_cell_length_a  8.8761100525
+_cell_length_b  7.2617052606
+_cell_length_c  7.3251412897
+_cell_angle_alpha  74.9609687883
+_cell_angle_beta  52.1945642201
+_cell_angle_gamma  52.8444669917
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.3161408938 0.7752922294 0.3892498779  Biso 1.0 Cl
+Cl2 1.0000000000 0.5193169989 0.3892498779 0.7752922294  Biso 1.0 Cl
+Cl3 1.0000000000 0.4747077706 0.9338591062 0.7306830011  Biso 1.0 Cl
+Cl4 1.0000000000 0.8607501221 0.7306830011 0.9338591062  Biso 1.0 Cl
+Na5 1.0000000000 0.7136878232 0.5860836153 0.3658190972  Biso 1.0 Na
+Na6 1.0000000000 0.3344094643 0.3658190972 0.5860836153  Biso 1.0 Na
+Na7 1.0000000000 0.6639163847 0.5363121768 0.9155905357  Biso 1.0 Na
+Na8 1.0000000000 0.8841809028 0.9155905357 0.5363121768  Biso 1.0 Na
+Na9 1.0000000000 0.1164448197 0.8835551803 0.8835551803  Biso 1.0 Na
+Na10 1.0000000000 0.3664448197 0.1335551803 0.1335551803  Biso 1.0 Na

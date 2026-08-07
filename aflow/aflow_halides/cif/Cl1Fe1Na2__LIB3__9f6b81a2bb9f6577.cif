@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# ClFe_pvNa_sv/TFCC006.CAB - (TFCC006.CAB)
+data_ClFe_pvNa_sv
+_pd_phase_name TFCC006.CAB
+_cell_length_a  6.2314228446
+_cell_length_b  6.2314228446
+_cell_length_c  4.9894617649
+_cell_angle_alpha  68.2429152352
+_cell_angle_beta  68.2429152352
+_cell_angle_gamma  28.8746184965
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.5239709175 0.5239709175 0.4868794774  Biso 1.0 Cl
+Fe2 1.0000000000 0.2048211288 0.2048211288 0.2832611421  Biso 1.0 Fe
+Na3 1.0000000000 0.9773870946 0.9773870946 0.0281405380  Biso 1.0 Na
+Na4 1.0000000000 0.7938208591 0.7938208591 0.7017188425  Biso 1.0 Na

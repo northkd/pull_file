@@ -1,0 +1,89 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "FAIL",
+  "reason_code": "feature_selection_leakage_H_FAIL_plus_deconfound_bias",
+  "summary": "stat-pipeline run02: H=FAIL(4级选择泄露+承认被丢), I-L=审稿人FAIL级(混杂可能是中介/Ridge欠调整/CV退化/标题冲突). 4/4 claims unsupported or needs_qualifier.",
+  "audited_input_hashes": {
+    "run_info.yaml": "sha256:24c1a5513b3cc10fbc864f5e932a837556679719bc87cfd8899511168b6d6968",
+    "README.md": "sha256:66a960b5c32b85a5970970f295f3165366e116cc3d795391349ba8d4228c0793",
+    "program.md": "sha256:c872f7ecc64b624d6534bf25d26864d8fbb82baccb10bee03a31b083e5a993fb",
+    "pyproject.toml": "sha256:fecdd8e14024b1885dd80def482e61efdee5036e20d4c761c696ce2b3f4c602c",
+    "run_config.py": "sha256:d3079de8da2cd3301a4c13b68ec7965225893c1c31f2e04893314ccca22ccda5",
+    "descriptors/__init__.py": "sha256:decd70d98d6b3625f6ac5bac5203e6e372d11a0a5698388913ee8c091ce7cd82",
+    "descriptors/_base.py": "sha256:166be5ba56e464039b19c5a19bdf221e6ffa3d4e2f9658150939dcc6007534eb",
+    "descriptors/featurizer.py": "sha256:f070ede2afa46744379c9061549f7f3426fffd773397a0dd5e261dd16828da24",
+    "descriptors/deconfound.py": "sha256:16997bb19637733442381b3d2808bf938bfad733c6bebc3f62df58a6f9ca2c1f",
+    "descriptors/stability.py": "sha256:f3dfe7879b69f453f05eb06143fbd2f32d6164209af004d590bfe1375d47b4ff",
+    "descriptors/cv_strategies.py": "sha256:27bae93dc1d01d2bde7ec91d78bc9888deb7a4ba08bcbccc4fb70a125aa5c8e2",
+    "descriptors/combination.py": "sha256:9f1920349f72da477a97a342f35e6fa64e0a8e9cf0a00816733de151b0ae21e5",
+    "compute_features.py": "sha256:3a72565bc2bd85b9c22b4e025c41df953ca2f47b8f669f2831a659ea4488d8d9",
+    "run_pipeline.py": "sha256:9968d11b6eeeb37038cf0911efb2cfe85ed160d1a682e2e18e73e8e4386fc019",
+    "train.py": "sha256:0a43675a7516563af391fdb4cad85991b979252a509971f080985c2b914e1aed",
+    "automat_utils.py": "sha256:294777c725ead931315e2056dcab32cfe883b457856781fdc4c9e0155280751f"
+  },
+  "trace_path": "aris/traces/experiment-audit/2026-08-07_run02/",
+  "reviewer_model": "claude-web",
+  "reviewer_backend": "manual-bridge",
+  "reviewer_reasoning": "manual-bridge",
+  "generated_at": "2026-08-07T22:30:00+08:00",
+  "details": {
+    "checklist": "stat-pipeline",
+    "compact_level": 0,
+    "round": 2,
+    "included_files": [
+      "run_info.yaml", "README.md", "program.md", "pyproject.toml", "run_config.py",
+      "descriptors/__init__.py", "descriptors/_base.py", "descriptors/featurizer.py",
+      "descriptors/deconfound.py", "descriptors/stability.py", "descriptors/cv_strategies.py",
+      "descriptors/combination.py", "compute_features.py", "run_pipeline.py",
+      "train.py", "automat_utils.py"
+    ],
+    "excluded_paths": ["results/", "data/naconductor_featurized.csv"],
+    "user_include_override": ["descriptors/combination.py", "descriptors/cv_strategies.py", "descriptors/_base.py"],
+    "checks": {
+      "gt_provenance": {"status": "PASS", "details": "目标来自数据集非模型输出；V2残差目标已显式标注proxy"},
+      "score_normalization": {"status": "WARN", "details": "system_proxy_ratio硬饱和二义；signal_retention=102.5%不可能值；delta_pct跨不同策略数相除"},
+      "result_existence": {"status": "WARN", "details": "41vs38口径错；80%阈值不存在；报告混用filtered/full deconfound_df；配置漂移"},
+      "dead_code": {"status": "WARN", "details": "_classify_descriptor不用deconf_p；noise_info_df丢弃；CROSS_GROUP_RULES第二套规则源"},
+      "scope": {"status": "WARN", "details": "38→6通过率；--seed不通CV；V1仅100draws；一致性优秀可单点触发；F/G族无跨族规则"},
+      "eval_type": "real_gt",
+      "data_leakage_preprocessing": {"status": "WARN", "details": "折内填充/标准化PASS(实质进步)；噪声基线是单次抽样非零分布；encode_controls静默错编码风险"},
+      "feature_selection_leakage": {"status": "FAIL", "details": "四级全量选择→无外层CV；selection_uncertainty_included在validate()扁平化时被丢；噪声基线不对称"},
+      "deconfound_methodology": {"status": "WARN", "reviewer_status": "FAIL-level", "details": "Ridge alpha=1.0对稀有anion组26%欠调整偏向结论；partial_spearman静默回退Stage3可达；先残差化后取秩破坏单调不变性"},
+      "multiple_testing": {"status": "WARN", "reviewer_status": "FAIL-level", "details": "无校正；deconf_p反保守且被忽略；bootstrap CI算原始非去混杂Spearman却并排列出"},
+      "target_metric": {"status": "WARN", "reviewer_status": "domain-FAIL-risk", "details": "无温度混杂(支配性)；composite_score绝对值双层掩盖方向；单列公式CV=原始Spearman与Ridge无关"},
+      "causal_boundary": {"status": "WARN", "reviewer_status": "most-dangerous", "details": "混杂被断言非论证(anion_type可能是中介)；手稿标题含因果与causal_claim:False冲突；deconfounded术语越界；102.5%保留率配因果措辞"}
+    },
+    "claims": [
+      {"id": "C1", "description": "关联性/预测稳健性，非因果", "impact": "needs_qualifier"},
+      {"id": "C2", "description": "去混杂后信号保留", "impact": "unsupported"},
+      {"id": "C3", "description": "跨CV策略一致性", "impact": "unsupported"},
+      {"id": "C4", "description": "组合优于单描述符", "impact": "unsupported"}
+    ],
+    "top_3_critical_findings": [
+      "混杂集可能是中介集——主指标系统性删除答案且不可逆(anion_type经极化率→键软度→迁移势垒是结构→电导通路本身；Stage1永久剔除体系代理标签)",
+      "四级全量目标依赖选择→无外层循环CV，唯一承认(selection_uncertainty_included:False)在validate()扁平化时被丢弃不进产物；噪声基线不对称放大偏差",
+      "单列公式下CV Spearman=sign(a)·Spearman(y_val,x_val)，alpha/标准化无效——三条CV是三种划分的原始秩相关平均且无一条去混杂；LOSO≈V3非独立；anion_stratified验证折混合阴离子类型构造上被混杂"
+    ],
+    "action_items": {
+      "blocking": 6,
+      "high_priority": 6,
+      "medium_priority": 8,
+      "total": 20
+    },
+    "blocking_action_items": [
+      "画DAG辩护混杂非中介或改口径(删断言+更名+报告前后)",
+      "手稿标题去掉因果或补可识别性论证",
+      "加外层嵌套验证或至少把selection_uncertainty_included:False加进产物+报告顶部乐观偏差声明",
+      "修正噪声基线对称性(噪声列走相同Stage1预筛)或删除above_noise_baseline",
+      "deconf_p接进_classify_descriptor+BH-FDR校正",
+      "_evaluate_candidate加n_valid下限+partial_spearman静默回退返回标志"
+    ],
+    "coverage_limitations": [
+      "41个描述符实现文件未提供，物理正确性未审",
+      "无真实行号，传输损坏与真实bug不可区分",
+      "results/已排除，数字级核对未做",
+      "run_status.py/plot_run_results.py/test_descriptors.py未提供"
+    ],
+    "comparison_with_run01": "G项从FAIL转为PASS/WARN(折内预处理做对，实质进步)；新增I-L四项暴露更深问题(混杂可能是中介、Ridge欠调整、CV退化、标题冲突)"
+  }
+}

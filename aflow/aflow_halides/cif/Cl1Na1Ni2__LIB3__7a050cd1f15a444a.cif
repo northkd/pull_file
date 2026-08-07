@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# ClNa_svNi_pv/TBCC007.CAB - (TBCC007.CAB)
+data_ClNa_svNi_pv
+_pd_phase_name TBCC007.CAB
+_cell_length_a  5.4374227998
+_cell_length_b  5.4374227998
+_cell_length_c  5.4374227998
+_cell_angle_alpha  146.0008160945
+_cell_angle_beta  124.5655717038
+_cell_angle_gamma  66.6470218892
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.5668548675 0.5668548675 0.0000000000  Biso 1.0 Cl
+Na2 1.0000000000 0.2707722686 0.7707722686 0.5000000000  Biso 1.0 Na
+Ni3 1.0000000000 0.9235183256 0.9235183256 0.0000000000  Biso 1.0 Ni
+Ni4 1.0000000000 0.7388545383 0.2388545383 0.5000000000  Biso 1.0 Ni

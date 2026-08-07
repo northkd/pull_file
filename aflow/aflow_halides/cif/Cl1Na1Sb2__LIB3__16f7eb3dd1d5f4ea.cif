@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# ClNa_svSb/TFCC006.CAB - (TFCC006.CAB) - 
+data_ClNa_svSb
+_pd_phase_name TFCC006.CAB
+_cell_length_a  4.2101971772
+_cell_length_b  4.2101971772
+_cell_length_c  8.6593842103
+_cell_angle_alpha  77.1263817857
+_cell_angle_beta  77.1263817857
+_cell_angle_gamma  60.3031997366
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.5130989051 0.5130989051 0.4363500902  Biso 1.0 Cl
+Na2 1.0000000000 0.2138130731 0.2138130731 0.3228462115  Biso 1.0 Na
+Sb3 1.0000000000 0.0240040923 0.0240040923 0.9667727676  Biso 1.0 Sb
+Sb4 1.0000000000 0.7490839294 0.7490839294 0.7740309307  Biso 1.0 Sb

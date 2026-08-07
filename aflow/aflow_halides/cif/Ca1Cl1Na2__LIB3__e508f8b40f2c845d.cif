@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# Ca_svClNa_sv/TFCC004.CAB - (TFCC004.CAB)
+data_Ca_svClNa_sv
+_pd_phase_name TFCC004.CAB
+_cell_length_a  10.2672952969
+_cell_length_b  10.2672952969
+_cell_length_c  10.2672952969
+_cell_angle_alpha  21.6598326630
+_cell_angle_beta  21.6598326630
+_cell_angle_gamma  21.6598326630
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Ca1 1.0000000000 0.5176757059 0.5176757059 0.5176757059  Biso 1.0 Ca
+Cl2 1.0000000000 0.2449584169 0.2449584169 0.2449584169  Biso 1.0 Cl
+Na3 1.0000000000 0.9871323326 0.9871323326 0.9871323326  Biso 1.0 Na
+Na4 1.0000000000 0.7502335446 0.7502335446 0.7502335446  Biso 1.0 Na

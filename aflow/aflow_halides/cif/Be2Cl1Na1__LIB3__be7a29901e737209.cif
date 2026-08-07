@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# Be_svClNa_sv/TBCC007.ABC - (TBCC007.ABC)
+data_Be_svClNa_sv
+_pd_phase_name TBCC007.ABC
+_cell_length_a  5.5160571986
+_cell_length_b  5.5160571986
+_cell_length_c  5.5160571986
+_cell_angle_alpha  149.0215284917
+_cell_angle_beta  109.4831381814
+_cell_angle_gamma  78.9952606065
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Be1 1.0000000000 0.0584617603 0.0584617603 0.0000000000  Biso 1.0 Be
+Be2 1.0000000000 0.2623735306 0.7623735306 0.5000000000  Biso 1.0 Be
+Cl3 1.0000000000 0.4398465034 0.4398465034 -0.0000000000  Biso 1.0 Cl
+Na4 1.0000000000 0.7393182057 0.2393182057 0.5000000000  Biso 1.0 Na

@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# ClNa_sv/75 - (75) - BCC [A3B] (75)  (htq
+data_ClNa_sv
+_pd_phase_name 75
+_cell_length_a  7.7456610864
+_cell_length_b  4.3837183384
+_cell_length_c  3.8297406506
+_cell_angle_alpha  85.8670672272
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  90.0000000000
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.0000000000 0.9748779575 0.1621121956  Biso 1.0 Cl
+Cl2 1.0000000000 0.5000000000 0.7500000000 0.7500000000  Biso 1.0 Cl
+Cl3 1.0000000000 0.0000000000 0.5251220425 0.3378878044  Biso 1.0 Cl
+Na4 1.0000000000 0.5000000000 0.2500000000 0.2500000000  Biso 1.0 Na

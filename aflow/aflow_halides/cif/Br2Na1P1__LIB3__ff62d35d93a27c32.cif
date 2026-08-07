@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# BrNa_svP/TFCC006.ABC - (TFCC006.ABC) - t
+data_BrNa_svP
+_pd_phase_name TFCC006.ABC
+_cell_length_a  7.3659821892
+_cell_length_b  7.3659821892
+_cell_length_c  3.9302555216
+_cell_angle_alpha  91.5958293587
+_cell_angle_beta  91.5958293587
+_cell_angle_gamma  31.4033493148
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Br1 1.0000000000 0.0097778002 0.0097778002 0.0606497480  Biso 1.0 Br
+Br2 1.0000000000 0.7445793732 0.7445793732 0.6902993602  Biso 1.0 Br
+Na3 1.0000000000 0.4983397897 0.4983397897 0.5570630707  Biso 1.0 Na
+P4 1.0000000000 0.2473030369 0.2473030369 0.1919878211  Biso 1.0 P

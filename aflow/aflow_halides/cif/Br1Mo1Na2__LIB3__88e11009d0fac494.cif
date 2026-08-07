@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# BrMo_pvNa_sv/TBCC009.CAB - (TBCC009.CAB)
+data_BrMo_pvNa_sv
+_pd_phase_name TBCC009.CAB
+_cell_length_a  3.0632417301
+_cell_length_b  3.0632417301
+_cell_length_c  9.7066630160
+_cell_angle_alpha  90.0000000000
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  109.0996288561
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Br1 1.0000000000 0.5000000000 0.5000000000 0.2500000000  Biso 1.0 Br
+Mo2 1.0000000000 0.5000000000 0.5000000000 0.7500000000  Biso 1.0 Mo
+Na3 1.0000000000 0.0000000000 0.0000000000 0.0269314383  Biso 1.0 Na
+Na4 1.0000000000 -0.0000000000 -0.0000000000 0.4730685617  Biso 1.0 Na

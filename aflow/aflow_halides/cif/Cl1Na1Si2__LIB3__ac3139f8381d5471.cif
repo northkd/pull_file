@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# ClNa_svSi/TBCC007.CAB - (TBCC007.CAB) - 
+data_ClNa_svSi
+_pd_phase_name TBCC007.CAB
+_cell_length_a  5.6532322885
+_cell_length_b  5.6532322885
+_cell_length_c  5.6532322885
+_cell_angle_alpha  141.1048196817
+_cell_angle_beta  105.7805573375
+_cell_angle_gamma  87.1196922080
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.4987575495 0.4987575495 0.0000000000  Biso 1.0 Cl
+Na2 1.0000000000 0.2677930901 0.7677930901 0.5000000000  Biso 1.0 Na
+Si3 1.0000000000 0.9425956200 0.9425956200 -0.0000000000  Biso 1.0 Si
+Si4 1.0000000000 0.7908537405 0.2908537405 0.5000000000  Biso 1.0 Si

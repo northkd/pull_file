@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# ClHf_pvNa_sv/TBCC005.CAB - (TBCC005.CAB)
+data_ClHf_pvNa_sv
+_pd_phase_name TBCC005.CAB
+_cell_length_a  4.8231651547
+_cell_length_b  3.2829772710
+_cell_length_c  6.8579910644
+_cell_angle_alpha  77.7114892966
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  90.0000000000
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.0000000000 0.6464369820 0.5835040833  Biso 1.0 Cl
+Hf2 1.0000000000 0.5000000000 0.5940624262 0.6982988883  Biso 1.0 Hf
+Na3 1.0000000000 0.0000000000 0.9578036255 0.9784365418  Biso 1.0 Na
+Na4 1.0000000000 0.5000000000 0.3016969662 0.2397604867  Biso 1.0 Na

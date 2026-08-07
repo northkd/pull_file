@@ -1,0 +1,116 @@
+[
+  {
+    "page": 1,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(1,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889398.09159
+  },
+  {
+    "page": 2,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(2,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889412.5587432
+  },
+  {
+    "page": 3,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(3,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889422.6830037
+  },
+  {
+    "page": 4,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(4,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889432.7271452
+  },
+  {
+    "page": 5,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(5,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889443.1770742
+  },
+  {
+    "page": 6,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(6,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889454.541114
+  },
+  {
+    "page": 7,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(7,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889464.4236727
+  },
+  {
+    "page": 8,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(8,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889474.2851837
+  },
+  {
+    "page": 9,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(9,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889484.1431959
+  },
+  {
+    "page": 10,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(10,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889494.0989342
+  },
+  {
+    "page": 11,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(11,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889504.2626774
+  },
+  {
+    "page": 12,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(12,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889516.958074
+  },
+  {
+    "page": 13,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(13,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889526.9200373
+  },
+  {
+    "page": 14,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(14,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889536.8199215
+  },
+  {
+    "page": 15,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(15,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889546.6872816
+  },
+  {
+    "page": 16,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(16,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889556.5112398
+  },
+  {
+    "page": 17,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(17,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889566.2693756
+  },
+  {
+    "page": 18,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(18,100)",
+    "returned_records": 100,
+    "timestamp_unix": 1785889575.9212708
+  },
+  {
+    "page": 19,
+    "url": "https://aflow.org/API/aflux/?species(Na),Egap(1.0*),auid,aurl,compound,catalog,species,nspecies,natoms,spacegroup_orig,spacegroup_relax,Pearson_symbol_orig,Pearson_symbol_relax,aflow_prototype_label_orig,aflow_prototype_label_relax,Egap,enthalpy_formation_atom,files,aflowlib_date,aflowlib_version,format(json),$paging(19,100)",
+    "returned_records": 61,
+    "timestamp_unix": 1785889585.07912
+  }
+]

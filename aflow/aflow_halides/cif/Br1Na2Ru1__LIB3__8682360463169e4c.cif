@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# BrNa_svRu_pv/TBCC005.BCA - (TBCC005.BCA)
+data_BrNa_svRu_pv
+_pd_phase_name TBCC005.BCA
+_cell_length_a  4.5758504002
+_cell_length_b  3.3938898216
+_cell_length_c  6.0325758579
+_cell_angle_alpha  74.1470736750
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  90.0000000000
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Br1 1.0000000000 0.5000000000 0.5745240304 0.7315663635  Biso 1.0 Br
+Na2 1.0000000000 0.0000000000 0.9579334536 0.9598932065  Biso 1.0 Na
+Na3 1.0000000000 0.5000000000 0.2865560905 0.2989987285  Biso 1.0 Na
+Ru4 1.0000000000 0.0000000000 0.6809864256 0.5095417015  Biso 1.0 Ru

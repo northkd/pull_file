@@ -1,0 +1,37 @@
+# AFLOW.org Repositories
+# I1Na1O4   [BCT,BCT2,tI24] (STD_PRIM doi:
+data_I1Na1O4
+_pd_phase_name I1Na1O4
+_cell_length_a  7.1639147090
+_cell_length_b  7.1639147090
+_cell_length_c  7.1639147090
+_cell_angle_alpha  135.0949189647
+_cell_angle_beta  135.0949189647
+_cell_angle_gamma  65.3827525897
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+I1 1.0000000000 0.5000000000 0.5000000000 0.0000000000  Biso 1.0 I
+I2 1.0000000000 0.7500000000 0.2500000000 0.5000000000  Biso 1.0 I
+Na3 1.0000000000 0.0000000000 0.0000000000 0.0000000000  Biso 1.0 Na
+Na4 1.0000000000 0.2500000000 0.7500000000 0.5000000000  Biso 1.0 Na
+O5 1.0000000000 0.9022127021 0.3139591765 0.8794573786  Biso 1.0 O
+O6 1.0000000000 0.4345017979 0.0227553235 0.1205426214  Biso 1.0 O
+O7 1.0000000000 0.5639591765 0.1845017979 0.9117464744  Biso 1.0 O
+O8 1.0000000000 0.2727553235 0.6522127021 0.0882535256  Biso 1.0 O
+O9 1.0000000000 0.3477872979 0.4360408235 0.6205426214  Biso 1.0 O
+O10 1.0000000000 0.8154982021 0.7272446765 0.3794573786  Biso 1.0 O
+O11 1.0000000000 0.6860408235 0.5654982021 0.5882535256  Biso 1.0 O
+O12 1.0000000000 0.9772446765 0.0977872979 0.4117464744  Biso 1.0 O

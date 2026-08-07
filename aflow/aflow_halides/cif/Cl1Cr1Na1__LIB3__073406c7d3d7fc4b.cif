@@ -1,0 +1,28 @@
+# AFLOW.org Repositories
+# ClCr_pvNa_sv/TBCC003.ABC - (TBCC003.ABC)
+data_ClCr_pvNa_sv
+_pd_phase_name TBCC003.ABC
+_cell_length_a  6.5682544253
+_cell_length_b  6.5682544253
+_cell_length_c  6.5682544253
+_cell_angle_alpha  150.9405884199
+_cell_angle_beta  150.9405884199
+_cell_angle_gamma  41.5624499078
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.9959258732 0.9959258732 0.0000000000  Biso 1.0 Cl
+Cr2 1.0000000000 0.3558799879 0.3558799879 -0.0000000000  Biso 1.0 Cr
+Na3 1.0000000000 0.6481941388 0.6481941388 0.0000000000  Biso 1.0 Na

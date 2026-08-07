@@ -1,0 +1,33 @@
+# AFLOW.org Repositories
+# BrNa_sv/195 #198 - (195) - B20 FeSi [A4B
+data_BrNa_sv
+_pd_phase_name 195
+_cell_length_a  6.0144879599
+_cell_length_b  6.0144879599
+_cell_length_c  6.0144879599
+_cell_angle_alpha  90.0000000000
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  90.0000000000
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Br1 1.0000000000 0.5043868286 0.5043868286 0.4956131714  Biso 1.0 Br
+Br2 1.0000000000 0.9956131714 0.4956131714 0.9956131714  Biso 1.0 Br
+Br3 1.0000000000 0.4956131714 0.0043868286 0.0043868286  Biso 1.0 Br
+Br4 1.0000000000 0.0043868286 0.9956131714 0.5043868286  Biso 1.0 Br
+Na5 1.0000000000 0.9916740492 0.9916740492 0.0083259508  Biso 1.0 Na
+Na6 1.0000000000 0.5083259508 0.0083259508 0.5083259508  Biso 1.0 Na
+Na7 1.0000000000 0.0083259508 0.4916740492 0.4916740492  Biso 1.0 Na
+Na8 1.0000000000 0.4916740492 0.5083259508 0.9916740492  Biso 1.0 Na

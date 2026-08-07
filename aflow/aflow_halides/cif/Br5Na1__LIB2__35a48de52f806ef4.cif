@@ -1,0 +1,31 @@
+# AFLOW.org Repositories
+# BrNa_sv/145 - (145) - HCP [A5B] (145)  (
+data_BrNa_sv
+_pd_phase_name 145
+_cell_length_a  12.9159381674
+_cell_length_b  12.9159381674
+_cell_length_c  4.0625647325
+_cell_angle_alpha  90.0000000000
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  161.9242123711
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Br1 1.0000000000 0.9789231313 0.0210768687 0.0000000000  Biso 1.0 Br
+Br2 1.0000000000 0.3013115051 0.6986884949 0.0000000000  Biso 1.0 Br
+Br3 1.0000000000 0.6382351459 0.3617648541 0.0000000000  Biso 1.0 Br
+Br4 1.0000000000 0.4787571706 0.5212428294 0.5000000000  Biso 1.0 Br
+Br5 1.0000000000 0.8015600614 0.1984399386 0.5000000000  Biso 1.0 Br
+Na6 1.0000000000 0.1345463191 0.8654536809 0.5000000000  Biso 1.0 Na

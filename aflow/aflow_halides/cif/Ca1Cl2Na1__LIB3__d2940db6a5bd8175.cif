@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# Ca_svClNa_sv/TBCC007.BCA - (TBCC007.BCA)
+data_Ca_svClNa_sv
+_pd_phase_name TBCC007.BCA
+_cell_length_a  8.4785255609
+_cell_length_b  8.4785255609
+_cell_length_c  8.4785255609
+_cell_angle_alpha  155.3086286064
+_cell_angle_beta  152.1073602305
+_cell_angle_gamma  37.5899334557
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Ca1 1.0000000000 0.2081108448 0.7081108448 0.5000000000  Biso 1.0 Ca
+Cl2 1.0000000000 0.0745492878 0.0745492878 0.0000000000  Biso 1.0 Cl
+Cl3 1.0000000000 0.7524591700 0.2524591700 0.5000000000  Biso 1.0 Cl
+Na4 1.0000000000 0.4648806974 0.4648806974 -0.0000000000  Biso 1.0 Na

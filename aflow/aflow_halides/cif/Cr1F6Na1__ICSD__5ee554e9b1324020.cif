@@ -1,0 +1,33 @@
+# AFLOW.org Repositories
+# Cr1F6Na1 #148.2 - (Cr1F6Na1_ICSD_418671)
+data_Cr1F6Na1
+_pd_phase_name Cr1F6Na1
+_cell_length_a  5.7597113947
+_cell_length_b  5.3759385773
+_cell_length_c  5.4054765458
+_cell_angle_alpha  60.1959090888
+_cell_angle_beta  62.2039207764
+_cell_angle_gamma  62.4246973437
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cr1 1.0000000000 0.0000000000 0.0000000000 0.0000000000  Biso 1.0 Cr
+F2 1.0000000000 0.2142061286 0.6695874411 0.9066217504  Biso 1.0 F
+F3 1.0000000000 0.2154404876 0.9039577821 0.2099055084  Biso 1.0 F
+F4 1.0000000000 0.2164560626 0.2128096780 0.6661681502  Biso 1.0 F
+F5 1.0000000000 0.7858130067 0.3304272446 0.0933517196  Biso 1.0 F
+F6 1.0000000000 0.7845637426 0.0960430508 0.7900728918  Biso 1.0 F
+F7 1.0000000000 0.7835626477 0.7871883090 0.3338208148  Biso 1.0 F
+Na8 1.0000000000 0.5000168812 0.4999996247 0.4999835418  Biso 1.0 Na

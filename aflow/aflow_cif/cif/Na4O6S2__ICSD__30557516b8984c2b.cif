@@ -1,0 +1,37 @@
+# AFLOW.org Repositories
+# Na2O3S1   [HEX,HEX,hP12] (STD_PRIM doi:1
+data_Na2O3S1
+_pd_phase_name Na2O3S1
+_cell_length_a  5.5236764625
+_cell_length_b  5.5236764625
+_cell_length_c  6.2126274212
+_cell_angle_alpha  90.0000000000
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  120.0000000000
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Na1 1.0000000000 0.0000000000 0.0000000000 0.0000000000  Biso 1.0 Na
+Na2 1.0000000000 0.0000000000 0.0000000000 0.5000000000  Biso 1.0 Na
+Na3 1.0000000000 0.6666332820 0.3333224600 0.6660470490  Biso 1.0 Na
+Na4 1.0000000000 0.3333667180 0.6666775400 0.3339529510  Biso 1.0 Na
+O5 1.0000000000 0.3818027681 0.2578489620 0.2667735691  Biso 1.0 O
+O6 1.0000000000 0.7421710033 0.1239143028 0.2667854357  Biso 1.0 O
+O7 1.0000000000 0.8760933282 0.6182639046 0.2667876291  Biso 1.0 O
+O8 1.0000000000 0.6181972319 0.7421510380 0.7332264309  Biso 1.0 O
+O9 1.0000000000 0.2578289967 0.8760856972 0.7332145643  Biso 1.0 O
+O10 1.0000000000 0.1239066718 0.3817360954 0.7332123709  Biso 1.0 O
+S11 1.0000000000 0.6665825559 0.3332968010 0.1669268813  Biso 1.0 S
+S12 1.0000000000 0.3334174441 0.6667031990 0.8330731187  Biso 1.0 S

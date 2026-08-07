@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# ClNa_svZn/TFCC006.ABC - (TFCC006.ABC) - 
+data_ClNa_svZn
+_pd_phase_name TFCC006.ABC
+_cell_length_a  6.5415980363
+_cell_length_b  6.5415980363
+_cell_length_c  3.9437530735
+_cell_angle_alpha  91.6346040331
+_cell_angle_beta  91.6346040331
+_cell_angle_gamma  34.2249623429
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.0218931727 0.0218931727 0.1029092524  Biso 1.0 Cl
+Cl2 1.0000000000 0.7442662405 0.7442662405 0.6532225930  Biso 1.0 Cl
+Na3 1.0000000000 0.5035850374 0.5035850374 0.5986076618  Biso 1.0 Na
+Zn4 1.0000000000 0.2302555493 0.2302555493 0.1452604928  Biso 1.0 Zn

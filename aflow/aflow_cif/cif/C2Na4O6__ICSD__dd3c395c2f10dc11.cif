@@ -1,0 +1,37 @@
+# AFLOW.org Repositories
+# C1Na2O3   [MCLC,MCLC1,mS24] (STD_PRIM do
+data_C1Na2O3
+_pd_phase_name C1Na2O3
+_cell_length_a  5.2170621672
+_cell_length_b  5.2170621672
+_cell_length_c  6.1569437416
+_cell_angle_alpha  79.6681183445
+_cell_angle_beta  79.6681183445
+_cell_angle_gamma  61.4407056855
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+C1 1.0000000000 0.3370776992 0.3370776992 0.2481994473  Biso 1.0 C
+C2 1.0000000000 0.6629223008 0.6629223008 0.7518005527  Biso 1.0 C
+Na3 1.0000000000 0.0000000000 0.0000000000 0.0000000000  Biso 1.0 Na
+Na4 1.0000000000 0.0000000000 0.0000000000 0.5000000000  Biso 1.0 Na
+Na5 1.0000000000 0.3279732200 0.3279732200 0.7554974348  Biso 1.0 Na
+Na6 1.0000000000 0.6720267800 0.6720267800 0.2445025652  Biso 1.0 Na
+O7 1.0000000000 0.1898651595 0.6118790854 0.2835185294  Biso 1.0 O
+O8 1.0000000000 0.3881209146 0.8101348405 0.7164814706  Biso 1.0 O
+O9 1.0000000000 0.8101348405 0.3881209146 0.7164814706  Biso 1.0 O
+O10 1.0000000000 0.6118790854 0.1898651595 0.2835185294  Biso 1.0 O
+O11 1.0000000000 0.2102689719 0.2102689719 0.1774988373  Biso 1.0 O
+O12 1.0000000000 0.7897310281 0.7897310281 0.8225011627  Biso 1.0 O

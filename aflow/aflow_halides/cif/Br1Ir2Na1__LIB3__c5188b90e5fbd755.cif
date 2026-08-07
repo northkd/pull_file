@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# BrIrNa_sv/TBCC007.BCA - (TBCC007.BCA) - 
+data_BrIrNa_sv
+_pd_phase_name TBCC007.BCA
+_cell_length_a  6.0873342782
+_cell_length_b  6.0873342782
+_cell_length_c  6.0873342782
+_cell_angle_alpha  152.1584586246
+_cell_angle_beta  130.1896284736
+_cell_angle_gamma  58.0241333764
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Br1 1.0000000000 0.2019645892 0.7019645892 0.5000000000  Biso 1.0 Br
+Ir2 1.0000000000 0.0044169141 0.0044169141 -0.0000000000  Biso 1.0 Ir
+Ir3 1.0000000000 0.8089845729 0.3089845729 0.5000000000  Biso 1.0 Ir
+Na4 1.0000000000 0.4846339239 0.4846339239 0.0000000000  Biso 1.0 Na

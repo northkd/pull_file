@@ -1,0 +1,31 @@
+# AFLOW.org Repositories
+# BrNa_sv/595 #63 - (595) - Au2V [A4B2] (5
+data_BrNa_sv
+_pd_phase_name 595
+_cell_length_a  6.3472981152
+_cell_length_b  6.3472981152
+_cell_length_c  5.6643858499
+_cell_angle_alpha  90.0000000000
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  127.0390172539
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Br1 1.0000000000 0.6223829105 0.8758244242 0.2500000000  Biso 1.0 Br
+Br2 1.0000000000 0.3776170895 0.1241755758 0.7500000000  Biso 1.0 Br
+Br3 1.0000000000 0.8758244242 0.6223829105 0.2500000000  Biso 1.0 Br
+Br4 1.0000000000 0.1241755758 0.3776170895 0.7500000000  Biso 1.0 Br
+Na5 1.0000000000 0.2417837718 0.2417837718 0.2500000000  Biso 1.0 Na
+Na6 1.0000000000 0.7582162282 0.7582162282 0.7500000000  Biso 1.0 Na

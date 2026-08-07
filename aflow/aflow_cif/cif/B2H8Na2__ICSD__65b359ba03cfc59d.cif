@@ -1,0 +1,37 @@
+# AFLOW.org Repositories
+# B1H4Na1   [TET,TET,tP12] (STD_PRIM doi:1
+data_B1H4Na1
+_pd_phase_name B1H4Na1
+_cell_length_a  4.3335408591
+_cell_length_b  4.3335408591
+_cell_length_c  5.9123804671
+_cell_angle_alpha  90.0000000000
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  90.0000000000
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+B1 1.0000000000 0.0000000000 0.0000000000 0.5000000000  Biso 1.0 B
+B2 1.0000000000 0.5000000000 0.5000000000 0.0000000000  Biso 1.0 B
+H3 1.0000000000 0.0041388610 0.7684163075 0.3810672016  Biso 1.0 H
+H4 1.0000000000 0.9958611390 0.2315836925 0.3810672016  Biso 1.0 H
+H5 1.0000000000 0.7684163075 0.9958611390 0.6189327984  Biso 1.0 H
+H6 1.0000000000 0.2315836925 0.0041388610 0.6189327984  Biso 1.0 H
+H7 1.0000000000 0.4958611390 0.2684163075 0.1189327984  Biso 1.0 H
+H8 1.0000000000 0.5041388610 0.7315836925 0.1189327984  Biso 1.0 H
+H9 1.0000000000 0.7315836925 0.4958611390 0.8810672016  Biso 1.0 H
+H10 1.0000000000 0.2684163075 0.5041388610 0.8810672016  Biso 1.0 H
+Na11 1.0000000000 0.0000000000 0.0000000000 0.0000000000  Biso 1.0 Na
+Na12 1.0000000000 0.5000000000 0.5000000000 0.5000000000  Biso 1.0 Na

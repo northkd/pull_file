@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# ClNa_svRh_pv/TBCC005.BCA - (TBCC005.BCA)
+data_ClNa_svRh_pv
+_pd_phase_name TBCC005.BCA
+_cell_length_a  4.9089710189
+_cell_length_b  3.1624556934
+_cell_length_c  5.2621180657
+_cell_angle_alpha  86.1343757793
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  90.0000000000
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.5000000000 0.6094506214 0.7761703938  Biso 1.0 Cl
+Na2 1.0000000000 -0.0000000000 0.0879989894 0.9365503918  Biso 1.0 Na
+Na3 1.0000000000 0.5000000000 0.1651807211 0.3261094541  Biso 1.0 Na
+Rh4 1.0000000000 -0.0000000000 0.6373696681 0.4611697603  Biso 1.0 Rh

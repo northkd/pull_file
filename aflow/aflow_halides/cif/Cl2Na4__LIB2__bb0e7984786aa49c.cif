@@ -1,0 +1,31 @@
+# AFLOW.org Repositories
+# ClNa_sv/137 - (137) - HCP [A2B4] (137)  
+data_ClNa_sv
+_pd_phase_name 137
+_cell_length_a  6.9592624122
+_cell_length_b  6.9592624122
+_cell_length_c  7.0053772810
+_cell_angle_alpha  75.9574011455
+_cell_angle_beta  75.9574011455
+_cell_angle_gamma  29.1321901951
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.6421409959 0.6421409959 0.7208371122  Biso 1.0 Cl
+Cl2 1.0000000000 0.6356367818 0.6356367818 0.2236073323  Biso 1.0 Cl
+Na3 1.0000000000 0.0100982023 0.0100982023 0.0253679892  Biso 1.0 Na
+Na4 1.0000000000 0.2690303561 0.2690303561 0.4163662089  Biso 1.0 Na
+Na5 1.0000000000 0.0087474216 0.0087474216 0.5280782355  Biso 1.0 Na
+Na6 1.0000000000 0.2676795755 0.2676795755 0.9190764552  Biso 1.0 Na

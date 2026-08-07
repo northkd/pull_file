@@ -1,0 +1,28 @@
+# AFLOW.org Repositories
+# BrNa_sv/5 - (5) - FCC [AB2] (5)  (htqc l
+data_BrNa_sv
+_pd_phase_name 5
+_cell_length_a  7.1699958903
+_cell_length_b  7.1699958903
+_cell_length_c  7.1699958903
+_cell_angle_alpha  150.1517848305
+_cell_angle_beta  150.1517848305
+_cell_angle_gamma  42.7186450017
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Br1 1.0000000000 0.0000000000 0.0000000000 0.0000000000  Biso 1.0 Br
+Na2 1.0000000000 0.3664168931 0.3664168931 -0.0000000000  Biso 1.0 Na
+Na3 1.0000000000 0.6335831069 0.6335831069 0.0000000000  Biso 1.0 Na

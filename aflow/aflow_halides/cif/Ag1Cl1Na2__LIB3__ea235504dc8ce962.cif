@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# AgClNa_sv/TBCC007.CAB - (TBCC007.CAB) - 
+data_AgClNa_sv
+_pd_phase_name TBCC007.CAB
+_cell_length_a  8.0544645397
+_cell_length_b  8.0544645397
+_cell_length_c  8.0544645397
+_cell_angle_alpha  154.4489879502
+_cell_angle_beta  153.2498338650
+_cell_angle_gamma  37.3278086877
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Ag1 1.0000000000 0.4493129626 0.4493129626 0.0000000000  Biso 1.0 Ag
+Cl2 1.0000000000 0.2061709532 0.7061709532 0.5000000000  Biso 1.0 Cl
+Na3 1.0000000000 0.0609989335 0.0609989335 0.0000000000  Biso 1.0 Na
+Na4 1.0000000000 0.7835171506 0.2835171506 0.5000000000  Biso 1.0 Na

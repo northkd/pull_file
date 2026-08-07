@@ -1,0 +1,33 @@
+# AFLOW.org Repositories
+# Na1S2Sb1   [MCLC,MCLC5,mS16] (STD_PRIM d
+data_Na1S2Sb1
+_pd_phase_name Na1S2Sb1
+_cell_length_a  5.8879488247
+_cell_length_b  5.8879488247
+_cell_length_c  6.8915359681
+_cell_angle_alpha  66.5397069951
+_cell_angle_beta  66.5397069951
+_cell_angle_gamma  90.1528203463
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Na1 1.0000000000 0.1337605224 0.8662394776 0.2500000000  Biso 1.0 Na
+Na2 1.0000000000 0.8662394776 0.1337605224 0.7500000000  Biso 1.0 Na
+S3 1.0000000000 0.1891244468 0.3680516216 0.2392504508  Biso 1.0 S
+S4 1.0000000000 0.6319483784 0.8108755532 0.2607495492  Biso 1.0 S
+S5 1.0000000000 0.8108755532 0.6319483784 0.7607495492  Biso 1.0 S
+S6 1.0000000000 0.3680516216 0.1891244468 0.7392504508  Biso 1.0 S
+Sb7 1.0000000000 0.6030728672 0.3969271328 0.2500000000  Biso 1.0 Sb
+Sb8 1.0000000000 0.3969271328 0.6030728672 0.7500000000  Biso 1.0 Sb

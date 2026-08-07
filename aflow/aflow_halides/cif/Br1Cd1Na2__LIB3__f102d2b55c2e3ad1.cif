@@ -1,0 +1,29 @@
+# AFLOW.org Repositories
+# BrCdNa_sv/TFCC006.CAB - (TFCC006.CAB) - 
+data_BrCdNa_sv
+_pd_phase_name TFCC006.CAB
+_cell_length_a  9.0156263472
+_cell_length_b  9.0156263472
+_cell_length_c  3.7984339122
+_cell_angle_alpha  77.7165910828
+_cell_angle_beta  77.7165910828
+_cell_angle_gamma  23.5974044625
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Br1 1.0000000000 0.4534158020 0.4534158020 0.5457084759  Biso 1.0 Br
+Cd2 1.0000000000 0.1968048771 0.1968048771 0.3068828343  Biso 1.0 Cd
+Na3 1.0000000000 0.0318262039 0.0318262039 0.9663528490  Biso 1.0 Na
+Na4 1.0000000000 0.8179531170 0.8179531170 0.6810558409  Biso 1.0 Na

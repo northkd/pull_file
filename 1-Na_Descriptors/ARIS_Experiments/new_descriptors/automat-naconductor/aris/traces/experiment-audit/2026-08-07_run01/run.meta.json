@@ -1,0 +1,59 @@
+{
+  "audit_skill": "experiment-audit",
+  "run_id": "2026-08-07_run01",
+  "round": 1,
+  "reviewer_model": "claude-web",
+  "reviewer_backend": "manual-bridge",
+  "reviewer_reasoning": "manual-bridge",
+  "status": "completed",
+  "verdict": "FAIL",
+  "reason_code": "seven_of_eight_checks_fail",
+  "response_file": "aris/traces/experiment-audit/2026-08-07_run01/001-experiment-audit.response.md",
+  "output_files": [
+    "aris/EXPERIMENT_AUDIT.md",
+    "aris/EXPERIMENT_AUDIT.json"
+  ],
+  "verdict_consistency": {
+    "stated_overall": "FAIL",
+    "worst_check": "FAIL",
+    "consistent": true
+  },
+  "completed_at": "2026-08-07T22:10:00+08:00",
+  "checklist_profile": "stat-pipeline",
+  "scope": {
+    "partial": true,
+    "included_paths": [
+      "descriptors/deconfound.py",
+      "descriptors/stability.py",
+      "descriptors/_base.py",
+      "run_pipeline.py",
+      "run_info.yaml"
+    ],
+    "excluded_paths": [
+      "results/",
+      "data/naconductor_featurized.csv"
+    ],
+    "exclusion_reason": "results/ 目录未嵌入（结果文件存在性核验报 NOT_APPLICABLE）；data/naconductor_featurized.csv 未嵌入（目标变量原始数值无法直接核验）。本次审计聚焦管线代码逻辑与配置。",
+    "checklist_profile": "stat-pipeline",
+    "degraded": false,
+    "compact_level": 0
+  },
+  "prompt_file": "aris/审稿桥接_prompt_experiment-audit_round1.md",
+  "prompt_total_chars": 79451,
+  "files_embedded_chars": 75226,
+  "prompt_framework_chars": 4225,
+  "hard_limit_80k": {
+    "triggered": false,
+    "reason": "文件内容 75,226 字符 < 80,000 上限；全文嵌入 Level 0，未触发硬失败拆分"
+  },
+  "audited_input_hashes": {
+    "descriptors/deconfound.py": "sha256:16997bb19637733442381b3d2808bf938bfad733c6bebc3f62df58a6f9ca2c1f",
+    "descriptors/stability.py": "sha256:f3dfe7879b69f453f05eb06143fbd2f32d6164209af004d590bfe1375d47b4ff",
+    "descriptors/_base.py": "sha256:166be5ba56e464039b19c5a19bdf221e6ffa3d4e2f9658150939dcc6007534eb",
+    "run_pipeline.py": "sha256:9968d11b6eeeb37038cf0911efb2cfe85ed160d1a682e2e18e73e8e4386fc019",
+    "run_info.yaml": "sha256:24c1a5513b3cc10fbc864f5e932a837556679719bc87cfd8899511168b6d6968"
+  },
+  "generated_at": "2026-08-07T21:30:00+08:00",
+  "completed_at_meta": "2026-08-07T22:10:00+08:00",
+  "next_step": "审计完成。用户可根据 Action Items 修复代码后重新发起审计。"
+}

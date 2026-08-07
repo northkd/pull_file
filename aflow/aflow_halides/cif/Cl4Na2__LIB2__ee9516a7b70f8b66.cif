@@ -1,0 +1,31 @@
+# AFLOW.org Repositories
+# ClNa_sv/143 - (143) - HCP [A4B2] (143)  
+data_ClNa_sv
+_pd_phase_name 143
+_cell_length_a  11.1951096137
+_cell_length_b  11.1951096137
+_cell_length_c  3.8592567535
+_cell_angle_alpha  90.0000000000
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  160.7696210566
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.9722241424 0.0277758576 0.0000000000  Biso 1.0 Cl
+Cl2 1.0000000000 0.6425483280 0.3574516720 0.0000000000  Biso 1.0 Cl
+Cl3 1.0000000000 0.4722203020 0.5277796980 0.5000000000  Biso 1.0 Cl
+Cl4 1.0000000000 0.8018961165 0.1981038835 0.5000000000  Biso 1.0 Cl
+Na5 1.0000000000 0.3066495422 0.6933504578 0.0000000000  Biso 1.0 Na
+Na6 1.0000000000 0.1377949023 0.8622050977 0.5000000000  Biso 1.0 Na

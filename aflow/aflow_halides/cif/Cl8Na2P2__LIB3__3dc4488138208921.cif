@@ -1,0 +1,37 @@
+# AFLOW.org Repositories
+# ICSD_82364.ABC   [MCL,MCL,mP12] (STD_PRI
+data_ICSD_82364.ABC
+_pd_phase_name ICSD_82364.ABC
+_cell_length_a  7.9378454539
+_cell_length_b  6.5545905394
+_cell_length_c  6.8204093919
+_cell_angle_alpha  77.2746160438
+_cell_angle_beta  90.0000000000
+_cell_angle_gamma  90.0000000000
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Cl1 1.0000000000 0.1606165680 0.3124800020 0.9395892883  Biso 1.0 Cl
+Cl2 1.0000000000 0.1606165680 0.6875199980 0.5604107117  Biso 1.0 Cl
+Cl3 1.0000000000 0.8393834320 0.6875199980 0.0604107117  Biso 1.0 Cl
+Cl4 1.0000000000 0.8393834320 0.3124800020 0.4395892883  Biso 1.0 Cl
+Cl5 1.0000000000 0.3681411135 0.7518731831 0.9673948252  Biso 1.0 Cl
+Cl6 1.0000000000 0.3681411135 0.2481268169 0.5326051748  Biso 1.0 Cl
+Cl7 1.0000000000 0.6318588865 0.2481268169 0.0326051748  Biso 1.0 Cl
+Cl8 1.0000000000 0.6318588865 0.7518731831 0.4673948252  Biso 1.0 Cl
+Na9 1.0000000000 0.3746070253 0.0000000000 0.2500000000  Biso 1.0 Na
+Na10 1.0000000000 0.6253929747 -0.0000000000 0.7500000000  Biso 1.0 Na
+P11 1.0000000000 0.3339861176 0.5000000000 0.7500000000  Biso 1.0 P
+P12 1.0000000000 0.6660138824 0.5000000000 0.2500000000  Biso 1.0 P

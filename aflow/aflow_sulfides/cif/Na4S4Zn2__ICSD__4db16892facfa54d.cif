@@ -1,0 +1,35 @@
+# AFLOW.org Repositories
+# Na2S2Zn1   [ORCI,ORCI,oI20] (STD_PRIM do
+data_Na2S2Zn1
+_pd_phase_name Na2S2Zn1
+_cell_length_a  7.0779017433
+_cell_length_b  7.0779017433
+_cell_length_c  7.0779017433
+_cell_angle_alpha  130.9524561436
+_cell_angle_beta  126.2454713799
+_cell_angle_gamma  75.7189531815
+_symmetry_space_group_name_H-M  'P1'
+_symmetry_Int_Tables_Number  1
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+  1  x,y,z
+loop_
+ _atom_site_label
+ _atom_site_occupancy
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_thermal_displace_type
+ _atom_site_B_iso_or_equiv
+ _atom_site_type_symbol
+Na1 1.0000000000 0.7942762125 0.1436336001 0.6506426124  Biso 1.0 Na
+Na2 1.0000000000 0.2057237875 0.8563663999 0.3493573876  Biso 1.0 Na
+Na3 1.0000000000 0.4929909877 0.6436336001 0.8493573876  Biso 1.0 Na
+Na4 1.0000000000 0.5070090123 0.3563663999 0.1506426124  Biso 1.0 Na
+S5 1.0000000000 0.6791878217 0.8901079701 0.7890798516  Biso 1.0 S
+S6 1.0000000000 0.3208121783 0.1098920299 0.2109201484  Biso 1.0 S
+S7 1.0000000000 0.1010281185 0.3901079701 0.7109201484  Biso 1.0 S
+S8 1.0000000000 0.8989718815 0.6098920299 0.2890798516  Biso 1.0 S
+Zn9 1.0000000000 0.0000000000 0.7500000000 0.7500000000  Biso 1.0 Zn
+Zn10 1.0000000000 0.0000000000 0.2500000000 0.2500000000  Biso 1.0 Zn
