@@ -19,6 +19,18 @@ from scipy import stats
 from sklearn.linear_model import Ridge
 
 
+DECONFOUND_RESULT_COLUMNS = [
+    "descriptor",
+    "family",
+    "is_high_risk",
+    "raw_spearman",
+    "deconfounded_spearman",
+    "deconf_p",
+    "system_proxy_ratio",
+    "label",
+]
+
+
 class DeconfoundAnalyzer:
     """去混杂相关性分析器。
 
@@ -41,19 +53,89 @@ class DeconfoundAnalyzer:
 
     @staticmethod
     def _one_hot_encode(labels_list: list[str], column_name: str) -> np.ndarray:
-        """将分类标签列表转为 one-hot 矩阵。
+        """将分类标签列表转为带参考类别的 one-hot 矩阵。
 
         参数:
             labels_list: 分类标签列表，如 ["NASICON", "β-alumina", ...]
             column_name: 列名，仅用于 DataFrame 构造
 
         返回:
-            one-hot 矩阵 (n_samples, n_categories)，float64 类型
+            one-hot 矩阵 (n_samples, n_categories - 1)，float64 类型
         """
-        df = pd.DataFrame({column_name: labels_list})
-        # pd.get_dummies 自动处理类别，输出 0/1 矩阵
-        encoded = pd.get_dummies(df, columns=[column_name], dtype=float)
+        encoded = DeconfoundAnalyzer._one_hot_frame(labels_list, column_name)
         return encoded.values
+
+    @staticmethod
+    def _one_hot_frame(labels_list: list[str], column_name: str) -> pd.DataFrame:
+        """Return reference-coded dummy variables with stable, named columns."""
+        labels = pd.Series(labels_list, name=column_name, dtype="string")
+        return pd.get_dummies(
+            labels,
+            prefix=column_name,
+            drop_first=True,
+            dtype=float,
+        )
+
+    @staticmethod
+    def build_rank_aware_controls(
+        system_labels: list[str],
+        anion_labels: list[str],
+    ) -> tuple[pd.DataFrame, dict[str, object]]:
+        """Build system-primary controls and audit redundant anion contrasts."""
+        if len(system_labels) != len(anion_labels):
+            raise ValueError("system and anion label lengths must match")
+        system_frame = DeconfoundAnalyzer._one_hot_frame(
+            system_labels, "system"
+        ).reset_index(drop=True)
+        anion_frame = DeconfoundAnalyzer._one_hot_frame(
+            anion_labels, "anion_type"
+        ).reset_index(drop=True)
+
+        intercept = np.ones((len(system_labels), 1), dtype=float)
+        system_design = np.column_stack(
+            [intercept, system_frame.to_numpy(dtype=float)]
+        )
+        combined_design = np.column_stack(
+            [system_design, anion_frame.to_numpy(dtype=float)]
+        )
+        system_rank = int(np.linalg.matrix_rank(system_design))
+        confounder_rank = int(np.linalg.matrix_rank(combined_design))
+
+        current_design = system_design
+        current_rank = system_rank
+        incremental: list[str] = []
+        redundant: list[str] = []
+        for column in anion_frame.columns:
+            candidate = np.column_stack(
+                [current_design, anion_frame[[column]].to_numpy(dtype=float)]
+            )
+            candidate_rank = int(np.linalg.matrix_rank(candidate))
+            if candidate_rank > current_rank:
+                incremental.append(str(column))
+                current_design = candidate
+                current_rank = candidate_rank
+            else:
+                redundant.append(str(column))
+
+        controls = pd.concat([system_frame, anion_frame[incremental]], axis=1)
+        metadata: dict[str, object] = {
+            "primary_control": "system",
+            "system_design_rank": system_rank,
+            "confounder_rank": confounder_rank,
+            "anion_incremental_rank": confounder_rank - system_rank,
+            "anion_redundant_count": len(redundant),
+            "anion_incremental_columns": incremental,
+            "anion_redundant_columns": redundant,
+            "anion_is_independent_control": False,
+            "control_coding": "reference_class_with_intercept",
+            "control_columns": [
+                "intercept",
+                *map(str, system_frame.columns),
+                *map(str, anion_frame.columns),
+            ],
+            "residualization_columns": list(map(str, controls.columns)),
+        }
+        return controls, metadata
 
     # ------------------------------------------------------------------
     # 核心方法
@@ -84,7 +166,7 @@ class DeconfoundAnalyzer:
 
         # 样本数不足时无法残差化，回退到原始相关
         n_samples = len(x)
-        if n_samples < 3 or z.shape[1] >= n_samples:
+        if n_samples < 3 or z.shape[1] == 0 or z.shape[1] >= n_samples:
             rho, p_val = stats.spearmanr(x, y)
             return float(rho), float(p_val)
 
@@ -201,22 +283,17 @@ class DeconfoundAnalyzer:
             deconfounded_spearman, deconf_p, system_proxy_ratio, label
         """
         # --- 构造混杂变量矩阵 ---
-        system_onehot = self._one_hot_encode(system_labels, "system")
-        anion_onehot = self._one_hot_encode(anion_labels, "anion_type")
-        confounders_arr = np.hstack([system_onehot, anion_onehot])
-        confounders_df = pd.DataFrame(
-            confounders_arr,
-            columns=[f"system_{i}" for i in range(system_onehot.shape[1])]
-            + [f"anion_{i}" for i in range(anion_onehot.shape[1])],
+        confounders_df, control_metadata = self.build_rank_aware_controls(
+            system_labels, anion_labels
         )
 
         # --- 获取描述符注册表，用于查询 family 和 is_high_risk ---
-        from descriptors import AVAILABLE_STRUCTURE_DESCRIPTORS
+        from descriptors import SEARCHABLE_STRUCTURE_DESCRIPTORS
 
         y_arr = np.asarray(y, dtype=float)
 
         # --- 确定描述符列 ---
-        registered_names = set(AVAILABLE_STRUCTURE_DESCRIPTORS.keys())
+        registered_names = set(SEARCHABLE_STRUCTURE_DESCRIPTORS.keys())
         descriptor_cols = [c for c in feature_df.columns if c in registered_names]
 
         records: list[dict] = []
@@ -258,7 +335,7 @@ class DeconfoundAnalyzer:
                 system_proxy_ratio = max(0.0, min(1.0, system_proxy_ratio))
 
             # 查询 family 和 is_high_risk
-            _func, family, is_high_risk = AVAILABLE_STRUCTURE_DESCRIPTORS.get(
+            _func, family, is_high_risk = SEARCHABLE_STRUCTURE_DESCRIPTORS.get(
                 col, (None, "Unknown", False),
             )
 
@@ -278,7 +355,10 @@ class DeconfoundAnalyzer:
                 "label": label,
             })
 
-        result_df = pd.DataFrame(records)
+        result_df = pd.DataFrame.from_records(
+            records,
+            columns=DECONFOUND_RESULT_COLUMNS,
+        )
 
         # 按 |deconfounded_spearman| 降序排列：物理信号最强的排最前
         if not result_df.empty:
@@ -287,5 +367,7 @@ class DeconfoundAnalyzer:
                 key=lambda s: s.abs(),
                 ascending=False,
             ).reset_index(drop=True)
+
+        result_df.attrs.update(control_metadata)
 
         return result_df

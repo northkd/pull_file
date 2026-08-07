@@ -1,125 +1,48 @@
+"""Compatibility entry point for a strict structural descriptor audit.
+
+This compatibility-named command audits one explicit descriptor against the
+frozen raw CIF dataset and writes only an Agent-track audit CSV.  It does not
+read or write Pipeline results.
+"""
 from __future__ import annotations
 
-import argparse
+import sys
+from typing import Any
 
-import numpy as np
-import pandas as pd
-
-from automat_utils import (
-    build_model_from_config,
-    extract_xy,
-    load_local_frame,
-    make_featurizer,
-    mean_absolute_prediction_error,
-    predict_values,
-)
-from descriptors import AVAILABLE_COMPOSITION_DESCRIPTORS
-from run_config import config_get, config_path, load_run_info_arg
+from automat_utils import format_agent_metrics, prepare_structural_evaluation, write_structural_audit
+from train import parse_agent_args
 
 
-def parse_args() -> argparse.Namespace:
-    run_info_parser, config = load_run_info_arg()
+def parse_audit_args(argv: list[str] | None = None):
+    """Use the same explicit descriptor/CIF contract as ``train.py``."""
+    return parse_agent_args(argv)
 
-    parser = argparse.ArgumentParser(
-        description=(
-            "Final held-out test evaluation. Fits train.csv plus validation.csv "
-            "and evaluates the manually added test.csv."
-        ),
-        parents=[run_info_parser],
+
+def run_structural_audit(args: Any) -> tuple[dict[str, Any], str]:
+    """Return metrics and write the reproducible descriptor-value audit."""
+    frame, metrics = prepare_structural_evaluation(args)
+    audit_path = write_structural_audit(
+        frame,
+        descriptor_name=args.descriptor_name,
+        audit_file=args.audit_file,
+        metrics=metrics,
     )
-    parser.add_argument(
-        "descriptor_name",
-        nargs="?",
-        default=config_get(config, "descriptor.default_name"),
-        help="Descriptor tag from descriptors.AVAILABLE_COMPOSITION_DESCRIPTORS.",
-    )
-    parser.add_argument(
-        "--list-descriptors",
-        action="store_true",
-        help="Print available descriptor tags and exit.",
-    )
-    parser.add_argument(
-        "--output",
-        default=None,
-        help="Optional path to write final test predictions as CSV.",
-    )
-    args = parser.parse_args()
-
-    if not args.list_descriptors and not args.descriptor_name:
-        parser.error("descriptor_name is required unless --list-descriptors is used")
-
-    args.run_config = config
-    args.data_dir = config_path(config, "data.dataset_dir")
-    args.train_file = config_get(config, "data.train_file")
-    args.validation_file = config_get(config, "data.validation_file")
-    args.test_file = config_get(config, "data.test_file")
-    args.target_column = config_get(config, "data.target_column")
-    args.composition_column = config_get(config, "data.composition_column")
-    args.random_seed = int(config_get(config, "model.random_seed"))
-    return args
+    return metrics, str(audit_path)
 
 
-def run_evaluation(args: argparse.Namespace) -> tuple[pd.DataFrame, dict[str, float]]:
-    featurize = make_featurizer(args.descriptor_name)
-    train_frame = load_local_frame(
-        data_dir=args.data_dir,
-        filename=args.train_file,
-        target_column=args.target_column,
-        composition_column=args.composition_column,
-    )
-    val_frame = load_local_frame(
-        data_dir=args.data_dir,
-        filename=args.validation_file,
-        target_column=args.target_column,
-        composition_column=args.composition_column,
-    )
-    test_path = args.data_dir / args.test_file
-    if not test_path.exists():
-        raise FileNotFoundError(
-            f"Missing final holdout test file: {test_path}. "
-            "Add it manually only after autoresearch is complete."
-        )
-    test_frame = load_local_frame(
-        data_dir=args.data_dir,
-        filename=args.test_file,
-        target_column=args.target_column,
-        composition_column=args.composition_column,
-    )
+def main(argv: list[str] | None = None) -> None:
+    args = parse_audit_args(argv)
+    try:
+        metrics, audit_path = run_structural_audit(args)
+    except (FileNotFoundError, KeyError, ValueError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        raise SystemExit(2) from None
 
-    fit_frame = pd.concat([train_frame, val_frame], ignore_index=True)
-    fit_inputs, y_fit = extract_xy(fit_frame, args.target_column, args.composition_column)
-    test_inputs, y_test = extract_xy(test_frame, args.target_column, args.composition_column)
-    x_fit = featurize(fit_inputs)
-    x_test = featurize(test_inputs)
-
-    model = build_model_from_config(args.run_config, random_state=args.random_seed)
-    model.fit(x_fit, y_fit)
-
-    predictions = predict_values(model, x_test)
-    test_mae = mean_absolute_prediction_error(y_test, predictions)
-
-    output_frame = test_frame.copy()
-    output_frame["prediction"] = predictions
-    output_frame["absolute_error"] = np.abs(output_frame[args.target_column] - predictions)
-    return output_frame, {"mae": test_mae}
-
-
-def main() -> None:
-    args = parse_args()
-
-    if args.list_descriptors:
-        for name in sorted(AVAILABLE_COMPOSITION_DESCRIPTORS):
-            print(name)
-        return
-
-    predictions, metrics = run_evaluation(args)
-
-    if args.output:
-        predictions.to_csv(args.output, index=False)
-        print(f"Saved final test predictions to {args.output}")
-
-    print("---")
-    print(f"test_mae:  {metrics['mae']:.6f}")
+    print("Structural audit (not a held-out test split)")
+    for line in format_agent_metrics(metrics):
+        print(line)
+    print(f"structural_audit_file:      {audit_path}")
+    print("track_isolation:             agent writes results/agent only; no pipeline output read")
 
 
 if __name__ == "__main__":

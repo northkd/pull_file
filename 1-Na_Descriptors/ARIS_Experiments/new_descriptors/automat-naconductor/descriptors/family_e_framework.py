@@ -13,15 +13,17 @@ from descriptors._base import (
     _safe_cv,
     _safe_mean,
     _shell_neighbors,
+    element_symbol,
     get_framework_sites,
     get_na_sites,
+    site_occupancies_by_symbol,
 )
 
 
 def _get_framework_data(struct: Structure) -> dict:
     """收集骨架阳离子的配位信息。"""
     fw_indices = get_framework_sites(struct)
-    species_symbols = {str(el) for el in struct.composition.elements}
+    species_symbols = {element_symbol(el) for el in struct.composition.elements}
     anions = species_symbols & ANION_ELEMENTS
 
     if not fw_indices or not anions:
@@ -48,7 +50,7 @@ def _get_framework_data(struct: Structure) -> dict:
 
         # X-X 键长 / 理想键长 (用 Shannon 半径估计)
         fw_sym = max(
-            struct[fw_idx].species.as_dict().items(),
+            site_occupancies_by_symbol(struct[fw_idx]).items(),
             key=lambda kv: kv[1],
         )[0]
         anion_r = _effective_anion_radius(anions)
@@ -112,7 +114,7 @@ def compute_framework_sharing_topology(struct: Structure) -> float:
     简化实现: 统计阴离子被多个骨架阳离子共享的比例。
     """
     fw_indices = set(get_framework_sites(struct))
-    species_symbols = {str(el) for el in struct.composition.elements}
+    species_symbols = {element_symbol(el) for el in struct.composition.elements}
     anions = species_symbols & ANION_ELEMENTS
 
     if not fw_indices or not anions:

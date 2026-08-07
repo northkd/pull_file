@@ -12,6 +12,7 @@ task:
 
 data:
   raw_file: data/naconductor_raw.csv
+  featurized_file: data/naconductor_featurized.csv
   target_column: log_sigma
   structure_column: cif_path
   material_id_column: material_id
@@ -22,11 +23,13 @@ data:
   # 原始数据 84 行，全量参与交叉验证
 
 cv_strategies:
-  # 策略 1：分层 K 折（按体系分类分层）
-  - name: stratified_kfold
-    folds: 5
-    stratify_by: system
+  # 策略 1：阴离子分层 K 折；类别不足两例时显式跳过，支持不足时显式降折
+  - name: anion_stratified_cv
+    folds: 3
+    stratify_by: anion_type
     random_seed: 42
+    insufficient_class_policy: skip
+    requested_fold_downshift: explicit
   # 策略 2：留一体系交叉验证（LOSO-CV）
   # 每次留出一个体系（NASICON/sulfide/halide）作为验证集
   - name: leave_one_system_out
@@ -42,34 +45,79 @@ deconfound:
   # 混杂变量列表——这些变量与目标相关但不是因果通路
   # 在计算描述符-目标相关性时需要控制
   confounders:
-    - system          # 体系类型（NASICON/sulfide/halide）是强混杂
-    - anion_type      # 阴离子类型与结构描述符强相关
+    - system          # 主控制：体系类型（NASICON/sulfide/halide）
+    - anion_type      # 增量控制；报告相对 system 的秩增量/冗余，不作独立因果解释
+  categorical_coding: reference_class
+  primary_control: system
+  report_design_rank: true
   # 去混杂方法：偏相关 / DML（Double Machine Learning）
   method: partial_correlation  # 可选: partial_correlation, dml
   # 去混杂后的 Spearman rho 作为主要评价指标
   primary_metric: deconfounded_spearman
 
 stability_selection:
-  # 稳定性选择参数——控制描述符选择的稳定性
+  # 子采样 Lasso；填充和缩放在每个子样本 Pipeline 内独立拟合
+  method: subsampled_lasso
+  selection_alpha: 0.05
+  preprocessing:
+    - median_imputation
+    - standard_scaling
   n_bootstrap: 100
   threshold: 0.6          # 被选中的频率阈值
   fraction: 0.5           # 每次自举采样比例
   random_seed: 42
 
 combination:
-  # 描述符组合搜索策略
-  method: forward_selection  # 可选: forward_selection, backward_elimination, exhaustive
-  max_descriptors: 5        # 组合中最大描述符数
-  min_descriptors: 1        # 组合中最小描述符数
+  # 原始物理值上的受约束枚举；只在完整公式进入模型后做折内标准化
+  method: constrained_enumeration
+  raw_value_source: feature_df
+  max_descriptors: 3
+  min_descriptors: 2
+  pair_rules:
+    source_of_truth: descriptors.combination.PAIR_OPERATOR_RULES
+    execution: enforced_by_declarative_registry
+    commutative_operators: [add, multiply]
+    canonical_unordered_pairs: true
+    directional_ratios: explicit_registry_entries_only
+    reject_zero_or_nonfinite_denominator: true
+    default_ratio_allowed: false
+  triple_rules:
+    adjacency_source_of_truth: descriptors.combination.PAIR_OPERATOR_RULES
+    same_family_source_of_truth: descriptors.combination.SAME_FAMILY_OPERATOR_RULES
+    execution: enforced_by_declarative_registry
+    enabled: true
+    shape: two_from_one_family_plus_one_from_explicit_adjacent_family
+    arbitrary_triples: false
   # 禁止的运算符——描述符构造中不允许使用
   forbidden_operators:
     - log          # 禁止对原始描述符取对数（因为目标已是 log）
     - sqrt         # 禁止开方（物理意义不明确）
     - power        # 禁止幂运算（过拟合风险高）
-  # 物理约束——组合描述符必须满足
-  physical_constraints:
-    monotonic_with_ion_size: true    # 与离子尺寸单调性一致
-    positive_correlation_with_vacancy: true  # 与空位浓度正相关
+  # 下列语义目前是人工解释审查要求，不是程序化筛选条件。
+  manual_physical_interpretation_review:
+    enforced_by_search: false
+    review_questions:
+      - monotonic_with_ion_size
+      - positive_correlation_with_vacancy
+
+combination_validation:
+  status: exploratory
+  causal_claim: false
+  evidence_blocks:
+    - noise_baseline
+    - factor_spanning
+    - per_system
+    - bootstrap_ci
+  bootstrap:
+    method: system_stratified
+    random_seed: 42
+  factor_spanning:
+    primary_method: fold_safe_oof_target_residual_prediction
+    control_design: rank_aware_system_primary_plus_incremental_anion
+    formula_preprocessing: fold_local_median_imputation_and_scaling
+    partial_association_role: supplementary_only
+  selection_uncertainty:
+    nested_outer_group_selection_available: false
 
 evaluation:
   # 主要评价指标
@@ -86,11 +134,48 @@ evaluation:
     name: ridge
     alpha: 1.0          # L2 正则化强度
     random_seed: 42
+    fold_preprocessing:
+      - median_imputation
+      - standard_scaling
   # 相关性方法
   correlation_method: spearman   # 使用 Spearman 秩相关（非参数，适合小样本）
 
-output:
-  results_file: results.tsv
-  ideas_file: ideas.tsv
-  figures_dir: figures/
+# 两条轨道只共享这一冻结输入契约；任何运行结果均不共享。
+shared_input:
+  frozen: true
+  raw_file: data/naconductor_raw.csv
   descriptor_registry: descriptors/__init__.py
+  registry_revision: structural-registry-v1-2026-08-03
+  semantics: >
+    Agent 与 pipeline 可以同时启动，并只读取本节指定的原始 CSV 与注册表。
+    在 C9 前禁止任一轨道读取、修改或据另一轨道的结果作筛选决定。
+
+tracks:
+  pipeline:
+    output_dir: results/pipeline
+    reads: [shared_input]
+    must_not_read: [results/agent]
+    status: exploratory
+
+  agent:
+    results_file: results/agent/results.tsv
+    ideas_file: results/agent/ideas.tsv
+    feature_cache_file: results/agent/descriptor_features.csv
+    figure_file: results/agent/figures/metric_history.png
+    reads: [shared_input]
+    must_not_read: [results/pipeline]
+    status:
+      primary_metric: deconfounded_spearman
+      max_iterations: 30
+      patience: 8
+      semantics: >
+        仅对 status 为 evaluated、keep 或 discard 的有限去混杂 Spearman
+        计入耐心；crash 和不可用 CV 策略不会伪造改善或消耗耐心。
+
+c9_cross_track_review:
+  user_authorization_required: true
+  inputs_must_be_completed_and_frozen: true
+  read_only_inputs: [results/agent, results/pipeline]
+  interpretation: >
+    结果一致仅是独立三角验证或优先复核线索，不构成因果证据；
+    两条轨道均不建立因果关系。

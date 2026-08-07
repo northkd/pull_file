@@ -6,6 +6,8 @@
 """
 from __future__ import annotations
 
+import warnings
+
 import numpy as np
 from pymatgen.core import Structure
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
@@ -15,6 +17,7 @@ from descriptors._base import (
     _safe_mean,
     compute_polyhedron_volume,
     get_na_sites,
+    site_occupancies_by_symbol,
 )
 
 
@@ -25,8 +28,10 @@ def compute_space_group_number(struct: Structure) -> float:
     仅作为结构复杂性的代理指标。
     """
     try:
-        sga = SpacegroupAnalyzer(struct, symprec=0.01)
-        return float(sga.get_space_group_number())
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", DeprecationWarning)
+            sga = SpacegroupAnalyzer(struct, symprec=0.01)
+            return float(sga.get_space_group_number())
     except Exception:
         return float("nan")
 
@@ -38,11 +43,12 @@ def compute_wyckoff_diversity(struct: Structure) -> float:
     高风险: 与电导率的物理关联不明确。
     """
     try:
-        sga = SpacegroupAnalyzer(struct, symprec=0.01)
-        symm_struct = sga.get_symmetrized_structure()
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", DeprecationWarning)
+            sga = SpacegroupAnalyzer(struct, symprec=0.01)
+            symm_struct = sga.get_symmetrized_structure()
         # 等价位点组的数量 = 不等价 Wyckoff 位置数
-        equiv_sites = symm_struct.find_equivalent_sites()
-        return float(len(equiv_sites))
+        return float(len(symm_struct.equivalent_indices))
     except Exception:
         return float("nan")
 
@@ -58,7 +64,7 @@ def compute_partial_occupancy_ratio(struct: Structure) -> float:
 
     partial_count = 0
     for site in struct:
-        species_dict = site.species.as_dict()
+        species_dict = site_occupancies_by_symbol(site)
         total_occ = sum(species_dict.values())
         # 多元素混合占位 或 占位不等于 1
         if len(species_dict) != 1 or abs(total_occ - 1.0) > 1e-3:

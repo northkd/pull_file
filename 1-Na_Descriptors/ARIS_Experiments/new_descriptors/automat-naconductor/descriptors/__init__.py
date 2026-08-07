@@ -162,5 +162,75 @@ AVAILABLE_STRUCTURE_DESCRIPTORS: dict[str, tuple[Callable[[Structure], float], s
     "volume_cv": (compute_volume_cv, "H", False),
 }
 
-# 向后兼容: 保留原始名称
-AVAILABLE_COMPOSITION_DESCRIPTORS = AVAILABLE_STRUCTURE_DESCRIPTORS
+# Registry metadata is intentionally separate: the public three-item tuples
+# above are used by callers and remain backward compatible.  ``dimension`` is a
+# physical-dimension token used by the combination rule checker; ``unit`` is a
+# human-readable reporting label.
+_DESCRIPTOR_UNITS_AND_DIMENSIONS: dict[str, tuple[str, str]] = {
+    "a2_max_dist": ("angstrom", "length"),
+    "poly_distortion_mean": ("dimensionless", "dimensionless"),
+    "max_bond_length": ("angstrom", "length"),
+    "min_bond_length": ("angstrom", "length"),
+    "mean_bond_length": ("angstrom", "length"),
+    "target_bond_center": ("angstrom", "length"),
+    "poly_volume_mean": ("angstrom^3", "volume"),
+    "coordination_number_mean": ("count", "count"),
+    "ellipsoid_oblateness": ("dimensionless", "dimensionless"),
+    "direction_ratio": ("dimensionless", "dimensionless"),
+    "bottleneck_anisotropy": ("dimensionless", "dimensionless"),
+    "nana_composite": ("dimensionless", "dimensionless"),
+    "avg_na_neighbors": ("count", "count"),
+    "largest_component_ratio": ("dimensionless", "dimensionless"),
+    "network_dimension": ("dimensionless", "dimensionless"),
+    "component_count": ("count", "count"),
+    "na_concentration": ("angstrom^-3", "number_density"),
+    "na_occupancy_sum": ("count", "count"),
+    "na_site_count": ("count", "count"),
+    "interstitial_count": ("count", "count"),
+    "interstitial_na_distance": ("angstrom", "length"),
+    "interstitial_channel_access": ("dimensionless", "dimensionless"),
+    "interstitial_network_dim": ("dimensionless", "dimensionless"),
+    "bvse_barrier_estimate": ("eV", "energy"),
+    "framework_bond_rigidity": ("dimensionless", "dimensionless"),
+    "framework_poly_distortion": ("dimensionless", "dimensionless"),
+    "framework_na_distance_stability": ("dimensionless", "dimensionless"),
+    "framework_sharing_topology": ("dimensionless", "dimensionless"),
+    "nana_nana_angle_mean": ("degree", "angle"),
+    "nana_second_neighbor_dist": ("angstrom", "length"),
+    "path_tortuosity": ("dimensionless", "dimensionless"),
+    "nana_spacing_uniformity": ("dimensionless", "dimensionless"),
+    "na_x_en_diff": ("Pauling", "electronegativity"),
+    "charge_balance_deviation": ("elementary_charge", "charge"),
+    "covalency_index": ("dimensionless", "dimensionless"),
+    "framework_d_electron_weighted": ("electron", "electron_count"),
+    "space_group_number": ("index", "categorical_index"),
+    "wyckoff_diversity": ("count", "count"),
+    "partial_occupancy_ratio": ("dimensionless", "dimensionless"),
+    "coordination_cv": ("dimensionless", "dimensionless"),
+    "volume_cv": ("dimensionless", "dimensionless"),
+}
+
+_INACTIVE_FOR_AUTOMATIC_SEARCH = {
+    "max_bond_length",  # compatibility alias of a2_max_dist
+    "bottleneck_anisotropy",  # permanently unavailable implementation
+    "bvse_barrier_estimate",  # permanently unavailable without BVSE backend
+}
+
+STRUCTURE_DESCRIPTOR_METADATA: dict[str, dict[str, object]] = {}
+for _name in AVAILABLE_STRUCTURE_DESCRIPTORS:
+    _unit, _dimension = _DESCRIPTOR_UNITS_AND_DIMENSIONS[_name]
+    _active = _name not in _INACTIVE_FOR_AUTOMATIC_SEARCH
+    STRUCTURE_DESCRIPTOR_METADATA[_name] = {
+        "unit": _unit,
+        "dimension": _dimension,
+        "active_for_search": _active,
+        # Retain the Task-1 key for existing featurizer/search consumers.
+        "searchable": _active,
+    }
+STRUCTURE_DESCRIPTOR_METADATA["max_bond_length"]["alias_of"] = "a2_max_dist"
+
+SEARCHABLE_STRUCTURE_DESCRIPTORS = {
+    name: descriptor
+    for name, descriptor in AVAILABLE_STRUCTURE_DESCRIPTORS.items()
+    if STRUCTURE_DESCRIPTOR_METADATA[name]["active_for_search"]
+}

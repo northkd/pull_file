@@ -15,9 +15,21 @@ import pandas as pd
 from pymatgen.core import Structure
 from pymatgen.io.cif import CifParser
 
-from descriptors import AVAILABLE_STRUCTURE_DESCRIPTORS
+from descriptors import (
+    AVAILABLE_STRUCTURE_DESCRIPTORS,
+    SEARCHABLE_STRUCTURE_DESCRIPTORS,
+    STRUCTURE_DESCRIPTOR_METADATA,
+)
 
 logger = logging.getLogger(__name__)
+
+
+def resolve_cif_path(value: str | Path, csv_dir: str | Path) -> Path:
+    """Resolve a CIF path, anchoring relative values to the CSV directory."""
+    cif_path = Path(value)
+    if cif_path.is_absolute():
+        return cif_path
+    return Path(csv_dir) / cif_path
 
 
 def load_structure_from_cif(cif_path: str | Path) -> Structure:
@@ -104,6 +116,7 @@ def featurize_dataset(
     output_path: str | Path,
     cif_column: str = "cif_path",
     descriptor_names: list[str] | None = None,
+    strict: bool = True,
 ) -> pd.DataFrame:
     """批量计算数据集中所有样本的结构描述符。
 
@@ -115,6 +128,7 @@ def featurize_dataset(
         output_path: 输出文件路径前缀 (自动追加 .csv 和 .json)
         cif_column: CIF 路径列名
         descriptor_names: 要计算的描述符名称列表，None 表示全部
+        strict: 为 True 时，在创建任何输出前检查全部 CIF 路径是否存在
 
     返回:
         包含原始列 + 描述符列的 DataFrame
@@ -129,7 +143,30 @@ def featurize_dataset(
         raise ValueError(f"CSV 中缺少列: {cif_column}")
 
     if descriptor_names is None:
-        descriptor_names = list(AVAILABLE_STRUCTURE_DESCRIPTORS.keys())
+        descriptor_names = list(SEARCHABLE_STRUCTURE_DESCRIPTORS.keys())
+
+    resolved_paths: dict[object, Path] = {}
+    missing_paths: list[tuple[object, object, Path | None]] = []
+    for idx, value in df[cif_column].items():
+        if pd.isna(value):
+            missing_paths.append((idx, value, None))
+            continue
+        resolved = resolve_cif_path(str(value), csv_dir)
+        resolved_paths[idx] = resolved
+        if not resolved.exists():
+            missing_paths.append((idx, value, resolved))
+
+    if strict and missing_paths:
+        details = ", ".join(
+            f"row {idx}: {resolved if resolved is not None else '<empty>'}"
+            for idx, _value, resolved in missing_paths[:3]
+        )
+        remainder = len(missing_paths) - 3
+        if remainder > 0:
+            details += f", ... and {remainder} more"
+        raise FileNotFoundError(
+            f"CIF preflight failed: {len(missing_paths)} missing path(s); {details}"
+        )
 
     # 初始化描述符列
     for name in descriptor_names:
@@ -143,12 +180,7 @@ def featurize_dataset(
         if pd.isna(cif_rel):
             logger.warning("行 %d: CIF 路径为空", idx)
             continue
-        # 解析路径: 先尝试原始路径，若不存在则相对于 CSV 目录解析
-        cif_path_candidate = Path(str(cif_rel))
-        if cif_path_candidate.exists():
-            cif_path_resolved = cif_path_candidate
-        else:
-            cif_path_resolved = (csv_dir / cif_path_candidate).resolve()
+        cif_path_resolved = resolved_paths[idx]
         if not cif_path_resolved.exists():
             logger.warning("行 %d: CIF 文件不存在: %s (原始: %s)",
                            idx, cif_path_resolved, cif_rel)
@@ -190,7 +222,7 @@ def build_feature_matrix(
     noise_seed: int = 42,
     min_valid_fraction: float = 0.5,
 ) -> tuple[pd.DataFrame, list[str], pd.DataFrame]:
-    """构建标准化特征矩阵 + 噪声注入。
+    """构建保留原始值和缺失值的特征矩阵，并注入固定噪声列。
 
     噪声注入的目的：测量"随机能有多幸运"。
     15个噪声列中，偶尔会有与目标偶然相关的，其选择频率就是"随机基线"。
@@ -205,16 +237,20 @@ def build_feature_matrix(
         min_valid_fraction: 列有效值最低比例（低于此值排除）
 
     返回:
-        feature_df: 标准化后的DataFrame（真实描述符 + 噪声列 + 元数据列）
+        feature_df: 原始可搜索描述符 + 固定噪声列 + 非描述符元数据列。
+            预测性填充和标准化必须由每个训练折内部的模型 Pipeline 完成。
         valid_cols: 保留的真实描述符列名列表
         noise_info_df: 噪声列元信息
     """
-    from sklearn.preprocessing import StandardScaler
-
     # --- 1. 自动检测描述符列 ---
     if descriptor_cols is None:
-        registered = set(AVAILABLE_STRUCTURE_DESCRIPTORS.keys())
+        registered = set(SEARCHABLE_STRUCTURE_DESCRIPTORS.keys())
         descriptor_cols = [c for c in df.columns if c in registered]
+    else:
+        descriptor_cols = [
+            c for c in descriptor_cols
+            if STRUCTURE_DESCRIPTOR_METADATA.get(c, {"searchable": True})["searchable"]
+        ]
 
     if not descriptor_cols:
         raise ValueError("未在 DataFrame 中找到任何已注册的描述符列")
@@ -245,43 +281,20 @@ def build_feature_matrix(
         logger.info("排除 %d 个描述符列 (有效值不足): %s",
                      len(dropped_cols), dropped_cols)
 
-    # --- 3. 提取描述符子矩阵，中位数填充 NaN ---
+    # --- 3. 保留描述符原始值和缺失值 ---
     X_real = df[valid_cols].copy()
-    for col in valid_cols:
-        n_missing = X_real[col].isna().sum()
-        if n_missing > 0:
-            median_val = X_real[col].median()
-            logger.info("列 %s: %d 个 NaN 用中位数 %.4f 填充",
-                         col, n_missing, median_val)
-            X_real[col] = X_real[col].fillna(median_val)
 
-    # --- 4. Z-score 标准化 ---
-    scaler_real = StandardScaler()
-    X_real_scaled = pd.DataFrame(
-        scaler_real.fit_transform(X_real),
-        columns=valid_cols,
-        index=df.index,
-    )
-
-    # --- 5. 生成噪声列 ---
+    # --- 4. 生成固定噪声列（不做数据依赖的全局拟合） ---
     rng = np.random.RandomState(noise_seed)
     noise_data = rng.randn(n_samples, n_noise)
     noise_cols = [f"noise_{i:03d}" for i in range(n_noise)]
     X_noise = pd.DataFrame(noise_data, columns=noise_cols, index=df.index)
 
-    # 噪声列也标准化 (理论上 N(0,1) 已经是标准化的，但统一处理更安全)
-    scaler_noise = StandardScaler()
-    X_noise_scaled = pd.DataFrame(
-        scaler_noise.fit_transform(X_noise),
-        columns=noise_cols,
-        index=df.index,
-    )
-
-    # --- 6. 记录噪声信息 ---
+    # --- 5. 记录噪声信息 ---
     target_values = df[target_col].values
     noise_records = []
     for col_name in noise_cols:
-        col_values = X_noise_scaled[col_name].values
+        col_values = X_noise[col_name].values
         # Pearson r 与目标
         r = np.corrcoef(col_values, target_values)[0, 1]
         noise_records.append({
@@ -292,13 +305,11 @@ def build_feature_matrix(
         })
     noise_info_df = pd.DataFrame(noise_records)
 
-    # --- 7. 拼接元数据列 (保留非描述符列，包括目标列) ---
-    metadata_cols = [
-        c for c in df.columns
-        if c not in valid_cols
-    ]
+    # --- 6. 拼接元数据列 (保留非描述符列，包括目标列) ---
+    registered_descriptor_names = set(AVAILABLE_STRUCTURE_DESCRIPTORS)
+    metadata_cols = [c for c in df.columns if c not in registered_descriptor_names]
     feature_df = pd.concat(
-        [df[metadata_cols], X_real_scaled, X_noise_scaled],
+        [df[metadata_cols], X_real, X_noise],
         axis=1,
     )
 

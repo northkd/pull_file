@@ -24,16 +24,28 @@ import json
 import logging
 import time
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 import pandas as pd
 
-from descriptors import AVAILABLE_STRUCTURE_DESCRIPTORS
+from automat_utils import resolve_frozen_input_identity
+from descriptors import SEARCHABLE_STRUCTURE_DESCRIPTORS
 from descriptors.featurizer import featurize_dataset, build_feature_matrix
 from descriptors.deconfound import DeconfoundAnalyzer
 from descriptors.stability import StabilitySelector, PhysicalGrouper
-from descriptors.combination import ConstrainedCombinationSearch, CombinationValidator
-from descriptors.cv_strategies import MultiStrategyCV
+from descriptors.combination import (
+    CombinationValidator,
+    ConstrainedCombinationSearch,
+    combination_candidates_to_csv_frame,
+    combination_validation_to_csv_frame,
+)
+from descriptors.cv_strategies import (
+    CV_SPEARMAN_SUMMARY_COLUMNS,
+    MultiStrategyCV,
+    summarize_cv_spearman,
+)
+from run_config import config_get, load_run_info
 
 logging.basicConfig(
     level=logging.INFO,
@@ -43,14 +55,117 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+class InsufficientFeatureDataError(RuntimeError):
+    """Raised when no structural descriptor has enough valid data to analyze."""
+
+
+BASELINE_RESULT_COLUMNS = [
+    "descriptor",
+    "family",
+    "deconfounded_spearman",
+    *CV_SPEARMAN_SUMMARY_COLUMNS,
+]
+
+
+def _configured_max_descriptors(
+    config_path: Path | None = None,
+) -> int:
+    """Read and validate the Stage-3 formula-size contract from run_info.yaml."""
+    path = config_path or Path(__file__).with_name("run_info.yaml")
+    config = load_run_info(path)
+    value = int(config_get(config, "combination.max_descriptors"))
+    if value not in (2, 3):
+        raise ValueError("combination.max_descriptors must be 2 or 3")
+    return value
+
+
+def _resolve_config_input_path(value: str | Path, config_path: Path) -> Path:
+    """Resolve a frozen input relative to the selected run-info file."""
+    path = Path(value)
+    if path.is_absolute():
+        return path
+    return (config_path.resolve().parent / path).resolve()
+
+
+def _frozen_pipeline_input_contract(config_path: Path) -> dict[str, Any]:
+    """Validate and resolve the raw/registry inputs shared with the Agent track."""
+    config = load_run_info(config_path)
+    identity = resolve_frozen_input_identity(config, config_path)
+    return {
+        "raw_file": identity.raw_file,
+        "featurized_file": _resolve_config_input_path(
+            config_get(config, "data.featurized_file"), config_path
+        ),
+        "structure_column": str(config_get(config, "data.structure_column")),
+        "target_column": str(config_get(config, "data.target_column")),
+        "system_column": str(config_get(config, "data.system_column")),
+        "anion_column": str(config_get(config, "data.anion_type_column")),
+        "descriptor_registry": identity.descriptor_registry,
+        "registry_revision": identity.registry_revision,
+        "frozen_identity": identity,
+    }
+
+
+def _configured_pipeline_output_dir(
+    config_path: Path | None = None,
+) -> str:
+    """Read the isolated Pipeline output directory from the shared run contract."""
+    path = config_path or Path(__file__).with_name("run_info.yaml")
+    config = load_run_info(path)
+    return _validate_pipeline_output_dir(config_get(config, "tracks.pipeline.output_dir"))
+
+
+def _validate_pipeline_output_dir(value: str | Path) -> str:
+    """Reject an output path that could overwrite Agent-track artifacts."""
+    output_dir = Path(value)
+    expected_prefix = ("results", "pipeline")
+    if (
+        output_dir.is_absolute()
+        or output_dir.parts[: len(expected_prefix)] != expected_prefix
+        or ".." in output_dir.parts
+    ):
+        raise ValueError(
+            "tracks.pipeline.output_dir must be a relative results/pipeline/ path"
+        )
+    return str(output_dir)
+
+
+def _format_cv_metric(row: pd.Series, prefix: str) -> str:
+    """Format a CV metric while keeping skipped strategies visibly distinct."""
+    if bool(row.get(f"{prefix}_skipped", False)):
+        return "SKIPPED"
+    value = float(row.get(f"{prefix}_spearman", float("nan")))
+    return f"{value:.3f}"
+
+
 # ============================================================
 # 命令行参数
 # ============================================================
 
-def parseArgs() -> argparse.Namespace:
+def parseArgs(argv: list[str] | None = None) -> argparse.Namespace:
     """解析命令行参数。"""
+    config_probe = argparse.ArgumentParser(add_help=False)
+    config_probe.add_argument(
+        "--run-info",
+        type=Path,
+        default=Path(__file__).with_name("run_info.yaml"),
+    )
+    probe_args, _unknown = config_probe.parse_known_args(argv)
+    try:
+        frozen_input = _frozen_pipeline_input_contract(probe_args.run_info)
+        configured_output_dir = _configured_pipeline_output_dir(probe_args.run_info)
+        configured_max_descriptors = _configured_max_descriptors(probe_args.run_info)
+    except (KeyError, ValueError) as exc:
+        config_probe.error(str(exc))
+
     parser = argparse.ArgumentParser(
         description="Na离子导体描述符搜索 4阶段管线",
+    )
+    parser.add_argument(
+        "--run-info",
+        type=Path,
+        default=probe_args.run_info,
+        help="冻结共享输入与 Pipeline 输出目录的 YAML 配置。",
     )
     parser.add_argument(
         "--skip-featurize",
@@ -66,8 +181,8 @@ def parseArgs() -> argparse.Namespace:
     parser.add_argument(
         "--output-dir",
         type=str,
-        default="results",
-        help="输出目录（默认 results/）",
+        default=configured_output_dir,
+        help="Pipeline 输出目录（默认 results/pipeline/；不读取 Agent 输出）",
     )
     parser.add_argument(
         "--alpha",
@@ -81,7 +196,27 @@ def parseArgs() -> argparse.Namespace:
         default=42,
         help="随机种子（默认42）",
     )
-    return parser.parse_args()
+    parser.add_argument(
+        "--selection-alpha",
+        type=float,
+        default=0.05,
+        help="Lasso稳定性选择正则化强度（默认0.05）",
+    )
+    parser.add_argument(
+        "--max-descriptors",
+        type=int,
+        choices=(2, 3),
+        default=configured_max_descriptors,
+        help="Stage 3公式最大描述符数（默认读取run_info.yaml）",
+    )
+    args = parser.parse_args(argv)
+    try:
+        args.output_dir = _validate_pipeline_output_dir(args.output_dir)
+    except ValueError as exc:
+        parser.error(str(exc))
+    for key, value in frozen_input.items():
+        setattr(args, key, value)
+    return args
 
 
 # ============================================================
@@ -89,23 +224,23 @@ def parseArgs() -> argparse.Namespace:
 # ============================================================
 
 def runStage0(args: argparse.Namespace) -> tuple[pd.DataFrame, pd.DataFrame, list[str], list[str], np.ndarray]:
-    """Stage 0: 从原始数据计算结构描述符，构建标准化特征矩阵。
+    """Stage 0: 从原始数据计算结构描述符，构建保留原值的特征矩阵。
 
     返回:
         (feature_df, raw_df, system_labels, anion_labels, y)
-        - feature_df: 标准化特征矩阵（含噪声列和元数据列）
+        - feature_df: 原始描述符矩阵（含固定噪声列、缺失值和元数据列）
         - raw_df: 原始特征化数据（含描述符原始值）
         - system_labels: 体系标签列表
         - anion_labels: 阴离子类型标签列表
         - y: log_sigma 目标向量
     """
-    featurized_path = Path("data/naconductor_featurized.csv")
+    featurized_path = Path(args.featurized_file)
 
     if args.skip_featurize and featurized_path.exists():
         print("[Stage 0] 跳过特征化，加载已有数据...")
         raw_df = pd.read_csv(featurized_path, encoding="utf-8")
     else:
-        raw_csv = Path("data/naconductor_raw.csv")
+        raw_csv = Path(args.raw_file)
         if not raw_csv.exists():
             print(f"错误: 找不到输入文件 {raw_csv}")
             sys.exit(1)
@@ -114,21 +249,28 @@ def runStage0(args: argparse.Namespace) -> tuple[pd.DataFrame, pd.DataFrame, lis
         print("  预计耗时 3-5 分钟（84 个 CIF × 41 个描述符）")
         raw_df = featurize_dataset(
             str(raw_csv),
-            "data/naconductor_featurized",
-            cif_column="cif_path",
+            str(featurized_path),
+            cif_column=args.structure_column,
         )
 
-    # 构建标准化特征矩阵
-    print("[Stage 0] 构建标准化特征矩阵...")
-    feature_df, valid_cols, noise_info_df = build_feature_matrix(raw_df)
+    # 构建保留原始值的特征矩阵；预测预处理在每个训练折内完成。
+    print("[Stage 0] 构建原始特征矩阵...")
+    feature_df, valid_cols, noise_info_df = build_feature_matrix(
+        raw_df, target_col=args.target_column
+    )
 
     # 提取标签和目标
-    system_labels = raw_df["system"].tolist()
-    anion_labels = raw_df["anion_type"].tolist()
-    y = raw_df["log_sigma"].values.astype(float)
+    system_labels = raw_df[args.system_column].tolist()
+    anion_labels = raw_df[args.anion_column].tolist()
+    y = raw_df[args.target_column].values.astype(float)
 
     n_real = len(valid_cols)
     n_noise = len([c for c in feature_df.columns if c.startswith("noise_")])
+    if n_real == 0:
+        raise InsufficientFeatureDataError(
+            "No valid structural descriptor values are available after coverage "
+            "filtering; regenerate the featurized dataset from valid CIF inputs."
+        )
     print(f"[Stage 0] 完成: {len(raw_df)} 样本, {n_real} 有效描述符, {n_noise} 噪声列")
 
     return feature_df, raw_df, system_labels, anion_labels, y
@@ -145,11 +287,12 @@ def runStage1(
     anion_labels: list[str],
     alpha: float,
     output_dir: Path,
-) -> pd.DataFrame:
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Stage 1: 对所有描述符执行去混杂分析，筛选有效信号。
 
     返回:
-        预筛选后的去混杂结果 DataFrame（仅保留标签为强物理/弱物理/混合的描述符）
+        (完整审计结果, 预筛选结果)。预筛选结果仅保留标签为
+        强物理/弱物理/混合的描述符。
     """
     print("\n" + "=" * 60)
     print("[Stage 1] 单描述符去混杂筛选")
@@ -171,11 +314,16 @@ def runStage1(
     # 预筛选: 保留标签为强物理信号/弱物理信号/混合信号的描述符 (errata P5)
     pass_labels = {"强物理信号", "弱物理信号", "混合信号"}
     filtered_df = deconfound_df[deconfound_df["label"].isin(pass_labels)].copy()
+    filtered_df.to_csv(
+        output_dir / "stage1_prefiltered_results.csv",
+        index=False,
+        encoding="utf-8",
+    )
     n_pass = len(filtered_df)
     n_total = len(deconfound_df)
     print(f"\nStage 1: {n_pass} 描述符通过预筛选（共 {n_total} 个）")
 
-    return filtered_df
+    return deconfound_df, filtered_df
 
 
 # ============================================================
@@ -189,19 +337,32 @@ def runStage2(
     alpha: float,
     seed: int,
     output_dir: Path,
+    max_descriptors: int = 2,
 ) -> pd.DataFrame:
-    """Stage 2: 稳定性选择筛选 + 按物理族选代表描述符。
+    """Stage 2: stability selection and the bounded Stage-3 candidate pool.
 
-    返回:
-        代表描述符 DataFrame（含 is_representative 列）
+    Pair-only search keeps one stable representative per family.  A permitted
+    three-descriptor search retains up to two stable representatives per
+    family: the second slot is a narrowly scoped formula-candidate slot needed
+    for the plan-approved ``two from one family + adjacent family`` triples,
+    rather than a second independent scientific finding.
+
+    Returns:
+        Candidate-representative DataFrame with ``is_representative``.
     """
+    if max_descriptors not in (2, 3):
+        raise ValueError("max_descriptors must be 2 or 3")
     print("\n" + "=" * 60)
     print("[Stage 2] 稳定性选择与物理族代表")
     print("=" * 60)
 
-    # 分离真实描述符列和噪声列
-    registered = set(AVAILABLE_STRUCTURE_DESCRIPTORS.keys())
-    real_col_names = [c for c in feature_df.columns if c in registered]
+    # Stage 2 只允许 Stage 1 预筛选后的真实描述符；固定噪声列全部保留。
+    registered = set(SEARCHABLE_STRUCTURE_DESCRIPTORS.keys())
+    prefiltered = set(deconfound_df["descriptor"].tolist())
+    real_col_names = [
+        c for c in feature_df.columns
+        if c in registered and c in prefiltered
+    ]
     noise_col_names = [c for c in feature_df.columns if c.startswith("noise_")]
 
     X_real = feature_df[real_col_names].values.astype(float)
@@ -227,15 +388,25 @@ def runStage2(
 
     # 物理族代表选择
     print("  按物理族选择代表...")
-    grouper = PhysicalGrouper(max_per_family=1)
+    # A triple cannot be constructed from a one-per-family pool.  Keep the
+    # legacy primary-representative capacity for pair-only search, and open
+    # exactly one additional stable slot per family only when triples are
+    # explicitly enabled by the frozen Pipeline contract.
+    max_per_family = 2 if max_descriptors == 3 else 1
+    grouper = PhysicalGrouper(max_per_family=max_per_family)
     representative_df = grouper.group_and_select(stability_df, deconfound_df)
+    representative_df.attrs["max_descriptors"] = max_descriptors
+    representative_df.attrs["max_representatives_per_family"] = max_per_family
 
     # 保存代表结果
     representative_df.to_csv(output_dir / "stage2_representatives.csv", index=False, encoding="utf-8")
 
     # 统计
     n_reps = representative_df["is_representative"].sum()
-    print(f"\nStage 2: {n_reps} 个代表描述符（来自 {n_stable} 个稳定描述符）")
+    print(
+        f"\nStage 2: {n_reps} 个组合候选代表"
+        f"（来自 {n_stable} 个稳定描述符；每族最多 {max_per_family} 个）"
+    )
 
     # 打印每个代表
     reps = representative_df[representative_df["is_representative"] == True]  # noqa: E712
@@ -261,8 +432,9 @@ def runStage3(
     alpha: float,
     seed: int,
     output_dir: Path,
+    max_descriptors: int | None = None,
 ) -> pd.DataFrame:
-    """Stage 3: 从代表描述符中搜索物理约束允许的组合。
+    """Stage 3: Search explicit raw-value pair and bounded-triple formulas.
 
     返回:
         组合候选 DataFrame
@@ -272,16 +444,26 @@ def runStage3(
     print("=" * 60)
 
     searcher = ConstrainedCombinationSearch(alpha=alpha, seed=seed)
+    effective_max_descriptors = (
+        _configured_max_descriptors()
+        if max_descriptors is None else int(max_descriptors)
+    )
     candidates_df = searcher.search(
         feature_df, y, system_labels, anion_labels,
-        representative_df, max_candidates=150,
+        representative_df,
+        max_candidates=150,
+        max_descriptors=effective_max_descriptors,
     )
 
     # 保存结果
-    candidates_df.to_csv(output_dir / "stage3_combination_candidates.csv", index=False, encoding="utf-8")
+    combination_candidates_to_csv_frame(candidates_df).to_csv(
+        output_dir / "stage3_combination_candidates.csv",
+        index=False,
+        encoding="utf-8",
+    )
 
     n_candidates = len(candidates_df)
-    print(f"\nStage 3: {n_candidates} 个有效组合候选")
+    print(f"\nStage 3: {n_candidates} 个有效二/三描述符组合候选")
 
     # 打印 top 5
     if not candidates_df.empty:
@@ -311,7 +493,7 @@ def runStage4(
     top_k: int,
     output_dir: Path,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Stage 4: 多策略交叉验证组合候选 + 单描述符基线。
+    """Stage 4: exploratory V1--V4 evidence, CV, and single baseline.
 
     返回:
         (validation_df, baseline_df)
@@ -323,7 +505,7 @@ def runStage4(
     print("=" * 60)
 
     # --- 组合验证 ---
-    print(f"  验证 Top-{top_k} 组合候选...")
+    print(f"  验证 Top-{top_k} 组合候选（V1–V4，探索性证据）...")
     validator = CombinationValidator(alpha=alpha, seed=seed)
     validation_df = validator.validate(
         feature_df, y, system_labels, anion_labels,
@@ -331,12 +513,17 @@ def runStage4(
     )
 
     # 保存验证结果
-    validation_df.to_csv(output_dir / "stage4_validation_results.csv", index=False, encoding="utf-8")
+    combination_validation_to_csv_frame(validation_df).to_csv(
+        output_dir / "stage4_validation_results.csv",
+        index=False,
+        encoding="utf-8",
+    )
 
     n_validated = len(validation_df)
     print(f"  成功验证 {n_validated} 个组合")
 
     # --- 单描述符基线 ---
+    baseline_df = pd.DataFrame(columns=BASELINE_RESULT_COLUMNS)
     # 选出去混杂Spearman绝对值最高的描述符作为基线
     if not deconfound_df.empty:
         best_single_row = deconfound_df.iloc[0]  # 已按 |deconfounded_spearman| 降序排列
@@ -348,12 +535,6 @@ def runStage4(
         # 获取该描述符的特征列
         if best_single_name in feature_df.columns:
             x_single = feature_df[best_single_name].values.astype(float)
-            # 处理 NaN: 用均值填充
-            nan_mask = np.isnan(x_single)
-            if nan_mask.any():
-                col_mean = np.nanmean(x_single)
-                x_single = np.where(nan_mask, col_mean, x_single)
-
             X_single = x_single.reshape(-1, 1)
             y_arr = np.asarray(y, dtype=float)
 
@@ -367,29 +548,23 @@ def runStage4(
                     np.asarray(system_labels)[valid_mask],
                     np.asarray(anion_labels)[valid_mask],
                 )
+                cv_summary = summarize_cv_spearman(cv_results)
 
                 baseline_records = [{
                     "descriptor": best_single_name,
                     "family": best_single_row["family"],
                     "deconfounded_spearman": best_single_row["deconfounded_spearman"],
-                    "anion_stratified_spearman": cv_results["anion_stratified_cv"]["mean_spearman"],
-                    "loso_spearman": cv_results["leave_one_system_out"]["mean_spearman"],
-                    "repeated_subsample_spearman": cv_results["repeated_subsample"]["mean_spearman"],
-                    "composite_score": float(np.mean([
-                        abs(cv_results["anion_stratified_cv"]["mean_spearman"]),
-                        abs(cv_results["leave_one_system_out"]["mean_spearman"]),
-                        abs(cv_results["repeated_subsample"]["mean_spearman"]),
-                    ])),
+                    **cv_summary,
                 }]
-                baseline_df = pd.DataFrame(baseline_records)
+                baseline_df = pd.DataFrame.from_records(
+                    baseline_records,
+                    columns=BASELINE_RESULT_COLUMNS,
+                )
             else:
-                baseline_df = pd.DataFrame()
                 print("  警告: 有效样本不足，跳过单描述符基线CV")
         else:
-            baseline_df = pd.DataFrame()
             print(f"  警告: 描述符 {best_single_name} 不在特征矩阵中，跳过基线CV")
     else:
-        baseline_df = pd.DataFrame()
         best_single_name = "N/A"
 
     # 保存基线结果
@@ -397,10 +572,13 @@ def runStage4(
         baseline_df.to_csv(output_dir / "stage4_single_descriptor_baseline.csv", index=False, encoding="utf-8")
         print(f"  基线描述符: {best_single_name}")
         for _, row in baseline_df.iterrows():
-            print(f"    阴离子分层: {row['anion_stratified_spearman']:.3f}")
-            print(f"    LOSO:       {row['loso_spearman']:.3f}")
-            print(f"    重复子采样: {row['repeated_subsample_spearman']:.3f}")
-            print(f"    综合得分:   {row['composite_score']:.3f}")
+            print(f"    阴离子分层: {_format_cv_metric(row, 'anion_stratified')}")
+            print(f"    LOSO:       {_format_cv_metric(row, 'loso')}")
+            print(f"    重复子采样: {_format_cv_metric(row, 'repeated_subsample')}")
+            print(
+                f"    综合得分:   {row['composite_score']:.3f} "
+                f"({int(row['composite_strategy_count'])}/3 strategies)"
+            )
 
     return validation_df, baseline_df
 
@@ -435,7 +613,7 @@ def generateReport(
     y_min = float(y_values.min()) if len(y_values) > 0 else 0.0
     y_max = float(y_values.max()) if len(y_values) > 0 else 0.0
 
-    registered = set(AVAILABLE_STRUCTURE_DESCRIPTORS.keys())
+    registered = set(SEARCHABLE_STRUCTURE_DESCRIPTORS.keys())
     n_total_desc = len(registered)
     n_valid_desc = len(filtered_deconfound_df)
 
@@ -464,15 +642,21 @@ def generateReport(
             f"{rho:.3f} | {freq:.2f} |"
         )
     stage2_table = "\n".join(stage2_table_rows)
+    stage2_capacity = int(
+        representative_df.attrs.get("max_representatives_per_family", 1)
+    )
 
     # ---- Stage 3 Top10 组合表格 ----
     top10_comb = candidates_df.head(10)
     stage3_table_rows = []
     for _, row in top10_comb.iterrows():
         cross_flag = "是" if row["is_cross_family"] else "否"
+        components = row.get("components", [row["d1"], row["d2"]])
+        operators = row.get("operators", [row["operator"]])
         stage3_table_rows.append(
-            f"| {row['combined_name']} | {row['d1']} | {row['d2']} | "
-            f"{row['operator']} | {row['combined_deconf_spearman']:.3f} | {cross_flag} |"
+            f"| {row['combined_name']} | {len(components)} | "
+            f"{', '.join(map(str, components))} | {', '.join(map(str, operators))} | "
+            f"{row['combined_deconf_spearman']:.3f} | {cross_flag} |"
         )
     stage3_table = "\n".join(stage3_table_rows)
 
@@ -481,8 +665,9 @@ def generateReport(
     if not baseline_df.empty:
         bl = baseline_df.iloc[0]
         baseline_row = (
-            f"| {bl['descriptor']} | {bl['anion_stratified_spearman']:.3f} | "
-            f"{bl['loso_spearman']:.3f} | {bl['repeated_subsample_spearman']:.3f} |"
+            f"| {bl['descriptor']} | {_format_cv_metric(bl, 'anion_stratified')} | "
+            f"{_format_cv_metric(bl, 'loso')} | "
+            f"{_format_cv_metric(bl, 'repeated_subsample')} |"
         )
         best_single_name = bl["descriptor"]
         best_single_family = bl.get("family", "Unknown")
@@ -496,13 +681,52 @@ def generateReport(
     # 组合验证表格
     stage4_table_rows = []
     for _, row in validation_df.iterrows():
+        blocks = row.get("evidence_blocks", {})
+        availability = "/".join(
+            "OK" if bool(blocks.get(name, {}).get("available", False)) else "N/A"
+            for name in ("noise_baseline", "factor_spanning", "per_system", "bootstrap_ci")
+        )
+        bootstrap = row.get("bootstrap_ci", {})
+        if bool(bootstrap.get("available", False)):
+            uncertainty = (
+                f"[{bootstrap['ci_lower']:.3f}, {bootstrap['ci_upper']:.3f}]"
+            )
+        else:
+            uncertainty = "UNAVAILABLE"
         stage4_table_rows.append(
-            f"| {row['combined_name']} | {row['d1']} | {row['d2']} | "
-            f"{row['operator']} | {row['combined_deconf_spearman']:.3f} | "
-            f"{row['anion_stratified_spearman']:.3f} | {row['loso_spearman']:.3f} | "
-            f"{row['repeated_subsample_spearman']:.3f} | {row['composite_score']:.3f} |"
+            f"| {row['combined_name']} | {int(row.get('n_components', 2))} | "
+            f"{row['combined_deconf_spearman']:.3f} | "
+            f"{_format_cv_metric(row, 'anion_stratified')} | "
+            f"{_format_cv_metric(row, 'loso')} | "
+            f"{_format_cv_metric(row, 'repeated_subsample')} | "
+            f"{row['composite_score']:.3f} "
+            f"({int(row['composite_strategy_count'])}/3) | {availability} | "
+            f"{uncertainty} | 探索性 |"
         )
     stage4_table = "\n".join(stage4_table_rows)
+
+    if not validation_df.empty:
+        best_v2 = validation_df.iloc[0].get("factor_spanning", {})
+        best_v2_rho = best_v2.get(
+            "oof_residual_target_vs_formula_prediction_spearman", float("nan")
+        )
+        best_v2_summary = (
+            f"OOF残差预测Spearman={best_v2_rho:.3f}, "
+            f"可用折={best_v2.get('n_folds_available', 0)}/"
+            f"{best_v2.get('n_folds_requested', 0)}, "
+            f"OOF样本={best_v2.get('n_oof_samples', 0)}"
+        )
+        best_v2_control_audit = (
+            f"primary={best_v2.get('primary_control', 'unavailable')}, "
+            f"system_rank={best_v2.get('system_design_rank', 'N/A')}, "
+            f"combined_rank={best_v2.get('confounder_rank', 'N/A')}, "
+            f"anion_incremental_rank={best_v2.get('anion_incremental_rank', 'N/A')}, "
+            f"redundant_anion_columns="
+            f"{best_v2.get('anion_redundant_columns', [])}"
+        )
+    else:
+        best_v2_summary = "UNAVAILABLE"
+        best_v2_control_audit = "UNAVAILABLE"
 
     # ---- 结论 ----
     # 最强组合
@@ -524,15 +748,21 @@ def generateReport(
 
     # 跨CV策略一致性评估
     if not validation_df.empty:
-        # 检查各策略 Spearman 符号一致性
+        # 仅检查实际可用（未跳过且有限）的策略；跳过不计作证据。
         signs = []
         for _, row in validation_df.head(3).iterrows():
-            signs.append(np.sign(row["anion_stratified_spearman"]))
-            signs.append(np.sign(row["loso_spearman"]))
-            signs.append(np.sign(row["repeated_subsample_spearman"]))
+            for prefix in (
+                "anion_stratified",
+                "loso",
+                "repeated_subsample",
+            ):
+                if bool(row.get(f"{prefix}_available", False)):
+                    signs.append(np.sign(row[f"{prefix}_spearman"]))
         n_positive = sum(1 for s in signs if s > 0)
         n_negative = sum(1 for s in signs if s < 0)
-        if n_positive == 0 and n_negative == 0:
+        if not signs:
+            consistency_desc = "无可用CV策略"
+        elif n_positive == 0 and n_negative == 0:
             consistency_desc = "所有CV策略均无显著相关"
         elif n_positive == len(signs) or n_negative == len(signs):
             consistency_desc = "全部同向，一致性优秀"
@@ -573,6 +803,9 @@ def generateReport(
 - 噪声级: {label_counts.get('噪声级', 0)}
 
 ## Stage 2: 稳定性选择与族代表
+候选池规则：每个物理族最多保留 {stage2_capacity} 个稳定代表。三描述符模式下，
+第二个同族名额仅用于受限的“同族两个 + 相邻族一个”公式构造，不应被解读为第二项独立科学发现。
+
 ### 族代表列表
 | 描述符 | 族 | 族名 | 去混杂Spearman | 稳定性频率 |
 |--------|-----|------|---------------|-----------|
@@ -580,20 +813,27 @@ def generateReport(
 
 ## Stage 3: 约束组合搜索
 ### Top 10 组合候选
-| 组合名 | d1 | d2 | 运算符 | 去混杂Spearman | 跨族? |
-|--------|----|----|--------|---------------|-------|
+| 组合名 | 描述符数 | 组成 | 运算符序列 | 去混杂Spearman | 跨族? |
+|--------|----------|------|------------|---------------|-------|
 {stage3_table}
 
-## Stage 4: 多策略CV验证
+## Stage 4: V1–V4探索性验证与多策略CV
 ### 最佳单描述符基线
 | 描述符 | 阴离子分层 | LOSO | 重复子采样 |
 |--------|-----------|------|-----------|
 {baseline_row}
 
 ### Top组合验证结果
-| 组合名 | d1 | d2 | 运算符 | 去混杂Spearman | 阴离子分层 | LOSO | 重复子采样 | 综合得分 |
-|--------|----|----|--------|---------------|-----------|------|-----------|---------|
+| 组合名 | 描述符数 | 去混杂Spearman | 阴离子分层 | LOSO | 重复子采样 | 综合得分 | V1/V2/V3/V4 | 体系分层Bootstrap 95% CI | 状态 |
+|--------|----------|---------------|-----------|------|-----------|---------|-------------|---------------------------|------|
 {stage4_table}
+
+注：V1–V4依次为匹配噪声基线、已知因素后关联、体系内原始Spearman、体系分层Bootstrap区间。`SKIPPED` 策略不计入综合得分；括号显示可用策略数/3。所有组合证据均为探索性，不作因果解释；完整公式组成、运算符、规则和原始值来源保存在 CSV/JSON provenance 中。
+
+### V2 已知因素后目标残差预测审计（最佳组合）
+- {best_v2_summary}
+- 控制设计: {best_v2_control_audit}
+- 语义: 折安全的探索性预测关联；不是因果效应。双侧偏相关仅作为补充证据保存在 artifact 中。
 
 ## 结论
 ### 物理发现
@@ -664,35 +904,53 @@ def main() -> None:
 
     args = parseArgs()
     output_dir = Path(args.output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
 
     print("=" * 60)
     print("Na离子导体描述符搜索管线")
-    print(f"  alpha={args.alpha}, seed={args.seed}, top_k={args.top_k}")
+    print(
+        f"  ridge_alpha={args.alpha}, selection_alpha={args.selection_alpha}, "
+        f"seed={args.seed}, top_k={args.top_k}, "
+        f"max_descriptors={args.max_descriptors}"
+    )
     print(f"  输出目录: {output_dir.resolve()}")
     print("=" * 60)
 
     # Stage 0: 特征化
     feature_df, raw_df, system_labels, anion_labels, y = runStage0(args)
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     # Stage 1: 单描述符去混杂筛选
-    deconfound_df = runStage1(feature_df, y, system_labels, anion_labels, args.alpha, output_dir)
-    # filtered_deconfound_df 用于报告统计，Stage 2 接收完整的 deconfound_df
-    filtered_deconfound_df = deconfound_df
+    deconfound_df, filtered_deconfound_df = runStage1(
+        feature_df, y, system_labels, anion_labels, args.alpha, output_dir
+    )
 
     # Stage 2: 稳定性选择 + 物理族代表
-    representative_df = runStage2(feature_df, y, deconfound_df, args.alpha, args.seed, output_dir)
+    representative_df = runStage2(
+        feature_df,
+        y,
+        filtered_deconfound_df,
+        args.selection_alpha,
+        args.seed,
+        output_dir,
+        max_descriptors=args.max_descriptors,
+    )
 
     # Stage 3: 约束组合搜索
     candidates_df = runStage3(
         feature_df, y, system_labels, anion_labels,
         representative_df, args.alpha, args.seed, output_dir,
+        max_descriptors=args.max_descriptors,
     )
 
     # Stage 4: 多策略CV验证
     validation_df, baseline_df = runStage4(
         feature_df, y, system_labels, anion_labels,
-        deconfound_df, candidates_df, args.alpha, args.seed, args.top_k, output_dir,
+        filtered_deconfound_df,
+        candidates_df,
+        args.alpha,
+        args.seed,
+        args.top_k,
+        output_dir,
     )
 
     # 生成报告
@@ -711,4 +969,11 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (InsufficientFeatureDataError, FileNotFoundError) as exc:
+        # A missing raw/CIF input is a controlled data-integrity failure, not a
+        # Python crash.  Keep the diagnosis concise and preserve the guarantee
+        # that Stage 0 failed before ``results/pipeline`` was created.
+        print(f"ERROR: {exc}", file=sys.stderr)
+        raise SystemExit(2) from None

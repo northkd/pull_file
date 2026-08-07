@@ -103,6 +103,22 @@ CROSS_GROUP_RULES: dict[str, object] = {
 # 辅助函数
 # ============================================================
 
+def element_symbol(value: object) -> str:
+    """Return an element symbol for an Element, Species, or species name."""
+    symbol = getattr(value, "symbol", None)
+    if symbol is not None:
+        return str(symbol)
+    return str(value).rstrip("+-0123456789")
+
+
+def site_occupancies_by_symbol(site) -> dict[str, float]:
+    """Aggregate a site's occupancies by charge-independent element symbol."""
+    totals: dict[str, float] = {}
+    for species, occupancy in site.species.items():
+        symbol = element_symbol(species)
+        totals[symbol] = totals.get(symbol, 0.0) + float(occupancy)
+    return totals
+
 def get_na_sites(struct: Structure) -> list[int]:
     """获取结构中 Na 位点的索引列表。
 
@@ -110,8 +126,7 @@ def get_na_sites(struct: Structure) -> list[int]:
     """
     na_indices: list[int] = []
     for i, site in enumerate(struct):
-        species_dict = site.species.as_dict()
-        na_occ = species_dict.get("Na", 0.0)
+        na_occ = site_occupancies_by_symbol(site).get("Na", 0.0)
         if na_occ > 1e-6:
             na_indices.append(i)
     return na_indices
@@ -121,8 +136,8 @@ def get_anion_sites(struct: Structure) -> list[int]:
     """获取结构中阴离子位点的索引列表。"""
     anion_indices: list[int] = []
     for i, site in enumerate(struct):
-        for el in site.species.elements:
-            if str(el) in ANION_ELEMENTS:
+        for symbol in site_occupancies_by_symbol(site):
+            if symbol in ANION_ELEMENTS:
                 anion_indices.append(i)
                 break
     return anion_indices
@@ -137,7 +152,7 @@ def get_framework_sites(struct: Structure) -> list[int]:
 
 def _major_species(site) -> str:
     """获取位点上占位最多的元素符号。"""
-    species_dict = site.species.as_dict()
+    species_dict = site_occupancies_by_symbol(site)
     if not species_dict:
         return ""
     return max(species_dict.items(), key=lambda kv: kv[1])[0]
@@ -145,7 +160,7 @@ def _major_species(site) -> str:
 
 def _site_occ(site, symbol: str) -> float:
     """获取位点上某元素的占位数。"""
-    return site.species.as_dict().get(symbol, 0.0)
+    return site_occupancies_by_symbol(site).get(symbol, 0.0)
 
 
 def get_na_x_bonds(
@@ -306,48 +321,23 @@ def find_interstitial_sites(
     except Exception:
         return []
 
-    # 晶胞边界 (Å)
-    origin = np.array([0.0, 0.0, 0.0])
-    a_vec = lattice.matrix[0]
-    b_vec = lattice.matrix[1]
-    c_vec = lattice.matrix[2]
-
-    # 将笛卡尔坐标转回分数坐标以判断是否在原胞内
-    n_orig = len(struct)
-
     interstitial_sites: list[dict] = []
-    for ridge_idx, ridge in enumerate(vor.ridge_vertices):
-        if -1 in ridge:
-            continue  # 跳过无限远脊
-        vertices = [vor.vertices[v] for v in ridge if v >= 0]
-        if len(vertices) < 3:
-            continue
-
-        # 取脊的中点作为候选间隙位点
-        ridge_center = np.mean(vertices, axis=0)
-
+    for vertex in vor.vertices:
         # 检查是否在原胞内 (用分数坐标)
-        frac = lattice.get_fractional_coords(ridge_center)
+        frac = lattice.get_fractional_coords(vertex)
         in_cell = all(-1e-6 <= f < 1.0 - 1e-6 for f in frac)
         if not in_cell:
             continue
 
-        # 检查与最近原子的距离
-        dists = np.linalg.norm(cart_coords - ridge_center, axis=1)
+        # 周期性影像已包含在 Voronoi 点集中；用其检查最近原子距离。
+        dists = np.linalg.norm(all_points_arr - vertex, axis=1)
         min_dist = float(np.min(dists))
         if min_dist < min_dist_from_atom:
             continue
 
-        # 估算该间隙的 Voronoi 区域体积（用包含的顶点凸包体积近似）
-        from scipy.spatial import ConvexHull
-        try:
-            vol = float(ConvexHull(np.array(vertices)).volume)
-        except Exception:
-            vol = 0.0
-
         interstitial_sites.append({
-            "coords": ridge_center,
-            "volume": vol,
+            "coords": np.array(vertex, dtype=float),
+            "volume": 0.0,
         })
 
     # 去重: 同一区域可能因周期性影像重复出现
@@ -356,7 +346,10 @@ def find_interstitial_sites(
         for site in interstitial_sites[1:]:
             is_dup = False
             for u in unique:
-                if np.linalg.norm(site["coords"] - u["coords"]) < 0.5:
+                site_frac = lattice.get_fractional_coords(site["coords"])
+                unique_frac = lattice.get_fractional_coords(u["coords"])
+                distance, _image = lattice.get_distance_and_image(site_frac, unique_frac)
+                if float(distance) < 0.5:
                     is_dup = True
                     break
             if not is_dup:

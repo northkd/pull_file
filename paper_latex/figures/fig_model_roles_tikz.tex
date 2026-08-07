@@ -1,0 +1,28 @@
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize,
+  stage/.style={draw=NatureBlue!65,rounded corners=2pt,fill=NatureBlue!6,minimum width=25mm,minimum height=16mm,align=center},
+  q/.style={draw=NatureLight,rounded corners=2pt,fill=white,minimum width=25mm,minimum height=14mm,align=center},
+  arr/.style={-{Latex[length=2mm]},thick,draw=NatureGray}
+]
+\node[stage] (s0) at (0,0) {Stage 0\\结构描述符};
+\node[stage] (s1) at (2.8,0) {Stage 1\\Ridge + Spearman};
+\node[stage] (s2) at (5.6,0) {Stage 2\\Lasso + 噪声};
+\node[stage] (s3) at (8.4,0) {Stage 3\\规则组合};
+\node[stage] (s4) at (11.2,0) {Stage 4\\Ridge CV + V1--V4};
+\draw[arr] (s0) -- (s1); \draw[arr] (s1) -- (s2); \draw[arr] (s2) -- (s3); \draw[arr] (s3) -- (s4);
+
+\node[q] (q0) at (0,-2.35) {CIF 是否真实可用？\\$X$ 对应何种迁移环节？};
+\node[q] (q1) at (2.8,-2.35) {$X$--$Y$ 是否只是\\体系 $Z$ 的均值差？};
+\node[q] (q2) at (5.6,-2.35) {扰动材料样本后\\$X$ 是否反复入选？};
+\node[q] (q3) at (8.4,-2.35) {多个迁移条件能否形成\\简单、量纲合理的假设？};
+\node[q] (q4) at (11.2,-2.35) {候选能否在未见材料\\和未见体系中复现？};
+\draw[arr] (s0) -- (q0); \draw[arr] (s1) -- (q1); \draw[arr] (s2) -- (q2); \draw[arr] (s3) -- (q3); \draw[arr] (s4) -- (q4);
+
+\node[draw=NatureOrange!65,fill=NatureOrange!7,rounded corners=2pt,minimum width=48mm,minimum height=14mm,align=center] (ridge1) at (3.0,-4.8)
+{Ridge（去混杂）\\估计“该体系通常的 $X$ 与 $Y$”};
+\node[draw=NatureOrange!65,fill=NatureOrange!7,rounded corners=2pt,minimum width=48mm,minimum height=14mm,align=center] (ridge2) at (9.4,-4.8)
+{Ridge（验证）\\低容量折外探针，不负责发现复杂规律};
+\node[draw=NatureGreen!65,fill=NatureGreen!7,rounded corners=2pt,minimum width=48mm,minimum height=14mm,align=center] (lasso) at (6.2,-6.65)
+{Lasso（筛选）\\用非零系数定义“这次是否选中”};
+\draw[arr] (q1) -- (ridge1); \draw[arr] (q4) -- (ridge2); \draw[arr] (q2) -- (lasso);
+\end{tikzpicture}

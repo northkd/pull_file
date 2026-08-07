@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize,
+  box/.style={draw=NatureLight,rounded corners=2pt,fill=NaturePale,minimum width=31mm,minimum height=12mm,align=center},
+  risk/.style={draw=NatureRed!65,rounded corners=2pt,fill=NatureRed!6,minimum width=29mm,minimum height=16mm,align=center},
+  solve/.style={draw=NatureGreen!65,rounded corners=2pt,fill=NatureGreen!7,minimum width=29mm,minimum height=16mm,align=center},
+  arr/.style={-{Latex[length=2mm]},thick,draw=NatureGray}
+]
+\node[box] (x) at (0,0) {结构描述符 $X$\\配位、网络、空位、骨架};
+\node[box] (z) at (4.6,0) {体系背景 $Z$\\NASICON / sulfide / halide};
+\node[box] (y) at (9.2,0) {离子电导率 $Y$\\$\log_{10}(\sigma)$};
+\draw[arr] (z.west) -- (x.east);
+\draw[arr] (z.east) -- (y.west);
+\node[align=center,fill=white,inner sep=1pt] at (2.3,0.55) {决定典型\\结构范围};
+\node[align=center,fill=white,inner sep=1pt] at (6.9,0.55) {决定典型\\电导率范围};
+\draw[arr] (x.south east) to[bend right=22] (y.south west);
+\node[fill=white,inner sep=1pt] at (4.6,-0.95) {希望识别的结构关系};
+
+\node[risk] (r1) at (0,-2.6) {体系混杂\\$X$ 可能只是 $Z$ 的代理};
+\node[risk] (r2) at (2.3,-4.65) {描述符冗余\\同一物理因素被重复表达};
+\node[risk] (r3) at (4.6,-2.6) {小样本不稳定\\少数材料改变筛选结果};
+\node[risk] (r4) at (6.9,-4.65) {公式组合爆炸\\复杂表达产生偶然高分};
+\node[risk] (r5) at (9.2,-2.6) {验证域偏移\\随机划分不等于未知体系};
+
+\node[solve] (s1) at (0,-7.0) {秩感知控制\\Ridge 残差化};
+\node[solve] (s2) at (2.3,-8.95) {物理族代表\\硬容量限制};
+\node[solve] (s3) at (4.6,-7.0) {子采样 Lasso\\固定噪声校准};
+\node[solve] (s4) at (6.9,-8.95) {量纲与规则约束\\二/三元公式};
+\node[solve] (s5) at (9.2,-7.0) {LOSO + 多策略 CV\\V1--V4 证据};
+
+\draw[arr] (r1) -- (s1);
+\draw[arr] (r2) -- (s2);
+\draw[arr] (r3) -- (s3);
+\draw[arr] (r4) -- (s4);
+\draw[arr] (r5) -- (s5);
+
+\node[draw=NatureBlue!70,fill=NatureBlue!6,rounded corners=3pt,minimum width=109mm,minimum height=12mm,align=center,font=\sffamily\small\bfseries] at (4.6,-11.1)
+{输出：具有透明证据链、可定位到晶体结构并值得 AIMD / 实验复核的候选假设};
+\end{tikzpicture}

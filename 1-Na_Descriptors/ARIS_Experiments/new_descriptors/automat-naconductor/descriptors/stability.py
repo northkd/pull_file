@@ -13,27 +13,52 @@
 
 物理族代表选择（errata P4）：
 - 每个物理族最多选 1 个代表（默认 max_per_family=1）
-- 代表 = 该族中稳定性通过且去混杂 Spearman 最高的描述符
-- 若某族无稳定描述符，允许其他族增至 max_per_family+1
+- 代表 = 该族中稳定性通过且 |去混杂 Spearman| 最高的描述符（保留符号）
+- 此容量是硬上限；缺少其它物理族不会增加任一族的名额
 """
 from __future__ import annotations
 
 import numpy as np
 import pandas as pd
-from sklearn.linear_model import Ridge
+from sklearn.impute import SimpleImputer
+from sklearn.linear_model import Lasso
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 
 # 描述符注册表和物理族定义
-from descriptors import AVAILABLE_STRUCTURE_DESCRIPTORS
+from descriptors import SEARCHABLE_STRUCTURE_DESCRIPTORS
 from descriptors._base import PHYSICAL_FAMILIES
 
 
+PHYSICAL_GROUP_RESULT_COLUMNS = [
+    "descriptor",
+    "family",
+    "family_name",
+    "deconfounded_spearman",
+    "selection_freq",
+    "is_stable",
+    "above_noise_baseline",
+    "is_representative",
+]
+
+STABILITY_RESULT_COLUMNS = [
+    "feature_name",
+    "selection_freq",
+    "is_stable",
+    "above_noise_baseline",
+    "selection_method",
+    "selection_alpha",
+    "noise_baseline",
+]
+
+
 class StabilitySelector:
-    """稳定性选择器：通过多次自举 + Ridge 回归筛选稳定描述符。
+    """稳定性选择器：通过多次子采样 + Lasso 筛选稳定描述符。
 
     算法流程：
     1. 每次自举：随机抽取 fraction 比例的样本（无放回）
-    2. 对子样本拟合 Ridge 回归
-    3. 按系数绝对值大于中位数的标准判断"被选中"
+    2. 在子样本内部做中位数填充、标准化并拟合 Lasso
+    3. 按 Lasso 非零系数判断"被选中"
     4. 统计每个特征在 n_bootstrap 次迭代中被选中的频率
     5. 若提供了噪声列，用噪声频率的 95 分位数作为基线校准
     """
@@ -52,7 +77,7 @@ class StabilitySelector:
             n_bootstrap: 自举迭代次数，越多越稳定但越慢
             threshold: 选中频率阈值，高于此值视为稳定描述符
             fraction: 每次自举的采样比例（0.5 = 抽一半样本）
-            alpha: Ridge 正则化强度，越大系数越收缩
+            alpha: Lasso 选择正则化强度，越大选择越稀疏
             seed: 随机种子，保证可复现
         """
         self.n_bootstrap = n_bootstrap
@@ -60,6 +85,19 @@ class StabilitySelector:
         self.fraction = fraction
         self.alpha = alpha
         self.seed = seed
+
+    def _result_metadata(self, noise_baseline: float) -> dict[str, object]:
+        """Return metadata shared by populated and schema-only results."""
+        return {
+            "selection_method": "subsampled_lasso",
+            "selection_alpha": float(self.alpha),
+            "preprocessing": ["median_imputation", "standard_scaling"],
+            "noise_baseline": float(noise_baseline),
+            "noise_baseline_quantile": 0.95,
+            "n_subsamples": int(self.n_bootstrap),
+            "subsample_fraction": float(self.fraction),
+            "seed": int(self.seed),
+        }
 
     def run(
         self,
@@ -72,7 +110,7 @@ class StabilitySelector:
         """运行稳定性选择。
 
         参数:
-            X_real: 真实描述符矩阵 (n_samples, n_real_features)，应已标准化
+            X_real: 原始真实描述符矩阵 (n_samples, n_real_features)，可含缺失值
             y: 目标向量 log_sigma (n_samples,)
             X_noise: 噪声列矩阵 (n_samples, n_noise)，用于基线校准
             real_col_names: 真实描述符列名列表
@@ -105,6 +143,11 @@ class StabilitySelector:
         n_features = X_all.shape[1]
         selection_counts = np.zeros(n_features, dtype=int)
 
+        if n_features == 0:
+            empty_result = pd.DataFrame(columns=STABILITY_RESULT_COLUMNS)
+            empty_result.attrs.update(self._result_metadata(noise_baseline=0.0))
+            return empty_result
+
         # 每次自举的样本数
         subset_size = max(2, int(n_samples * self.fraction))
 
@@ -116,18 +159,15 @@ class StabilitySelector:
             X_sub = X_all[indices]
             y_sub = y[indices]
 
-            # 拟合 Ridge 回归
-            model = Ridge(alpha=self.alpha, random_state=rng)
+            # 每个子样本独立拟合预处理，避免全数据填充/缩放泄漏。
+            model = Pipeline([
+                ("imputer", SimpleImputer(strategy="median")),
+                ("scale", StandardScaler()),
+                ("lasso", Lasso(alpha=self.alpha, max_iter=20_000)),
+            ])
             model.fit(X_sub, y_sub)
-            coefs = np.abs(model.coef_)
-
-            # 选择标准: |coef| > median(|coef|)
-            # 这是简单的"上半区"筛选，避免设定硬阈值
-            if coefs.max() < 1e-12:
-                # 所有系数接近零（极端情况），本轮无选中
-                continue
-            median_coef = np.median(coefs)
-            selected = coefs > median_coef
+            coefs = model.named_steps["lasso"].coef_
+            selected = np.abs(coefs) > 1e-12
             selection_counts += selected.astype(int)
 
         # 计算选中频率
@@ -161,12 +201,19 @@ class StabilitySelector:
                 "is_stable": freq > self.threshold,
                 "above_noise_baseline": above_baseline,
                 "is_noise": not is_real,
+                "selection_method": "subsampled_lasso",
+                "selection_alpha": float(self.alpha),
+                "noise_baseline": noise_baseline,
             })
 
-        result_df = pd.DataFrame(records)
+        result_df = pd.DataFrame.from_records(
+            records,
+            columns=[*STABILITY_RESULT_COLUMNS, "is_noise"],
+        )
 
         # 仅返回真实描述符的结果（噪声列信息已用于计算基线）
         real_df = result_df[~result_df["is_noise"]].drop(columns=["is_noise"]).reset_index(drop=True)
+        real_df.attrs.update(self._result_metadata(noise_baseline))
 
         return real_df
 
@@ -177,8 +224,8 @@ class PhysicalGrouper:
     策略（errata P4）：
     - 八大物理族 A, B, C, D', E, F, G, H
     - 每族默认最多选 max_per_family 个代表
-    - 代表 = 族内稳定性通过 + 去混杂 Spearman 最高的描述符
-    - 若某族无稳定描述符，允许其他族增加名额
+    - 代表 = 族内稳定性通过 + |去混杂 Spearman| 最高的描述符
+    - ``max_per_family`` 是硬上限；不以缺失族为由扩容
 
     注意：D' 族在代码中用 "D_prime" 表示。
     """
@@ -204,7 +251,7 @@ class PhysicalGrouper:
                 必须包含 feature_name, selection_freq, is_stable, above_noise_baseline
             deconfound_df: 去混杂结果 DataFrame
                 必须包含 descriptor (列名=特征名), deconfounded_spearman
-            descriptor_registry: 描述符注册表，默认使用 AVAILABLE_STRUCTURE_DESCRIPTORS
+            descriptor_registry: 描述符注册表，默认使用 SEARCHABLE_STRUCTURE_DESCRIPTORS
                 格式: {name: (compute_func, family_key, is_high_risk)}
 
         返回:
@@ -219,7 +266,7 @@ class PhysicalGrouper:
             - is_representative: 是否被选为族代表
         """
         if descriptor_registry is None:
-            descriptor_registry = AVAILABLE_STRUCTURE_DESCRIPTORS
+            descriptor_registry = SEARCHABLE_STRUCTURE_DESCRIPTORS
 
         # 构建描述符 → 物理族映射
         desc_to_family: dict[str, str] = {}
@@ -254,7 +301,15 @@ class PhysicalGrouper:
                 "is_representative": False,
             })
 
-        result_df = pd.DataFrame(records)
+        result_df = pd.DataFrame.from_records(
+            records,
+            columns=PHYSICAL_GROUP_RESULT_COLUMNS,
+        )
+        result_df.attrs.update(stability_df.attrs)
+        result_df.attrs.update(deconfound_df.attrs)
+
+        if result_df.empty:
+            return result_df
 
         # 筛选: 稳定 + 超过噪声基线的描述符才参与代表选择
         eligible = result_df[result_df["is_stable"] & result_df["above_noise_baseline"]]
@@ -264,49 +319,20 @@ class PhysicalGrouper:
 
         # 第一轮: 每族选 deconfounded_spearman 最高的代表
         representatives: set[str] = set()
-        families_with_rep: set[str] = set()
-        families_without_rep: set[str] = set()
 
         for family_key in PHYSICAL_FAMILIES:
             if family_key not in family_groups.groups:
-                families_without_rep.add(family_key)
                 continue
 
             group = family_groups.get_group(family_key)
             if group.empty:
-                families_without_rep.add(family_key)
                 continue
 
-            # 按去混杂 Spearman 降序排列，取前 max_per_family 个
-            top = group.nlargest(self.max_per_family, "deconfounded_spearman")
+            # 代表按 |rho| 排名，但输出保留 deconfounded_spearman 的符号。
+            top = group.loc[
+                group["deconfounded_spearman"].abs().nlargest(self.max_per_family).index
+            ]
             representatives.update(top["descriptor"].tolist())
-            families_with_rep.add(family_key)
-
-        # 第二轮: 若有族无代表，允许其他族增加名额
-        if families_without_rep:
-            # 空缺族数决定可追加的名额
-            extra_slots = len(families_without_rep) * self.max_per_family
-            extra_per_family = self.max_per_family  # 每族可多选 1 个
-
-            for family_key in families_with_rep:
-                if extra_slots <= 0:
-                    break
-
-                group = family_groups.get_group(family_key)
-                # 已选代表
-                already_selected = group[group["descriptor"].isin(representatives)]
-                remaining = group[~group["descriptor"].isin(representatives)]
-
-                if remaining.empty:
-                    continue
-
-                # 从剩余中再选 extra_per_family 个
-                additional = remaining.nlargest(
-                    min(extra_per_family, extra_slots),
-                    "deconfounded_spearman",
-                )
-                representatives.update(additional["descriptor"].tolist())
-                extra_slots -= len(additional)
 
         # 标记代表
         result_df["is_representative"] = result_df["descriptor"].isin(representatives)

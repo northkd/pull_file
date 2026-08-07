@@ -1,0 +1,2 @@
+requests>=2.31
+pymatgen>=2024.5.1
