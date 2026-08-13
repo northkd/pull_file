@@ -11,8 +11,9 @@
    `train.py --descriptor-name <key>` 显式选择键。
 3. 不预拆分训练、验证或测试集合。所有可用行通过共享的阴离子分层、留一体系和
    重复分层子采样 CV 接受审计。
-4. 主指标是 `deconfounded_spearman`。控制设计以 `system` 为主，仅在秩上提供
-   增量信息时再加入 `anion_type` 对比项。
+4. 主指标是 `rank_corr_of_linear_residuals`（线性残差秩相关，非文献意义的
+   partial Spearman；详见 run_info.yaml 的 estimand 段）。控制设计以 `system`
+   为主，仅在秩上提供增量信息时再加入 `anion_type` 对比项。
 5. 只写入 `results/agent/`。不得读取、修改、引用或根据 `results/pipeline/` 的
    中间/最终结果改变候选选择。
 
@@ -29,12 +30,11 @@
    python train.py --descriptor-name <descriptor-key> --run-id <iteration-id>
    ```
 
-4. 审阅 TSV 中的 `raw_spearman`、`deconfounded_spearman`、`system_proxy_ratio`、
-   各 CV 策略的可用性和 MAE。被标为 `skipped` 的策略应保持显式，不可补零或当作
-   支持证据。
+4. 审阅 TSV 中的 `raw_spearman`、`rank_corr_of_linear_residuals`。
+   被标为 `skipped` 的策略应保持显式，不可补零或当作支持证据。
 5. 在人工复核后，可用下一次命令的 `--status keep|discard|crash` 标记结果；默认
    状态是 `evaluated`。不要只因原始相关高或单一 CV 好看就标记为保留。
-6. 运行 `python run_status.py`。它只根据 Agent 的有限去混杂 Spearman 记录和
+6. 运行 `python run_status.py`。它只根据 Agent 的有限线性残差秩相关记录和
    `tracks.agent.status` 停止条件输出 `CONTINUE` 或 `STOP`。
 
 ## 结果记录
@@ -43,9 +43,7 @@
 
 ```text
 run_id  descriptor_name  source_rows  finite_structural_values  analysis_rows
-raw_spearman  deconfounded_spearman  system_proxy_ratio  label
-anion_stratified_spearman  loso_spearman  repeated_subsample_spearman
-composite_score  status
+raw_spearman  rank_corr_of_linear_residuals  status
 ```
 
 完整表还保留各策略 `skipped`/`reason`、MAE、折数和预处理可用性，以便追溯。

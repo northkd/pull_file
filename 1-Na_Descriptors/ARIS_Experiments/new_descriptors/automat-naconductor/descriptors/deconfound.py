@@ -1,4 +1,4 @@
-"""去混杂分析器。
+"""线性残差秩相关分析器。
 
 核心思想：混杂变量（如体系分类 system、阴离子类型 anion_type）同时影响
 描述符 X 和电导率 Y。不去控制的话，"高相关"可能只是混杂效应而非物理信号。
@@ -7,9 +7,10 @@
 然后对残差计算 Spearman 秩相关。这样就把"因为属于某个体系而产生的相关"
 和"体系内部的物理相关"分离开来。
 
-体系代理比 system_proxy_ratio = 1 - (deconf_rho² / raw_rho²)：
-  - 接近 1 → 相关几乎全由混杂驱动，描述符是体系代理
-  - 接近 0 → 去混杂后相关依然强，是真实物理信号
+注意：本分析器计算的 rank_corr_of_linear_residuals 不是文献意义上的
+partial Spearman（后者先秩变换再偏出）。本实现先在原始尺度上做 Ridge
+线性残差化，再对残差求 Spearman。该量对 x 的单调变换不不变，因线性
+残差化不保秩。详见 run_info.yaml 的 estimand 段。
 """
 from __future__ import annotations
 
@@ -24,24 +25,27 @@ DECONFOUND_RESULT_COLUMNS = [
     "family",
     "is_high_risk",
     "raw_spearman",
-    "deconfounded_spearman",
-    "deconf_p",
-    "system_proxy_ratio",
-    "label",
+    "rank_corr_of_linear_residuals",
+    "deconfound_status",
+    "skip_reason",
+    "n_valid",
 ]
 
 
 class DeconfoundAnalyzer:
     """去混杂相关性分析器。
 
-    对每个描述符，计算原始 Spearman 相关和去混杂后的偏 Spearman 相关，
-    并据此判断描述符是"物理信号"还是"体系代理"。
+    对每个描述符，计算原始 Spearman 相关和去混杂后的正交投影残差秩相关。
+
+    注意：本分析器计算的 rank_corr_of_linear_residuals 不是文献意义上的
+    partial Spearman（后者先秩变换再偏出）。本实现先在原始尺度上做正交投影
+    残差化（OLS 残差，alpha=0），再对残差求 Spearman。该量对 x 的单调变换
+    不不变，因线性残差化不保秩。详见 run_info.yaml 的 estimand 段。
 
     参数:
-        alpha: Ridge 回归正则化强度。
-            去混杂时用 Ridge 做残差化，alpha 控制正则化程度。
-            alpha=0 等价于普通最小二乘；alpha 越大，残差化越保守。
-            默认 1.0，对小样本（~100）有一定正则化保护。
+        alpha: 保留仅为不波及调用点（CombinationValidator 等仍构造
+            DeconfoundAnalyzer(alpha=self.alpha)）；本类的
+            rank_corr_of_linear_residuals 已改为正交投影，alpha 不影响其行为。
     """
 
     def __init__(self, alpha: float = 1.0) -> None:
@@ -50,20 +54,6 @@ class DeconfoundAnalyzer:
     # ------------------------------------------------------------------
     # 内部工具
     # ------------------------------------------------------------------
-
-    @staticmethod
-    def _one_hot_encode(labels_list: list[str], column_name: str) -> np.ndarray:
-        """将分类标签列表转为带参考类别的 one-hot 矩阵。
-
-        参数:
-            labels_list: 分类标签列表，如 ["NASICON", "β-alumina", ...]
-            column_name: 列名，仅用于 DataFrame 构造
-
-        返回:
-            one-hot 矩阵 (n_samples, n_categories - 1)，float64 类型
-        """
-        encoded = DeconfoundAnalyzer._one_hot_frame(labels_list, column_name)
-        return encoded.values
 
     @staticmethod
     def _one_hot_frame(labels_list: list[str], column_name: str) -> pd.DataFrame:
@@ -141,17 +131,56 @@ class DeconfoundAnalyzer:
     # 核心方法
     # ------------------------------------------------------------------
 
-    def partial_spearman(
+    def _projection_residuals(
         self,
         x: np.ndarray,
         y: np.ndarray,
         confounders_df: pd.DataFrame,
-    ) -> tuple[float, float]:
-        """计算控制混杂变量后的偏 Spearman 秩相关。
+    ) -> tuple[np.ndarray | None, np.ndarray | None, str | None]:
+        """对 x 和 y 做正交投影残差化（等价于带截距的 OLS 残差）。
+
+        给控制矩阵 z 追加一列全 1 作为截距，使 lstsq 等价于带截距的 OLS。
+
+        返回:
+            (res_x, res_y, failure_reason)。成功时 failure_reason 为 None；
+            秩亏时为 "rank_deficient"；lstsq 数值失败时为 "lstsq_numerical_failure"。
+            失败时 res_x 和 res_y 均为 None。
+        """
+        z = confounders_df.values.astype(float)
+        n_samples = len(x)
+        z_with_intercept = np.column_stack([np.ones(n_samples), z])
+        try:
+            coef_x, _, _, rank_x = np.linalg.lstsq(z_with_intercept, x, rcond=None)
+            coef_y, _, _, rank_y = np.linalg.lstsq(z_with_intercept, y, rcond=None)
+        except np.linalg.LinAlgError:
+            return None, None, "lstsq_numerical_failure"
+
+        n_cols = z_with_intercept.shape[1]
+        rank_x_int = int(np.asarray(rank_x).item()) if np.asarray(rank_x).size == 1 else int(np.asarray(rank_x).flatten()[0])
+        rank_y_int = int(np.asarray(rank_y).item()) if np.asarray(rank_y).size == 1 else int(np.asarray(rank_y).flatten()[0])
+        if rank_x_int < n_cols or rank_y_int < n_cols:
+            return None, None, "rank_deficient"
+
+        res_x = x - z_with_intercept @ coef_x
+        res_y = y - z_with_intercept @ coef_y
+        return res_x, res_y, None
+
+    def rank_corr_of_linear_residuals(
+        self,
+        x: np.ndarray,
+        y: np.ndarray,
+        confounders_df: pd.DataFrame,
+    ) -> tuple[float, float, str]:
+        """计算控制混杂变量后的正交投影残差秩相关。
+
+        注意：本方法不是文献意义上的 partial Spearman（后者先秩变换再偏出）。
+        本方法先在原始尺度上对 x 与 y 各自做正交投影残差化（等价于 OLS 残差，
+        alpha=0），再对两组残差求 Spearman。该量对 x 的单调变换不不变，因线性
+        残差化不保秩。
 
         步骤:
-        1. 用 Ridge 分别拟合 x ~ confounders 和 y ~ confounders
-        2. 取残差: res_x = x - confounders_predicted_x, res_y 同理
+        1. 用最小二乘分别拟合 x ~ confounders 和 y ~ confounders
+        2. 取残差: res_x = x - Z @ coef_x, res_y 同理
         3. 对残差计算 spearmanr
 
         参数:
@@ -160,37 +189,48 @@ class DeconfoundAnalyzer:
             confounders_df: 混杂变量矩阵 (n_samples, n_confounders)
 
         返回:
-            (rho, p_value) — 去混杂后的 Spearman 相关系数和 p 值
+            (rho, p_value, status) — 正交投影残差化后的 Spearman 相关系数、
+            p 值和状态码。status 取值：
+            - "ok": 正常完成残差化与秩相关
+            - "insufficient_samples": n_samples < 3，无法做 Spearman
+            - "empty_control_space": 控制矩阵列数为 0，无混杂可控制
+            - "controls_rank_deficient": 控制列数 >= 样本数，或控制矩阵秩亏，残差化退化
+            - "lstsq_numerical_failure": lstsq 抛出 LinAlgError，数值失败（非秩亏）
+            退化时 rho 和 p_value 均为 NaN，不静默回退到原始 Spearman。
         """
         z = confounders_df.values.astype(float)
 
-        # 样本数不足时无法残差化，回退到原始相关
+        # 退化路径：不再回退到原始 Spearman，返回显式 NaN + 可辨识 status
         n_samples = len(x)
-        if n_samples < 3 or z.shape[1] == 0 or z.shape[1] >= n_samples:
-            rho, p_val = stats.spearmanr(x, y)
-            return float(rho), float(p_val)
+        if n_samples < 3:
+            return float("nan"), float("nan"), "insufficient_samples"
+        if z.shape[1] == 0:
+            return float("nan"), float("nan"), "empty_control_space"
+        if z.shape[1] + 1 >= n_samples:
+            return float("nan"), float("nan"), "controls_rank_deficient"
 
-        # Ridge 残差化: 对 x 和 y 分别做 x ~ Z, y ~ Z
-        ridge = Ridge(alpha=self.alpha)
-
-        # 残差 = 原始值 - 混杂预测值
-        ridge.fit(z, x)
-        res_x = x - ridge.predict(z)
-
-        ridge.fit(z, y)
-        res_y = y - ridge.predict(z)
+        # 正交投影残差化（等价于 alpha=0 的 OLS 残差）：
+        res_x, res_y, failure_reason = self._projection_residuals(x, y, confounders_df)
+        if failure_reason is not None:
+            if failure_reason == "rank_deficient":
+                return float("nan"), float("nan"), "controls_rank_deficient"
+            else:  # "lstsq_numerical_failure"
+                return float("nan"), float("nan"), "lstsq_numerical_failure"
 
         # 残差上的 Spearman 相关
         rho, p_val = stats.spearmanr(res_x, res_y)
-        return float(rho), float(p_val)
+        return float(rho), float(p_val), "ok"
 
-    def deconfounded_spearman(
+    def rank_corr_of_linear_residuals_rho(
         self,
         x: np.ndarray,
         y: np.ndarray,
         confounders_df: pd.DataFrame,
-    ) -> float:
-        """计算去混杂 Spearman rho（便捷方法，只返回 rho）。
+    ) -> tuple[float, str]:
+        """计算线性残差秩相关 rho（便捷方法，只返回 rho 和 status）。
+
+        注意：本方法返回的是 rank_corr_of_linear_residuals，不是文献意义上
+        的 partial Spearman。详见 run_info.yaml 的 estimand 段。
 
         参数:
             x: 描述符值向量 (n_samples,)
@@ -198,58 +238,11 @@ class DeconfoundAnalyzer:
             confounders_df: 混杂变量矩阵 (n_samples, n_confounders)
 
         返回:
-            去混杂后的 Spearman rho
+            (rho, status) — 线性残差化后的 Spearman rho 和状态码。
+            退化时 rho 为 NaN，status 标识退化原因。
         """
-        rho, _ = self.partial_spearman(x, y, confounders_df)
-        return rho
-
-    # ------------------------------------------------------------------
-    # 标签分类
-    # ------------------------------------------------------------------
-
-    @staticmethod
-    def _classify_descriptor(
-        raw_rho: float,
-        deconf_rho: float,
-        system_proxy_ratio: float,
-        deconf_p: float,
-    ) -> str:
-        """根据去混杂结果给描述符打标签。
-
-        分类规则 (errata P3):
-        - 去混杂后 |deconf_rho| > 0.3 → '强物理信号'（无论代理比多高，
-          去混杂后仍显著相关，说明物理信号确实存在）
-        - |deconf_rho| <= 0.3 且 system_proxy_ratio < 0.3 → '弱物理信号'
-          （代理比低，但去混杂后信号也不强）
-        - |deconf_rho| <= 0.3 且 0.3 <= system_proxy_ratio < 0.7 → '混合信号'
-          （部分来自体系混杂，部分可能是物理）
-        - |deconf_rho| <= 0.3 且 system_proxy_ratio >= 0.7 → '体系代理'
-          （大部分相关由混杂驱动）
-        - |raw_rho| < 0.2 → '噪声级'（连原始相关都极弱）
-
-        参数:
-            raw_rho: 原始 Spearman rho
-            deconf_rho: 去混杂后 Spearman rho
-            system_proxy_ratio: 体系代理比 [0, 1]
-            deconf_p: 去混杂后 p 值
-
-        返回:
-            分类标签字符串
-        """
-        # 原始相关极弱 → 噪声级
-        if abs(raw_rho) < 0.2:
-            return "噪声级"
-
-        # 去混杂后仍然显著 → 强物理信号（errata P3 核心修正）
-        if abs(deconf_rho) > 0.3:
-            return "强物理信号"
-
-        # 去混杂后信号弱，根据代理比分
-        if system_proxy_ratio < 0.3:
-            return "弱物理信号"
-        if system_proxy_ratio < 0.7:
-            return "混合信号"
-        return "体系代理"
+        rho, _, status = self.rank_corr_of_linear_residuals(x, y, confounders_df)
+        return rho, status
 
     # ------------------------------------------------------------------
     # 主入口
@@ -266,10 +259,7 @@ class DeconfoundAnalyzer:
 
         对每个描述符计算:
         - raw_spearman: 原始 Spearman rho
-        - deconfounded_spearman: 控制 system + anion 后的 rho
-        - deconf_p: 去混杂后的 p 值
-        - system_proxy_ratio: 体系代理比（1 - deconf_rho² / raw_rho²）
-        - label: 分类标签
+        - rank_corr_of_linear_residuals: 控制 system + anion 后的线性残差秩相关 rho
 
         参数:
             feature_df: 包含描述符列的 DataFrame（已标准化）
@@ -280,7 +270,7 @@ class DeconfoundAnalyzer:
         返回:
             分析结果 DataFrame，列为:
             descriptor, family, is_high_risk, raw_spearman,
-            deconfounded_spearman, deconf_p, system_proxy_ratio, label
+            rank_corr_of_linear_residuals
         """
         # --- 构造混杂变量矩阵 ---
         confounders_df, control_metadata = self.build_rank_aware_controls(
@@ -300,10 +290,23 @@ class DeconfoundAnalyzer:
         for col in descriptor_cols:
             x_raw = feature_df[col].values.astype(float)
 
-            # 跳过 NaN 过多的列：有效值不足 80% 则跳过
+            # 有效值不足时不再 continue，而是产出显式 NaN 行
             valid_mask = ~np.isnan(x_raw) & ~np.isnan(y_arr)
             n_valid = int(valid_mask.sum())
             if n_valid < 5:
+                _func, family, is_high_risk = SEARCHABLE_STRUCTURE_DESCRIPTORS.get(
+                    col, (None, "unknown", False),
+                )
+                records.append({
+                    "descriptor": col,
+                    "family": family,
+                    "is_high_risk": is_high_risk,
+                    "raw_spearman": float("nan"),
+                    "rank_corr_of_linear_residuals": float("nan"),
+                    "deconfound_status": "not_attempted",
+                    "skip_reason": "insufficient_valid_samples",
+                    "n_valid": n_valid,
+                })
                 continue
 
             x_valid = x_raw[valid_mask]
@@ -314,34 +317,14 @@ class DeconfoundAnalyzer:
             raw_rho, _raw_p = stats.spearmanr(x_valid, y_valid)
             raw_rho = float(raw_rho)
 
-            # 去混杂偏 Spearman 相关
-            deconf_rho, deconf_p = self.partial_spearman(
+            # 线性残差秩相关（非偏 Spearman），只保留 rho 和 status
+            deconf_rho, deconf_status = self.rank_corr_of_linear_residuals_rho(
                 x_valid, y_valid, conf_valid,
             )
 
-            # 体系代理比
-            raw_rho_sq = raw_rho ** 2
-            deconf_rho_sq = deconf_rho ** 2
-
-            if raw_rho_sq < 1e-12:
-                # 原始相关几乎为零，代理比无意义，设为 0
-                system_proxy_ratio = 0.0
-            elif raw_rho * deconf_rho < 0:
-                # 原始和去混杂后符号相反 → 相关完全由混杂驱动
-                system_proxy_ratio = 1.0
-            else:
-                system_proxy_ratio = 1.0 - deconf_rho_sq / raw_rho_sq
-                # 钳位到 [0, 1]
-                system_proxy_ratio = max(0.0, min(1.0, system_proxy_ratio))
-
             # 查询 family 和 is_high_risk
             _func, family, is_high_risk = SEARCHABLE_STRUCTURE_DESCRIPTORS.get(
-                col, (None, "Unknown", False),
-            )
-
-            # 分类标签
-            label = self._classify_descriptor(
-                raw_rho, deconf_rho, system_proxy_ratio, deconf_p,
+                col, (None, "unknown", False),
             )
 
             records.append({
@@ -349,10 +332,10 @@ class DeconfoundAnalyzer:
                 "family": family,
                 "is_high_risk": is_high_risk,
                 "raw_spearman": raw_rho,
-                "deconfounded_spearman": deconf_rho,
-                "deconf_p": deconf_p,
-                "system_proxy_ratio": system_proxy_ratio,
-                "label": label,
+                "rank_corr_of_linear_residuals": deconf_rho,
+                "deconfound_status": deconf_status,
+                "skip_reason": None,
+                "n_valid": n_valid,
             })
 
         result_df = pd.DataFrame.from_records(
@@ -360,10 +343,10 @@ class DeconfoundAnalyzer:
             columns=DECONFOUND_RESULT_COLUMNS,
         )
 
-        # 按 |deconfounded_spearman| 降序排列：物理信号最强的排最前
+        # 按 |rank_corr_of_linear_residuals| 降序排列：物理信号最强的排最前
         if not result_df.empty:
             result_df = result_df.sort_values(
-                by="deconfounded_spearman",
+                by="rank_corr_of_linear_residuals",
                 key=lambda s: s.abs(),
                 ascending=False,
             ).reset_index(drop=True)

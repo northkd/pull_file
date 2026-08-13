@@ -1,0 +1,537 @@
+# descriptor_registry.yaml
+# descriptor-level registry v1.
+# Only name/family/module/implementation_symbol filled; rest are TODO.
+
+descriptors:
+  - name: a2_max_dist
+    family: A
+    module: family_a_polyhedron.py
+    implementation_symbol: compute_a2_max_dist
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: poly_distortion_mean
+    family: A
+    module: family_a_polyhedron.py
+    implementation_symbol: compute_poly_distortion_mean
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: max_bond_length
+    family: A
+    module: family_a_polyhedron.py
+    implementation_symbol: compute_max_bond_length
+    in_searchable: false
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: min_bond_length
+    family: A
+    module: family_a_polyhedron.py
+    implementation_symbol: compute_min_bond_length
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: mean_bond_length
+    family: A
+    module: family_a_polyhedron.py
+    implementation_symbol: compute_mean_bond_length
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: target_bond_center
+    family: A
+    module: family_a_polyhedron.py
+    implementation_symbol: compute_target_bond_center
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: poly_volume_mean
+    family: A
+    module: family_a_polyhedron.py
+    implementation_symbol: compute_poly_volume_mean
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: coordination_number_mean
+    family: A
+    module: family_a_polyhedron.py
+    implementation_symbol: compute_coordination_number_mean
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: ellipsoid_oblateness
+    family: A
+    module: family_a_polyhedron.py
+    implementation_symbol: compute_ellipsoid_oblateness
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: direction_ratio
+    family: A
+    module: family_a_polyhedron.py
+    implementation_symbol: compute_direction_ratio
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: bottleneck_anisotropy
+    family: A
+    module: family_a_polyhedron.py
+    implementation_symbol: compute_bottleneck_anisotropy
+    in_searchable: false
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: nana_composite
+    family: B
+    module: family_b_network.py
+    implementation_symbol: compute_nana_composite
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: avg_na_neighbors
+    family: B
+    module: family_b_network.py
+    implementation_symbol: compute_avg_na_neighbors
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: largest_component_ratio
+    family: B
+    module: family_b_network.py
+    implementation_symbol: compute_largest_component_ratio
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: network_dimension
+    family: B
+    module: family_b_network.py
+    implementation_symbol: compute_network_dimensions
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: component_count
+    family: B
+    module: family_b_network.py
+    implementation_symbol: compute_component_count
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: na_concentration
+    family: C
+    module: family_c_concentration.py
+    implementation_symbol: compute_na_concentration
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: na_occupancy_sum
+    family: C
+    module: family_c_concentration.py
+    implementation_symbol: compute_na_occupancy_sum
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: na_site_count
+    family: C
+    module: family_c_concentration.py
+    implementation_symbol: compute_na_site_count
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: interstitial_count
+    family: D_prime
+    module: family_d_vacancy_topo.py
+    implementation_symbol: compute_interstitial_count
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: interstitial_na_distance
+    family: D_prime
+    module: family_d_vacancy_topo.py
+    implementation_symbol: compute_interstitial_na_distance
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: interstitial_channel_access
+    family: D_prime
+    module: family_d_vacancy_topo.py
+    implementation_symbol: compute_interstitial_channel_access
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: interstitial_network_dim
+    family: D_prime
+    module: family_d_vacancy_topo.py
+    implementation_symbol: compute_interstitial_network_dim
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: bvse_barrier_estimate
+    family: D_prime
+    module: family_d_vacancy_topo.py
+    implementation_symbol: compute_bvse_barrier_estimate
+    in_searchable: false
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: framework_bond_rigidity
+    family: E
+    module: family_e_framework.py
+    implementation_symbol: compute_framework_bond_rigidity
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: framework_poly_distortion
+    family: E
+    module: family_e_framework.py
+    implementation_symbol: compute_framework_poly_distortion
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: framework_na_distance_stability
+    family: E
+    module: family_e_framework.py
+    implementation_symbol: compute_framework_na_distance_stability
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: framework_sharing_topology
+    family: E
+    module: family_e_framework.py
+    implementation_symbol: compute_framework_sharing_topology
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: nana_nana_angle_mean
+    family: F
+    module: family_f_longrange.py
+    implementation_symbol: compute_nana_nana_angle_mean
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: nana_second_neighbor_dist
+    family: F
+    module: family_f_longrange.py
+    implementation_symbol: compute_nana_second_neighbor_dist
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: path_tortuosity
+    family: F
+    module: family_f_longrange.py
+    implementation_symbol: compute_path_tortuosity
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: nana_spacing_uniformity
+    family: F
+    module: family_f_longrange.py
+    implementation_symbol: compute_nana_spacing_uniformity
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: na_x_en_diff
+    family: G
+    module: family_g_electronic.py
+    implementation_symbol: compute_na_x_en_diff
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: charge_balance_deviation
+    family: G
+    module: family_g_electronic.py
+    implementation_symbol: compute_charge_balance_deviation
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: covalency_index
+    family: G
+    module: family_g_electronic.py
+    implementation_symbol: compute_covalency_index
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: framework_d_electron_weighted
+    family: G
+    module: family_g_electronic.py
+    implementation_symbol: compute_framework_d_electron_weighted
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: space_group_number
+    family: H
+    module: family_h_symmetry.py
+    implementation_symbol: compute_space_group_number
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: wyckoff_diversity
+    family: H
+    module: family_h_symmetry.py
+    implementation_symbol: compute_wyckoff_diversity
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: partial_occupancy_ratio
+    family: H
+    module: family_h_symmetry.py
+    implementation_symbol: compute_partial_occupancy_ratio
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: coordination_cv
+    family: H
+    module: family_h_symmetry.py
+    implementation_symbol: compute_coordination_cv
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO
+
+  - name: volume_cv
+    family: H
+    module: family_h_symmetry.py
+    implementation_symbol: compute_volume_cv
+    in_searchable: true
+    estimand_math: TODO
+    name_matches_estimand: TODO
+    name_mismatch_note: TODO
+    shared_intermediates: TODO
+    known_invariance_defects: TODO
+    parameter_provenance: TODO
+    status: TODO

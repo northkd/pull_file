@@ -2,6 +2,17 @@
 读取 8 个指定文件，拼装成完整的 Claude 网页端 prompt。
 """
 import pathlib
+import re
+import sys
+
+import yaml
+
+# 从 shared/symbol_match.py 导入符号定义位置匹配器（与 descriptors/registry.py 复用同一份实现）
+# .omo/ 目录不在 Python 包路径中，需手动添加仓库根到 sys.path
+_repo_root = pathlib.Path(__file__).resolve().parent.parent.parent
+if str(_repo_root) not in sys.path:
+    sys.path.insert(0, str(_repo_root))
+from shared.symbol_match import symbol_has_definition as _symbol_has_definition  # noqa: E402
 
 project_root = pathlib.Path(
     r"E:\work\worklist\1-Na离子导体\nasicon-causal-inference-main"
@@ -10,27 +21,34 @@ project_root = pathlib.Path(
 output_file = project_root / ".omo" / "manual-review-bridge" / "prompt_research-review_round1.md"
 
 # 文件列表 (相对路径标签, 绝对路径)
-file_list = [
+# 历史文档（.aris/ 审计正文含旧代码全文）绝不能喂给闸门，否则被审计过的
+# 已删符号会因在旧代码全文里出现而被误判为"仍然存在"。
+LIVE_SOURCES = [
     ("run_info.yaml", project_root / "run_info.yaml"),
     ("program.md", project_root / "program.md"),
     ("descriptors/deconfound.py", project_root / "descriptors" / "deconfound.py"),
     ("descriptors/stability.py", project_root / "descriptors" / "stability.py"),
-    ("descriptors/cv_strategies.py", project_root / "descriptors" / "cv_strategies.py"),
     ("descriptors/combination.py", project_root / "descriptors" / "combination.py"),
+    ("run_pipeline.py", project_root / "run_pipeline.py"),
+]
+
+CONTEXT_DOCS = [
     (
-        "aris/traces/experiment-audit/2026-08-07_run01/001-experiment-audit.response.md (run01 EXPERIMENT_AUDIT)",
+        ".aris/traces/experiment-audit/2026-08-07_run01/001-experiment-audit.response.md (run01 EXPERIMENT_AUDIT)",
         project_root
-        / "aris"
+        / ".aris"
         / "traces"
         / "experiment-audit"
         / "2026-08-07_run01"
         / "001-experiment-audit.response.md",
     ),
     (
-        "aris/EXPERIMENT_AUDIT.md (run02 EXPERIMENT_AUDIT)",
-        project_root / "aris" / "EXPERIMENT_AUDIT.md",
+        ".aris/EXPERIMENT_AUDIT.md (run02 EXPERIMENT_AUDIT)",
+        project_root / ".aris" / "EXPERIMENT_AUDIT.md",
     ),
 ]
+
+file_list = LIVE_SOURCES + CONTEXT_DOCS
 
 # 读取所有文件
 file_contents = {}
@@ -38,6 +56,17 @@ for label, path in file_list:
     content = path.read_text(encoding="utf-8")
     file_contents[label] = content
     print(f"读取: {label} ({len(content)} chars)")
+
+# 闸门语料：只含当前活源码中的 .py 代码文件（descriptors/*.py 与 run_pipeline.py）。
+# 不含 run_info.yaml / program.md（它们不定义代码符号，混入只会在子串/整词命中时
+# 制造洗白）；更不含 .aris/ 历史文档（旧代码全文会让已删除的符号被误判为"仍然存在"）。
+# 这里只影响闸门语料，file_embed 的嵌入内容由 file_list（LIVE_SOURCES + CONTEXT_DOCS）
+# 合并生成，一字不改。
+live_py_contents = {
+    label: file_contents[label]
+    for label, path in LIVE_SOURCES
+    if path.suffix == ".py"
+}
 
 # 拼装文件嵌入段
 file_embed = ""
@@ -48,8 +77,100 @@ for label, _ in file_list:
         file_embed += "\n"
     file_embed += f"--- 文件结束: {label} ---\n\n"
 
+
+def _assert_steps_match_sources(steps_text: str, embedded_sources: dict[str, str]) -> None:
+    """Abort prompt construction if any symbol named in steps_text has no
+    definition site in any embedded source body.
+
+    语料必须只含当前活源码（.py 代码文件），混入历史文档（.aris/ 审计正文里的旧代码
+    全文）会使检查失效——被审计过的已删符号会从旧代码全文里被误判为"仍然存在"。
+
+    从 steps_text 中抽取所有反引号包裹的标识符（形如 `partial_spearman`、
+    `CombinationValidator._noise_baseline`）。
+
+    只认定义位置，不认文中出现：符号视为"存在"，当且仅当在任一语料正文里命中
+    _symbol_has_definition 的任一模式。整词边界既避免 `not_partial_spearman` 洗白
+    `partial_spearman`，也避免泛化末段（run / search / validate）在任意位置撞上。
+
+    只要有一个符号在所有正文里都没有定义位置，抛 ValueError 并终止；异常消息列出
+    全部缺失符号及其在 steps_text 中的行号。不降级为 warning，不 try/except 吞掉，
+    不加 skip。
+    """
+    # 行号映射：先按行切分，每行对应其出现的（1-based）行号
+    lines = steps_text.splitlines()
+
+    # 收集每行的反引号标识符，记录符号名 -> 首次出现行号
+    symbol_lines: dict[str, int] = {}
+    for idx, line in enumerate(lines, start=1):
+        for match in re.finditer(r"`([^`]+)`", line):
+            raw = match.group(1)
+            # 只关心形如 Python 标识符/成员引用 的 token，跳过含空格/标点的自然语言占位
+            if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*(\.[A-Za-z_][A-Za-z0-9_]*)*", raw):
+                continue
+            symbol_lines.setdefault(raw, idx)
+
+    missing: list[tuple[str, int]] = []
+    for symbol, line_no in symbol_lines.items():
+        if not any(_symbol_has_definition(symbol, body) for body in embedded_sources.values()):
+            missing.append((symbol, line_no))
+
+    if missing:
+        detail = "\n".join(
+            f"  - {sym} (steps_text 第 {ln} 行)" for sym, ln in missing
+        )
+        raise ValueError(
+            "algorithm_steps 中以下符号在所有嵌入源码正文中均不存在，"
+            "清单已漂移，终止构建 prompt：\n" + detail
+        )
+
+
+def _assert_anchors_resolve(run_info_dict: dict, live_py_contents: dict[str, str]) -> None:
+    """核验 run_info.yaml 中 estimand.implementation_anchors 的每个符号
+    在活源码中有定义位置。
+
+    复用 _symbol_has_definition 的匹配逻辑（同一套正则模式），不另写一套。
+
+    anchor 值格式为 "文件路径, 符号路径 (可选注释)"，例如：
+      "descriptors/deconfound.py, DeconfoundAnalyzer.build_rank_aware_controls"
+      "descriptors/combination.py, CombinationValidator._factor_spanning (system_rho)"
+    提取逗号后的符号路径，去掉括号注释，取末段做定义位置匹配。
+
+    缺失则抛 ValueError，同时列出符号名与它所属的 anchor 键名。
+    """
+    estimand = run_info_dict.get("estimand", {})
+    anchors = estimand.get("implementation_anchors", {})
+    if not anchors:
+        return
+
+    missing: list[tuple[str, str]] = []  # (anchor_key, symbol)
+    for anchor_key, anchor_value in anchors.items():
+        # 取逗号后的部分（符号路径），去掉括号注释
+        parts = str(anchor_value).split(",", 1)
+        symbol_part = parts[1] if len(parts) >= 2 else parts[0]
+        symbol_part = re.sub(r"\s*\(.*\)\s*$", "", symbol_part).strip()
+        if not symbol_part:
+            missing.append((anchor_key, "(空符号)"))
+            continue
+        if not any(
+            _symbol_has_definition(symbol_part, body)
+            for body in live_py_contents.values()
+        ):
+            missing.append((anchor_key, symbol_part))
+
+    if missing:
+        detail = "\n".join(
+            f"  - anchor '{key}' -> 符号 '{sym}' 在所有活源码中无定义位置"
+            for key, sym in missing
+        )
+        raise ValueError(
+            "estimand.implementation_anchors 中以下符号在活源码中无定义位置，"
+            "anchor 已漂移：\n" + detail
+        )
+
 # 已知弱点
-known_weaknesses = r"""以下为两轮 experiment-audit 的 Top Critical Findings 原文。
+known_weaknesses = r"""注：以下审计发现引用的部分符号名已改名或删除（对照见 RENAME_LOG.md），发现本身仍然有效。
+
+以下为两轮 experiment-audit 的 Top Critical Findings 原文。
 
 === run01 审计（A-H 八项，7 项 FAIL）关键发现 ===
 
@@ -97,32 +218,40 @@ H. Randomness and Reproducibility: FAIL
 数据集仍在准备中，本次评审对象是算法设计本身，不涉及任何数值结果。"""
 
 # 算法步骤清单
-algorithm_steps = """以下是从嵌入代码中识别的主要算法步骤，请逐条评估：
+algorithm_steps = """以下是从嵌入代码中识别的主要算法步骤，请逐条评估。
+
+适用范围：本清单只覆盖统计管线层。描述符实现层（CIF → 特征值）不在此列，
+由 descriptor-impl profile 单独评审。
 
 **去混杂层（descriptors/deconfound.py）**
-- 步骤 A1: `build_rank_aware_controls` — 构造 system 为主控制 + 秩感知增量 anion 对比项的设计矩阵
-- 步骤 A2: `partial_spearman` — 对 X 和 Y 分别做 Ridge 残差化，对残差计算 Spearman 秩相关
-- 步骤 A3: `system_proxy_ratio` 计算 — `1 - deconf_rho^2 / raw_rho^2`，带钳位和符号翻转硬置
-- 步骤 A4: `_classify_descriptor` — 用阈值 0.2/0.3/0.3/0.7 给描述符打标签
+- 步骤 A1: `build_rank_aware_controls` — 构造 system 为主控制 + 秩感知增量 anion 对比项的设计矩阵（deconfound.py:68）
+- 步骤 A2: `rank_corr_of_linear_residuals` — 对 x 与 y 分别做 Ridge 线性残差化，对残差求 Spearman；非文献意义的 partial Spearman（deconfound.py:132）
+- 步骤 A3: `analyze_all` — 对每个描述符计算 raw_spearman 与 rank_corr_of_linear_residuals，按 |rho| 降序（deconfound.py:206）
 
 **稳定性选择层（descriptors/stability.py）**
-- 步骤 B1: `StabilitySelector.run` — 无放回子采样 + 子样本内独立预处理 + Lasso + 选中频率统计 + 噪声列 95 分位基线
-- 步骤 B2: `PhysicalGrouper.group_and_select` — 按物理族分组，每组取 |deconfounded_spearman| 最高的代表
-
-**交叉验证层（descriptors/cv_strategies.py）**
-- 步骤 C1: `MultiStrategyCV` 三策略 — 阴离子分层 K 折 / 留一体系（LOSO）/ 重复分层子采样
-- 步骤 C2: `summarize_cv_spearman` — composite_score = 可用策略的 |Spearman| 均值
+- 步骤 B1: `StabilitySelector.run` — 无放回子采样 + 子样本内独立预处理 + Lasso + 选中频率统计 + 噪声列 95 分位基线（stability.py:100）
+- 步骤 B2: `PhysicalGrouper.group_and_select` — 按物理族分组，每组取 |rank_corr_of_linear_residuals| 最高的代表（stability.py:230）
 
 **组合搜索与验证层（descriptors/combination.py）**
-- 步骤 D1: `ConstrainedCombinationSearch.search` — 声明式算子注册表约束的二元/三元公式枚举 + 去混杂 Spearman 排序
-- 步骤 D2: `CombinationValidator._noise_baseline`（V1）— 体系内分量置换零分布（100 draws）
-- 步骤 D3: `CombinationValidator._factor_spanning`（V2）— 折内残差化 + OOF 公式预测 vs 残差目标 Spearman
-- 步骤 D4: `CombinationValidator._per_system`（V3）— 逐体系原始 Spearman
-- 步骤 D5: `CombinationValidator._bootstrap_ci`（V4）— 体系分层 bootstrap CI（percentile 法，500 次）
-- 步骤 D6: `CombinationValidator.validate` — 扁平化 V1-V4 + CV 诊断到 CSV 行
+- 步骤 C1: `ConstrainedCombinationSearch.search` — 声明式算子注册表约束的二元/三元公式枚举 + 去混杂 Spearman 排序（combination.py:305）
+- 步骤 C2: `CombinationValidator._noise_baseline`（V1）— 体系内分量置换零分布（combination.py:552）
+- 步骤 C3: `CombinationValidator._factor_spanning`（V2）— 折内残差化 + OOF 公式预测 vs 残差目标。折由 StratifiedKFold 按 system 分层生成，每折均含全部体系；最小体系不足 2 时回退随机 KFold（combination.py:603，分折逻辑见 643–654）
+- 步骤 C4: `CombinationValidator._per_system`（V3）— 逐体系原始 Spearman（combination.py:762）
+- 步骤 C5: `CombinationValidator._bootstrap_ci`（V4）— 体系分层 bootstrap CI（percentile 法）（combination.py:784）
+- 步骤 C6: `CombinationValidator.full_validation` — 组装 V1–V4 与 uncertainty 元数据（combination.py:842）
+- 步骤 C7: `CombinationValidator.validate` — 扁平化 V1–V4 至 CSV 行（combination.py:885）
 
-**管线级（跨文件）**
-- 步骤 E1: Stage1 -> Stage2 -> Stage3 -> Stage4 的全量目标依赖选择链"""
+**管线级（run_pipeline.py）**
+- 步骤 D1: `runStage0` — 读取原始 CSV 与 CIF，CIF 存在性与可解析性预检（run_pipeline.py:212）
+- 步骤 D2: `runStage1` — 全描述符线性残差秩相关分析 + 预筛选（run_pipeline.py:269）
+- 步骤 D3: `runStage2` — 稳定性选择 + 物理族代表选择（run_pipeline.py:311）
+- 步骤 D4: `runStage3` — 约束组合搜索（run_pipeline.py:403）
+- 步骤 D5: `runStage4` — V1–V4 探索性验证 + 单描述符基线（run_pipeline.py:461）
+- 步骤 D6: `generateReport` — 汇总报告与 CSV 写出（run_pipeline.py:535）
+
+**跨阶段结构**
+- 步骤 E1: Stage 0 → 1 → 2 → 3 → 4 构成全量目标依赖的选择链，全部在同一批样本上完成，无外层循环 CV
+"""
 
 # 输出格式
 output_format = """请按以下结构输出，对每个算法步骤逐条给出四问的回答：
@@ -167,6 +296,15 @@ session_instructions = """【会话指示 - research-review】
 - 对每个算法步骤回答四个固定问题"""
 
 # 拼装完整 prompt
+# 闸门：在把 algorithm_steps 写进 prompt 之前，确认其中点名的每个符号都在活源码
+# （.py 代码文件）里有定义位置。任一个无定义位置即抛 ValueError，阻止生成含幽灵步骤的 prompt。
+_assert_steps_match_sources(algorithm_steps, live_py_contents)
+
+# 闸门：核验 run_info.yaml 中 estimand.implementation_anchors 的符号在活源码中有定义位置。
+# 任一个无定义位置即抛 ValueError，阻止生成含漂移 anchor 的 prompt。
+run_info_dict = yaml.safe_load(file_contents["run_info.yaml"])
+_assert_anchors_resolve(run_info_dict, live_py_contents)
+
 prompt = f"""{session_instructions}
 
 ---

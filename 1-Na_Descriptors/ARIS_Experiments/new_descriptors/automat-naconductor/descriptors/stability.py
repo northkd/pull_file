@@ -13,7 +13,7 @@
 
 物理族代表选择（errata P4）：
 - 每个物理族最多选 1 个代表（默认 max_per_family=1）
-- 代表 = 该族中稳定性通过且 |去混杂 Spearman| 最高的描述符（保留符号）
+- 代表 = 该族中稳定性通过且 |线性残差秩相关| 最高的描述符（保留符号）
 - 此容量是硬上限；缺少其它物理族不会增加任一族的名额
 """
 from __future__ import annotations
@@ -34,18 +34,19 @@ PHYSICAL_GROUP_RESULT_COLUMNS = [
     "descriptor",
     "family",
     "family_name",
-    "deconfounded_spearman",
+    "rank_corr_of_linear_residuals",
     "selection_freq",
     "is_stable",
-    "above_noise_baseline",
     "is_representative",
+    "deconfound_status",
+    "skip_reason",
+    "n_valid",
 ]
 
 STABILITY_RESULT_COLUMNS = [
     "feature_name",
     "selection_freq",
     "is_stable",
-    "above_noise_baseline",
     "selection_method",
     "selection_alpha",
     "noise_baseline",
@@ -86,13 +87,18 @@ class StabilitySelector:
         self.alpha = alpha
         self.seed = seed
 
-    def _result_metadata(self, noise_baseline: float) -> dict[str, object]:
+    def _result_metadata(
+        self,
+        noise_baseline: float,
+        noise_baseline_reason: str | None = None,
+    ) -> dict[str, object]:
         """Return metadata shared by populated and schema-only results."""
         return {
             "selection_method": "subsampled_lasso",
             "selection_alpha": float(self.alpha),
             "preprocessing": ["median_imputation", "standard_scaling"],
             "noise_baseline": float(noise_baseline),
+            "noise_baseline_reason": noise_baseline_reason,
             "noise_baseline_quantile": 0.95,
             "n_subsamples": int(self.n_bootstrap),
             "subsample_fraction": float(self.fraction),
@@ -121,7 +127,6 @@ class StabilitySelector:
             - feature_name: 特征名
             - selection_freq: 被选中的频率 (0~1)
             - is_stable: 频率是否 > threshold
-            - above_noise_baseline: 频率是否 > 噪声基线（无噪声列时为 True）
         """
         n_samples, n_real = X_real.shape
 
@@ -145,7 +150,10 @@ class StabilitySelector:
 
         if n_features == 0:
             empty_result = pd.DataFrame(columns=STABILITY_RESULT_COLUMNS)
-            empty_result.attrs.update(self._result_metadata(noise_baseline=0.0))
+            empty_result.attrs.update(self._result_metadata(
+                noise_baseline=float("nan"),
+                noise_baseline_reason="empty_feature_matrix",
+            ))
             return empty_result
 
         # 每次自举的样本数
@@ -178,9 +186,15 @@ class StabilitySelector:
             n_real_feat = n_real
             noise_freqs = selection_freq[n_real_feat:]
             # 噪声基线 = 噪声列选中频率的 95 分位数
-            noise_baseline = float(np.percentile(noise_freqs, 95)) if len(noise_freqs) > 0 else 0.0
+            if len(noise_freqs) > 0:
+                noise_baseline = float(np.percentile(noise_freqs, 95))
+                noise_baseline_reason = None
+            else:
+                noise_baseline = float("nan")
+                noise_baseline_reason = "no_noise_frequencies_recorded"
         else:
-            noise_baseline = 0.0
+            noise_baseline = float("nan")
+            noise_baseline_reason = "no_noise_columns_configured"
 
         # 构建结果 DataFrame
         records = []
@@ -188,18 +202,10 @@ class StabilitySelector:
             freq = float(selection_freq[i])
             is_real = i < n_real
 
-            # above_noise_baseline: 真实描述符需要 > 噪声基线
-            # 噪声列本身不参与此判断
-            if is_real:
-                above_baseline = freq > noise_baseline
-            else:
-                above_baseline = True  # 噪声列标记为 True，不影响筛选
-
             records.append({
                 "feature_name": name,
                 "selection_freq": freq,
                 "is_stable": freq > self.threshold,
-                "above_noise_baseline": above_baseline,
                 "is_noise": not is_real,
                 "selection_method": "subsampled_lasso",
                 "selection_alpha": float(self.alpha),
@@ -213,7 +219,10 @@ class StabilitySelector:
 
         # 仅返回真实描述符的结果（噪声列信息已用于计算基线）
         real_df = result_df[~result_df["is_noise"]].drop(columns=["is_noise"]).reset_index(drop=True)
-        real_df.attrs.update(self._result_metadata(noise_baseline))
+        real_df.attrs.update(self._result_metadata(
+            noise_baseline,
+            noise_baseline_reason=noise_baseline_reason,
+        ))
 
         return real_df
 
@@ -224,7 +233,7 @@ class PhysicalGrouper:
     策略（errata P4）：
     - 八大物理族 A, B, C, D', E, F, G, H
     - 每族默认最多选 max_per_family 个代表
-    - 代表 = 族内稳定性通过 + |去混杂 Spearman| 最高的描述符
+    - 代表 = 族内稳定性通过 + |线性残差秩相关| 最高的描述符
     - ``max_per_family`` 是硬上限；不以缺失族为由扩容
 
     注意：D' 族在代码中用 "D_prime" 表示。
@@ -248,9 +257,9 @@ class PhysicalGrouper:
 
         参数:
             stability_df: StabilitySelector.run() 的输出 DataFrame
-                必须包含 feature_name, selection_freq, is_stable, above_noise_baseline
+                必须包含 feature_name, selection_freq, is_stable
             deconfound_df: 去混杂结果 DataFrame
-                必须包含 descriptor (列名=特征名), deconfounded_spearman
+                必须包含 descriptor (列名=特征名), rank_corr_of_linear_residuals
             descriptor_registry: 描述符注册表，默认使用 SEARCHABLE_STRUCTURE_DESCRIPTORS
                 格式: {name: (compute_func, family_key, is_high_risk)}
 
@@ -259,10 +268,9 @@ class PhysicalGrouper:
             - descriptor: 描述符名
             - family: 所属物理族 (A/B/C/D_prime/E/F/G/H)
             - family_name: 物理族中文名
-            - deconfounded_spearman: 去混杂 Spearman rho
+            - rank_corr_of_linear_residuals: 线性残差秩相关 rho
             - selection_freq: 稳定性选中频率
             - is_stable: 是否通过稳定性阈值
-            - above_noise_baseline: 是否超过噪声基线
             - is_representative: 是否被选为族代表
         """
         if descriptor_registry is None:
@@ -282,23 +290,44 @@ class PhysicalGrouper:
             how="left",
         )
 
+        # fail-fast：断言必需列存在，列名消失（如重命名遗漏）会让全部描述符静默变成
+        # selection_freq=0.0, is_stable=False 且不报错。本项目已做过两次重命名。
+        # deconfound_status / skip_reason / n_valid 同样必需——它们的唯一用途就是
+        # 让"未算"与"算出来了"可区分，用带默认值的 .get() 取它们等于新造一条静默回退。
+        required_columns = [
+            "selection_freq",
+            "is_stable",
+            "rank_corr_of_linear_residuals",
+            "deconfound_status",
+            "skip_reason",
+            "n_valid",
+        ]
+        missing_columns = [c for c in required_columns if c not in merged.columns]
+        if missing_columns:
+            raise ValueError(
+                "group_and_select: merge 后缺少必需列: "
+                f"{missing_columns}，可能由列重命名遗漏导致"
+            )
+
         # 填充物理族信息
         records = []
         for _, row in merged.iterrows():
             desc_name = row["feature_name"]
             family_key = desc_to_family.get(desc_name, "unknown")
             family_info = PHYSICAL_FAMILIES.get(family_key, {})
-            family_name = family_info.get("name", "未知")
+            family_name = family_info.get("name", "unknown")
 
             records.append({
                 "descriptor": desc_name,
                 "family": family_key,
                 "family_name": family_name,
-                "deconfounded_spearman": row.get("deconfounded_spearman", float("nan")),
-                "selection_freq": row.get("selection_freq", 0.0),
-                "is_stable": row.get("is_stable", False),
-                "above_noise_baseline": row.get("above_noise_baseline", True),
+                "rank_corr_of_linear_residuals": row["rank_corr_of_linear_residuals"],
+                "selection_freq": row["selection_freq"],
+                "is_stable": row["is_stable"],
                 "is_representative": False,
+                "deconfound_status": row["deconfound_status"],
+                "skip_reason": row["skip_reason"],
+                "n_valid": row["n_valid"],
             })
 
         result_df = pd.DataFrame.from_records(
@@ -311,13 +340,13 @@ class PhysicalGrouper:
         if result_df.empty:
             return result_df
 
-        # 筛选: 稳定 + 超过噪声基线的描述符才参与代表选择
-        eligible = result_df[result_df["is_stable"] & result_df["above_noise_baseline"]]
+        # 筛选: 稳定的描述符才参与代表选择
+        eligible = result_df[result_df["is_stable"]]
 
         # 按物理族分组
         family_groups = eligible.groupby("family")
 
-        # 第一轮: 每族选 deconfounded_spearman 最高的代表
+        # 第一轮: 每族选 rank_corr_of_linear_residuals 最高的代表
         representatives: set[str] = set()
 
         for family_key in PHYSICAL_FAMILIES:
@@ -328,9 +357,9 @@ class PhysicalGrouper:
             if group.empty:
                 continue
 
-            # 代表按 |rho| 排名，但输出保留 deconfounded_spearman 的符号。
+            # 代表按 |rho| 排名，但输出保留 rank_corr_of_linear_residuals 的符号。
             top = group.loc[
-                group["deconfounded_spearman"].abs().nlargest(self.max_per_family).index
+                group["rank_corr_of_linear_residuals"].abs().nlargest(self.max_per_family).index
             ]
             representatives.update(top["descriptor"].tolist())
 

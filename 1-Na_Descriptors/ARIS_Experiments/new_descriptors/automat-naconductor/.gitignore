@@ -35,3 +35,6 @@ worktrees/
 results/
 queue/
 dev/
+
+# opencode session artifacts
+.omo/run-continuation/

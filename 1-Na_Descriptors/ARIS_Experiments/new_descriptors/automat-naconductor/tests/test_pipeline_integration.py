@@ -134,11 +134,6 @@ def test_in_memory_stages_preserve_triple_provenance_and_explicit_cv_skips(tmp_p
     )
     assert validation.iloc[0]["n_components"] == 3
     assert validation.iloc[0]["components"] == triple_components
-    assert bool(validation.iloc[0]["anion_stratified_skipped"]) is True
-    assert "fewer than two" in validation.iloc[0]["anion_stratified_skip_reason"]
-    assert bool(validation.iloc[0]["loso_skipped"]) is False
-    assert bool(validation.iloc[0]["repeated_subsample_skipped"]) is False
-    assert bool(baseline.iloc[0]["anion_stratified_skipped"]) is True
 
     stage4_csv = pd.read_csv(output_dir / "stage4_validation_results.csv")
     stage4_row = stage4_csv.iloc[0]
@@ -199,6 +194,8 @@ combination:
         text=True,
         capture_output=True,
         check=False,
+        encoding="utf-8",
+        errors="replace",
     )
     diagnostic = f"{completed.stdout}\n{completed.stderr}".lower()
 
@@ -216,13 +213,15 @@ def test_stage2_family_capacity_is_a_hard_upper_bound() -> None:
             "feature_name": names,
             "selection_freq": [1.0] * len(names),
             "is_stable": [True] * len(names),
-            "above_noise_baseline": [True] * len(names),
         }
     )
     deconfound = pd.DataFrame(
         {
             "descriptor": names,
-            "deconfounded_spearman": [0.9, 0.8, 0.7, 0.6, 0.5],
+            "rank_corr_of_linear_residuals": [0.9, 0.8, 0.7, 0.6, 0.5],
+            "deconfound_status": ["ok"] * 5,
+            "skip_reason": [None] * 5,
+            "n_valid": [10] * 5,
         }
     )
     registry = {

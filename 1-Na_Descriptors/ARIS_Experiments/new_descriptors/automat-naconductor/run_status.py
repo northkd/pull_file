@@ -20,7 +20,7 @@ from run_config import DEFAULT_RUN_INFO, config_get, load_run_info
 
 REQUIRED_AGENT_RESULT_COLUMNS = {
     "descriptor_name",
-    "deconfounded_spearman",
+    "rank_corr_of_linear_residuals",
     "status",
     "shared_raw_file",
     "descriptor_registry",
@@ -122,9 +122,9 @@ def main(argv: list[str] | None = None) -> None:
     max_iterations = int(status_config["max_iterations"])
     patience = int(status_config["patience"])
     metric_name = str(status_config["primary_metric"])
-    if metric_name != "deconfounded_spearman":
+    if metric_name != "rank_corr_of_linear_residuals":
         raise ValueError(
-            "tracks.agent.status.primary_metric must be deconfounded_spearman; "
+            "tracks.agent.status.primary_metric must be rank_corr_of_linear_residuals; "
             "Agent stopping is not based on raw correlation or prediction error."
         )
 
@@ -144,7 +144,7 @@ def main(argv: list[str] | None = None) -> None:
         print(f"iterations_recorded: {iterations}")
         print(f"metric_observations: {metric_observations}")
         print(f"primary_metric: {metric_name}")
-        print(f"best_deconfounded_spearman: {best_display}")
+        print(f"best_rank_corr_of_linear_residuals: {best_display}")
         print(f"finite_evaluations_since_last_improvement: {since_improvement}")
         print(f"max_iterations: {max_iterations}")
         print(f"patience: {patience}")

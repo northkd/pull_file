@@ -3,7 +3,6 @@ from __future__ import annotations
 from pathlib import Path
 
 import descriptors
-import numpy as np
 import pandas as pd
 import pytest
 
@@ -11,7 +10,6 @@ import train as train_module
 from automat_utils import (
     AGENT_RESULT_COLUMNS,
     evaluate_structural_descriptor,
-    evaluate_structural_frame,
     resolve_frozen_input_identity,
 )
 from plot_run_results import read_agent_results
@@ -53,7 +51,7 @@ def _write_agent_config(
                 "    status:",
                 "      max_iterations: 12",
                 "      patience: 4",
-                "      primary_metric: deconfounded_spearman",
+                "      primary_metric: rank_corr_of_linear_residuals",
                 "  pipeline:",
                 "    output_dir: results/pipeline",
                 "shared_input:",
@@ -121,7 +119,7 @@ def test_agent_status_rejects_unversioned_legacy_result_rows(tmp_path: Path) -> 
     )
     legacy_results = tmp_path / "legacy-results.tsv"
     legacy_results.write_text(
-        "descriptor_name\tdeconfounded_spearman\tstatus\n"
+        "descriptor_name\trank_corr_of_linear_residuals\tstatus\n"
         "a2_max_dist\t0.4\tevaluated\n",
         encoding="utf-8",
     )
@@ -144,7 +142,7 @@ def test_status_and_plot_reject_results_from_a_different_frozen_batch(
         {
             "descriptor_name": "a2_max_dist",
             "raw_spearman": "0.2",
-            "deconfounded_spearman": "0.3",
+            "rank_corr_of_linear_residuals": "0.3",
             "status": "evaluated",
             "shared_raw_file": str(tmp_path / "other-raw.csv"),
             "descriptor_registry": str(identity.descriptor_registry),
@@ -271,7 +269,7 @@ def test_status_and_plot_reject_mixed_frozen_batch_rows(tmp_path: Path) -> None:
         {
             "descriptor_name": "a2_max_dist",
             "raw_spearman": "0.2",
-            "deconfounded_spearman": "0.3",
+            "rank_corr_of_linear_residuals": "0.3",
             "status": "evaluated",
             "shared_raw_file": str(identity.raw_file),
             "descriptor_registry": str(identity.descriptor_registry),
@@ -309,31 +307,6 @@ def test_agent_cif_preflight_fails_before_creating_agent_outputs(tmp_path: Path)
     assert not (tmp_path / "results" / "agent").exists()
 
 
-def test_agent_marks_infeasible_cv_strategy_skipped_without_losing_evaluation() -> None:
-    frame = pd.DataFrame(
-        {
-            "cif_path": [f"sample-{index}.cif" for index in range(6)],
-            "system": ["NASICON"] * 6,
-            "anion_type": ["oxide"] * 6,
-            "log_sigma": np.linspace(-4.0, -2.0, 6),
-            "a2_max_dist": np.linspace(2.0, 3.0, 6),
-        }
-    )
-
-    metrics = evaluate_structural_frame(
-        frame,
-        descriptor_name="a2_max_dist",
-        target_column="log_sigma",
-        system_column="system",
-        anion_column="anion_type",
-        ridge_alpha=1.0,
-    )
-
-    assert np.isfinite(metrics["deconfounded_spearman"])
-    assert metrics["loso_skipped"] is True
-    assert "leave_one_system_out" in metrics["loso_skip_reason"]
-
-
 def test_train_rejects_foreign_batch_before_overwriting_agent_audit(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
@@ -349,7 +322,7 @@ def test_train_rejects_foreign_batch_before_overwriting_agent_audit(
         {
             "descriptor_name": "a2_max_dist",
             "raw_spearman": "0.2",
-            "deconfounded_spearman": "0.3",
+            "rank_corr_of_linear_residuals": "0.3",
             "status": "evaluated",
             "shared_raw_file": str(tmp_path / "foreign-raw.csv"),
             "descriptor_registry": str(Path(descriptors.__file__).resolve()),
@@ -381,7 +354,7 @@ def test_train_rejects_foreign_batch_before_overwriting_agent_audit(
             "descriptor_registry": str(args.descriptor_registry),
             "registry_revision": args.registry_revision,
             "raw_spearman": 0.1,
-            "deconfounded_spearman": 0.1,
+            "rank_corr_of_linear_residuals": 0.1,
             "status": "evaluated",
         }
     )
@@ -441,7 +414,7 @@ def test_train_rejects_foreign_audit_before_creating_agent_results(
             "descriptor_registry": str(args.descriptor_registry),
             "registry_revision": args.registry_revision,
             "raw_spearman": 0.1,
-            "deconfounded_spearman": 0.1,
+            "rank_corr_of_linear_residuals": 0.1,
             "status": "evaluated",
         }
     )

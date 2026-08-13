@@ -7,102 +7,13 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import pytest
-from sklearn.pipeline import Pipeline
 
 import descriptors
 from descriptors.combination import CombinationValidator
-from descriptors.cv_strategies import MultiStrategyCV
 from descriptors.deconfound import DeconfoundAnalyzer
 from descriptors.featurizer import build_feature_matrix
 from descriptors.stability import PhysicalGrouper, StabilitySelector
 from run_pipeline import runStage1, runStage2, runStage4
-
-
-def _balanced_cv_data() -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-    rng = np.random.RandomState(7)
-    systems = np.repeat(["NASICON", "sulfide", "halide"], 4)
-    anions = np.tile(["O", "S"], 6)
-    X = rng.normal(size=(12, 2))
-    X[1, 0] = np.nan
-    y = np.nan_to_num(X[:, 0], nan=0.0) + 0.1 * rng.normal(size=12)
-    return X, y, systems, anions
-
-
-def test_repeated_subsample_honours_repeat_fraction_and_seed() -> None:
-    X, y, systems, _anions = _balanced_cv_data()
-
-    first = MultiStrategyCV().repeated_subsample(
-        X, y, systems, n_repeats=4, test_fraction=0.25, seed=19
-    )
-    second = MultiStrategyCV().repeated_subsample(
-        X, y, systems, n_repeats=4, test_fraction=0.25, seed=19
-    )
-
-    assert len(first["fold_results"]) == 4
-    assert all(len(fold["val_idx"]) == 3 for fold in first["fold_results"])
-    assert [fold["val_idx"].tolist() for fold in first["fold_results"]] == [
-        fold["val_idx"].tolist() for fold in second["fold_results"]
-    ]
-    assert first["n_repeats"] == 4
-    assert first["test_fraction"] == pytest.approx(0.25)
-    assert first["seed"] == 19
-
-
-def test_repeated_subsample_explicitly_skips_infeasible_stratification() -> None:
-    X = np.arange(12, dtype=float).reshape(6, 2)
-    y = np.arange(6, dtype=float)
-    systems = np.array(["A", "A", "B", "B", "C", "C"])
-
-    result = MultiStrategyCV().repeated_subsample(
-        X, y, systems, n_repeats=4, test_fraction=0.2, seed=19
-    )
-
-    assert result["skipped"] is True
-    assert result["fold_results"] == []
-    assert "test_fraction" in result["reason"]
-    assert np.isnan(result["mean_spearman"])
-
-
-def test_cv_model_pipeline_imputes_and_scales_inside_each_fold() -> None:
-    X, y, systems, anions = _balanced_cv_data()
-    cv = MultiStrategyCV()
-
-    model = cv._make_model()
-    results = cv.run_all(X, y, systems, anions)
-
-    assert isinstance(model, Pipeline)
-    assert list(model.named_steps) == ["imputer", "scale", "ridge"]
-    assert all(result["fold_results"] for result in results.values())
-
-
-def test_rare_anion_class_is_reported_as_skipped() -> None:
-    X = np.arange(18, dtype=float).reshape(9, 2)
-    y = np.arange(9, dtype=float)
-    anions = np.array(["Cl"] * 8 + ["I"])
-
-    result = MultiStrategyCV().anion_stratified_cv(X, y, anions, n_folds=3)
-
-    assert result["skipped"] is True
-    assert result["fold_results"] == []
-    assert np.isnan(result["mean_spearman"])
-    assert np.isnan(result["mean_mae"])
-    assert "fewer than two" in result["reason"]
-    assert result["requested_n_folds"] == 3
-    assert result["effective_n_folds"] == 0
-
-
-def test_anion_cv_reports_when_requested_folds_are_downshifted() -> None:
-    X = np.arange(24, dtype=float).reshape(12, 2)
-    y = np.arange(12, dtype=float)
-    anions = np.repeat(["Cl", "I", "O"], 4)
-
-    result = MultiStrategyCV().anion_stratified_cv(X, y, anions, n_folds=6)
-
-    assert result["skipped"] is False
-    assert result["requested_n_folds"] == 6
-    assert result["effective_n_folds"] == 4
-    assert result["downshifted"] is True
-    assert len(result["fold_results"]) == 4
 
 
 def test_build_feature_matrix_retains_raw_values_and_missingness() -> None:
@@ -191,13 +102,15 @@ def test_physical_grouper_ranks_by_absolute_rho_but_retains_sign() -> None:
             "feature_name": ["negative", "positive"],
             "selection_freq": [0.9, 0.9],
             "is_stable": [True, True],
-            "above_noise_baseline": [True, True],
         }
     )
     deconfound = pd.DataFrame(
         {
             "descriptor": ["negative", "positive"],
-            "deconfounded_spearman": [-0.8, 0.5],
+            "rank_corr_of_linear_residuals": [-0.8, 0.5],
+            "deconfound_status": ["ok", "ok"],
+            "skip_reason": [None, None],
+            "n_valid": [10, 10],
         }
     )
     registry = {
@@ -211,7 +124,7 @@ def test_physical_grouper_ranks_by_absolute_rho_but_retains_sign() -> None:
 
     representative = result[result["is_representative"]].iloc[0]
     assert representative["descriptor"] == "negative"
-    assert representative["deconfounded_spearman"] == pytest.approx(-0.8)
+    assert representative["rank_corr_of_linear_residuals"] == pytest.approx(-0.8)
 
 
 def test_stage1_returns_full_audit_and_prefiltered_results(tmp_path) -> None:
@@ -250,7 +163,10 @@ def test_stage2_receives_only_prefiltered_real_features_plus_fixed_noise(tmp_pat
     filtered = pd.DataFrame(
         {
             "descriptor": ["a2_max_dist"],
-            "deconfounded_spearman": [0.7],
+            "rank_corr_of_linear_residuals": [0.7],
+            "deconfound_status": ["ok"],
+            "skip_reason": [None],
+            "n_valid": [30],
         }
     )
 
@@ -285,10 +201,10 @@ def test_empty_stage1_and_stage2_results_keep_schemas_and_attrs(tmp_path) -> Non
         "family",
         "is_high_risk",
         "raw_spearman",
-        "deconfounded_spearman",
-        "deconf_p",
-        "system_proxy_ratio",
-        "label",
+        "rank_corr_of_linear_residuals",
+        "deconfound_status",
+        "skip_reason",
+        "n_valid",
     }
     assert full.empty and filtered.empty
     assert set(full.columns) == expected_audit_columns
@@ -309,12 +225,12 @@ def test_physical_grouper_empty_result_is_schema_stable_and_preserves_attrs() ->
             "feature_name",
             "selection_freq",
             "is_stable",
-            "above_noise_baseline",
         ]
     )
     stability.attrs["selection_method"] = "subsampled_lasso"
     deconfound = pd.DataFrame(
-        columns=["descriptor", "deconfounded_spearman"]
+        columns=["descriptor", "rank_corr_of_linear_residuals",
+                 "deconfound_status", "skip_reason", "n_valid"]
     )
     deconfound.attrs["primary_control"] = "system"
 
@@ -325,10 +241,9 @@ def test_physical_grouper_empty_result_is_schema_stable_and_preserves_attrs() ->
         "descriptor",
         "family",
         "family_name",
-        "deconfounded_spearman",
+        "rank_corr_of_linear_residuals",
         "selection_freq",
         "is_stable",
-        "above_noise_baseline",
         "is_representative",
     }.issubset(result.columns)
     assert result.attrs["selection_method"] == "subsampled_lasso"
@@ -349,86 +264,13 @@ def test_stability_selector_with_no_features_returns_metadata_rich_empty_result(
         "feature_name",
         "selection_freq",
         "is_stable",
-        "above_noise_baseline",
         "selection_method",
         "selection_alpha",
         "noise_baseline",
     }.issubset(result.columns)
     assert result.attrs["selection_method"] == "subsampled_lasso"
-    assert result.attrs["noise_baseline"] == pytest.approx(0.0)
-
-
-def _skipped_anion_evaluation_data():
-    n = 30
-    x = np.linspace(-2.0, 2.0, n)
-    feature_df = pd.DataFrame(
-        {
-            "a2_max_dist": x,
-            "na_concentration": 0.5 * x + 0.2,
-        }
-    )
-    y = 1.5 * x + 0.1 * np.sin(np.arange(n))
-    systems = ["NASICON"] * 10 + ["sulfide"] * 10 + ["halide"] * 10
-    anions = ["I"] + ["Cl"] * (n - 1)
-    candidates = pd.DataFrame(
-        [{
-            "combined_name": "a2_max_dist + na_concentration",
-            "d1": "a2_max_dist",
-            "d2": "na_concentration",
-            "operator": "+",
-            "combined_deconf_spearman": 0.8,
-        }]
-    )
-    return feature_df, y, systems, anions, candidates
-
-
-def test_combination_validation_scores_only_available_cv_strategies() -> None:
-    feature_df, y, systems, anions, candidates = _skipped_anion_evaluation_data()
-
-    result = CombinationValidator().validate(
-        feature_df, y, systems, anions, candidates, top_k=1
-    )
-    row = result.iloc[0]
-
-    assert bool(row["anion_stratified_skipped"]) is True
-    assert "fewer than two" in row["anion_stratified_skip_reason"]
-    assert np.isnan(row["anion_stratified_spearman"])
-    assert bool(row["loso_skipped"]) is False
-    assert bool(row["repeated_subsample_skipped"]) is False
-    assert row["composite_strategy_count"] == 2
-    assert bool(row["composite_is_complete"]) is False
-    assert np.isfinite(row["composite_score"])
-
-
-def test_stage4_baseline_records_skipped_anion_and_finite_partial_composite(tmp_path) -> None:
-    feature_df, y, systems, anions, candidates = _skipped_anion_evaluation_data()
-    deconfound = pd.DataFrame(
-        [{
-            "descriptor": "a2_max_dist",
-            "family": "A",
-            "deconfounded_spearman": 0.8,
-        }]
-    )
-
-    validation, baseline = runStage4(
-        feature_df,
-        y,
-        systems,
-        anions,
-        deconfound,
-        candidates,
-        alpha=1.0,
-        seed=42,
-        top_k=1,
-        output_dir=tmp_path,
-    )
-
-    assert bool(validation.iloc[0]["anion_stratified_skipped"]) is True
-    assert np.isfinite(validation.iloc[0]["composite_score"])
-    assert bool(baseline.iloc[0]["anion_stratified_skipped"]) is True
-    assert baseline.iloc[0]["composite_strategy_count"] == 2
-    assert bool(baseline.iloc[0]["composite_is_complete"]) is False
-    assert np.isfinite(baseline.iloc[0]["composite_score"])
+    assert np.isnan(result.attrs["noise_baseline"])
+    assert result.attrs["noise_baseline_reason"] == "empty_feature_matrix"
 
 
 def test_cli_fails_closed_when_featurized_artifact_has_no_valid_descriptors(
@@ -482,6 +324,8 @@ combination:
         text=True,
         capture_output=True,
         check=False,
+        encoding="utf-8",
+        errors="replace",
     )
     diagnostic = f"{completed.stdout}\n{completed.stderr}".lower()
 

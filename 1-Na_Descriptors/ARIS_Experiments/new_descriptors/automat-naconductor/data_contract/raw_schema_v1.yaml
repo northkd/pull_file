@@ -1,0 +1,253 @@
+# raw_schema_v1.yaml
+# 原始数据契约 schema v1，在数据集不存在时冻结。
+# 任何修改必须新增 raw_schema_v2 并原样保留 v1，禁止就地编辑 v1。
+
+# ============================================================
+# 全局约定
+# ============================================================
+# - 缺失一律为空单元格，由读取层解析为 NaN。
+# - 禁止用 0、-1、"unknown"、"N/A"、"-" 表示缺失。
+# - 编号不可复用：material_id 和 measurement_id 一旦分配，即使对应行被删除也不得重用。
+
+# ============================================================
+# 表 materials（一行一材料 = 一个 CIF）
+# ============================================================
+materials:
+  material_id:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed: null
+    description: 主键，正则 ^MAT-[0-9]{4}$，编号不可复用
+    regex: "^MAT-[0-9]{4}$"
+    role: primary_key
+
+  cif_relpath:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed: null
+    description: CIF 文件相对仓库根的路径
+
+  cif_sha256:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed: null
+    description: CIF 文件内容的 SHA-256 哈希
+    regex: "^[0-9a-f]{64}$"
+
+  structure_source_doi:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed: null
+    description: 结构数据来源文献的 DOI
+
+  structure_source_locator:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed: null
+    description: 结构在文献中的定位信息（表号/图号/CIF 编号/ICSD 号）
+
+  reported_composition:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed: null
+    description: 照抄文献写法的化学组成，不做归一化
+
+  system:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed:
+      # TODO: 待用户填定具体体系分类枚举值域
+      # 禁止由代码从组成推断
+      - "__TODO_USER_FILL__"
+    description: 体系分类（精细），禁止由代码从组成推断
+
+  system_coarse:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed:
+      # TODO: 待用户填定具体粗分类枚举值域
+      - "__TODO_USER_FILL__"
+    description: 体系分类（粗分），第二套更粗划分
+
+  structure_origin:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed:
+      - single_crystal_refinement
+      - powder_refinement
+      - dft_relaxed
+      - from_database
+      - unspecified
+    description: 结构来源类型
+
+  structure_temperature_K:
+    dtype: float
+    nullable: true
+    missing_encoding: null
+    allowed: null
+    description: 结构测定的温度（K），若文献未报告则为空。0 K 不是缺失哨兵——该列 nullable=true，缺失用空单元格表示
+    zero_is_sentinel: false
+
+  same_sample_as_conductivity:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed:
+      - "yes"
+      - "no"
+      - unspecified
+    description: 结构所用样品与电导率测量所用样品是否为同一样品
+
+  notes:
+    dtype: str
+    nullable: true
+    missing_encoding: null
+    allowed: null
+    description: 备注
+
+# ============================================================
+# 表 measurements（一行一次测量）
+# ============================================================
+measurements:
+  measurement_id:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed: null
+    description: 主键，正则 ^MEAS-[0-9]{5}$，编号不可复用
+    regex: "^MEAS-[0-9]{5}$"
+    role: primary_key
+
+  material_id:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed: null
+    description: 外键 → materials.material_id
+    role: foreign_key
+    references: materials.material_id
+
+  source_doi:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed: null
+    description: 电导率测量数据来源文献的 DOI
+
+  source_locator:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed: null
+    description: 测量数据在文献中的定位信息
+
+  T_K:
+    dtype: float
+    nullable: false
+    missing_encoding: null
+    allowed: null
+    description: 测量温度（K）。0 K 不物理但不是缺失哨兵——区间 [200, 1200] 已将其排除，无需用哨兵检查覆盖
+    range: [200, 1200]
+    zero_is_sentinel: false
+
+  sigma_S_per_cm:
+    dtype: float
+    nullable: false
+    missing_encoding: null
+    allowed: null
+    description: 离子电导率（S/cm），必须 > 0。0 S/cm 不是合法测量值，是常见的缺失哨兵——同时报 forbidden_missing_sentinel 与 range_violation
+    range: {min: 0, min_exclusive: true}
+    zero_is_sentinel: true
+
+  sigma_readout:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed:
+      - table_value
+      - stated_in_text
+      - digitized_from_figure
+      - extrapolated_from_arrhenius_fit
+    description: 电导率值的获取方式
+
+  method:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed:
+      - eis
+      - dc_polarization
+      - nmr_derived
+      - other
+      - unspecified
+    description: 测量方法
+
+  conductivity_component:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed:
+      - total
+      - bulk
+      - grain_boundary
+      - not_distinguished
+    description: 电导率成分（总/bulk/晶界/未区分）
+
+  sample_form:
+    dtype: str
+    nullable: false
+    missing_encoding: null
+    allowed:
+      - cold_pressed
+      - sintered
+      - single_crystal
+      - thin_film
+      - unspecified
+    description: 样品形态
+
+  relative_density_pct:
+    dtype: float
+    nullable: true
+    missing_encoding: null
+    allowed: null
+    description: 相对密度（%）。0% 是合法区间下界，不是缺失哨兵——该列 nullable=true，缺失用空单元格表示
+    range: [0, 100]
+    zero_is_sentinel: false
+
+  electrode:
+    dtype: str
+    nullable: true
+    missing_encoding: null
+    allowed: null
+    description: 电极材料
+
+  E_a_eV:
+    dtype: float
+    nullable: true
+    missing_encoding: null
+    allowed: null
+    description: 活化能（eV）。0 eV 活化能不物理但不是缺失哨兵——该列 nullable=true，缺失用空单元格表示
+    zero_is_sentinel: false
+
+  E_a_fit_range_K:
+    dtype: str
+    nullable: true
+    missing_encoding: null
+    allowed: null
+    description: 活化能拟合的温度区间（K）
+
+  notes:
+    dtype: str
+    nullable: true
+    missing_encoding: null
+    allowed: null
+    description: 备注

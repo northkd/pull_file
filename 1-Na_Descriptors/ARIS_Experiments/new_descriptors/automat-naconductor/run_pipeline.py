@@ -9,7 +9,7 @@
 
 4个阶段:
     Stage 0: 特征化（compute_features.py的等价脚本版）
-    Stage 1: 单描述符筛选（去混杂分析）
+    Stage 1: 单描述符筛选（线性残差秩相关）
     Stage 2: 稳定性选择 + 物理族代表
     Stage 3: 约束组合搜索
     Stage 4: 多策略CV验证 + 最终报告
@@ -40,11 +40,6 @@ from descriptors.combination import (
     combination_candidates_to_csv_frame,
     combination_validation_to_csv_frame,
 )
-from descriptors.cv_strategies import (
-    CV_SPEARMAN_SUMMARY_COLUMNS,
-    MultiStrategyCV,
-    summarize_cv_spearman,
-)
 from run_config import config_get, load_run_info
 
 logging.basicConfig(
@@ -62,8 +57,7 @@ class InsufficientFeatureDataError(RuntimeError):
 BASELINE_RESULT_COLUMNS = [
     "descriptor",
     "family",
-    "deconfounded_spearman",
-    *CV_SPEARMAN_SUMMARY_COLUMNS,
+    "rank_corr_of_linear_residuals",
 ]
 
 
@@ -130,14 +124,6 @@ def _validate_pipeline_output_dir(value: str | Path) -> str:
     return str(output_dir)
 
 
-def _format_cv_metric(row: pd.Series, prefix: str) -> str:
-    """Format a CV metric while keeping skipped strategies visibly distinct."""
-    if bool(row.get(f"{prefix}_skipped", False)):
-        return "SKIPPED"
-    value = float(row.get(f"{prefix}_spearman", float("nan")))
-    return f"{value:.3f}"
-
-
 # ============================================================
 # 命令行参数
 # ============================================================
@@ -188,7 +174,8 @@ def parseArgs(argv: list[str] | None = None) -> argparse.Namespace:
         "--alpha",
         type=float,
         default=1.0,
-        help="Ridge正则化强度（默认1.0）",
+        help="Ridge正则化强度（默认1.0）；单描述符层已改为正交投影不受此参数影响，"
+             "仍被 combination._factor_spanning 的折内 Ridge 使用",
     )
     parser.add_argument(
         "--seed",
@@ -277,7 +264,7 @@ def runStage0(args: argparse.Namespace) -> tuple[pd.DataFrame, pd.DataFrame, lis
 
 
 # ============================================================
-# Stage 1: 单描述符去混杂筛选
+# Stage 1: 单描述符线性残差秩相关筛选
 # ============================================================
 
 def runStage1(
@@ -288,14 +275,14 @@ def runStage1(
     alpha: float,
     output_dir: Path,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Stage 1: 对所有描述符执行去混杂分析，筛选有效信号。
+    """Stage 1: 对所有描述符执行线性残差秩相关分析。
 
     返回:
-        (完整审计结果, 预筛选结果)。预筛选结果仅保留标签为
-        强物理/弱物理/混合的描述符。
+        (完整审计结果, 预筛选结果)。预筛选结果与完整结果一致；
+        所有描述符直接进入 Stage 2。
     """
     print("\n" + "=" * 60)
-    print("[Stage 1] 单描述符去混杂筛选")
+    print("[Stage 1] 单描述符线性残差秩相关筛选")
     print("=" * 60)
 
     analyzer = DeconfoundAnalyzer(alpha=alpha)
@@ -304,16 +291,8 @@ def runStage1(
     # 保存完整结果
     deconfound_df.to_csv(output_dir / "stage1_deconfound_results.csv", index=False, encoding="utf-8")
 
-    # 标签分布统计
-    label_counts = deconfound_df["label"].value_counts()
-    print("\n标签分布:")
-    for label_name in ["强物理信号", "弱物理信号", "混合信号", "体系代理", "噪声级"]:
-        count = label_counts.get(label_name, 0)
-        print(f"  {label_name}: {count}")
-
-    # 预筛选: 保留标签为强物理信号/弱物理信号/混合信号的描述符 (errata P5)
-    pass_labels = {"强物理信号", "弱物理信号", "混合信号"}
-    filtered_df = deconfound_df[deconfound_df["label"].isin(pass_labels)].copy()
+    # 所有描述符直接进入 Stage 2
+    filtered_df = deconfound_df.copy()
     filtered_df.to_csv(
         output_dir / "stage1_prefiltered_results.csv",
         index=False,
@@ -383,8 +362,7 @@ def runStage2(
     stability_df.to_csv(output_dir / "stage2_stability_results.csv", index=False, encoding="utf-8")
 
     n_stable = stability_df["is_stable"].sum()
-    n_above_noise = stability_df["above_noise_baseline"].sum()
-    print(f"  稳定描述符: {n_stable}, 超过噪声基线: {n_above_noise}")
+    print(f"  稳定描述符: {n_stable}")
 
     # 物理族代表选择
     print("  按物理族选择代表...")
@@ -411,10 +389,13 @@ def runStage2(
     # 打印每个代表
     reps = representative_df[representative_df["is_representative"] == True]  # noqa: E712
     for _, row in reps.iterrows():
-        rho = row.get("deconfounded_spearman", float("nan"))
-        freq = row.get("selection_freq", 0.0)
+        rho = row["rank_corr_of_linear_residuals"]
+        freq = row["selection_freq"]
+        status = row["deconfound_status"]
+        rho_str = f"{rho:.3f}" if np.isfinite(rho) else "N/A"
+        freq_str = f"{freq:.2f}" if np.isfinite(freq) else "N/A"
         print(f"  [{row['family']}] {row['descriptor']} ({row['family_name']})"
-              f"  去混杂ρ={rho:.3f}  频率={freq:.2f}")
+              f"  残差秩相关ρ={rho_str}  频率={freq_str}  状态={status}")
 
     return representative_df
 
@@ -468,11 +449,11 @@ def runStage3(
     # 打印 top 5
     if not candidates_df.empty:
         top5 = candidates_df.head(5)
-        print("\nTop 5 组合候选（按 |去混杂Spearman| 降序）:")
+        print("\nTop 5 组合候选（按 |线性残差秩相关| 降序）:")
         for _, row in top5.iterrows():
             cross_flag = "跨族" if row["is_cross_family"] else "同族"
             print(f"  {row['combined_name']}  "
-                  f"去混杂ρ={row['combined_deconf_spearman']:.3f}  [{cross_flag}]")
+                  f"残差秩相关ρ={row['combined_rank_corr_of_linear_residuals']:.3f}  [{cross_flag}]")
 
     return candidates_df
 
@@ -493,7 +474,7 @@ def runStage4(
     top_k: int,
     output_dir: Path,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Stage 4: exploratory V1--V4 evidence, CV, and single baseline.
+    """Stage 4: exploratory V1--V4 evidence and single baseline.
 
     返回:
         (validation_df, baseline_df)
@@ -501,12 +482,24 @@ def runStage4(
         - baseline_df: 最佳单描述符基线结果
     """
     print("\n" + "=" * 60)
-    print("[Stage 4] 多策略CV验证")
+    print("[Stage 4] V1–V4 探索性验证")
     print("=" * 60)
 
     # --- 组合验证 ---
     print(f"  验证 Top-{top_k} 组合候选（V1–V4，探索性证据）...")
-    validator = CombinationValidator(alpha=alpha, seed=seed)
+    # 从 run_info.yaml 读取 per_system 闸门值，读不到时抛错不取默认值
+    config = load_run_info(Path(__file__).with_name("run_info.yaml"))
+    per_system_min_n = int(config_get(config, "evidence.per_system.min_n"))
+    exact_perm_max_n = int(config_get(config, "evidence.per_system.exact_perm_max_n"))
+    monte_carlo_max_n = int(config_get(config, "evidence.per_system.monte_carlo_max_n"))
+    monte_carlo_draws = int(config_get(config, "evidence.per_system.monte_carlo_draws"))
+    validator = CombinationValidator(
+        alpha=alpha, seed=seed,
+        per_system_min_n=per_system_min_n,
+        exact_perm_max_n=exact_perm_max_n,
+        monte_carlo_max_n=monte_carlo_max_n,
+        monte_carlo_draws=monte_carlo_draws,
+    )
     validation_df = validator.validate(
         feature_df, y, system_labels, anion_labels,
         candidates_df, top_k=top_k,
@@ -524,46 +517,22 @@ def runStage4(
 
     # --- 单描述符基线 ---
     baseline_df = pd.DataFrame(columns=BASELINE_RESULT_COLUMNS)
-    # 选出去混杂Spearman绝对值最高的描述符作为基线
+    # 选出线性残差秩相关绝对值最高的描述符作为基线
     if not deconfound_df.empty:
-        best_single_row = deconfound_df.iloc[0]  # 已按 |deconfounded_spearman| 降序排列
+        best_single_row = deconfound_df.iloc[0]  # 已按 |rank_corr_of_linear_residuals| 降序排列
         best_single_name = best_single_row["descriptor"]
 
         print(f"\n  最佳单描述符基线: {best_single_name}")
-        print("  运行多策略CV...")
 
-        # 获取该描述符的特征列
-        if best_single_name in feature_df.columns:
-            x_single = feature_df[best_single_name].values.astype(float)
-            X_single = x_single.reshape(-1, 1)
-            y_arr = np.asarray(y, dtype=float)
-
-            # 有效样本掩码
-            valid_mask = ~np.isnan(y_arr)
-            if valid_mask.sum() >= 5:
-                cv = MultiStrategyCV(alpha=alpha)
-                cv_results = cv.run_all(
-                    X_single[valid_mask],
-                    y_arr[valid_mask],
-                    np.asarray(system_labels)[valid_mask],
-                    np.asarray(anion_labels)[valid_mask],
-                )
-                cv_summary = summarize_cv_spearman(cv_results)
-
-                baseline_records = [{
-                    "descriptor": best_single_name,
-                    "family": best_single_row["family"],
-                    "deconfounded_spearman": best_single_row["deconfounded_spearman"],
-                    **cv_summary,
-                }]
-                baseline_df = pd.DataFrame.from_records(
-                    baseline_records,
-                    columns=BASELINE_RESULT_COLUMNS,
-                )
-            else:
-                print("  警告: 有效样本不足，跳过单描述符基线CV")
-        else:
-            print(f"  警告: 描述符 {best_single_name} 不在特征矩阵中，跳过基线CV")
+        baseline_records = [{
+            "descriptor": best_single_name,
+            "family": best_single_row["family"],
+            "rank_corr_of_linear_residuals": best_single_row["rank_corr_of_linear_residuals"],
+        }]
+        baseline_df = pd.DataFrame.from_records(
+            baseline_records,
+            columns=BASELINE_RESULT_COLUMNS,
+        )
     else:
         best_single_name = "N/A"
 
@@ -571,14 +540,6 @@ def runStage4(
     if not baseline_df.empty:
         baseline_df.to_csv(output_dir / "stage4_single_descriptor_baseline.csv", index=False, encoding="utf-8")
         print(f"  基线描述符: {best_single_name}")
-        for _, row in baseline_df.iterrows():
-            print(f"    阴离子分层: {_format_cv_metric(row, 'anion_stratified')}")
-            print(f"    LOSO:       {_format_cv_metric(row, 'loso')}")
-            print(f"    重复子采样: {_format_cv_metric(row, 'repeated_subsample')}")
-            print(
-                f"    综合得分:   {row['composite_score']:.3f} "
-                f"({int(row['composite_strategy_count'])}/3 strategies)"
-            )
 
     return validation_df, baseline_df
 
@@ -623,23 +584,22 @@ def generateReport(
     for _, row in top10_deconf.iterrows():
         stage1_table_rows.append(
             f"| {row['descriptor']} | {row['family']} | "
-            f"{row['raw_spearman']:.3f} | {row['deconfounded_spearman']:.3f} | "
-            f"{row['system_proxy_ratio']:.3f} | {row['label']} |"
+            f"{row['raw_spearman']:.3f} | {row['rank_corr_of_linear_residuals']:.3f} |"
         )
     stage1_table = "\n".join(stage1_table_rows)
-
-    # 标签分布
-    label_counts = deconfound_df["label"].value_counts().to_dict()
 
     # ---- Stage 2 代表表格 ----
     reps = representative_df[representative_df["is_representative"] == True]  # noqa: E712
     stage2_table_rows = []
     for _, row in reps.iterrows():
-        rho = row.get("deconfounded_spearman", float("nan"))
-        freq = row.get("selection_freq", 0.0)
+        rho = row["rank_corr_of_linear_residuals"]
+        freq = row["selection_freq"]
+        status = row["deconfound_status"]
+        rho_str = f"{rho:.3f}" if np.isfinite(rho) else "N/A"
+        freq_str = f"{freq:.2f}" if np.isfinite(freq) else "N/A"
         stage2_table_rows.append(
             f"| {row['descriptor']} | {row['family']} | {row['family_name']} | "
-            f"{rho:.3f} | {freq:.2f} |"
+            f"{rho_str} | {freq_str} | {status} |"
         )
     stage2_table = "\n".join(stage2_table_rows)
     stage2_capacity = int(
@@ -656,7 +616,7 @@ def generateReport(
         stage3_table_rows.append(
             f"| {row['combined_name']} | {len(components)} | "
             f"{', '.join(map(str, components))} | {', '.join(map(str, operators))} | "
-            f"{row['combined_deconf_spearman']:.3f} | {cross_flag} |"
+            f"{row['combined_rank_corr_of_linear_residuals']:.3f} | {cross_flag} |"
         )
     stage3_table = "\n".join(stage3_table_rows)
 
@@ -664,19 +624,19 @@ def generateReport(
     # 基线行
     if not baseline_df.empty:
         bl = baseline_df.iloc[0]
+        bl_rho = bl["rank_corr_of_linear_residuals"]
+        bl_rho_str = f"{bl_rho:.3f}" if np.isfinite(bl_rho) else "N/A"
         baseline_row = (
-            f"| {bl['descriptor']} | {_format_cv_metric(bl, 'anion_stratified')} | "
-            f"{_format_cv_metric(bl, 'loso')} | "
-            f"{_format_cv_metric(bl, 'repeated_subsample')} |"
+            f"| {bl['descriptor']} | {bl_rho_str} |"
         )
         best_single_name = bl["descriptor"]
-        best_single_family = bl.get("family", "Unknown")
-        best_single_rho = bl.get("deconfounded_spearman", 0.0)
+        best_single_family = bl.get("family", "unknown")
+        best_single_rho = bl["rank_corr_of_linear_residuals"]
     else:
-        baseline_row = "| N/A | N/A | N/A | N/A |"
+        baseline_row = "| N/A | N/A |"
         best_single_name = "N/A"
         best_single_family = "N/A"
-        best_single_rho = 0.0
+        best_single_rho = float("nan")
 
     # 组合验证表格
     stage4_table_rows = []
@@ -695,12 +655,8 @@ def generateReport(
             uncertainty = "UNAVAILABLE"
         stage4_table_rows.append(
             f"| {row['combined_name']} | {int(row.get('n_components', 2))} | "
-            f"{row['combined_deconf_spearman']:.3f} | "
-            f"{_format_cv_metric(row, 'anion_stratified')} | "
-            f"{_format_cv_metric(row, 'loso')} | "
-            f"{_format_cv_metric(row, 'repeated_subsample')} | "
-            f"{row['composite_score']:.3f} "
-            f"({int(row['composite_strategy_count'])}/3) | {availability} | "
+            f"{row['combined_rank_corr_of_linear_residuals']:.3f} | "
+            f"{availability} | "
             f"{uncertainty} | 探索性 |"
         )
     stage4_table = "\n".join(stage4_table_rows)
@@ -733,53 +689,10 @@ def generateReport(
     if not validation_df.empty:
         best_comb_row = validation_df.iloc[0]
         best_comb_name = best_comb_row["combined_name"]
-        best_comb_score = best_comb_row["composite_score"]
+        best_comb_rho = best_comb_row["combined_rank_corr_of_linear_residuals"]
     else:
         best_comb_name = "N/A"
-        best_comb_score = 0.0
-
-    # 组合相比单描述符提升
-    if not baseline_df.empty and not validation_df.empty:
-        baseline_composite = baseline_df.iloc[0]["composite_score"]
-        delta_pct = ((best_comb_score - baseline_composite) / abs(baseline_composite) * 100
-                     if abs(baseline_composite) > 1e-8 else 0.0)
-    else:
-        delta_pct = 0.0
-
-    # 跨CV策略一致性评估
-    if not validation_df.empty:
-        # 仅检查实际可用（未跳过且有限）的策略；跳过不计作证据。
-        signs = []
-        for _, row in validation_df.head(3).iterrows():
-            for prefix in (
-                "anion_stratified",
-                "loso",
-                "repeated_subsample",
-            ):
-                if bool(row.get(f"{prefix}_available", False)):
-                    signs.append(np.sign(row[f"{prefix}_spearman"]))
-        n_positive = sum(1 for s in signs if s > 0)
-        n_negative = sum(1 for s in signs if s < 0)
-        if not signs:
-            consistency_desc = "无可用CV策略"
-        elif n_positive == 0 and n_negative == 0:
-            consistency_desc = "所有CV策略均无显著相关"
-        elif n_positive == len(signs) or n_negative == len(signs):
-            consistency_desc = "全部同向，一致性优秀"
-        elif n_positive > n_negative * 2 or n_negative > n_positive * 2:
-            consistency_desc = "多数同向，一致性良好"
-        else:
-            consistency_desc = "方向不一致，需谨慎解读"
-    else:
-        consistency_desc = "无验证结果"
-
-    # 去混杂后信号保留率
-    if not deconfound_df.empty:
-        raw_rho_sq = deconfound_df["raw_spearman"].pow(2).mean()
-        deconf_rho_sq = deconfound_df["deconfounded_spearman"].pow(2).mean()
-        signal_retention = (deconf_rho_sq / raw_rho_sq * 100) if raw_rho_sq > 1e-12 else 0.0
-    else:
-        signal_retention = 0.0
+        best_comb_rho = float("nan")
 
     # ---- 组装 Markdown 报告 ----
     report = f"""# Na离子导体描述符搜索报告
@@ -790,45 +703,38 @@ def generateReport(
 - 目标范围: log_sigma ∈ [{y_min:.2f}, {y_max:.2f}]
 - 描述符总数: {n_total_desc}, 有效描述符: {n_valid_desc}
 
-## Stage 1: 单描述符去混杂筛选
-| 描述符 | 族 | 原始Spearman | 去混杂Spearman | 体系代理比 | 标签 |
-|--------|-----|-------------|---------------|-----------|------|
+## Stage 1: 单描述符线性残差秩相关筛选
+| 描述符 | 族 | 原始Spearman | 线性残差秩相关 |
+|--------|-----|-------------|---------------|
 {stage1_table}
-
-### 标签分布
-- 强物理信号: {label_counts.get('强物理信号', 0)}
-- 弱物理信号: {label_counts.get('弱物理信号', 0)}
-- 混合信号: {label_counts.get('混合信号', 0)}
-- 体系代理: {label_counts.get('体系代理', 0)}
-- 噪声级: {label_counts.get('噪声级', 0)}
 
 ## Stage 2: 稳定性选择与族代表
 候选池规则：每个物理族最多保留 {stage2_capacity} 个稳定代表。三描述符模式下，
 第二个同族名额仅用于受限的“同族两个 + 相邻族一个”公式构造，不应被解读为第二项独立科学发现。
 
 ### 族代表列表
-| 描述符 | 族 | 族名 | 去混杂Spearman | 稳定性频率 |
+| 描述符 | 族 | 族名 | 线性残差秩相关 | 稳定性频率 |
 |--------|-----|------|---------------|-----------|
 {stage2_table}
 
 ## Stage 3: 约束组合搜索
 ### Top 10 组合候选
-| 组合名 | 描述符数 | 组成 | 运算符序列 | 去混杂Spearman | 跨族? |
+| 组合名 | 描述符数 | 组成 | 运算符序列 | 线性残差秩相关 | 跨族? |
 |--------|----------|------|------------|---------------|-------|
 {stage3_table}
 
-## Stage 4: V1–V4探索性验证与多策略CV
+## Stage 4: V1–V4探索性验证
 ### 最佳单描述符基线
-| 描述符 | 阴离子分层 | LOSO | 重复子采样 |
-|--------|-----------|------|-----------|
+| 描述符 | 线性残差秩相关 |
+|--------|---------------|
 {baseline_row}
 
 ### Top组合验证结果
-| 组合名 | 描述符数 | 去混杂Spearman | 阴离子分层 | LOSO | 重复子采样 | 综合得分 | V1/V2/V3/V4 | 体系分层Bootstrap 95% CI | 状态 |
-|--------|----------|---------------|-----------|------|-----------|---------|-------------|---------------------------|------|
+| 组合名 | 描述符数 | 线性残差秩相关 | V1/V2/V3/V4 | 体系分层Bootstrap 95% CI | 状态 |
+|--------|----------|---------------|-------------|---------------------------|------|
 {stage4_table}
 
-注：V1–V4依次为匹配噪声基线、已知因素后关联、体系内原始Spearman、体系分层Bootstrap区间。`SKIPPED` 策略不计入综合得分；括号显示可用策略数/3。所有组合证据均为探索性，不作因果解释；完整公式组成、运算符、规则和原始值来源保存在 CSV/JSON provenance 中。
+注：V1–V4依次为匹配噪声基线、已知因素后关联、体系内原始Spearman、体系分层Bootstrap区间。所有组合证据均为探索性，不作因果解释；完整公式组成、运算符、规则和原始值来源保存在 CSV/JSON provenance 中。
 
 ### V2 已知因素后目标残差预测审计（最佳组合）
 - {best_v2_summary}
@@ -837,13 +743,8 @@ def generateReport(
 
 ## 结论
 ### 物理发现
-- 最强单描述符: {best_single_name} ({best_single_family}族), 去混杂Spearman = {best_single_rho:.3f}
-- 最强组合: {best_comb_name}, 综合得分 = {best_comb_score:.3f}
-- 组合相比单描述符提升: {delta_pct:.1f}%
-
-### 稳健性评估
-- 跨CV策略一致性: {consistency_desc}
-- 去混杂后信号保留率: {signal_retention:.1f}%
+- 最强单描述符: {best_single_name} ({best_single_family}族), 线性残差秩相关 = {f"{best_single_rho:.3f}" if np.isfinite(best_single_rho) else "无结果（上游无可用数据）"}
+- 最强组合: {best_comb_name}, 线性残差秩相关 = {f"{best_comb_rho:.3f}" if np.isfinite(best_comb_rho) else "无结果（上游无可用候选）"}
 """
 
     report_path = output_dir / "final_report.md"
@@ -860,7 +761,6 @@ def generateReport(
             "n_valid_descriptors": n_valid_desc,
         },
         "stage1_deconfound": {
-            "label_distribution": label_counts,
             "top10": deconfound_df.head(10).to_dict(orient="records"),
         },
         "stage2_stability": {
@@ -879,10 +779,7 @@ def generateReport(
             "best_single_family": best_single_family,
             "best_single_rho": float(best_single_rho),
             "best_combination": best_comb_name,
-            "best_combination_score": float(best_comb_score),
-            "combination_improvement_pct": float(delta_pct),
-            "cv_consistency": consistency_desc,
-            "signal_retention_pct": float(signal_retention),
+            "best_combination_rho": float(best_comb_rho),
         },
     }
 
@@ -919,7 +816,7 @@ def main() -> None:
     feature_df, raw_df, system_labels, anion_labels, y = runStage0(args)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Stage 1: 单描述符去混杂筛选
+    # Stage 1: 单描述符线性残差秩相关筛选
     deconfound_df, filtered_deconfound_df = runStage1(
         feature_df, y, system_labels, anion_labels, args.alpha, output_dir
     )

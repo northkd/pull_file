@@ -27,7 +27,7 @@ from run_status import resolve_results_file
 REQUIRED_AGENT_PLOT_COLUMNS = {
     "descriptor_name",
     "raw_spearman",
-    "deconfounded_spearman",
+    "rank_corr_of_linear_residuals",
     "status",
     "shared_raw_file",
     "descriptor_registry",
@@ -84,13 +84,13 @@ def read_agent_results(path: Path, identity: FrozenInputIdentity) -> pd.DataFram
     validate_agent_result_frame_identity(frame, identity, source=path)
     frame = frame.copy()
     frame["raw_spearman"] = pd.to_numeric(frame["raw_spearman"], errors="coerce")
-    frame["deconfounded_spearman"] = pd.to_numeric(
-        frame["deconfounded_spearman"], errors="coerce"
+    frame["rank_corr_of_linear_residuals"] = pd.to_numeric(
+        frame["rank_corr_of_linear_residuals"], errors="coerce"
     )
     frame["status"] = frame["status"].astype(str).str.strip().str.lower()
     frame["iteration"] = np.arange(1, len(frame) + 1)
-    finite_abs = frame["deconfounded_spearman"].abs()
-    frame["best_abs_deconfounded_spearman"] = finite_abs.cummax()
+    finite_abs = frame["rank_corr_of_linear_residuals"].abs()
+    frame["best_abs_rank_corr_of_linear_residuals"] = finite_abs.cummax()
     return frame
 
 
@@ -107,28 +107,28 @@ def plot_metric_history(ax: plt.Axes, results: pd.DataFrame) -> None:
     )
     ax.plot(
         results["iteration"],
-        results["deconfounded_spearman"],
+        results["rank_corr_of_linear_residuals"],
         color="#2563EB",
         linewidth=2.1,
         marker="o",
         markersize=4.5,
-        label="deconfounded Spearman",
+        label="rank corr of linear residuals",
         zorder=2,
     )
     ax.step(
         results["iteration"],
-        results["best_abs_deconfounded_spearman"],
+        results["best_abs_rank_corr_of_linear_residuals"],
         color="#7C3AED",
         linewidth=1.5,
         linestyle="--",
         where="post",
-        label="best |deconfounded Spearman|",
+        label="best |rank corr of linear residuals|",
         zorder=1,
     )
     for status, rows in results.groupby("status", sort=False):
         ax.scatter(
             rows["iteration"],
-            rows["deconfounded_spearman"],
+            rows["rank_corr_of_linear_residuals"],
             color=STATUS_COLORS.get(status, "#475569"),
             s=45,
             edgecolors="white",

@@ -1,0 +1,153 @@
+{
+  "audit_skill": "experiment-audit",
+  "checklist": "descriptor-impl",
+  "verdict": "FAIL",
+  "reason_code": "multiple_blocker_findings_across_formula_physics_edge_pbc_testing",
+  "summary": "5/7 checks FAIL (A/B/D/E/G); bond_rigidity physically mismatched, network_dim lacks PBC, 3 extensive descriptors, zero unit tests",
+  "audited_input_hashes": {
+    "descriptors/_base.py": "sha256:166be5ba56e464039b19c5a19bdf221e6ffa3d4e2f9658150939dcc6007534eb",
+    "descriptors/family_c_concentration.py": "sha256:aa313419e0405ff1cc8a7528afee51c1135334ee81b0b461cb0e1e2ba87f264e",
+    "descriptors/family_d_vacancy_topo.py": "sha256:e56c2deb2fb16bf2f4774f6247e00c954084060592b1d60138935beec449efb7",
+    "descriptors/family_e_framework.py": "sha256:ac562faaed6512c36c36d5ec8f17e25ed2fd6321367f21c0411b6ff05f5598e1",
+    "program.md": "sha256:c872f7ecc64b624d6534bf25d26864d8fbb82baccb10bee03a31b083e5a993fb",
+    "run_info.yaml": "sha256:24c1a5513b3cc10fbc864f5e932a837556679719bc87cfd8899511168b6d6968",
+    "test_descriptors.py": "sha256:dcc41b46dc3736c01bda1478af653cf45f0ba023565342227b9520da42fc9db0",
+    "README.md": "sha256:66a960b5c32b85a5970970f295f3165366e116cc3d795391349ba8d4228c0793"
+  },
+  "trace_path": ".aris/traces/experiment-audit/2026-08-09_run03_3b/",
+  "reviewer_model": "claude-web",
+  "reviewer_backend": "manual-bridge",
+  "reviewer_reasoning": "manual-bridge",
+  "generated_at": "2026-08-09T00:00:00Z",
+  "output_basename": "EXPERIMENT_AUDIT_run03_3b",
+  "output_non_overwriting": true,
+  "compact_level": 0,
+  "embedded_file_count": 8,
+  "char_count_estimate": 41588,
+  "overall_verdict": "FAIL",
+  "integrity_status": "fail",
+  "checks": {
+    "A_formula_implementation_correctness": {
+      "status": "FAIL",
+      "findings": [
+        {"id": "A-1", "severity": "BLOCKER", "location": "_base.py:125 vs _base.py:130", "issue": "get_na_sites docstring says 'major species' but code uses na_occ > 1e-6 (trace occupancy); two incompatible site-classification rules coexist in same module"},
+        {"id": "A-2", "severity": "BLOCKER", "location": "_base.py:261 vs _base.py:277", "issue": "_effective_anion_radius docstring says 'weighted average' but code is unweighted arithmetic mean over species set"},
+        {"id": "A-3", "severity": "BLOCKER", "location": "family_e_framework.py:45-60, 82-85", "issue": "compute_framework_bond_rigidity numerator is M-X bond length, denominator is 2*r_X (X-X contact distance); ratio = 0.5 + r_M/(2*r_X), degenerates to composition descriptor; 'close to 1.0' criterion unreachable (actual range 0.55-0.74); fw_sym computed but never used"},
+        {"id": "A-4", "severity": "BLOCKER", "location": "family_d_vacancy_topo.py:83-131", "issue": "compute_interstitial_network_dim uses DFS (returns cardinality, not dimension); output scale caps at 2.0, never returns 3.0; len(sites)<2 returns 0.0 not NaN"},
+        {"id": "A-5", "severity": "HIGH", "location": "family_c_concentration.py:13-21", "issue": "compute_na_concentration counts sites not atoms; docstring says 'atom count' but occupancy weight erased by 1e-6 threshold"},
+        {"id": "A-6", "severity": "HIGH", "location": "family_d_vacancy_topo.py:19-21", "issue": "_get_interstitial_data 'with cache effect' is false; Voronoi recomputed 4x per structure"},
+        {"id": "A-7", "severity": "MEDIUM", "location": "_base.py:295 vs _base.py:340", "issue": "find_interstitial_sites volume field always 0.0, contradicts docstring"},
+        {"id": "A-8", "severity": "MEDIUM", "location": "_base.py:386-390, family_e_framework.py:64", "issue": "_safe_std docstring inconsistent with guard; ddof=0 never declared in docstrings; family_e:64 reimplements CV bypassing _safe_cv zero-mean guard"}
+      ]
+    },
+    "B_physical_meaning_validity": {
+      "status": "FAIL",
+      "findings": [
+        {"id": "B-1", "severity": "BLOCKER", "location": "family_c_concentration.py:24-45, family_d_vacancy_topo.py:24-30", "issue": "Three descriptors are extensive, scale linearly with cell setting (verified: NaCl 1x1x1->2x2x2 interstitial_count 8->64); measure CIF cell size not material property; structured system proxies"},
+        {"id": "B-2", "severity": "BLOCKER", "location": "family_e_framework.py:57-60, 82-85", "issue": "compute_framework_bond_rigidity physical criterion unreachable and degenerated to composition quantity (see A-3)"},
+        {"id": "B-3", "severity": "HIGH", "location": "_base.py:18, 46", "issue": "H unconditionally listed as anion with r=1.40 (identical to O2-); in hydrates/hydroxides H is proton (r~0), pollutes bond_ratios and poly_distortions"},
+        {"id": "B-4", "severity": "HIGH", "location": "_base.py:244-246", "issue": "_shell_neighbors 'pad to 4' branch fabricates bonds beyond +0.70 window; docstring still says 'Na site' but reused for framework cations"},
+        {"id": "B-5", "severity": "MEDIUM", "location": "family_e_framework.py:68-70, 46", "issue": "compute_framework_na_distance_stability measures cell scale not local environment; coupling: no-anion shell excludes site from Na-distance stats"},
+        {"id": "B-6", "severity": "MEDIUM", "location": "family_e_framework.py:136, 129, 135", "issue": "compute_framework_sharing_topology denominator is not total anions; periodic image overcounting path for small cells"},
+        {"id": "B-7", "severity": "MEDIUM", "location": "_base.py:362-366", "issue": "compute_polyhedron_volume conflates Voronoi cell volume with coordination polyhedron volume"},
+        {"id": "B-8", "severity": "PASS", "location": "family_d_vacancy_topo.py:134-139", "issue": "BVSE NaN degradation properly documented at module and function level"}
+      ]
+    },
+    "C_unit_consistency": {
+      "status": "WARN",
+      "findings": [
+        {"id": "C-pass-1", "severity": "PASS", "location": "_base.py:200-207, 169, 244, 282; family_d:68,95", "issue": "All distance constants confirmed in Angstrom and same scale as Shannon radii"},
+        {"id": "C-pass-2", "severity": "PASS", "location": "_base.py:295; family_d:48,73", "issue": "Cartesian Angstrom and fractional coords not mixed; get_distance_and_image used correctly"},
+        {"id": "C-warn-1", "severity": "MEDIUM", "location": "_base.py:352", "issue": "Dedup threshold 0.5 has no unit comment; only bare distance constant without # Angstrom"},
+        {"id": "C-warn-2", "severity": "MEDIUM", "location": "family_e:60", "issue": "Dimensionless ratio masks physical-object mismatch (see A-3)"},
+        {"id": "C-low-1", "severity": "LOW", "location": "family_c_concentration.py:15", "issue": "Name 'concentration' implies volume density but is site fraction; docstring notes this"}
+      ]
+    },
+    "D_edge_cases_numerical_stability": {
+      "status": "FAIL",
+      "findings": [
+        {"id": "D-1", "severity": "BLOCKER", "location": "family_d_vacancy_topo.py:90-91", "issue": "len(sites)<2 returns 0.0 not NaN; undefined and true-0D folded into same value; produces fake finite value bypassing README failure contract"},
+        {"id": "D-2", "severity": "BLOCKER", "location": "_base.py:393-400", "issue": "_safe_cv([2.5]) returns 0.0; no len<2 guard (unlike _safe_std); single framework-Na pair reports perfect uniformity CV=0"},
+        {"id": "D-3", "severity": "HIGH", "location": "family_d_vacancy_topo.py:126-129", "issue": "Classification thresholds 0.3/0.6 systematically misclassify at small n; n=3 cannot reach 0D branch; boundary values deterministic but unjustified"},
+        {"id": "D-4", "severity": "HIGH", "location": "_base.py:244; family_d:77,103", "issue": "Floating-point comparisons use bare <= without tolerance; only _base.py:328 uses tolerance"},
+        {"id": "D-5", "severity": "MEDIUM", "location": "_base.py:130 vs 139-141", "issue": "Threshold inconsistency: get_na_sites uses 1e-6 occupancy threshold, get_anion_sites has none"},
+        {"id": "D-6", "severity": "MEDIUM", "location": "_base.py:320-322, 375-376", "issue": "Bare except Exception swallows real errors (Qhull failure, MemoryError, import errors) into silent degradation; no logging; conflicts with program.md failure-recording discipline"},
+        {"id": "D-7", "severity": "PASS", "location": "_base.py:297-298; family_c:19-20; family_d:41-42,65-66; family_e:29-36,120-121,131-132", "issue": "Empty structures return NaN, no IndexError/ZeroDivisionError crash paths found; FAIL triggered by D-1/D-2 not by crashes"}
+      ]
+    },
+    "E_periodic_boundary_conditions": {
+      "status": "FAIL",
+      "findings": [
+        {"id": "E-1", "severity": "BLOCKER", "location": "family_d_vacancy_topo.py:101", "issue": "compute_interstitial_network_dim uses bare np.linalg.norm for adjacency; all cross-cell connections missed (verified: 46.9% missed at 7A cell, 30.4% at 12A); dimension underestimated; error stratified along system axis; 2/40 random cells had dimension label flipped"},
+        {"id": "E-2", "severity": "PASS", "location": "_base.py:305-315, 333", "issue": "Periodic image generation correct: 26 translations + original = 27N points; nearest-atom check includes images"},
+        {"id": "E-3", "severity": "PASS", "location": "_base.py:349-352", "issue": "Dedup uses get_distance_and_image + 0.5A threshold (correct); LOW: greedy dedup non-transitive for near-equidistant triples"},
+        {"id": "E-4", "severity": "PASS", "location": "_base.py:180-182, 227-229; family_e:69", "issue": "get_sites_in_sphere(include_image=True) and struct.get_distance use nearest-image convention correctly"}
+      ]
+    },
+    "F_literature_definition_consistency": {
+      "status": "WARN",
+      "findings": [
+        {"id": "F-1", "severity": "PASS", "location": "_base.py:25-31", "issue": "Na+ Shannon effective ionic radii all 7 values match Shannon 1976"},
+        {"id": "F-2", "severity": "WARN", "location": "_base.py:39-48", "issue": "Anion radii mostly match Shannon CN=6; H=1.40 identical to O2- (suspicious, no source); N=None claim needs verification (Shannon gives N3- CN=4 ~1.46A)"},
+        {"id": "F-3", "severity": "PASS", "location": "_base.py:54-63", "issue": "Pauling electronegativity all 10 values match standard table; caveat: no framework cations covered (G-family would fail)"},
+        {"id": "F-4", "severity": "WARN", "location": "_base.py:217-218, 244-246, 282, 352; family_d:68,95,126-128; _base.py:202-204", "issue": "+0.70A rule cites internal part1.py not literature; 15+ free parameters, zero literature citations"},
+        {"id": "F-5", "severity": "PASS", "location": "family_d:5, 136-139", "issue": "BVSE dependency properly documented at module and function level"},
+        {"id": "F-6", "severity": "WARN", "location": "_base.py:250-257", "issue": "CN definition alignment with Shannon table cannot be verified in scope; no caller passes CN in audited files; if +0.70/pad-to-4 rule computes CN, 2-coordinate sites get CN=4"}
+      ]
+    },
+    "G_test_coverage_reproducibility": {
+      "status": "FAIL",
+      "findings": [
+        {"id": "G-1", "severity": "BLOCKER", "location": "test_descriptors.py:1-64", "issue": "Zero unit tests for 21 audited functions; no test_* functions, no asserts; file is CLI wrapper only"},
+        {"id": "G-2", "severity": "BLOCKER", "location": "test_descriptors.py:14-15, 20-22", "issue": "Independence claim unsupported: imports parse_agent_args from train.py and prepare_structural_evaluation from automat_utils; shares entire code path with audited pipeline"},
+        {"id": "G-3", "severity": "BLOCKER", "location": "test_descriptors.py (全文)", "issue": "Zero boundary-case tests (empty structure, partial occupancy, N-containing); these are exactly the densest defect areas"},
+        {"id": "G-4", "severity": "PASS", "location": "run_info.yaml", "issue": "Random seeds fixed (42) at 5 locations; caveat: descriptor computation has no randomness, seeds contribute zero to descriptor reproducibility"},
+        {"id": "G-5", "severity": "PASS", "location": "_base.py:305-315, 207, 270, 233", "issue": "Voronoi deterministic (Qhull, fixed point order); no PYTHONHASHSEED-dependent paths; caveat: no requirements.txt, cross-version reproducibility unprotected"},
+        {"id": "G-6", "severity": "MEDIUM", "location": "family_d:19-21", "issue": "False 'cache effect' claim does not affect reproducibility (pure function) but wastes compute (4x Voronoi per structure) and misleads readers"},
+        {"id": "G-7", "severity": "HIGH", "location": "family_d:91; README.md", "issue": "D-1 0.0 return path bypasses README 'all-NaN fails' contract; protection bypass undetectable by tests because no tests exist"}
+      ]
+    }
+  },
+  "claims": [
+    {"id": "C1", "source": "program.md; README.md", "claim": "test_descriptors.py provides independent structural audit", "impact": "unsupported", "evidence": "imports from train.py and automat_utils; shared code path; zero asserts (G-1/G-2)"},
+    {"id": "C2", "source": "run_info.yaml:task.description", "claim": "descriptors computed from CIF structure files", "impact": "supported", "evidence": "all inputs are Structure objects, no non-structure inputs"},
+    {"id": "C3", "source": "program.md", "claim": "no log/sqrt/power or dimensionless-based division for new features", "impact": "needs_qualifier", "evidence": "operator ban holds at combination layer but family_e:60 M-X/2r_X is dimensionless division inside descriptor (A-3)"},
+    {"id": "C4", "source": "program.md", "claim": "report system-proxy possibility when descriptor collinear with system label", "impact": "needs_qualifier", "evidence": "mechanism exists (system_proxy_ratio) but design guarantees triggering: 3 extensive + bond_rigidity=r_M/r_X (A-3/B-1)"},
+    {"id": "C5", "source": "family_d:5,136-137", "claim": "BVSE-dependent descriptors return NaN", "impact": "supported", "evidence": "declaration and implementation consistent; caveat: combined with README all-NaN-fails, compute_bvse_barrier_estimate is registered-but-always-fails"},
+    {"id": "C6", "source": "family_d:3-4", "claim": "uses scipy.spatial.Voronoi (errata P2), not VoronoiNN.get_voronoi_polyhedra", "impact": "supported", "evidence": "D-family does not call VoronoiNN; caveat: _base.py:371 compute_polyhedron_volume still uses it, claim holds only for D-family"},
+    {"id": "C7", "source": "README.md", "claim": "all-NaN descriptors fail exit, no false positives", "impact": "needs_qualifier", "evidence": "protection logic sound but family_d:91 0.0 path produces finite value when descriptor uncomputable (G-7/D-1)"},
+    {"id": "C8", "source": "_base.py:295", "claim": "interstitial site list volume is Voronoi region volume (A^3)", "impact": "unsupported", "evidence": "_base.py:340 hardcodes 0.0 (A-7)"},
+    {"id": "C9", "source": "_base.py:261", "claim": "_effective_anion_radius computes weighted average", "impact": "unsupported", "evidence": "_base.py:277 is unweighted arithmetic mean over species set (A-2)"},
+    {"id": "C10", "source": "_base.py:125", "claim": "get_na_sites: Na site = major species is Na", "impact": "unsupported", "evidence": "_base.py:130 uses 1e-6 trace threshold (A-1)"},
+    {"id": "C11", "source": "family_d:86-87", "claim": "compute_interstitial_network_dim uses DFS to determine dimension", "impact": "unsupported", "evidence": "DFS returns cardinality not dimension; scale caps at 2.0 never 3D (A-4); PBC missing 30-47% connections (E-1)"}
+  ],
+  "action_items": {
+    "blocker": [
+      "family_e_framework.py:52-60 — fix bond_rigidity ideal bond length to r_M+r_X (fw_sym already computed) or deprecate; rewrite :82-85 docstring; if kept, mark as r_M/r_X composition quantity in registry and report collinearity per program.md",
+      "family_d_vacancy_topo.py:101 — use struct.lattice.get_distance_and_image (correct pattern at :49/:74); invalidate all historical network_dim values",
+      "family_d_vacancy_topo.py:83-131 — rename to interstitial_percolation_fraction OR rewrite with true dimension criterion (periodic expansion ±1 supercell, count percolation along 3 lattice directions); current form must not enter combination search or paper as 'dimension'",
+      "_base.py:125/:130 — unify site classification rule across entire repo (either majority-spec matching docstring, or change docstring to 'any Na occupancy > 1e-6' and accept mixed-site consequences); get_framework_sites complement definition propagates this to E-family",
+      "test_descriptors.py — create real unit tests (separate file): empty->NaN, 1x1x1 vs 2x2x2 supercell intensive/extensive assertion, Na0.5 partial occupancy, N-containing degradation, golden-value regression"
+    ],
+    "high": [
+      "family_d:90-91 — return float('nan') not 0.0 for len(sites)<2",
+      "_base.py:394 — add len(values)<2 -> NaN guard to _safe_cv, align with _safe_std:388",
+      "family_c_concentration.py:21 — use occupancy weighting (compute_na_occupancy_sum pattern) or change docstring 'atoms' to 'sites'",
+      "_base.py:245-246 — add explicit 'padded: True' flag or disable pad-to-4 for framework cations; update :213 docstring (still says 'Na site')",
+      "_base.py:18,46 — conditional H handling (proton vs hydride by nearest-neighbor) or declare 'H always treated as hydride' assumption in docstring",
+      "descriptors/ — build descriptor-level registry declaring dimension/extensivity/cell_setting_invariance; only 1 of 12 descriptors (compute_framework_poly_distortion) is cell-setting-invariant and non-degenerate"
+    ],
+    "medium": [
+      "family_d:20 — remove false 'cache effect' claim or implement functools.lru_cache/explicit cache",
+      "_base.py:340 — implement Voronoi region volume or remove 'volume' key and update :295",
+      "family_e:64 — use _safe_cv, eliminate duplicate implementation and guard inconsistency",
+      "family_e:46 — move Na-distance loop out of 'if not shell: continue' scope or document coupling",
+      "_base.py:320-322,375-376 — replace bare except with failure-cause logging (structure ID + exception type) before returning degraded value"
+    ]
+  },
+  "scope_limitations": [
+    "Only 4 descriptor files + 4 config/doc files audited; train.py, automat_utils.py, descriptors/__init__.py (registry), part1.py, family_a/b/f/g/h NOT submitted; all judgments about 'how registry declares dimension/family', 'who computes CN', '+0.70 rule origin' are OPEN not concluded",
+    "results/ and naconductor_featurized.csv excluded per --exclude; no saved numerical values verified this round, only code self-consistency judged",
+    "pymatgen unavailable in reviewer environment; pymatgen-semantic judgments (get_sites_in_sphere index/image semantics, get_distance nearest-image convention, VoronoiNN volume field meaning) based on API docs not execution; scipy/numpy judgments (E-1 quantification, B-1 extensivity, D-2/D-3 numerical behavior) all actually executed"
+  ]
+}

@@ -24,7 +24,7 @@ EXPECTED_COMBINATION_RESULT_COLUMNS = [
     "d2_family",
     "is_cross_family",
     "combined_raw_spearman",
-    "combined_deconf_spearman",
+    "combined_rank_corr_of_linear_residuals",
     "n_valid",
     "raw_value_source",
     "formula_provenance",
@@ -155,24 +155,6 @@ def test_triples_are_bounded_and_follow_two_plus_adjacent_family_plan() -> None:
         )
 
 
-def test_triple_addition_rejects_incompatible_result_dimension() -> None:
-    feature_df, y, systems, anions = _search_inputs()
-    reps = _representatives(
-        [
-            ("a2_max_dist", "A"),
-            ("mean_bond_length", "A"),
-            ("avg_na_neighbors", "B"),
-        ]
-    )
-
-    result = ConstrainedCombinationSearch().search(
-        feature_df, y, systems, anions, reps, max_descriptors=3
-    )
-    triples = result.loc[result["n_components"] == 3]
-
-    assert not any(operators == ["+", "+"] for operators in triples["operators"])
-
-
 def test_empty_search_has_stable_schema() -> None:
     feature_df, y, systems, anions = _search_inputs()
     result = ConstrainedCombinationSearch().search(
@@ -212,7 +194,7 @@ def test_stage3_csv_round_trip_preserves_triple_formula_for_validation(tmp_path)
     triple = reloaded.loc[reloaded["n_components"] == 3].head(1)
 
     assert not triple.empty
-    validation = CombinationValidator(seed=13).validate(
+    validation = CombinationValidator(seed=13, per_system_min_n=5, exact_perm_max_n=8, monte_carlo_max_n=10, monte_carlo_draws=10000).validate(
         feature_df,
         y,
         systems,
@@ -280,7 +262,7 @@ def test_serialized_formula_fields_are_strictly_validated(
     }
 
     with pytest.raises(ValueError, match="formula"):
-        CombinationValidator().full_validation(
+        CombinationValidator(per_system_min_n=5, exact_perm_max_n=8, monte_carlo_max_n=10, monte_carlo_draws=10000).full_validation(
             feature_df, y, systems, anions, candidate, n_bootstrap=5
         )
 
@@ -294,10 +276,10 @@ def test_full_validation_has_four_named_exploratory_evidence_blocks() -> None:
         "operator": "ratio",
         "components": ["a2_max_dist", "na_concentration"],
         "operators": ["ratio"],
-        "combined_deconf_spearman": 0.7,
+        "combined_rank_corr_of_linear_residuals": 0.7,
     }
 
-    result = CombinationValidator(seed=11).full_validation(
+    result = CombinationValidator(seed=11, per_system_min_n=5, exact_perm_max_n=8, monte_carlo_max_n=10, monte_carlo_draws=10000).full_validation(
         feature_df, y, systems, anions, candidate, n_bootstrap=40
     )
 
@@ -306,7 +288,6 @@ def test_full_validation_has_four_named_exploratory_evidence_blocks() -> None:
     assert result["causal_claim"] is False
     assert result["uncertainty"]["method"] == "system_stratified_bootstrap"
     assert result["bootstrap_ci"]["n_requested"] == 40
-    assert "cv_diagnostics" in result
     for key in ("noise_baseline", "factor_spanning", "per_system", "bootstrap_ci"):
         assert result[key]["status"] == "exploratory"
     v2 = result["factor_spanning"]
@@ -316,6 +297,10 @@ def test_full_validation_has_four_named_exploratory_evidence_blocks() -> None:
     assert v2["n_folds_available"] <= v2["n_folds_requested"]
     assert v2["causal_claim"] is False
     assert "supplementary_partial_association" in v2
+
+    # 防回归锁：uncertainty 字典必须含 method 键且非 None
+    assert "method" in result["uncertainty"]
+    assert result["uncertainty"]["method"] is not None
 
 
 def test_factor_spanning_uses_rank_aware_system_primary_controls() -> None:
@@ -336,7 +321,7 @@ def test_factor_spanning_uses_rank_aware_system_primary_controls() -> None:
         "operator": "multiply",
     }
 
-    block = CombinationValidator(seed=3).full_validation(
+    block = CombinationValidator(seed=3, per_system_min_n=5, exact_perm_max_n=8, monte_carlo_max_n=10, monte_carlo_draws=10000).full_validation(
         feature_df, y, systems, anions, candidate, n_bootstrap=10
     )["factor_spanning"]
 
@@ -344,67 +329,6 @@ def test_factor_spanning_uses_rank_aware_system_primary_controls() -> None:
     assert block["anion_incremental_rank"] == 0
     assert block["anion_redundant_count"] == 2
     assert all(name.startswith("system_") for name in block["residualization_columns"])
-
-
-def test_cv_keeps_formula_missing_values_for_fold_local_imputation() -> None:
-    n = 30
-    denominator = np.linspace(0.1, 1.0, n)
-    denominator[4] = 0.0
-    feature_df = pd.DataFrame(
-        {
-            "a2_max_dist": np.linspace(2.0, 4.0, n),
-            "na_concentration": denominator,
-        }
-    )
-    y = np.linspace(-5.0, -1.0, n)
-    systems = ["s1"] * 10 + ["s2"] * 10 + ["s3"] * 10
-    anions = ["O", "S", "Cl"] * 10
-    candidate = {
-        "d1": "a2_max_dist",
-        "d2": "na_concentration",
-        "operator": "ratio",
-    }
-
-    result = CombinationValidator(seed=5).full_validation(
-        feature_df, y, systems, anions, candidate, n_bootstrap=10
-    )
-    class_counts = result["cv_diagnostics"]["strategies"][
-        "anion_stratified_cv"
-    ]["class_counts"]
-
-    assert sum(class_counts.values()) == n
-    assert result["cv_diagnostics"]["n_target_observed"] == n
-    assert result["cv_diagnostics"]["n_formula_observed"] == n - 1
-
-
-def test_small_group_cv_is_reported_as_skipped_instead_of_available() -> None:
-    n = 12
-    feature_df = pd.DataFrame(
-        {
-            "a2_max_dist": np.linspace(2.0, 4.0, n),
-            "mean_bond_length": np.linspace(1.0, 2.0, n),
-        }
-    )
-    candidate = {
-        "d1": "a2_max_dist",
-        "d2": "mean_bond_length",
-        "operator": "multiply",
-    }
-
-    result = CombinationValidator(seed=5).full_validation(
-        feature_df,
-        np.linspace(-5.0, -1.0, n),
-        ["only-system"] * n,
-        ["O", "S"] * (n // 2),
-        candidate,
-        n_bootstrap=10,
-    )
-    summary = result["cv_diagnostics"]["summary"]
-
-    assert bool(summary["loso_skipped"]) is True
-    assert bool(summary["loso_available"]) is False
-    assert "two system" in summary["loso_skip_reason"]
-    assert bool(summary["anion_stratified_skipped"]) is False
 
 
 def test_validate_flattens_evidence_without_losing_cv_skip_semantics() -> None:
@@ -428,18 +352,15 @@ def test_validate_flattens_evidence_without_losing_cv_skip_semantics() -> None:
                 "operator": "multiply",
                 "components": ["a2_max_dist", "mean_bond_length"],
                 "operators": ["multiply"],
-                "combined_deconf_spearman": 0.8,
+                "combined_rank_corr_of_linear_residuals": 0.8,
             }
         ]
     )
 
-    row = CombinationValidator(seed=7).validate(
+    row = CombinationValidator(seed=7, per_system_min_n=5, exact_perm_max_n=8, monte_carlo_max_n=10, monte_carlo_draws=10000).validate(
         feature_df, y, systems, anions, candidates, top_k=1, n_bootstrap=20
     ).iloc[0]
 
-    assert bool(row["anion_stratified_skipped"]) is True
-    assert row["composite_strategy_count"] == 2
-    assert bool(row["composite_is_complete"]) is False
     assert row["validation_status"] == "exploratory"
     assert row["uncertainty_method"] == "system_stratified_bootstrap"
     assert isinstance(row["evidence_blocks"], dict)
@@ -478,7 +399,7 @@ def test_stage4_csv_persists_v2_rank_metadata_as_json(tmp_path) -> None:
                 "component_families": ["A", "A"],
                 "n_components": 2,
                 "raw_value_source": "feature_df",
-                "combined_deconf_spearman": 0.8,
+                "combined_rank_corr_of_linear_residuals": 0.8,
             }
         ]
     )
@@ -487,7 +408,7 @@ def test_stage4_csv_persists_v2_rank_metadata_as_json(tmp_path) -> None:
             {
                 "descriptor": "a2_max_dist",
                 "family": "A",
-                "deconfounded_spearman": 0.8,
+                "rank_corr_of_linear_residuals": 0.8,
             }
         ]
     )
@@ -511,3 +432,78 @@ def test_stage4_csv_persists_v2_rank_metadata_as_json(tmp_path) -> None:
     assert v2["anion_incremental_rank"] == 0
     assert len(v2["anion_redundant_columns"]) == 2
     assert v2["method"] == "fold_safe_oof_target_residual_prediction"
+
+
+def test_validate_promotes_uncertainty_and_available_flags_to_first_class_columns() -> None:
+    """六个新列（selection_uncertainty_included / uncertainty_reason /
+    noise_baseline_available / factor_spanning_available / per_system_available /
+    bootstrap_ci_available）必须作为一等列存在且取值正确。
+
+    特别断言 selection_uncertainty_included 为 False 时不会被丢弃或默认为 True。
+    """
+    n = 30
+    x = np.linspace(-2.0, 2.0, n)
+    feature_df = pd.DataFrame(
+        {
+            "a2_max_dist": x,
+            "mean_bond_length": 0.5 * x + 3.0,
+        }
+    )
+    y = 1.5 * x + 0.1 * np.sin(np.arange(n))
+    systems = ["s1"] * 10 + ["s2"] * 10 + ["s3"] * 10
+    anions = ["O"] * 10 + ["S"] * 10 + ["Cl"] * 10
+    candidates = pd.DataFrame(
+        [
+            {
+                "combined_name": "(a2_max_dist × mean_bond_length)",
+                "d1": "a2_max_dist",
+                "d2": "mean_bond_length",
+                "operator": "multiply",
+                "components": ["a2_max_dist", "mean_bond_length"],
+                "operators": ["multiply"],
+                "component_families": ["A", "A"],
+                "n_components": 2,
+                "raw_value_source": "feature_df",
+                "combined_rank_corr_of_linear_residuals": 0.8,
+            }
+        ]
+    )
+
+    row = CombinationValidator(seed=7, per_system_min_n=5, exact_perm_max_n=8, monte_carlo_max_n=10, monte_carlo_draws=10000).validate(
+        feature_df, y, systems, anions, candidates, top_k=1, n_bootstrap=20
+    ).iloc[0]
+
+    # 六个新列必须存在
+    for col in (
+        "selection_uncertainty_included",
+        "uncertainty_reason",
+        "noise_baseline_available",
+        "factor_spanning_available",
+        "per_system_available",
+        "bootstrap_ci_available",
+    ):
+        assert col in row.index, f"列 {col} 不在 validate() 输出中"
+
+    # selection_uncertainty_included 必须是 False（不是 None、不是 True、不是丢失）
+    # pandas 可能将 Python False 存为 np.False_，用 == 而非 is 判断
+    val = row["selection_uncertainty_included"]
+    assert val == False, f"期望 False，实际 {val!r}"
+    assert val is not None, "selection_uncertainty_included 不应为 None"
+    assert val is not True, "selection_uncertainty_included 不应为 True"
+
+    # uncertainty_reason 必须是非空字符串（full_validation 里硬编码了 reason）
+    assert isinstance(row["uncertainty_reason"], str)
+    assert len(row["uncertainty_reason"]) > 0
+
+    # 各 block 的 available 必须是 bool（不是 None、不是 NaN）
+    # 在这个 fixture 下数据充足，各 block 的 available 应为 True
+    for col in (
+        "noise_baseline_available",
+        "factor_spanning_available",
+        "per_system_available",
+        "bootstrap_ci_available",
+    ):
+        val = row[col]
+        assert isinstance(val, (bool, np.bool_)), (
+            f"期望 bool，实际 {type(val).__name__}: {val!r}"
+        )

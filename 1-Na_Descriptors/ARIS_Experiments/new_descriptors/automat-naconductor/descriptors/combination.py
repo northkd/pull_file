@@ -25,11 +25,6 @@ from descriptors import (
     AVAILABLE_STRUCTURE_DESCRIPTORS,
     STRUCTURE_DESCRIPTOR_METADATA,
 )
-from descriptors.cv_strategies import (
-    CV_SPEARMAN_SUMMARY_COLUMNS,
-    MultiStrategyCV,
-    summarize_cv_spearman,
-)
 from descriptors.deconfound import DeconfoundAnalyzer
 
 
@@ -66,7 +61,7 @@ COMBINATION_RESULT_COLUMNS = [
     "d2_family",
     "is_cross_family",
     "combined_raw_spearman",
-    "combined_deconf_spearman",
+    "combined_rank_corr_of_linear_residuals",
     "n_valid",
     "raw_value_source",
     "formula_provenance",
@@ -85,7 +80,6 @@ VALIDATION_JSON_COLUMNS = (
     "per_system",
     "bootstrap_ci",
     "evidence_blocks",
-    "cv_diagnostics",
 )
 
 COMBINATION_VALIDATION_RESULT_COLUMNS = [
@@ -99,8 +93,7 @@ COMBINATION_VALIDATION_RESULT_COLUMNS = [
     "n_components",
     "raw_value_source",
     "formula_provenance",
-    "combined_deconf_spearman",
-    *CV_SPEARMAN_SUMMARY_COLUMNS,
+    "combined_rank_corr_of_linear_residuals",
     "validation_status",
     "causal_claim",
     "uncertainty_method",
@@ -109,7 +102,21 @@ COMBINATION_VALIDATION_RESULT_COLUMNS = [
     "per_system",
     "bootstrap_ci",
     "evidence_blocks",
-    "cv_diagnostics",
+    "selection_uncertainty_included",
+    "uncertainty_reason",
+    "noise_baseline_available",
+    "factor_spanning_available",
+    "per_system_available",
+    "bootstrap_ci_available",
+    "per_system_pooled_rho",
+    "per_system_single_system_rho",
+    "per_system_cochran_q",
+    "per_system_i_squared",
+    "per_system_heterogeneity_p",
+    "per_system_n_rho_clipped",
+    "per_system_n_systems_total",
+    "per_system_n_systems_available",
+    "per_system_n_systems_excluded",
 ]
 
 
@@ -125,6 +132,55 @@ def _safe_spearman(x: np.ndarray, y: np.ndarray) -> float:
     if np.unique(x_valid).size < 2 or np.unique(y_valid).size < 2:
         return float("nan")
     return float(stats.spearmanr(x_valid, y_valid).statistic)
+
+
+def _exact_permutation_p_value(
+    x: np.ndarray,
+    y: np.ndarray,
+    observed_rho: float,
+    exact_max_n: int,
+    monte_carlo_max_n: int,
+    monte_carlo_draws: int,
+    seed: int,
+) -> tuple[float, str]:
+    """置换 p 值。
+
+    n <= exact_max_n 时全枚举（n! 个排列）；
+    exact_max_n < n <= monte_carlo_max_n 时用蒙特卡洛抽样（monte_carlo_draws 次随机置换）。
+    返回 (p_value, method_label)。
+    """
+    n = len(x)
+    abs_observed = abs(observed_rho)
+    count = 0
+    total = 0
+    if n <= exact_max_n:
+        from itertools import permutations
+        for perm in permutations(range(n)):
+            y_perm = y[list(perm)]
+            rho_perm = float(stats.spearmanr(x, y_perm).statistic)
+            if np.isfinite(rho_perm):
+                total += 1
+                if abs(rho_perm) >= abs_observed:
+                    count += 1
+        method = "exact_permutation"
+    else:
+        rng = np.random.default_rng(seed)
+        for _ in range(monte_carlo_draws):
+            perm = rng.permutation(n)
+            y_perm = y[perm]
+            rho_perm = float(stats.spearmanr(x, y_perm).statistic)
+            if np.isfinite(rho_perm):
+                total += 1
+                if abs(rho_perm) >= abs_observed:
+                    count += 1
+        method = "monte_carlo_permutation"
+    if total == 0:
+        return float("nan"), method
+    if method == "monte_carlo_permutation":
+        # MC 分支：观测值本身计入，使 p 有 1/(total+1) 的下界（total 为有限抽样数，可能 < draws），不可能返回 0.0
+        return (count + 1) / (total + 1), method
+    # 全枚举分支：恒等排列必然计入，count >= 1，保持 count / total
+    return count / total, method
 
 
 def _json_ready(value: Any) -> Any:
@@ -247,35 +303,6 @@ class ConstrainedCombinationSearch:
         dim2 = cls._descriptor_dimension(d2, reps)
         return dim1 is None or dim2 is None or dim1 == dim2
 
-    @classmethod
-    def _formula_dimensionally_valid(
-        cls,
-        components: Sequence[str],
-        operators: Sequence[str],
-        reps: pd.DataFrame,
-    ) -> bool:
-        current = cls._descriptor_dimension(components[0], reps)
-        for component, operator in zip(components[1:], operators):
-            other = cls._descriptor_dimension(component, reps)
-            if operator == "+":
-                if current is not None and other is not None and current != other:
-                    return False
-                current = current or other
-            elif operator == "multiply":
-                current = (
-                    f"({current})*({other})"
-                    if current is not None and other is not None else None
-                )
-            elif operator == "ratio":
-                current = (
-                    "dimensionless"
-                    if current is not None and current == other
-                    else f"({current})/({other})"
-                    if current is not None and other is not None
-                    else None
-                )
-        return True
-
     @staticmethod
     def _is_active(name: str) -> bool:
         metadata = STRUCTURE_DESCRIPTOR_METADATA.get(name)
@@ -301,7 +328,7 @@ class ConstrainedCombinationSearch:
             return None
 
         raw_rho = _safe_spearman(values[valid], y[valid])
-        deconf_rho = DeconfoundAnalyzer(alpha=self.alpha).deconfounded_spearman(
+        deconf_rho, _deconf_status = DeconfoundAnalyzer(alpha=self.alpha).rank_corr_of_linear_residuals_rho(
             values[valid],
             y[valid],
             confounders.loc[valid].reset_index(drop=True),
@@ -333,7 +360,7 @@ class ConstrainedCombinationSearch:
             "d2_family": families[1],
             "is_cross_family": len(set(families)) > 1,
             "combined_raw_spearman": raw_rho,
-            "combined_deconf_spearman": float(deconf_rho),
+            "combined_rank_corr_of_linear_residuals": float(deconf_rho),
             "n_valid": n_valid,
             "raw_value_source": "feature_df",
             "formula_provenance": provenance,
@@ -446,12 +473,6 @@ class ConstrainedCombinationSearch:
                                 ):
                                     continue
                                 for cross_op in cross_ops:
-                                    if not self._formula_dimensionally_valid(
-                                        [d1, d2, d3],
-                                        [within_op, cross_op],
-                                        reps,
-                                    ):
-                                        continue
                                     record = self._evaluate_candidate(
                                         feature_df,
                                         y_arr,
@@ -471,7 +492,7 @@ class ConstrainedCombinationSearch:
             return pd.DataFrame(columns=COMBINATION_RESULT_COLUMNS)
         result = pd.DataFrame.from_records(candidates, columns=COMBINATION_RESULT_COLUMNS)
         result = result.sort_values(
-            "combined_deconf_spearman",
+            "combined_rank_corr_of_linear_residuals",
             key=lambda values: values.abs(),
             ascending=False,
             na_position="last",
@@ -482,9 +503,29 @@ class ConstrainedCombinationSearch:
 class CombinationValidator:
     """Generate exploratory V1--V4 evidence plus existing CV diagnostics."""
 
-    def __init__(self, alpha: float = 1.0, seed: int = 42) -> None:
+    def __init__(
+        self,
+        alpha: float = 1.0,
+        seed: int = 42,
+        per_system_min_n: int | None = None,
+        exact_perm_max_n: int | None = None,
+        monte_carlo_max_n: int | None = None,
+        monte_carlo_draws: int | None = None,
+    ) -> None:
         self.alpha = alpha
         self.seed = seed
+        if per_system_min_n is None:
+            raise ValueError("per_system_min_n must be explicitly provided")
+        if exact_perm_max_n is None:
+            raise ValueError("exact_perm_max_n must be explicitly provided")
+        if monte_carlo_max_n is None:
+            raise ValueError("monte_carlo_max_n must be explicitly provided")
+        if monte_carlo_draws is None:
+            raise ValueError("monte_carlo_draws must be explicitly provided")
+        self.per_system_min_n = per_system_min_n
+        self.exact_perm_max_n = exact_perm_max_n
+        self.monte_carlo_max_n = monte_carlo_max_n
+        self.monte_carlo_draws = monte_carlo_draws
 
     @staticmethod
     def _is_missing_field(value: Any) -> bool:
@@ -673,10 +714,10 @@ class CombinationValidator:
         all_controls, control_metadata = analyzer.build_rank_aware_controls(
             system_valid.tolist(), anion_valid.tolist()
         )
-        system_rho = analyzer.deconfounded_spearman(
+        system_rho, system_deconf_status = analyzer.rank_corr_of_linear_residuals_rho(
             x_valid, y_valid, system_controls
         )
-        all_rho = analyzer.deconfounded_spearman(x_valid, y_valid, all_controls)
+        all_rho, all_deconf_status = analyzer.rank_corr_of_linear_residuals_rho(x_valid, y_valid, all_controls)
 
         values_oof = values[target_mask]
         y_oof = y[target_mask]
@@ -715,6 +756,48 @@ class CombinationValidator:
             )
             selected_columns = list(train_controls.columns)
 
+            # W4-2: 检测验证折中训练折未见的类别，不编 0 当参考类
+            train_systems = set(systems_oof[train_idx].astype(str))
+            train_anions = set(anions_oof[train_idx].astype(str))
+            test_systems = systems_oof[test_idx].astype(str)
+            test_anions = anions_oof[test_idx].astype(str)
+            unseen_system_mask = ~np.isin(test_systems, list(train_systems))
+            unseen_anion_mask = ~np.isin(test_anions, list(train_anions))
+            unseen_mask = unseen_system_mask | unseen_anion_mask
+            unseen_categories = sorted(
+                set(test_systems[unseen_system_mask].tolist())
+                | set(test_anions[unseen_anion_mask].tolist())
+            )
+            n_unseen = int(unseen_mask.sum())
+            n_test_total = len(test_idx)
+
+            if n_unseen > n_test_total / 2:
+                fold_details.append({
+                    "fold": fold,
+                    "status": "skipped",
+                    "reason": "too_many_unseen_categories",
+                    "n_train": len(train_idx),
+                    "n_test": n_test_total,
+                    "unseen_category_rows": n_unseen,
+                    "unseen_categories": unseen_categories,
+                })
+                continue
+
+            # 排除未见类别行后参与本折计算
+            keep_mask = ~unseen_mask
+            test_idx_keep = test_idx[keep_mask]
+            if len(test_idx_keep) < 2:
+                fold_details.append({
+                    "fold": fold,
+                    "status": "skipped",
+                    "reason": "too_few_rows_after_unseen_exclusion",
+                    "n_train": len(train_idx),
+                    "n_test": n_test_total,
+                    "unseen_category_rows": n_unseen,
+                    "unseen_categories": unseen_categories,
+                })
+                continue
+
             def encode_controls(indices: np.ndarray) -> np.ndarray:
                 encoded = np.zeros((len(indices), len(selected_columns)), dtype=float)
                 for col_idx, column in enumerate(selected_columns):
@@ -727,16 +810,16 @@ class CombinationValidator:
                 return encoded
 
             z_train = train_controls.to_numpy(dtype=float)
-            z_test = encode_controls(test_idx)
+            z_test = encode_controls(test_idx_keep)
             if z_train.shape[1]:
                 control_model = Ridge(alpha=self.alpha)
                 control_model.fit(z_train, y_oof[train_idx])
                 train_residual = y_oof[train_idx] - control_model.predict(z_train)
-                test_residual = y_oof[test_idx] - control_model.predict(z_test)
+                test_residual = y_oof[test_idx_keep] - control_model.predict(z_test)
             else:
                 train_mean = float(np.mean(y_oof[train_idx]))
                 train_residual = y_oof[train_idx] - train_mean
-                test_residual = y_oof[test_idx] - train_mean
+                test_residual = y_oof[test_idx_keep] - train_mean
 
             formula_model = Pipeline([
                 ("imputer", SimpleImputer(strategy="median")),
@@ -745,14 +828,14 @@ class CombinationValidator:
             ])
             try:
                 formula_model.fit(train_values.reshape(-1, 1), train_residual)
-                prediction = formula_model.predict(values_oof[test_idx].reshape(-1, 1))
+                prediction = formula_model.predict(values_oof[test_idx_keep].reshape(-1, 1))
             except ValueError as exc:
                 fold_details.append({
                     "fold": fold,
                     "status": "skipped",
                     "reason": str(exc),
                     "n_train": len(train_idx),
-                    "n_test": len(test_idx),
+                    "n_test": n_test_total,
                 })
                 continue
             heldout_residuals.append(test_residual)
@@ -761,7 +844,10 @@ class CombinationValidator:
                 "fold": fold,
                 "status": "available",
                 "n_train": len(train_idx),
-                "n_test": len(test_idx),
+                "n_test": n_test_total,
+                "n_test_used": len(test_idx_keep),
+                "unseen_category_rows": n_unseen,
+                "unseen_categories": unseen_categories,
                 "residualization_columns": selected_columns,
                 "anion_incremental_rank": fold_control_metadata[
                     "anion_incremental_rank"
@@ -795,33 +881,141 @@ class CombinationValidator:
             "interpretation": "predictive_association_after_known_factors_not_causal",
             "supplementary_partial_association": {
                 "system_primary_spearman": float(system_rho),
+                "system_rho_status": system_deconf_status,
                 "known_factors_spearman": float(all_rho),
+                "all_rho_status": all_deconf_status,
                 "n_finite_pairs": int(finite_pair_mask.sum()),
             },
             **control_metadata,
         }
 
-    @staticmethod
     def _per_system(
-        values: np.ndarray, y: np.ndarray, system_labels: np.ndarray
+        self,
+        values: np.ndarray,
+        y: np.ndarray,
+        system_labels: np.ndarray,
     ) -> dict[str, Any]:
         groups: dict[str, dict[str, Any]] = {}
         for system in sorted(np.unique(system_labels).astype(str)):
             mask = (system_labels.astype(str) == system) & np.isfinite(values) & np.isfinite(y)
             n = int(mask.sum())
-            rho = _safe_spearman(values[mask], y[mask])
+            x_sub = values[mask]
+            y_sub = y[mask]
+
+            # 2a: 最小 n 闸门
+            if n < self.per_system_min_n:
+                groups[system] = {
+                    "n": n,
+                    "raw_spearman": float("nan"),
+                    "available": False,
+                    "reason": "system_below_min_n",
+                    "min_n": self.per_system_min_n,
+                }
+                continue
+
+            rho = _safe_spearman(x_sub, y_sub)
+            if not np.isfinite(rho):
+                groups[system] = {
+                    "n": n,
+                    "raw_spearman": float("nan"),
+                    "available": False,
+                    "reason": "insufficient or constant within-system data",
+                    "min_n": self.per_system_min_n,
+                }
+                continue
+
+            # 2b: 小 n 精确置换 p
+            if n <= self.monte_carlo_max_n:
+                p_value, p_method = _exact_permutation_p_value(
+                    x_sub, y_sub, rho,
+                    exact_max_n=self.exact_perm_max_n,
+                    monte_carlo_max_n=self.monte_carlo_max_n,
+                    monte_carlo_draws=self.monte_carlo_draws,
+                    seed=self.seed,
+                )
+            else:
+                p_value = float(stats.spearmanr(x_sub, y_sub).pvalue)
+                p_method = "asymptotic"
+
             groups[system] = {
                 "n": n,
                 "raw_spearman": rho,
-                "available": bool(np.isfinite(rho)),
-                "reason": None if np.isfinite(rho) else "insufficient or constant within-system data",
+                "p_value": p_value,
+                "p_method": p_method,
+                "available": True,
+                "reason": None,
+                "min_n": self.per_system_min_n,
             }
+
+        # 2c: Fisher-z 合并 + 异质性统计量
+        available_groups = {k: v for k, v in groups.items() if v["available"]}
+        n_systems_total = len(groups)
+        n_systems_excluded = n_systems_total - len(available_groups)
+
+        pooled_rho = float("nan")
+        single_system_rho = float("nan")
+        cochran_q = float("nan")
+        i_squared = float("nan")
+        heterogeneity_p = float("nan")
+        pooling_reason = None
+        n_rho_clipped = 0
+        rho_clipped_systems: list[str] = []
+
+        if len(available_groups) >= 2:
+            rhos = np.array([g["raw_spearman"] for g in available_groups.values()])
+            ns = np.array([g["n"] for g in available_groups.values()])
+            # 3c: clip 必须 留痕——记录哪些体系被 clip
+            clip_mask = np.abs(rhos) >= 0.9999
+            n_rho_clipped = int(clip_mask.sum())
+            system_names = list(available_groups.keys())
+            rho_clipped_systems = [system_names[i] for i in range(len(system_names)) if clip_mask[i]]
+            # Fisher-z 变换（clip 避免 rho=±1 时 arctanh 发散）
+            rhos_clipped = np.clip(rhos, -0.9999, 0.9999)
+            z_vals = np.arctanh(rhos_clipped)
+            weights = ns - 3
+            weights = np.clip(weights, 1e-10, None)
+            z_pooled = np.average(z_vals, weights=weights)
+            pooled_rho = float(np.tanh(z_pooled))
+
+            # Cochran's Q
+            q_components = weights * (z_vals - z_pooled) ** 2
+            cochran_q = float(np.sum(q_components))
+            df = len(available_groups) - 1
+            if df > 0:
+                if cochran_q > 0:
+                    heterogeneity_p = float(stats.chi2.sf(cochran_q, df))
+                    i_squared = float(max(0.0, 1.0 - df / cochran_q) * 100)
+                else:
+                    # 3b: Q=0 时完全同质，I²=0, p=1
+                    heterogeneity_p = 1.0
+                    i_squared = 0.0
+            # df <= 0 不会发生（len >= 2 保证 df >= 1）
+        elif len(available_groups) == 1:
+            # 3d: 单体系时 pooled_rho 记 NaN，另设 single_system_rho
+            single_system_rho = list(available_groups.values())[0]["raw_spearman"]
+            pooling_reason = "only_one_system_available"
+        else:
+            pooling_reason = "no_systems_available"
+
         return {
             "status": "exploratory",
-            "available": any(group["available"] for group in groups.values()),
-            "reason": None if groups else "no system groups",
+            "available": len(available_groups) > 0,
+            "reason": None if available_groups else "no system groups passed min_n gate",
             "groups": groups,
             "association": "raw_within_system_spearman",
+            "pooled_rho": pooled_rho,
+            "single_system_rho": single_system_rho,
+            "pooling_method": "fisher_z_weighted_average" if len(available_groups) >= 2 else ("single_system" if len(available_groups) == 1 else "none"),
+            "pooling_reason": pooling_reason,
+            "cochran_q": cochran_q,
+            "i_squared": i_squared,
+            "heterogeneity_p": heterogeneity_p,
+            "n_rho_clipped": n_rho_clipped,
+            "rho_clipped_systems": rho_clipped_systems,
+            "n_systems_total": n_systems_total,
+            "n_systems_available": len(available_groups),
+            "n_systems_excluded": n_systems_excluded,
+            "min_n": self.per_system_min_n,
         }
 
     def _bootstrap_ci(
@@ -882,85 +1076,6 @@ class CombinationValidator:
             "method": "system_stratified_bootstrap",
         }
 
-    @staticmethod
-    def _unavailable_cv(reason: str) -> tuple[dict[str, Any], dict[str, Any]]:
-        raw = {
-            key: {
-                "strategy": key,
-                "skipped": True,
-                "reason": reason,
-                "mean_spearman": float("nan"),
-                "fold_results": [],
-            }
-            for key in (
-                "anion_stratified_cv",
-                "leave_one_system_out",
-                "repeated_subsample",
-            )
-        }
-        raw["anion_stratified_cv"].update(
-            requested_n_folds=3, effective_n_folds=0, downshifted=False
-        )
-        return raw, summarize_cv_spearman(raw)
-
-    def _run_cv_diagnostics(
-        self,
-        X: np.ndarray,
-        y: np.ndarray,
-        systems: np.ndarray,
-        anions: np.ndarray,
-    ) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
-        """Run strategies independently so one unavailable split cannot hide others."""
-        cv = MultiStrategyCV(alpha=self.alpha)
-        results: dict[str, dict[str, Any]] = {}
-        try:
-            results["anion_stratified_cv"] = cv.anion_stratified_cv(X, y, anions)
-        except (ValueError, RuntimeError) as exc:
-            results["anion_stratified_cv"] = {
-                "strategy": "anion_stratified_cv",
-                "skipped": True,
-                "reason": str(exc),
-                "mean_spearman": float("nan"),
-                "fold_results": [],
-                "requested_n_folds": 3,
-                "effective_n_folds": 0,
-                "downshifted": False,
-            }
-
-        if np.unique(systems).size < 2:
-            results["leave_one_system_out"] = {
-                "strategy": "leave_one_system_out",
-                "skipped": True,
-                "reason": "LOSO CV requires at least two system groups",
-                "mean_spearman": float("nan"),
-                "fold_results": [],
-            }
-        else:
-            try:
-                results["leave_one_system_out"] = cv.leave_one_system_out(
-                    X, y, systems
-                )
-            except (ValueError, RuntimeError) as exc:
-                results["leave_one_system_out"] = {
-                    "strategy": "leave_one_system_out",
-                    "skipped": True,
-                    "reason": str(exc),
-                    "mean_spearman": float("nan"),
-                    "fold_results": [],
-                }
-
-        try:
-            results["repeated_subsample"] = cv.repeated_subsample(X, y, systems)
-        except (ValueError, RuntimeError) as exc:
-            results["repeated_subsample"] = {
-                "strategy": "repeated_subsample",
-                "skipped": True,
-                "reason": str(exc),
-                "mean_spearman": float("nan"),
-                "fold_results": [],
-            }
-        return results, summarize_cv_spearman(results)
-
     def full_validation(
         self,
         feature_df: pd.DataFrame,
@@ -970,7 +1085,7 @@ class CombinationValidator:
         candidate: Mapping[str, Any] | pd.Series,
         n_bootstrap: int = 500,
     ) -> dict[str, Any]:
-        """Return four named exploratory evidence blocks and CV diagnostics."""
+        """Return four named exploratory evidence blocks."""
         candidate_map = candidate.to_dict() if isinstance(candidate, pd.Series) else candidate
         values, _, _ = self._formula_values(feature_df, candidate_map)
         y_arr = np.asarray(y, dtype=float)
@@ -979,20 +1094,6 @@ class CombinationValidator:
         if not (len(values) == len(y_arr) == len(systems) == len(anions)):
             raise ValueError("feature, target, system, and anion lengths must match")
         observed = _safe_spearman(values, y_arr)
-        finite = np.isfinite(values) & np.isfinite(y_arr)
-        target_observed = np.isfinite(y_arr)
-
-        if int(finite.sum()) < 5 or int(target_observed.sum()) < 5:
-            cv_results, cv_summary = self._unavailable_cv(
-                "fewer than five finite formula-target pairs"
-            )
-        else:
-            cv_results, cv_summary = self._run_cv_diagnostics(
-                values[target_observed].reshape(-1, 1),
-                y_arr[target_observed],
-                systems[target_observed],
-                anions[target_observed],
-            )
 
         blocks = {
             "noise_baseline": self._noise_baseline(
@@ -1008,14 +1109,6 @@ class CombinationValidator:
         }
         return {
             **blocks,
-            "cv_diagnostics": {
-                "status": "exploratory",
-                "summary": cv_summary,
-                "strategies": cv_results,
-                "n_target_observed": int(target_observed.sum()),
-                "n_formula_observed": int(finite.sum()),
-                "missing_formula_policy": "fold_local_median_imputation",
-            },
             "status": "exploratory",
             "causal_claim": False,
             "uncertainty": {
@@ -1052,7 +1145,6 @@ class CombinationValidator:
                 )
             except KeyError:
                 continue
-            cv_summary = evidence["cv_diagnostics"]["summary"]
             blocks = {
                 name: evidence[name]
                 for name in (
@@ -1092,6 +1184,13 @@ class CombinationValidator:
                     )
                 if not component_families:
                     component_families = provenance_families
+            # 从 evidence["uncertainty"] 提取选择不确定性标志；从各 block 提取 available 标志。
+            # 取不到时填 None，绝不填默认值 True。
+            uncertainty_info = evidence.get("uncertainty", {}) or {}
+            noise_baseline_available = blocks.get("noise_baseline", {}).get("available")
+            factor_spanning_available = blocks.get("factor_spanning", {}).get("available")
+            per_system_available = blocks.get("per_system", {}).get("available")
+            bootstrap_ci_available = blocks.get("bootstrap_ci", {}).get("available")
             records.append(
                 {
                     "combined_name": row["combined_name"],
@@ -1104,16 +1203,31 @@ class CombinationValidator:
                     "n_components": len(components),
                     "raw_value_source": row.get("raw_value_source", "feature_df"),
                     "formula_provenance": dict(provenance),
-                    "combined_deconf_spearman": row.get(
-                        "combined_deconf_spearman", float("nan")
+                    "combined_rank_corr_of_linear_residuals": row.get(
+                        "combined_rank_corr_of_linear_residuals", float("nan")
                     ),
-                    **cv_summary,
                     "validation_status": "exploratory",
                     "causal_claim": False,
-                    "uncertainty_method": "system_stratified_bootstrap",
+                    "uncertainty_method": uncertainty_info.get("method"),
                     **blocks,
                     "evidence_blocks": blocks,
-                    "cv_diagnostics": evidence["cv_diagnostics"],
+                    "selection_uncertainty_included": uncertainty_info.get(
+                        "selection_uncertainty_included"
+                    ),
+                    "uncertainty_reason": uncertainty_info.get("reason"),
+                    "noise_baseline_available": noise_baseline_available,
+                    "factor_spanning_available": factor_spanning_available,
+                    "per_system_available": per_system_available,
+                    "bootstrap_ci_available": bootstrap_ci_available,
+                    "per_system_pooled_rho": blocks["per_system"].get("pooled_rho"),
+                    "per_system_single_system_rho": blocks["per_system"].get("single_system_rho"),
+                    "per_system_cochran_q": blocks["per_system"].get("cochran_q"),
+                    "per_system_i_squared": blocks["per_system"].get("i_squared"),
+                    "per_system_heterogeneity_p": blocks["per_system"].get("heterogeneity_p"),
+                    "per_system_n_rho_clipped": blocks["per_system"].get("n_rho_clipped"),
+                    "per_system_n_systems_total": blocks["per_system"].get("n_systems_total"),
+                    "per_system_n_systems_available": blocks["per_system"].get("n_systems_available"),
+                    "per_system_n_systems_excluded": blocks["per_system"].get("n_systems_excluded"),
                 }
             )
         if not records:

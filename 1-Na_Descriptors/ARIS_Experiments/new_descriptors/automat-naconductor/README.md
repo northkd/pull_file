@@ -19,7 +19,7 @@
 - 每次 Agent 评估都对全部 CIF 做存在性和可解析性预检。预检失败会在创建
   任何 Agent 输出前失败退出；全 NaN 描述符同样会失败，不会产生假阳性结果。
 - `log_sigma` 已是目标变量。主指标是控制以 `system` 为主、仅保留秩增量
-  `anion_type` 对比项后的 `deconfounded_spearman`。
+  `anion_type` 对比项后的 `rank_corr_of_linear_residuals`。
 - Ridge 的填补和标准化均在每一个 CV 训练折内拟合。阴离子分层、留一体系和
   重复分层子采样中，任何不可行的策略会显式记录为 `skipped`，而不是被当作零分
   或导致整个评估崩溃。
@@ -68,7 +68,7 @@ python run_status.py
 python plot_run_results.py
 ```
 
-`run_status.py` 只以有限的 `deconfounded_spearman` 记录判断改善；`crash` 行和
+`run_status.py` 只以有限的 `rank_corr_of_linear_residuals` 记录判断改善；`crash` 行和
 不可用 CV 策略不会制造“没有改善”的证据。具体的最大迭代数与耐心值在
 `tracks.agent.status` 中配置。
 

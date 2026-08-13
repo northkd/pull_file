@@ -5,7 +5,7 @@ task:
   name: naconductor
   description: >
     搜索 Na 离子固态导体的局域结构描述符组合，
-    使其与 log10(σ/S·cm⁻¹) 的去混杂 Spearman 相关性最大化。
+    使其与 log10(σ/S·cm⁻¹) 的线性残差秩相关性最大化。
     描述符从 CIF 结构文件计算，禁止使用 log/√/幂运算构造新特征。
     目标是找到物理可解释、统计稳健的描述符组合，
     而非单纯追求预测精度。
@@ -22,25 +22,6 @@ data:
   # 不做 train/val/test 预拆分——用 CV 策略替代
   # 原始数据 84 行，全量参与交叉验证
 
-cv_strategies:
-  # 策略 1：阴离子分层 K 折；类别不足两例时显式跳过，支持不足时显式降折
-  - name: anion_stratified_cv
-    folds: 3
-    stratify_by: anion_type
-    random_seed: 42
-    insufficient_class_policy: skip
-    requested_fold_downshift: explicit
-  # 策略 2：留一体系交叉验证（LOSO-CV）
-  # 每次留出一个体系（NASICON/sulfide/halide）作为验证集
-  - name: leave_one_system_out
-    group_column: system
-  # 策略 3：重复随机子采样
-  - name: repeated_subsample
-    n_repeats: 10
-    test_fraction: 0.2
-    stratify_by: system
-    random_seed: 42
-
 deconfound:
   # 混杂变量列表——这些变量与目标相关但不是因果通路
   # 在计算描述符-目标相关性时需要控制
@@ -50,10 +31,65 @@ deconfound:
   categorical_coding: reference_class
   primary_control: system
   report_design_rank: true
-  # 去混杂方法：偏相关 / DML（Double Machine Learning）
-  method: partial_correlation  # 可选: partial_correlation, dml
-  # 去混杂后的 Spearman rho 作为主要评价指标
-  primary_metric: deconfounded_spearman
+  # 残差化方法：偏相关
+  method: partial_correlation
+  # 线性残差秩相关作为主要评价指标（非文献意义的偏 Spearman，详见 estimand 段）
+  primary_metric: rank_corr_of_linear_residuals
+
+stage1:
+  # W3-3 冻结值：按 |rho| 取固定前 k 位，替代无外部依据的 0.2/0.3/0.7 阈值
+  top_k: 10
+
+estimand:
+  # 主指标定义与诚实命名声明
+  name: rank_corr_of_linear_residuals
+  definition: >
+    对 x 与 y 各自做正交投影残差化（等价于 OLS 残差，alpha=0），在原始尺度上取残差，
+    再对两组残差求 Spearman rho。残差化控制矩阵的实际行为：
+    (1) intercept 作为设计矩阵的显式列（全 1 向量）追加到控制矩阵后做 lstsq 拟合，
+    使参考类（drop_first 编码的全零行）获得截距系数作为预测值；
+    (2) system 以参考类编码（drop_first=True）全部进入控制集；
+    (3) anion_type 仅在对 [intercept, system] 提供秩增量（matrix_rank 上升）
+    时按列进入控制集，冗余对比项不进入；
+    (4) 组合层使用两个不同的对照量：system_rho 用仅含 system 的控制矩阵，
+    all_rho 用 system + anion 增量的完整控制矩阵，两者作为 supplementary_partial_association
+    对照暴露给下游，不直接取差；
+    (5) 单描述符层只使用 system + anion 增量的完整控制矩阵。
+  implementation_anchors:
+    build_rank_aware_controls: "descriptors/deconfound.py, DeconfoundAnalyzer.build_rank_aware_controls"
+    rank_corr_of_linear_residuals: "descriptors/deconfound.py, DeconfoundAnalyzer.rank_corr_of_linear_residuals"
+    analyze_all: "descriptors/deconfound.py, DeconfoundAnalyzer.analyze_all"
+    combination_system_rho: "descriptors/combination.py, CombinationValidator._factor_spanning (system_rho)"
+    combination_all_rho: "descriptors/combination.py, CombinationValidator._factor_spanning (all_rho)"
+  undefined_when:
+    insufficient_samples: "有效样本数不足三个，无法计算 Spearman 秩相关；rho 和 p 值均为 NaN。仅在直接调用 rank_corr_of_linear_residuals 时可触发，analyze_all 路径下不可达（skip 分支已在 n_valid < 5 拦截，进入残差化的样本数恒 >= 5）"
+    empty_control_space: "控制矩阵列数为零，无混杂变量可控制；残差化无意义，rho 和 p 值均为 NaN"
+    controls_rank_deficient: "控制变量列数大于等于样本数，或控制矩阵秩亏，正交投影残差化退化；rho 和 p 值均为 NaN"
+    lstsq_numerical_failure: "np.linalg.lstsq 抛出 LinAlgError，数值失败（非秩亏）；rho 和 p 值均为 NaN。与 controls_rank_deficient 区分：后者是结构性退化（秩亏），前者是数值失败（如奇异矩阵的 lstsq 内部报错）"
+    not_attempted: "该描述符有效值不足五个，未进入去混杂计算；所有数值列为 NaN，skip_reason 为 insufficient_valid_samples，n_valid 记录实际有效数"
+  superseded_definition_used_in: [run01, run02, run03_3a, run03_3b, run03_3c]
+  superseded_at_commit: [3c5e921, ddcc5d7]
+  not_partial_spearman: >
+    本量【不是】文献意义上的 partial Spearman。
+    标准做法是先秩变换再偏出，本实现顺序相反——先线性残差化再秩变换。
+  monotonic_invariance: >
+    本量对 x 的单调变换【不】不变，因线性残差化不保秩。
+    对 x 施加 exp/log 等单调非线性变换会改变残差化结果，进而改变 rho。
+  decision_date: "2026-08-10"
+  decision_precedes_dataset_finalization: true
+  definition_revision_date: "2026-08-13"
+  revision_date: "2026-08-13"
+  revision_reason: >
+    原 definition 将残差化基写成 {intercept, system, anion_type} 张成的列空间，
+    与实现不符：intercept 由 Ridge fit_intercept 隐式提供而非列；
+    anion_type 仅秩增量列进入而非全部。同时补充记录组合层使用两个对照量。
+    本次修订将 definition 去除行号（行号会漂移），把文件与函数名移到
+    implementation_anchors 字段；新增 superseded_definition_used_in 记录旧表述送审范围。
+    W1-1 修订：残差化方式从 Ridge(alpha=1.0) 收缩改为正交投影（OLS 残差，
+    alpha=0），消除参考类字母序依赖和组均值收缩偏差。controls_rank_deficient
+    条目同步更新为涵盖秩亏检测。
+    W1-1 截距修正：给控制矩阵追加全 1 列作为显式截距，修复参考类残差被
+    全局均值而非组均值中心化的缺陷。
 
 stability_selection:
   # 子采样 Lasso；填充和缩放在每个子样本 Pipeline 内独立拟合
@@ -66,6 +102,7 @@ stability_selection:
   threshold: 0.6          # 被选中的频率阈值
   fraction: 0.5           # 每次自举采样比例
   random_seed: 42
+  cluster_threshold: 0.8  # W5-2 冻结值：|rho| >= 0.8 为同簇（实现本轮不做，键与值现在冻结）
 
 combination:
   # 原始物理值上的受约束枚举；只在完整公式进入模型后做折内标准化
@@ -119,20 +156,25 @@ combination_validation:
   selection_uncertainty:
     nested_outer_group_selection_available: false
 
+evidence:
+  per_system:
+    min_n: 5
+    exact_perm_max_n: 8
+    monte_carlo_max_n: 10
+    monte_carlo_draws: 10000
+
 evaluation:
   # 主要评价指标
-  primary: deconfounded_spearman
+  primary: rank_corr_of_linear_residuals
   # 辅助评价指标
   secondary:
-    - cv_spearman       # 交叉验证 Spearman rho
-    - cv_mae            # 交叉验证 MAE
-    - cv_rmse           # 交叉验证 RMSE
     - stability_score   # 稳定性选择得分
   # 模型
   model:
     # Ridge 回归：84 样本用 RF 容易过拟合，Ridge 正则化更稳健
     name: ridge
-    alpha: 1.0          # L2 正则化强度
+    alpha: 1.0          # 记录值；实际来源为 CLI --alpha，本键当前不被代码读取。
+                        # 单描述符层已改为正交投影；combination._factor_spanning 折内 Ridge 仍用此值。
     random_seed: 42
     fold_preprocessing:
       - median_imputation
@@ -165,11 +207,11 @@ tracks:
     reads: [shared_input]
     must_not_read: [results/pipeline]
     status:
-      primary_metric: deconfounded_spearman
+      primary_metric: rank_corr_of_linear_residuals
       max_iterations: 30
       patience: 8
       semantics: >
-        仅对 status 为 evaluated、keep 或 discard 的有限去混杂 Spearman
+        仅对 status 为 evaluated、keep 或 discard 的有限线性残差秩相关
         计入耐心；crash 和不可用 CV 策略不会伪造改善或消耗耐心。
 
 c9_cross_track_review:

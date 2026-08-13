@@ -1,0 +1,83 @@
+{
+  "audit_skill": "experiment-audit",
+  "checklist_id": "descriptor-impl@v1",
+  "checklist_profile": "descriptor-impl",
+  "verdict": "FAIL",
+  "reason_code": "six_checks_fail_two_warn_zero_pass",
+  "summary": "8 项中 6 项 FAIL（A/B/C/D/E/G）、2 项 WARN（F/H）、0 项 PASS；13 个描述符中 8 个名称与实现定义性不符",
+  "integrity_status": "fail",
+  "audited_input_hashes": {
+    "descriptors/_base.py": "sha256:166be5ba56e464039b19c5a19bdf221e6ffa3d4e2f9658150939dcc6007534eb",
+    "descriptors/family_f_longrange.py": "sha256:7954ffa47c13710e9d4a9cdc417e6c00a01521b20160e921d463a74feb03e0df",
+    "descriptors/family_g_electronic.py": "sha256:67d5e846fabbd69d0bffb9392a11c76cadd3575515112d850aeff6760a560497",
+    "descriptors/family_h_symmetry.py": "sha256:f88d2bfd95e8a3727061708957340a80012851c799e9a1bf93bf68a436a5d836"
+  },
+  "trace_path": ".aris/traces/experiment-audit/2026-08-10_run03_3c/",
+  "reviewer_model": "claude-web",
+  "reviewer_backend": "manual-bridge",
+  "reviewer_reasoning": "manual-bridge",
+  "generated_at": "2026-08-10T00:00:00+08:00",
+  "report_file": "EXPERIMENT_AUDIT_run03_3c.md",
+  "report_sha256": "sha256:187ab69dd1bce3f9ac59a14109d28ae799bda70357acf9dc3c9f6d01988e5b7c",
+  "report_char_count": 34748,
+  "report_line_count": 573,
+  "details": {
+    "checklist_id": "descriptor-impl@v1",
+    "checklist_id_echo_verified": true,
+    "checks": {
+      "A": {"title": "Formula Fidelity", "status": "FAIL", "blocker_count": 8, "warn_count": 6, "details": "13 个描述符中 8 个存在名称/docstring 与实现的定义性不符"},
+      "B": {"title": "Degenerate Input Handling", "status": "FAIL", "blocker_count": 3, "warn_count": 3, "pass_count": 1, "details": "_safe_cv 缺 n<2 闸门致 3 个描述符返回 0.0 哨兵"},
+      "C": {"title": "NaN and Sentinel Paths", "status": "FAIL", "blocker_count": 5, "details": "find_interstitial_sites 裸 except 返回空列表伪装成 0；单一阴离子体系退化为常数"},
+      "D": {"title": "Cell-Setting Invariance", "status": "FAIL", "blocker_count": 3, "warn_count": 3, "not_applicable_count": 2, "details": "F 族四个描述符全部晶胞设定相关"},
+      "E": {"title": "Cutoff and Parameter Provenance", "status": "FAIL", "blocker_count": 2, "details": "20+ 个自由参数中仅 3 个有文献出处"},
+      "F": {"title": "Determinism and Order Dependence", "status": "WARN", "pass_count": 2, "warn_count": 2, "details": "无随机性（PASS）；但 3 处依赖位点顺序"},
+      "G": {"title": "Extensivity Classification", "status": "FAIL", "blocker_count": 4, "not_applicable_count": 1, "details": "注册表无 extensivity 字段；wyckoff_diversity 条件性广延量"},
+      "H": {"title": "Cross-Family Redundancy", "status": "WARN", "warn_count": 4, "not_applicable_count": 1, "details": "族内冗余确定：G 族两个描述符是同一量的单调变换；F 族四个源自同一 dists 向量"}
+    },
+    "check_letters": ["A", "B", "C", "D", "E", "F", "G", "H"],
+    "check_status_summary": {
+      "FAIL": ["A", "B", "C", "D", "E", "G"],
+      "WARN": ["F", "H"],
+      "PASS": [],
+      "NOT_APPLICABLE": []
+    },
+    "descriptor_registry_audit": [
+      {"descriptor": "compute_nana_nana_angle_mean", "family": "F", "agree": false, "dimension": "度 (°)", "extensivity": "intensive（构造上）", "cell_setting_invariant": false, "nan_paths": "len(na)<3; angles 空"},
+      {"descriptor": "compute_nana_second_neighbor_dist", "family": "F", "agree": false, "dimension": "Å", "extensivity": "intensive（构造上）", "cell_setting_invariant": false, "nan_paths": "len(na)<3; second_dists 空"},
+      {"descriptor": "compute_path_tortuosity", "family": "F", "agree": false, "dimension": "无量纲", "extensivity": "intensive（构造上）", "cell_setting_invariant": false, "nan_paths": "len(na)<2; ratios 空; 哨兵 1.0"},
+      {"descriptor": "compute_nana_spacing_uniformity", "family": "F", "agree": "partial", "dimension": "无量纲", "extensivity": "intensive（构造上）；随晶胞漂移", "cell_setting_invariant": false, "nan_paths": "len(na)<2; 均值≈0; 哨兵 0.0"},
+      {"descriptor": "compute_na_x_en_diff", "family": "G", "agree": false, "dimension": "无量纲", "extensivity": "intensive", "cell_setting_invariant": true, "nan_paths": "无Na/无阴离子; 壳层全空; 单一阴离子体系恒常数"},
+      {"descriptor": "compute_charge_balance_deviation", "family": "G", "agree": false, "dimension": "无量纲", "extensivity": "intensive", "cell_setting_invariant": true, "nan_paths": "total_abs_charge<1e-12; 表外元素致偏小有限值"},
+      {"descriptor": "compute_covalency_index", "family": "G", "agree": false, "dimension": "无量纲", "extensivity": "intensive", "cell_setting_invariant": true, "nan_paths": "同 na_x_en_diff; 单一阴离子体系恒常数"},
+      {"descriptor": "compute_framework_d_electron_weighted", "family": "G", "agree": false, "dimension": "无量纲", "extensivity": "intensive", "cell_setting_invariant": true, "nan_paths": "无骨架; total_occ<1e-12; 合法0.0"},
+      {"descriptor": "compute_space_group_number", "family": "H", "agree": true, "dimension": "名义型标签", "extensivity": "nominal", "cell_setting_invariant": true, "nan_paths": "裸except; 哨兵1.0(P1)"},
+      {"descriptor": "compute_wyckoff_diversity", "family": "H", "agree": "partial", "dimension": "计数", "extensivity": "conditional", "cell_setting_invariant": "conditional", "nan_paths": "裸except; 哨兵=len(struct)(P1)"},
+      {"descriptor": "compute_partial_occupancy_ratio", "family": "H", "agree": true, "dimension": "无量纲", "extensivity": "intensive", "cell_setting_invariant": true, "nan_paths": "len(struct)==0"},
+      {"descriptor": "compute_coordination_cv", "family": "H", "agree": false, "dimension": "无量纲", "extensivity": "intensive", "cell_setting_invariant": true, "nan_paths": "len(na)<2; cn_list空; ImportError; 哨兵0.0"},
+      {"descriptor": "compute_volume_cv", "family": "H", "agree": false, "dimension": "无量纲", "extensivity": "intensive", "cell_setting_invariant": true, "nan_paths": "len(na)<2; volumes空; 哨兵0.0"}
+    ],
+    "claims": [
+      {"id": "C1", "text": "13 个描述符各自计算其名称与 docstring 所声明的量", "impact": "unsupported"},
+      {"id": "C2", "text": "F 族'长程关联'测量超越最近邻的 Na-Na 空间关联", "impact": "unsupported"},
+      {"id": "C3", "text": "G 族描述符提供不依赖 DFT 的电子结构代理信息", "impact": "unsupported"},
+      {"id": "C4", "text": "H 族对称性描述符可作为结构复杂性代理", "impact": "needs_qualifier"},
+      {"id": "C5", "text": "跨不同晶胞设定的相关系数反映的是物理而非数据来源", "impact": "unsupported"}
+    ],
+    "action_items_count": {"blocker": 13, "high_priority": 8, "medium_priority": 5},
+    "missing_files": [
+      "descriptors/__init__.py（注册表）",
+      "featurizer.py / CIF 读入层",
+      "combination.py",
+      "family_a/b/c/d_prime/e_*.py"
+    ],
+    "previous_run_comparison": {
+      "previous_run": "EXPERIMENT_AUDIT_run03_3b",
+      "previous_checklist": "A-G 七项（descriptor-impl v0，隐式）",
+      "current_checklist": "A-H 八项（descriptor-impl@v1，SKILL.md §11.6 逐字复制）",
+      "new_check": "H. Cross-Family Redundancy",
+      "previous_verdict": "FAIL",
+      "current_verdict": "FAIL",
+      "note": "3b 审 family_c/d/e + _base；3c 审 family_f/g/h + _base。FAIL 根因模式在两批次中一致出现，表明是代码库级系统性问题。"
+    }
+  }
+}

@@ -1,0 +1,189 @@
+以下整份可直接粘进新会话。
+
+---
+
+# Na 离子导体描述符搜索 — 会话交接（2026-08-13）
+
+## 一、项目与真正的工作目标
+
+**项目**：`automat-naconductor`（由 AUTOMAT 改造），从 CIF 晶体结构导出局域结构描述符，寻找与 log₁₀(室温离子电导率) 强相关、且经得起体系混杂控制的量。
+
+**当前阶段的实际目标不是"找到好描述符"，而是确认这些算法在数学上估计的到底是什么量。** 问题分三类：
+
+- **Bug**：代码没实现作者意图。占比很小。
+- **合理性**：设计选择是否恰当。正反都能讲。
+- **估计量身份**：代码正确执行了它写的东西，作者以为在算 A，数学上算的是 B。**占多数。** 例：`covalency_index` 忠实计算 `1−exp(−Δχ²/4)`，一个 bug 都没有，但它算的是离子性；`network_dimension` 忠实计算最大连通分量占比，它不是维度且永不返回 3；`max_bond_length` 被代码声明为 `a2_max_dist` 的别名，但两者是**两个独立函数**，该断言从未验证。
+
+这类东西修不掉（没有东西坏了），只能重新命名或重新定义，**而这个选择必须显式做、且必须在见到数据之前做完**。
+
+## 二、硬约束
+
+1. **数据集当前不存在。** `data/` 三个文件已由用户手动删除（内容在 `b65cd96` 可 `git show` 取回）。原 84 个 CIF 在上层目录，**用户判定不可靠，禁止访问上层目录**。
+2. **CIF 由用户自行准备并直接放进工作目录**（约定 `data/cif/`），不走逐篇文献抄录流程。
+3. **一切工作只在 `automat-naconductor/` 内进行。**
+4. **所有阈值、判据、估计量定义必须在看到数据之前冻结。**
+5. 此前流传的数字（0.597 / 0.623 / 0.479 / 102.5%）**不得作为任何判断依据**。
+
+## 三、工具链与会话规则
+
+- 运行环境 **opencode + OMO**，执行器为 **GLM**
+- 研究流程框架 **ARIS**；评审桥接为自建 **manual-review-bridge** skill（v3）
+- **会话规则**：audit 类每次开新 Claude 对话且新开执行器会话；research-review / pre-registration 同一对话迭代；纯代码改动可接现有执行器会话。**给执行器的 prompt 一律写成自足版**（背景、环境、边界、行号须自行核实），近几轮证明这样最稳。
+
+**已踩过的坑（六个）**：
+
+1. **清单静默替换** —— 根因已定位并修复（`c0a7c57`）
+2. **嵌入管线损坏 Python 缩进** —— 曾制造三条假 BLOCKER。审稿人应先 `ast.parse` 验证
+3. **产物同名覆盖** —— 此后一律带批次后缀
+4. **执行器用推断代替执行** —— 对策是要求贴命令行 + 完整输出 + `exit=`
+5. **用叙述代替命令输出**（坑 4 的变种）—— 曾提交过 hunk 头算术不自洽的"diff"和三份汇总全错的 `--stat`。对策：要求逐 hunk 自检、要求 `--stat` 汇总对账
+6. **prompt 自身写坏**（"等确认后再做"与"本轮可先做"并存、让分析表去和 grep 命中数对账）—— 执行器照做不算违规，写 prompt 的一方要认
+
+**PowerShell 注意**：退出码必须用 `$LASTEXITCODE`，`$?` 是布尔量，无法区分 pytest 的 1/2/4。
+
+## 四、git 状态
+
+**HEAD = `7faa581`**（在当前正在跑的 prompt 返回前）。测试基线：**115 collect / 1 failed / 114 passed**，唯一失败是 `tests/test_agent_track.py::test_pipeline_default_output_follows_pipeline_track_config`（Windows 路径分隔符 `results\pipeline` vs `results/pipeline`，基线上即失败，与任何改动无关）。`.omo/manual-review-bridge/test_build_prompt_gate.py` 另计 17 passed。
+
+主要提交链（新 → 旧）：
+
+```
+7faa581 tests+docs: bind gate import test; record dead config keys
+aad37a9 deconfound: distinguish lstsq numerical failure from rank deficiency
+79568c8 contract: fail loud on unfilled enum domains; declare zero semantics per column
+b445aad tests: cover raw schema validator and RT selection rule
+12f90c3 shared: extract symbol definition matcher used by both gates
+ca59547 registry: reconcile descriptor list constants and gate on their union
+aea3ad2 tests+docs: cover contract and registry; record schema freeze
+7bde97c registry: gate on bidirectional coverage, symbol resolution, unfilled fields
+1c536e8 registry: declare descriptor-level registry skeleton with estimand fields
+47f951a contract: add read-only validator and deterministic RT selection rule
+5ccff2d contract: declare raw data schema v1 (two tables, pre-data freeze)
+092df5c seal: fix rank guard for intercept column; record dual residualization
+6ceb106 docs: correct frozen thresholds provenance and deferral ledger
+0971742 W4-3 fix: separate exact enumeration from monte carlo
+69667a3 W1-1 fix: restore intercept in projection residualization
+0fc912f freeze+docs: record frozen thresholds and pipeline deferral list
+c1e8509 report: emit no-result instead of zero when upstream frames are empty
+ddcc5d7 W1-1: replace ridge shrinkage with orthogonal projection residualization
+aaddc48 W4-3: min-n gate, exact permutation p, Fisher-z pooling with Q and I-squared
+88e35fd W4-2: reject unseen categories instead of silently encoding as reference class
+f4031ee W0-4 close: distinct status tokens, propagate through grouping, fail fast
+（更早：bcb35f6 / fc68317 / 7a71cef / f96295a / 3c5e921 / 4298bd3 … b65cd96 baseline）
+```
+
+`b65cd96` 之前项目**不存在任何 git 历史**。
+
+## 五、描述符层现状
+
+**真实漏斗：41 条注册 → 38 条进入自动搜索 → 3 条幸存。** 此前一直写成"41 → 3"，分母错了。
+
+`descriptors/__init__.py` 有两个清单常量：`AVAILABLE_STRUCTURE_DESCRIPTORS`（41）与 `SEARCHABLE_STRUCTURE_DESCRIPTORS`（38，由前者经 `STRUCTURE_DESCRIPTOR_METADATA[name]["active_for_search"]` 派生）。被排除的三条各带行内注释（`__init__.py:213-217`）：
+
+| 描述符 | 排除理由原文 |
+|---|---|
+| `max_bond_length` | `# compatibility alias of a2_max_dist` |
+| `bottleneck_anisotropy` | `# permanently unavailable implementation` |
+| `bvse_barrier_estimate` | `# permanently unavailable without BVSE backend` |
+
+**各层用的清单不一致**：`deconfound` / `stability` / `run_pipeline` 用 SEARCHABLE；`featurizer` 两处 AVAILABLE 两处 SEARCHABLE；`combination.py:395` 遍历 AVAILABLE（用途未定，若参与候选枚举则组合层搜索池是 41 而非 38 —— **正在跑的 prompt 未覆盖此项，需另查**）。
+
+**幸存者三个**：
+
+| 描述符 | 族 | 限定 |
+|---|---|---|
+| `poly_distortion_mean` | A | 测的是 CV 非 Baur/Robinson 指数；分母仅含 CN≥2 位点 |
+| `framework_poly_distortion` | E | 同上，中心原子换成骨架阳离子 |
+| `partial_occupancy_ratio` | H | 混合价无序不可见；1e-3 阈值落在 CIF 占位报数精度内 |
+
+**前两个是同一泛函（壳层键长 CV）作用在不同中心原子上，共用 `_shell_neighbors` 的 `+0.70 Å / 补至 4` 规则，实际只有约 1.3 个独立候选。** 二者均不走 `_safe_cv`，是内联 `np.std(ddof=0)/np.mean` 且有 `len(distances) > 1` 守卫 —— 该守卫静默丢弃 CN=1 位点，取均值的位点集合因此随壳层规则变化。
+
+**`descriptor_registry.yaml` 已建**：41 条，字段 `name` / `family` / `module` / `implementation_symbol` / `in_searchable` + 7 个字面量 `TODO`（`estimand_math` / `name_matches_estimand` / `name_mismatch_note` / `shared_intermediates` / `known_invariance_defects` / `parameter_provenance` / `status`），共 **287 处待填**。`descriptors/registry.py` 的 `assert_registry_complete` 三条校验（双向覆盖 / 符号定义位置匹配 / 无 TODO 残留），**第三条现必然抛错，这是设计意图** —— 让"41 条估计量身份未确认"成为一个会响的、数字精确的闸门。
+
+`shared/symbol_match.py` 是 registry 闸门与 `.omo/manual-review-bridge/build_prompt.py` 共用的符号匹配器（已去重，仅一份实现）。
+
+## 六、统计管线层：已封版
+
+24 项路线图原文在 **`RESEARCH_REVIEW.md` 第 210–449 行**（W0-1…W5-2，编号连续；此前记的"22 项"是传抄错误）。
+
+**已完成 7 项**：W0-2（删除清单）、W0-3（估计量命名绑定）、W0-4（未执行计算一律显式 NaN）、W1-1（alpha=0 正交投影替代 Ridge 收缩）、W1-5（秩顺序改名）、W4-2（未见类别显式处理）、W4-3（最小 n 闸门 + 精确置换 p + Fisher-z + Q/I²）。
+
+**延后 17 项**，全部记入 `PIPELINE_DEFERRED.md`，含四节额外记录：
+
+- **6c｜W4-5 前提失效**：条目原文说"删两条 CV 策略、只保留 LOSO"，实际执行时 LOSO 一并被删。当前 V2 用按 system 分层的 StratifiedKFold（每折含全部体系），方向与跨体系外推正相反。**管线现无任何跨体系外推证据。** W4-5 已从"可延后"升格为"恢复管线核心能力的必要修复"。
+- **6d｜`noise_baseline` 无消费者**：`above_noise_baseline` 已按 W0-2 删除（待 W3-2 完成后恢复），但 `noise_baseline` 仍被计算、写入 attrs、被 `noise_baseline_available` 标为可用。与 `combination.py` 的 `_noise_baseline`（置换零分布）同名不同量。
+- **6e｜管线内并存两套残差化**：单描述符层已改正交投影，组合层 `_factor_spanning` 的折内残差化仍是 `Ridge(alpha=self.alpha)`。解冻条件：与 W4-1 一并处理。
+- **W0-1 已证实的死键**：`run_info.yaml` 的 `evaluation.model.alpha` 与 `selection_alpha` **不被任何代码读取**，实际来源是 CLI `--alpha` / `--selection-alpha`。
+
+**`FROZEN_THRESHOLDS.md` 已冻结**：`stage1.top_k=10`、`evidence.per_system.min_n=5`、`exact_perm_max_n=8`、`monte_carlo_max_n=10`、`monte_carlo_draws=10000`、`stability_selection.cluster_threshold=0.8`。其中 `top_k` 与 `cluster_threshold` **当前无代码消费者**（实现待做），文档已标注。文件含「修订记录」节，记录 v1 曾就地修正过一次（原 `exact_perm_max_n=10` 的理由"n! 可全枚举"为假）。
+
+**`run_info.yaml` 的 `estimand` 段**是本项目唯一被冻结的定义，含 `definition` / `undefined_when`（五个 status）/ `implementation_anchors` / `superseded_definition_used_in` / `superseded_at_commit` / `decision_date` / `definition_revision_date`。改它必须贴完整 diff。
+
+## 七、已钉死的事实（不依赖数据，可写进论文）
+
+- **`+0.70` 的唯一出处是 `script/part1.py:368`** —— 没有文献，只有一份 984 行的早期脚本。`descriptors/_base.py:244` 与它逐字一致
+- **ρ=0.623 出自 `script/part1.py` 的 `percentile_ranks`** —— 跨样本百分位秩，单结构算不出来，本质上不是描述符
+- **softBV 那八列在主分支下实际只有 1 个不同值**；**SoftBV通道维度系统性偏高**（取四个候选的 `max`）
+- **`nana_network` 的"维度估计"不是维度**
+- **`program.md` 的「不可变契约」第 4 条被事后改写**，run02 审的是旧版本。已记入 `PROGRAM_MD_REVISIONS.md`
+- **管线现零跨体系外推证据**（见 6c）
+- **`combination.py` 的 `system_controls` 只含 system 是有意为之**，与 `all_rho` 构成两个对照量
+- **真实漏斗 41 → 38 → 3**；被排除的三条中一条是别名、两条是永久不可用的实现
+- **W1-1 初版漏了截距**：`lstsq` 在无常数列时过原点拟合，参考类残差被全局均值而非组均值中心化。合成例上 ρ 由 +1.0 翻为 **−0.5429**（该值可独立复算：Σd²=54，1−6·54/210）。已加显式全 1 列修复，并有绑定实现的回归测试
+- **两个配置键是死键**（见上）；`STRUCTURE_DESCRIPTOR_METADATA` 的 `unit` 键无运行时消费者
+
+## 八、数据契约（已建，`data_contract/`）
+
+- **`raw_schema_v1.yaml`**：两张表 —— `materials`（12 列，一行一材料/一个 CIF）与 `measurements`（15 列，一行一次测量）。全局约定：缺失一律空单元格，禁止用 `0` / `-1` / `"unknown"` / `"N/A"` / `"-"`。每个数值列有 `zero_is_sentinel` 键（`sigma_S_per_cm: true` 且区间 >0 仍生效，`relative_density_pct: false` 因 0 是合法下界）。
+- **`validate_raw.py`**：只读校验器，违规输出 `<表名>:<行号>:<列名>:<违规类型>:<实际值>`，退出码 0/1/2。
+- **`select_rt.py`**：`select_rt_conductivity()`，七条确定性规则（component → T_K∈[293,303] → readout 优先级 `table_value > stated_in_text > digitized_from_figure > extrapolated_from_arrhenius_fit` → |T_K−298| 最小 → measurement_id 字典序 → 输出列 → 无候选不静默丢弃）。
+- **`SCHEMA_FREEZE.md`**：`schema_frozen_at=5ccff2d` / `selection_rule_frozen_at=47f951a`；主 y 为 `y_total`，`y_bulk` 仅作敏感性（理由：bulk 的定义随 EIS 等效电路而变，跨文献不可比）。
+- **18 个测试**覆盖七条规则与十类违规。
+
+**仍待用户填**：`system` / `system_coarse` 的 `allowed` 值域是 `__TODO_USER_FILL__`，validator 检测到它会**以退出码 2 拒绝校验**（强形式 fail-loud）。填定属 v1 的最后一处修订，之后一律走 v2。
+
+**已知风险**：跨文献 total conductivity 在数量级上受相对致密度与晶界贡献支配，而致密度与 `system` 不共线，残差化控不掉。若 `relative_density_pct` 缺失率超过七成，它只能当描述性字段而非控制变量 —— **录完才知道，现在无法预判。这是全流程最大的单点风险。**
+
+## 九、下一阶段计划（五阶段）
+
+- **阶段 A｜估计量身份定案**。完成判据：registry 的 TODO 数 = 0，闸门转绿。**只缺用户手上的三张九列登记表。** 正在跑的 prompt 备的是底料（机械抽取），不是结论。
+- **阶段 B｜录入前的最后冻结**。三件：`system` 值域填定（只有用户能做）；registry 若需加字段现在加；壳层规则敏感性扫描的 6 种设定冻结。正在跑的 prompt 覆盖后两件的大部分。
+- **阶段 C｜数据落地**。用户自行准备数据集并把 CIF 放进 `data/cif/`。长度不可控。
+- **阶段 D｜数据到位后的第一次运行**。壳层敏感性扫描（6 设定 × 2 幸存者，取值 + 两两 Spearman 排序相关 + **每种设定下的参与位点数**）；用已冻结阈值跑完整管线；空位分析层级 1（Wyckoff）。层级 2/3 需 softBV，二进制在用户远程服务器上，本地跑不了。
+- **阶段 E｜分叉**。扫描显示壳层规则**不敏感** → 路线甲（收窄摊子，几周量级，registry 直接作证据表）；**敏感** → 路线乙（重建描述符集，月量级，registry 作设计基线）。走甲才需解冻那 17 项，且 `W2-1`（纯函数化，唯一的 L）是 `W3-1/W3-2/W5-1` 的硬前置。
+
+**顺序上的硬约束**：B 必须早于 C（schema、值域、敏感性设定晚于第一批数据就永久失效，这是全流程唯一不可逆处）；A 不必早于 C 但应该早于 C（纯案头工作、材料已备齐，现在做最便宜）。
+
+## 十、正在执行的 prompt 与验收标准
+
+**当前有一条 prompt 在执行器端运行，尚无返回。** 它分两部分：
+
+**甲部（阶段 A 底料）**
+- A1：核实 `compute_a2_max_dist` 与 `compute_max_bond_length` 是否恒等；不等则保留 `xfail(strict=True)` 测试，**不得改实现或改排除清单**
+- A2：41 条逐个机械抽取七列（`return_expr` 原文 / `helpers_called` / `literals` + 行号 / `guards` / `nan_paths` / `shared_with`），分五批贴出。**硬规矩：只抄代码不解释，禁止用描述符名中的词汇描述其行为，拿不准填 `需人工判断`**
+- A3：共享 helper 表、常量出处表、`return_expr` 相似候选对
+- A4：写入三个 `impl_*` 底料字段 + `alias_of` / `excluded_from_search_reason` 两个结构性字段 + 机械填掉 `shared_intermediates`（7 个 TODO 中唯一可机械确定的，填完剩 41×6=246）+ 闸门新增第四条（`in_searchable` 与代码派生值比对）
+
+**乙部（阶段 B）**
+- B1：`_shell_neighbors` 参数化（默认路径数值不得改变）+ 6 种设定冻结进 `FROZEN_THRESHOLDS.md` + 建 `scripts/shell_rule_sweep.py`（本轮不跑）
+- B2：`symprec` 三处硬编码改从 `run_info.yaml` 读（读不到抛 ValueError），冻结 0.01 + 扫描设定 0.001/0.01/0.1
+- B3：CIF 落地约定（`data/cif/`）+ `data_contract/ingest_cif.py` 骨架（机械填 `material_id` / `cif_relpath` / `cif_sha256`，本轮不跑）
+- B4：`system` 值域待填的显式待办，**本轮不得填任何值域**
+
+**验收时重点看**：A1 的三选一结论与 xfail 输出；A2 是否真的只抄代码（出现"计算网络维度"这类同义反复即整表作废）；`需人工判断` 的格数分布；A4d 的 41 条比对；B1a 的"默认路径数值不变"测试。
+
+**本轮 prompt 未覆盖、需另排的**：`combination.py:395` 遍历 AVAILABLE 的用途；两条"永久不可用"描述符实际返回什么（NaN / 数值 / 抛出，以及 featurizer 是否吞异常）；`_operator_dimensionally_valid` 与 W0-2 删除清单里的 `_formula_dimensionally_valid` 是否孪生残留；`raw_schema_v1.yaml` 的枚举值域全文（要过三次未见，改为定向摘录 `allowed:` / `range:` / `missing_encoding:` 三段）。
+
+## 十一、协作方式（请沿用）
+
+- **评审输出用「亮点 / 弊端」结构**，弊端走**拒稿视角**，不写鼓励性框架；结论用表格给判定（PASS / PARTIAL / FAIL / BLOCKER）
+- **审计/评审报告直接作为回复正文输出，不生成文件**
+- **给执行器的 prompt 一次排多项**，尤其把 git 记录/清账类杂项一次排完
+- **每当回复里给出「下一步该做什么」，同一条回复里直接附上可粘给执行器的完整 prompt**
+- 用户会粘执行器的**完整回复原文**（过长时会先问需要哪几段）
+- 期刊/论文评价用**中科院分区**（大类分区 + Top）而非 JCR/IF；分区层级与实质判断分开陈述
+
+**两条要提醒新会话的**：
+
+1. **验收会自我延续。** 每一次不完美的交付都天然生成下一轮任务，而验收成本能无限自我增长。本对话中一度连续三轮在修"执行器报告的可信度"而非研究本身。判断标准：若剩下的问题都是文档级、不改变行为，就该封版，把它们随下一轮顺手带走。
+2. **等待期填充。** 主线阻塞（等用户材料）时，容易用可做的事把轮次填满，于是阻塞看起来没那么显眼。287 这个数字曾三轮没动过，期间每轮都有真发现，但每一轮都不是主线。**排下一步时先问：这件事让 287 减少了吗？**

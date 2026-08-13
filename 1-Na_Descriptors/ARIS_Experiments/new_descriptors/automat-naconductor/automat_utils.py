@@ -20,7 +20,6 @@ from descriptors import (
     SEARCHABLE_STRUCTURE_DESCRIPTORS,
     STRUCTURE_DESCRIPTOR_METADATA,
 )
-from descriptors.cv_strategies import MultiStrategyCV, summarize_cv_spearman
 from descriptors.deconfound import DeconfoundAnalyzer
 from descriptors.featurizer import load_structure_from_cif, resolve_cif_path
 from run_config import config_get
@@ -45,32 +44,7 @@ AGENT_RESULT_COLUMNS = [
     "analysis_rows",
     "descriptor_failure_count",
     "raw_spearman",
-    "deconfounded_spearman",
-    "deconf_p",
-    "system_proxy_ratio",
-    "label",
-    "anion_stratified_spearman",
-    "anion_stratified_mae",
-    "anion_stratified_skipped",
-    "anion_stratified_skip_reason",
-    "anion_stratified_available",
-    "anion_stratified_downshifted",
-    "anion_stratified_requested_n_folds",
-    "anion_stratified_effective_n_folds",
-    "loso_spearman",
-    "loso_mae",
-    "loso_skipped",
-    "loso_skip_reason",
-    "loso_available",
-    "repeated_subsample_spearman",
-    "repeated_subsample_mae",
-    "repeated_subsample_skipped",
-    "repeated_subsample_skip_reason",
-    "repeated_subsample_available",
-    "composite_score",
-    "composite_strategy_count",
-    "composite_is_complete",
-    "composite_score_basis",
+    "rank_corr_of_linear_residuals",
     "status",
 ]
 
@@ -366,42 +340,6 @@ def load_and_featurize_structural_frame(
     return result
 
 
-def _skipped_cv_result(strategy: str, exc: Exception) -> dict[str, Any]:
-    """Represent an infeasible split as unavailable evidence, not a crash."""
-    return {
-        "strategy": strategy,
-        "skipped": True,
-        "reason": f"{strategy} skipped: {exc}",
-        "fold_results": [],
-        "mean_spearman": float("nan"),
-        "mean_mae": float("nan"),
-    }
-
-
-def _run_structural_cv_safely(
-    X: np.ndarray,
-    y: np.ndarray,
-    systems: np.ndarray,
-    anions: np.ndarray,
-    *,
-    ridge_alpha: float,
-) -> dict[str, dict[str, Any]]:
-    """Run shared CV strategies independently so one infeasible split is explicit."""
-    evaluator = MultiStrategyCV(alpha=ridge_alpha)
-    calls = {
-        "anion_stratified_cv": lambda: evaluator.anion_stratified_cv(X, y, anions),
-        "leave_one_system_out": lambda: evaluator.leave_one_system_out(X, y, systems),
-        "repeated_subsample": lambda: evaluator.repeated_subsample(X, y, systems),
-    }
-    results: dict[str, dict[str, Any]] = {}
-    for strategy, call in calls.items():
-        try:
-            results[strategy] = call()
-        except ValueError as exc:
-            results[strategy] = _skipped_cv_result(strategy, exc)
-    return results
-
-
 def evaluate_structural_frame(
     frame: pd.DataFrame,
     *,
@@ -411,7 +349,7 @@ def evaluate_structural_frame(
     anion_column: str,
     ridge_alpha: float,
 ) -> dict[str, Any]:
-    """Evaluate one structural descriptor with shared deconfounding and CV."""
+    """Evaluate one structural descriptor with shared deconfounding."""
     _validate_structural_descriptor_name(descriptor_name)
     validate_structural_columns(
         frame,
@@ -452,17 +390,6 @@ def evaluate_structural_frame(
         )
     deconf_row = deconfound.iloc[0].to_dict()
 
-    # Keep all finite-target rows for fold-local median imputation.  This is
-    # intentionally the same leakage-safe CV implementation as the pipeline.
-    X = x_full[target_mask].reshape(-1, 1)
-    y = y_full[target_mask]
-    systems = np.asarray(system_labels, dtype=object)[target_mask]
-    anions = np.asarray(anion_labels, dtype=object)[target_mask]
-    cv_results = _run_structural_cv_safely(
-        X, y, systems, anions, ridge_alpha=ridge_alpha
-    )
-    cv_summary = summarize_cv_spearman(cv_results)
-
     failures = frame.attrs.get("descriptor_failures", [])
     return {
         "descriptor_name": descriptor_name,
@@ -472,18 +399,7 @@ def evaluate_structural_frame(
         "analysis_rows": int(analysis_mask.sum()),
         "descriptor_failure_count": int(len(failures)),
         "raw_spearman": float(deconf_row["raw_spearman"]),
-        "deconfounded_spearman": float(deconf_row["deconfounded_spearman"]),
-        "deconf_p": float(deconf_row["deconf_p"]),
-        "system_proxy_ratio": float(deconf_row["system_proxy_ratio"]),
-        "label": str(deconf_row["label"]),
-        "anion_stratified_mae": float(
-            cv_results["anion_stratified_cv"].get("mean_mae", float("nan"))
-        ),
-        "loso_mae": float(cv_results["leave_one_system_out"].get("mean_mae", float("nan"))),
-        "repeated_subsample_mae": float(
-            cv_results["repeated_subsample"].get("mean_mae", float("nan"))
-        ),
-        **cv_summary,
+        "rank_corr_of_linear_residuals": float(deconf_row["rank_corr_of_linear_residuals"]),
     }
 
 
@@ -584,11 +500,5 @@ def format_agent_metrics(metrics: dict[str, Any]) -> list[str]:
         f"finite_structural_values:    {metrics['finite_structural_values']}",
         f"analysis_rows:               {metrics['analysis_rows']}",
         f"raw_spearman:                {metrics['raw_spearman']:.6f}",
-        f"deconfounded_spearman:       {metrics['deconfounded_spearman']:.6f}",
-        f"system_proxy_ratio:          {metrics['system_proxy_ratio']:.6f}",
-        f"label:                       {metrics['label']}",
-        f"anion_stratified_spearman:   {metrics['anion_stratified_spearman']:.6f}",
-        f"loso_spearman:               {metrics['loso_spearman']:.6f}",
-        f"repeated_subsample_spearman: {metrics['repeated_subsample_spearman']:.6f}",
-        f"cv_composite_score:          {metrics['composite_score']:.6f}",
+        f"rank_corr_of_linear_residuals: {metrics['rank_corr_of_linear_residuals']:.6f}",
     ]
