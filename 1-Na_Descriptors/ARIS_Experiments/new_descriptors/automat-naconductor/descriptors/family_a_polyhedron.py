@@ -21,8 +21,15 @@ from descriptors._base import (
 )
 
 
-def _collect_na_x_data(struct: Structure) -> dict:
-    """收集所有 Na 位点的 Na-X 键信息，返回中间数据字典。"""
+def _collect_na_x_data(
+    struct: Structure,
+    shell_tolerance: float = 0.70,
+    min_shell_size: int = 4,
+) -> dict:
+    """收集所有 Na 位点的 Na-X 键信息，返回中间数据字典。
+
+    参数透传到 _shell_neighbors，默认值与参数化前逐位一致。
+    """
     na_indices = get_na_sites(struct)
     species_symbols = {element_symbol(el) for el in struct.composition.elements}
     anions = species_symbols & ANION_ELEMENTS
@@ -51,7 +58,11 @@ def _collect_na_x_data(struct: Structure) -> dict:
     per_site_bonds: list[list[tuple]] = []
 
     for na_idx in na_indices:
-        shell = _shell_neighbors(struct, na_idx, anions)
+        shell = _shell_neighbors(
+            struct, na_idx, anions,
+            shell_tolerance=shell_tolerance,
+            min_shell_size=min_shell_size,
+        )
         distances = [float(n["distance"]) for n in shell]
 
         if not distances:
@@ -105,12 +116,21 @@ def compute_a2_max_dist(struct: Structure) -> float:
     return _safe_mean(data["per_site_max"])
 
 
-def compute_poly_distortion_mean(struct: Structure) -> float:
+def compute_poly_distortion_mean(
+    struct: Structure,
+    shell_tolerance: float = 0.70,
+    min_shell_size: int = 4,
+) -> float:
     """Na 多面体畸变均值。
 
     每个Na位点 Na-X 键长的变异系数(CV)，然后对所有Na位点取均值。
+    参数透传到 _collect_na_x_data → _shell_neighbors，默认值与参数化前逐位一致。
     """
-    data = _collect_na_x_data(struct)
+    data = _collect_na_x_data(
+        struct,
+        shell_tolerance=shell_tolerance,
+        min_shell_size=min_shell_size,
+    )
     return _safe_mean(data["per_site_distortion"])
 
 

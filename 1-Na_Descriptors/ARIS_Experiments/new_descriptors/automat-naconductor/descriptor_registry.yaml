@@ -1,537 +1,1415 @@
-# descriptor_registry.yaml
-# descriptor-level registry v1.
-# Only name/family/module/implementation_symbol filled; rest are TODO.
-
 descriptors:
-  - name: a2_max_dist
-    family: A
-    module: family_a_polyhedron.py
-    implementation_symbol: compute_a2_max_dist
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: poly_distortion_mean
-    family: A
-    module: family_a_polyhedron.py
-    implementation_symbol: compute_poly_distortion_mean
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: max_bond_length
-    family: A
-    module: family_a_polyhedron.py
-    implementation_symbol: compute_max_bond_length
-    in_searchable: false
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: min_bond_length
-    family: A
-    module: family_a_polyhedron.py
-    implementation_symbol: compute_min_bond_length
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: mean_bond_length
-    family: A
-    module: family_a_polyhedron.py
-    implementation_symbol: compute_mean_bond_length
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: target_bond_center
-    family: A
-    module: family_a_polyhedron.py
-    implementation_symbol: compute_target_bond_center
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: poly_volume_mean
-    family: A
-    module: family_a_polyhedron.py
-    implementation_symbol: compute_poly_volume_mean
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: coordination_number_mean
-    family: A
-    module: family_a_polyhedron.py
-    implementation_symbol: compute_coordination_number_mean
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: ellipsoid_oblateness
-    family: A
-    module: family_a_polyhedron.py
-    implementation_symbol: compute_ellipsoid_oblateness
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: direction_ratio
-    family: A
-    module: family_a_polyhedron.py
-    implementation_symbol: compute_direction_ratio
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: bottleneck_anisotropy
-    family: A
-    module: family_a_polyhedron.py
-    implementation_symbol: compute_bottleneck_anisotropy
-    in_searchable: false
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: nana_composite
-    family: B
-    module: family_b_network.py
-    implementation_symbol: compute_nana_composite
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: avg_na_neighbors
-    family: B
-    module: family_b_network.py
-    implementation_symbol: compute_avg_na_neighbors
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: largest_component_ratio
-    family: B
-    module: family_b_network.py
-    implementation_symbol: compute_largest_component_ratio
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: network_dimension
-    family: B
-    module: family_b_network.py
-    implementation_symbol: compute_network_dimensions
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: component_count
-    family: B
-    module: family_b_network.py
-    implementation_symbol: compute_component_count
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: na_concentration
-    family: C
-    module: family_c_concentration.py
-    implementation_symbol: compute_na_concentration
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: na_occupancy_sum
-    family: C
-    module: family_c_concentration.py
-    implementation_symbol: compute_na_occupancy_sum
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: na_site_count
-    family: C
-    module: family_c_concentration.py
-    implementation_symbol: compute_na_site_count
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: interstitial_count
-    family: D_prime
-    module: family_d_vacancy_topo.py
-    implementation_symbol: compute_interstitial_count
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: interstitial_na_distance
-    family: D_prime
-    module: family_d_vacancy_topo.py
-    implementation_symbol: compute_interstitial_na_distance
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: interstitial_channel_access
-    family: D_prime
-    module: family_d_vacancy_topo.py
-    implementation_symbol: compute_interstitial_channel_access
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: interstitial_network_dim
-    family: D_prime
-    module: family_d_vacancy_topo.py
-    implementation_symbol: compute_interstitial_network_dim
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: bvse_barrier_estimate
-    family: D_prime
-    module: family_d_vacancy_topo.py
-    implementation_symbol: compute_bvse_barrier_estimate
-    in_searchable: false
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: framework_bond_rigidity
-    family: E
-    module: family_e_framework.py
-    implementation_symbol: compute_framework_bond_rigidity
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: framework_poly_distortion
-    family: E
-    module: family_e_framework.py
-    implementation_symbol: compute_framework_poly_distortion
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: framework_na_distance_stability
-    family: E
-    module: family_e_framework.py
-    implementation_symbol: compute_framework_na_distance_stability
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: framework_sharing_topology
-    family: E
-    module: family_e_framework.py
-    implementation_symbol: compute_framework_sharing_topology
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: nana_nana_angle_mean
-    family: F
-    module: family_f_longrange.py
-    implementation_symbol: compute_nana_nana_angle_mean
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: nana_second_neighbor_dist
-    family: F
-    module: family_f_longrange.py
-    implementation_symbol: compute_nana_second_neighbor_dist
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: path_tortuosity
-    family: F
-    module: family_f_longrange.py
-    implementation_symbol: compute_path_tortuosity
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: nana_spacing_uniformity
-    family: F
-    module: family_f_longrange.py
-    implementation_symbol: compute_nana_spacing_uniformity
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: na_x_en_diff
-    family: G
-    module: family_g_electronic.py
-    implementation_symbol: compute_na_x_en_diff
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: charge_balance_deviation
-    family: G
-    module: family_g_electronic.py
-    implementation_symbol: compute_charge_balance_deviation
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: covalency_index
-    family: G
-    module: family_g_electronic.py
-    implementation_symbol: compute_covalency_index
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: framework_d_electron_weighted
-    family: G
-    module: family_g_electronic.py
-    implementation_symbol: compute_framework_d_electron_weighted
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: space_group_number
-    family: H
-    module: family_h_symmetry.py
-    implementation_symbol: compute_space_group_number
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: wyckoff_diversity
-    family: H
-    module: family_h_symmetry.py
-    implementation_symbol: compute_wyckoff_diversity
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: partial_occupancy_ratio
-    family: H
-    module: family_h_symmetry.py
-    implementation_symbol: compute_partial_occupancy_ratio
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: coordination_cv
-    family: H
-    module: family_h_symmetry.py
-    implementation_symbol: compute_coordination_cv
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
-
-  - name: volume_cv
-    family: H
-    module: family_h_symmetry.py
-    implementation_symbol: compute_volume_cv
-    in_searchable: true
-    estimand_math: TODO
-    name_matches_estimand: TODO
-    name_mismatch_note: TODO
-    shared_intermediates: TODO
-    known_invariance_defects: TODO
-    parameter_provenance: TODO
-    status: TODO
+- name: a2_max_dist
+  family: A
+  module: family_a_polyhedron.py
+  implementation_symbol: compute_a2_max_dist
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _collect_na_x_data
+  - _safe_mean
+  - _shell_neighbors
+  - compute_polyhedron_volume
+  - element_symbol
+  - float
+  - get_na_sites
+  - len
+  - max
+  - min
+  known_invariance_defects:
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return _safe_mean(data["per_site_max"]) (L116)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: poly_distortion_mean
+  family: A
+  module: family_a_polyhedron.py
+  implementation_symbol: compute_poly_distortion_mean
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _collect_na_x_data
+  - _safe_mean
+  - _shell_neighbors
+  - compute_polyhedron_volume
+  - element_symbol
+  - float
+  - get_na_sites
+  - len
+  - max
+  - min
+  known_invariance_defects:
+  - occupancy_split:changed
+  - occupancy_split:nan_introduced
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return _safe_mean(data["per_site_distortion"]) (L134)
+  impl_literals:
+  - 0.7 (L121)
+  - 4 (L122)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: max_bond_length
+  family: A
+  module: family_a_polyhedron.py
+  implementation_symbol: compute_max_bond_length
+  in_searchable: false
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _collect_na_x_data
+  - _safe_mean
+  - _shell_neighbors
+  - compute_a2_max_dist
+  - compute_polyhedron_volume
+  - element_symbol
+  - float
+  - get_na_sites
+  - len
+  - max
+  - min
+  known_invariance_defects:
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return compute_a2_max_dist(struct) (L139)
+  impl_literals: []
+  alias_of: a2_max_dist
+  excluded_from_search_reason: compatibility alias of a2_max_dist
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: min_bond_length
+  family: A
+  module: family_a_polyhedron.py
+  implementation_symbol: compute_min_bond_length
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _collect_na_x_data
+  - _safe_mean
+  - _shell_neighbors
+  - compute_polyhedron_volume
+  - element_symbol
+  - float
+  - get_na_sites
+  - len
+  - max
+  - min
+  known_invariance_defects:
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return _safe_mean(data["per_site_min"]) (L145)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: mean_bond_length
+  family: A
+  module: family_a_polyhedron.py
+  implementation_symbol: compute_mean_bond_length
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _collect_na_x_data
+  - _safe_mean
+  - _shell_neighbors
+  - compute_polyhedron_volume
+  - element_symbol
+  - float
+  - get_na_sites
+  - len
+  - max
+  - min
+  known_invariance_defects:
+  - occupancy_split:changed
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return _safe_mean(data["per_site_mean"]) (L151)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: target_bond_center
+  family: A
+  module: family_a_polyhedron.py
+  implementation_symbol: compute_target_bond_center
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - Counter
+  - _collect_na_x_data
+  - _effective_anion_radius
+  - _effective_na_radius
+  - _shell_neighbors
+  - compute_polyhedron_volume
+  - element_symbol
+  - float
+  - get_na_sites
+  - len
+  - max
+  - min
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - isotropic_scale:dimension_declaration_conflict
+  - occupancy_split:changed
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L162)
+  - return float("nan") (L172)
+  - return float(na_r + anion_r) (L174)
+  impl_literals:
+  - 0 (L167)
+  - 0 (L167)
+  - 1 (L167)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - not data["per_site_cn"] (L161)
+  - anion_r is None (L171)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: poly_volume_mean
+  family: A
+  module: family_a_polyhedron.py
+  implementation_symbol: compute_poly_volume_mean
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _collect_na_x_data
+  - _safe_mean
+  - _shell_neighbors
+  - compute_polyhedron_volume
+  - element_symbol
+  - float
+  - get_na_sites
+  - len
+  - max
+  - min
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - isotropic_scale:dimension_declaration_conflict
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return _safe_mean(data["per_site_volume"]) (L180)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: coordination_number_mean
+  family: A
+  module: family_a_polyhedron.py
+  implementation_symbol: compute_coordination_number_mean
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _collect_na_x_data
+  - _shell_neighbors
+  - compute_polyhedron_volume
+  - element_symbol
+  - float
+  - get_na_sites
+  - len
+  - max
+  - min
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - occupancy_split:changed
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L187)
+  - return float(np.mean(data["per_site_cn"])) (L188)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - not data["per_site_cn"] (L186)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: ellipsoid_oblateness
+  family: A
+  module: family_a_polyhedron.py
+  implementation_symbol: compute_ellipsoid_oblateness
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _collect_na_x_data
+  - _safe_mean
+  - _shell_neighbors
+  - compute_polyhedron_volume
+  - element_symbol
+  - float
+  - get_na_sites
+  - len
+  - max
+  - min
+  known_invariance_defects:
+  - occupancy_split:changed
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L200)
+  - return _safe_mean(oblateness_list) (L222)
+  impl_literals:
+  - 3 (L204)
+  - 2 (L206)
+  - 0 (L208)
+  - 2 (L211)
+  - 2 (L211)
+  - 0 (L211)
+  - 1e-12 (L216)
+  - 2 (L217)
+  - 0 (L218)
+  - 1 (L218)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - not data["per_site_bonds"] (L199)
+  - len(bonds) < 3 (L204)
+  - cov.ndim != 2 or cov.shape[0] < 2 (L211)
+  - len(eigenvalues) >= 2 (L217)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: direction_ratio
+  family: A
+  module: family_a_polyhedron.py
+  implementation_symbol: compute_direction_ratio
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _safe_mean
+  - _shell_neighbors
+  - element_symbol
+  - float
+  - get_na_sites
+  - len
+  - sorted
+  known_invariance_defects:
+  - occupancy_split:nan_introduced
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L235)
+  - return _safe_mean(ratios) (L244)
+  impl_literals:
+  - 2 (L241)
+  - 1 (L242)
+  - 2 (L242)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - not na_indices or not anions (L234)
+  - len(distances) >= 2 (L241)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: bottleneck_anisotropy
+  family: A
+  module: family_a_polyhedron.py
+  implementation_symbol: compute_bottleneck_anisotropy
+  in_searchable: false
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - float
+  known_invariance_defects:
+  - all_transforms:permanently_nan
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L253)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: permanently unavailable implementation
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: undetermined
+- name: nana_composite
+  family: B
+  module: family_b_network.py
+  implementation_symbol: compute_nana_composite
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _build_na_graph
+  - any
+  - float
+  - get_na_sites
+  - len
+  - max
+  - min
+  - range
+  - set
+  - sorted
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - supercell:nan_introduced
+  - supercell:undetermined_scaling
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L106)
+  - return float(ratio * avg_nb_norm * dim_norm) (L112)
+  impl_literals:
+  - 1.0 (L110)
+  - 8.0 (L110)
+  - 4.0 (L111)
+  - 1.0 (L111)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - any(np.isnan(v) for v in [ratio, avg_nb]) (L105)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: undetermined
+- name: avg_na_neighbors
+  family: B
+  module: family_b_network.py
+  implementation_symbol: compute_avg_na_neighbors
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _build_na_graph
+  - float
+  - get_na_sites
+  - len
+  - max
+  - range
+  - set
+  - sorted
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - supercell:nan_introduced
+  - supercell:undetermined_scaling
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return info["avg_neighbors"] (L118)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: "nan_paths: 无"
+  extensivity: undetermined
+- name: largest_component_ratio
+  family: B
+  module: family_b_network.py
+  implementation_symbol: compute_largest_component_ratio
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _build_na_graph
+  - float
+  - get_na_sites
+  - len
+  - max
+  - range
+  - set
+  - sorted
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - supercell:changed
+  - supercell:nan_introduced
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float(val) if not np.isnan(val) else float("nan") (L125)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: "nan_paths: 无"
+  extensivity: intensive
+- name: network_dimension
+  family: B
+  module: family_b_network.py
+  implementation_symbol: compute_network_dimension
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _build_na_graph
+  - float
+  - get_na_sites
+  - len
+  - max
+  - range
+  - set
+  - sorted
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - supercell:nan_introduced
+  - supercell:undetermined_scaling
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return info["dimension"] (L131)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: "nan_paths: 无"
+  extensivity: undetermined
+- name: component_count
+  family: B
+  module: family_b_network.py
+  implementation_symbol: compute_component_count
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _build_na_graph
+  - float
+  - get_na_sites
+  - len
+  - max
+  - range
+  - set
+  - sorted
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - supercell:extensive_but_invariant
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float(info["component_count"]) (L137)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: extensive
+- name: na_concentration
+  family: C
+  module: family_c_concentration.py
+  implementation_symbol: compute_na_concentration
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - float
+  - get_na_sites
+  - len
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - isotropic_scale:dimension_declaration_conflict
+  - occupancy_split:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L20)
+  - return float(len(na_indices) / total) (L21)
+  impl_literals:
+  - 0 (L19)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - total == 0 (L19)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: na_occupancy_sum
+  family: C
+  module: family_c_concentration.py
+  implementation_symbol: compute_na_occupancy_sum
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - float
+  - get_na_sites
+  - site_occupancies_by_symbol
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L31)
+  - return float(total_occ) (L39)
+  impl_literals:
+  - 0.0 (L33)
+  - 0.0 (L36)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - not na_indices (L30)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: extensive
+- name: na_site_count
+  family: C
+  module: family_c_concentration.py
+  implementation_symbol: compute_na_site_count
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - float
+  - get_na_sites
+  - len
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float(len(na_indices)) (L45)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: extensive
+- name: interstitial_count
+  family: D_prime
+  module: family_d_vacancy_topo.py
+  implementation_symbol: compute_interstitial_count
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _get_interstitial_data
+  - find_interstitial_sites
+  - float
+  - len
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - lattice_rotation:changed
+  - origin_shift:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float(len(sites)) (L30)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: extensive
+- name: interstitial_na_distance
+  family: D_prime
+  module: family_d_vacancy_topo.py
+  implementation_symbol: compute_interstitial_na_distance
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _get_interstitial_data
+  - _safe_mean
+  - find_interstitial_sites
+  - float
+  - get_na_sites
+  - min
+  known_invariance_defects:
+  - isotropic_scale:dimension_declaration_conflict
+  - lattice_rotation:changed
+  - origin_shift:changed
+  - site_permutation:changed
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L42)
+  - return _safe_mean(min_dists) (L54)
+  impl_literals:
+  - 0 (L49)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - not sites or not na_indices (L41)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: interstitial_channel_access
+  family: D_prime
+  module: family_d_vacancy_topo.py
+  implementation_symbol: compute_interstitial_channel_access
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _get_interstitial_data
+  - find_interstitial_sites
+  - float
+  - get_na_sites
+  - len
+  - min
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - isotropic_scale:collapsed_to_zero
+  - isotropic_scale:dimension_declaration_conflict
+  - lattice_rotation:changed
+  - origin_shift:changed
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L66)
+  - return float(accessible / len(sites)) (L80)
+  impl_literals:
+  - 3.0 (L68)
+  - 0 (L69)
+  - 0 (L74)
+  - 1 (L78)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - not sites or not na_indices (L65)
+  - min(dists) <= access_threshold (L77)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: interstitial_network_dim
+  family: D_prime
+  module: family_d_vacancy_topo.py
+  implementation_symbol: compute_interstitial_network_dim
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _get_interstitial_data
+  - find_interstitial_sites
+  - float
+  - len
+  - max
+  - range
+  - set
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - supercell:collapsed_to_zero
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return 0.0 (L91)
+  - return 0.0 (L127)
+  - return 1.0 (L129)
+  - return 2.0 (L131)
+  impl_literals:
+  - 2 (L90)
+  - 0.0 (L91)
+  - 3.5 (L95)
+  - 1 (L100)
+  - 0 (L108)
+  - 0 (L113)
+  - 1 (L117)
+  - 0.0 (L125)
+  - 0 (L125)
+  - 0.3 (L126)
+  - 0.0 (L127)
+  - 0.6 (L128)
+  - 1.0 (L129)
+  - 2.0 (L131)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - len(sites) < 2 (L90)
+  - d <= cutoff (L102)
+  - start in visited (L110)
+  - nxt not in visited (L119)
+  - ratio < 0.3 (L126)
+  - ratio < 0.6 (L128)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: bvse_barrier_estimate
+  family: D_prime
+  module: family_d_vacancy_topo.py
+  implementation_symbol: compute_bvse_barrier_estimate
+  in_searchable: false
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - float
+  known_invariance_defects:
+  - all_transforms:permanently_nan
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L139)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: permanently unavailable without BVSE backend
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: undetermined
+- name: framework_bond_rigidity
+  family: E
+  module: family_e_framework.py
+  implementation_symbol: compute_framework_bond_rigidity
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _effective_anion_radius
+  - _get_framework_data
+  - _safe_mean
+  - _shell_neighbors
+  - element_symbol
+  - float
+  - get_framework_sites
+  - get_na_sites
+  - len
+  - max
+  - site_occupancies_by_symbol
+  known_invariance_defects:
+  - isotropic_scale:dimension_declaration_conflict
+  - isotropic_scale:nan_introduced
+  - occupancy_split:changed
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return _safe_mean(data["bond_ratios"]) (L99)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: framework_poly_distortion
+  family: E
+  module: family_e_framework.py
+  implementation_symbol: compute_framework_poly_distortion
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _effective_anion_radius
+  - _get_framework_data
+  - _safe_mean
+  - _shell_neighbors
+  - element_symbol
+  - float
+  - get_framework_sites
+  - get_na_sites
+  - len
+  - max
+  - site_occupancies_by_symbol
+  known_invariance_defects:
+  - occupancy_split:changed
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return _safe_mean(data["poly_distortions"]) (L117)
+  impl_literals:
+  - 0.7 (L104)
+  - 4 (L105)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: framework_na_distance_stability
+  family: E
+  module: family_e_framework.py
+  implementation_symbol: compute_framework_na_distance_stability
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _effective_anion_radius
+  - _get_framework_data
+  - _safe_cv
+  - _shell_neighbors
+  - element_symbol
+  - float
+  - get_framework_sites
+  - get_na_sites
+  - len
+  - max
+  - site_occupancies_by_symbol
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - isotropic_scale:nan_introduced
+  - supercell:undetermined_scaling
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return _safe_cv(data["na_distances"]) (L127)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: undetermined
+- name: framework_sharing_topology
+  family: E
+  module: family_e_framework.py
+  implementation_symbol: compute_framework_sharing_topology
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _shell_neighbors
+  - element_symbol
+  - float
+  - get_framework_sites
+  - len
+  - set
+  - sum
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - isotropic_scale:nan_introduced
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L141)
+  - return float("nan") (L152)
+  - return float(shared_count / len(anion_sharing)) (L156)
+  impl_literals:
+  - 1 (L149)
+  - 0 (L149)
+  - 1 (L155)
+  - 2 (L155)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - not fw_indices or not anions (L140)
+  - n["index"] is not None (L148)
+  - not anion_sharing (L151)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: nana_nana_angle_mean
+  family: F
+  module: family_f_longrange.py
+  implementation_symbol: compute_nana_nana_angle_mean
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _safe_mean
+  - float
+  - get_na_sites
+  - len
+  known_invariance_defects:
+  - supercell:changed
+  - supercell:nan_introduced
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L21)
+  - return _safe_mean(angles) (L45)
+  impl_literals:
+  - 3 (L20)
+  - 1 (L33)
+  - 2 (L34)
+  - 0 (L38)
+  - 0 (L38)
+  - 0 (L39)
+  - 1 (L39)
+  - 1e-12 (L40)
+  - 1.0 (L41)
+  - 1.0 (L41)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - len(na_indices) < 3 (L20)
+  - other_idx == na_idx (L29)
+  - len(dists) < 2 (L34)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: nana_second_neighbor_dist
+  family: F
+  module: family_f_longrange.py
+  implementation_symbol: compute_nana_second_neighbor_dist
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _safe_mean
+  - float
+  - get_na_sites
+  - len
+  known_invariance_defects:
+  - supercell:changed
+  - supercell:nan_introduced
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L55)
+  - return _safe_mean(second_dists) (L69)
+  impl_literals:
+  - 3 (L54)
+  - 2 (L66)
+  - 1 (L67)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - len(na_indices) < 3 (L54)
+  - other_idx == na_idx (L61)
+  - len(dists) >= 2 (L66)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: path_tortuosity
+  family: F
+  module: family_f_longrange.py
+  implementation_symbol: compute_path_tortuosity
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _safe_mean
+  - float
+  - get_na_sites
+  - len
+  known_invariance_defects:
+  - supercell:changed
+  - supercell:nan_introduced
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L81)
+  - return _safe_mean(ratios) (L95)
+  impl_literals:
+  - 2 (L80)
+  - 2 (L92)
+  - 1e-06 (L92)
+  - 0 (L92)
+  - 1 (L93)
+  - 0 (L93)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - len(na_indices) < 2 (L80)
+  - other_idx == na_idx (L87)
+  - len(dists) >= 2 and dists[0] > 1e-6 (L92)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: nana_spacing_uniformity
+  family: F
+  module: family_f_longrange.py
+  implementation_symbol: compute_nana_spacing_uniformity
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _safe_cv
+  - float
+  - get_na_sites
+  - len
+  - range
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - supercell:nan_introduced
+  - supercell:undetermined_scaling
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L105)
+  - return _safe_cv(all_dists) (L113)
+  impl_literals:
+  - 2 (L104)
+  - 1 (L109)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - len(na_indices) < 2 (L104)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: undetermined
+- name: na_x_en_diff
+  family: G
+  module: family_g_electronic.py
+  implementation_symbol: compute_na_x_en_diff
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _safe_mean
+  - _shell_neighbors
+  - element_symbol
+  - float
+  - get_na_sites
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - occupancy_split:changed
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L34)
+  - return _safe_mean(en_diffs) (L46)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - not na_indices or not anions (L33)
+  - en_x is not None and en_na is not None (L43)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: charge_balance_deviation
+  family: G
+  module: family_g_electronic.py
+  implementation_symbol: compute_charge_balance_deviation
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - abs
+  - element_symbol
+  - float
+  - getattr
+  - max
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L80)
+  - return float(abs(net_charge) / max(total_absolute_charge, 1e-12)) (L82)
+  impl_literals:
+  - 1 (L56)
+  - 1 (L56)
+  - 1 (L56)
+  - 1 (L56)
+  - 1 (L56)
+  - 2 (L57)
+  - 2 (L57)
+  - 2 (L57)
+  - 2 (L57)
+  - 2 (L57)
+  - 3 (L58)
+  - 3 (L58)
+  - 3 (L58)
+  - 3 (L58)
+  - 3 (L58)
+  - 4 (L59)
+  - 4 (L59)
+  - 4 (L59)
+  - 4 (L59)
+  - 4 (L59)
+  - 4 (L59)
+  - 4 (L59)
+  - 5 (L60)
+  - 5 (L60)
+  - 5 (L60)
+  - 5 (L60)
+  - 5 (L60)
+  - 5 (L60)
+  - 2 (L61)
+  - 2 (L61)
+  - 2 (L61)
+  - 1 (L62)
+  - 1 (L62)
+  - 1 (L62)
+  - 1 (L62)
+  - 1 (L62)
+  - 1 (L62)
+  - 0.0 (L64)
+  - 0.0 (L65)
+  - 1e-12 (L79)
+  - 1e-12 (L82)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - oxidation_state is None (L71)
+  - oxidation_state is None (L73)
+  - total_absolute_charge < 1e-12 (L79)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: covalency_index
+  family: G
+  module: family_g_electronic.py
+  implementation_symbol: compute_covalency_index
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _safe_mean
+  - _shell_neighbors
+  - element_symbol
+  - float
+  - get_na_sites
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - occupancy_split:changed
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L96)
+  - return _safe_mean(covalencies) (L110)
+  impl_literals:
+  - 0.93 (L99)
+  - 1.0 (L107)
+  - 4.0 (L107)
+  - 2 (L107)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - not na_indices or not anions (L95)
+  - en_x is not None (L105)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: framework_d_electron_weighted
+  family: G
+  module: family_g_electronic.py
+  implementation_symbol: compute_framework_d_electron_weighted
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - float
+  - get_framework_sites
+  - site_occupancies_by_symbol
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L121)
+  - return float("nan") (L144)
+  - return float(d_occ / total_occ) (L146)
+  impl_literals:
+  - 0.0 (L132)
+  - 0.0 (L133)
+  - 1e-12 (L143)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - not fw_indices (L120)
+  - el_sym in d_block (L140)
+  - total_occ < 1e-12 (L143)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: space_group_number
+  family: H
+  module: family_h_symmetry.py
+  implementation_symbol: compute_space_group_number
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - ConfigurationError
+  - Path
+  - SpacegroupAnalyzer
+  - _get_symprec
+  - config_get
+  - float
+  - load_run_info
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - occupancy_split:nan_introduced
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float(sga.get_space_group_number()) (L53)
+  - return float("nan") (L55)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: wyckoff_diversity
+  family: H
+  module: family_h_symmetry.py
+  implementation_symbol: compute_wyckoff_diversity
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - ConfigurationError
+  - Path
+  - SpacegroupAnalyzer
+  - _get_symprec
+  - config_get
+  - float
+  - len
+  - load_run_info
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - occupancy_split:nan_introduced
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float(len(symm_struct.equivalent_indices)) (L71)
+  - return float("nan") (L73)
+  impl_literals: []
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards: []
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: partial_occupancy_ratio
+  family: H
+  module: family_h_symmetry.py
+  implementation_symbol: compute_partial_occupancy_ratio
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - abs
+  - float
+  - len
+  - site_occupancies_by_symbol
+  - sum
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - occupancy_split:changed
+  - supercell:changed
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L83)
+  - return float(partial_count / len(struct)) (L98)
+  impl_literals:
+  - 0 (L82)
+  - 0 (L85)
+  - 1 (L90)
+  - 0.001 (L90)
+  - 1.0 (L90)
+  - 1 (L91)
+  - 0.001 (L94)
+  - 1.0 (L94)
+  - 1 (L95)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - len(struct) == 0 (L82)
+  - len(species_dict) != 1 or abs(total_occ - 1.0) > 1e-3 (L90)
+  - abs(occ - 1.0) > 1e-3 (L94)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: coordination_cv
+  family: H
+  module: family_h_symmetry.py
+  implementation_symbol: compute_coordination_cv
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - VoronoiNN
+  - _safe_cv
+  - float
+  - get_na_sites
+  - len
+  known_invariance_defects:
+  - geometry_jitter:no_geometry_response
+  - occupancy_split:nan_introduced
+  - supercell:changed
+  - supercell:nan_introduced
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L108)
+  - return _safe_cv(cn_list) (L120)
+  - return float("nan") (L122)
+  impl_literals:
+  - 2 (L107)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - len(na_indices) < 2 (L107)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive
+- name: volume_cv
+  family: H
+  module: family_h_symmetry.py
+  implementation_symbol: compute_volume_cv
+  in_searchable: true
+  estimand_math: TODO
+  name_matches_estimand: TODO
+  name_mismatch_note: TODO
+  shared_intermediates:
+  - _safe_cv
+  - compute_polyhedron_volume
+  - float
+  - get_na_sites
+  - len
+  known_invariance_defects:
+  - supercell:changed
+  - supercell:nan_introduced
+  parameter_provenance: TODO
+  status: TODO
+  impl_return_exprs:
+  - return float("nan") (L132)
+  - return _safe_cv(volumes) (L140)
+  impl_literals:
+  - 2 (L131)
+  alias_of: none
+  excluded_from_search_reason: n/a
+  impl_guards:
+  - len(na_indices) < 2 (L131)
+  - not np.isnan(vol) (L137)
+  impl_nan_paths: 'nan_paths: 无'
+  extensivity: intensive

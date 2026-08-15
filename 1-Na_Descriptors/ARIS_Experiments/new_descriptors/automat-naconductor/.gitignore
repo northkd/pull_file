@@ -38,3 +38,6 @@ dev/
 
 # opencode session artifacts
 .omo/run-continuation/
+
+# Audit/review reports are output as reply text, not tracked
+*系列最终报告.md

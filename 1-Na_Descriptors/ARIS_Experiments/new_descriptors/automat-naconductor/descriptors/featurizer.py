@@ -20,6 +20,7 @@ from descriptors import (
     SEARCHABLE_STRUCTURE_DESCRIPTORS,
     STRUCTURE_DESCRIPTOR_METADATA,
 )
+from descriptors.exceptions import ConfigurationError
 
 logger = logging.getLogger(__name__)
 
@@ -104,6 +105,9 @@ def featurize_cif(
             if np.isnan(value) or np.isinf(value):
                 value = float("nan")
             results[name] = value
+        except ConfigurationError:
+            # 配置类异常必须穿透——全局配置错误不得退化为整列 NaN
+            raise
         except Exception as exc:
             logger.warning("描述符 %s 计算失败: %s", name, exc)
             results[name] = float("nan")

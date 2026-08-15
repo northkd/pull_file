@@ -1,0 +1,2 @@
+material_id,cif_relpath,cif_sha256,structure_source_doi,structure_source_locator,reported_composition,system,system_coarse,structure_origin,structure_temperature_K,same_sample_as_conductivity,notes
+MAT-0001,cif/synthetic_1.cif,a81b61f03ef8c91683f0daae189e00620a4f17cb0b483a86197fa52b728c7134,,,,,,,,,

@@ -41,3 +41,35 @@
 - 原 v1 未定义 `__TODO_USER_FILL__` 占位符的 validator 行为，逐行枚举检查虽能 fail-loud 但不理想（未在 schema 层面拒绝）。
 - 上述两处缺陷均发生在 schema 被用于任何真实数据之前，数据集尚不存在，不存在破坏既有校验结果的风险。
 - 此后禁止就地编辑 v1；后续修改必须新增 raw_schema_v2 并原样保留 v1。
+
+## CIF 落地约定
+
+- CIF 放置于 `data/cif/`；
+- `materials.csv` 的 `cif_relpath` 一律为相对仓库根的路径（如 `data/cif/1.cif`）；
+- `cif_sha256` 由脚本计算（`data_contract/ingest_cif.py`），不手填；
+- `material_id` 按 CIF 文件名 UTF-8 字节序排序依次分配 `MAT-0001`…，编号不可复用；
+- 编号清单文件：`data_contract/material_id_manifest.csv`，
+  列为 `material_id, cif_filename, cif_sha256`；
+- **该文件是状态文件，不是空白模板**：记录已分配的真实编号，不可重生成、
+  不可就地编辑、丢失即编号不可恢复。放在 `data_contract/` 下而非 `templates/`，
+  避免被当作空白模板误清；
+- 只追加不重排：若清单文件已存在，已有 CIF 保持原号，新增 CIF 从最大号 +1 继续；
+- 完整性检查：若清单中某 `cif_filename` 的 `cif_sha256` 与当前文件不符，
+  `ingest_cif.py` 以退出码 2 拒绝继续（不得保号、不得静默重算）；
+  若清单中的 `cif_filename` 在 `data/cif/` 已不存在，不抛错但 stdout 列出。
+
+## 待用户填定
+
+`raw_schema_v1.yaml` 中 `system` 与 `system_coarse` 两列的 `allowed` 值域仍为
+`__TODO_USER_FILL__`（体系划分待用户填定）。填定前 `validate_raw.py` 检测到
+占位符时以退出码 2 拒绝校验（已实现）。
+
+填定属 schema v1 的最后一处修订，之后一律走 v2。
+
+## 不可逆约束：值域冻结早于数据落地（K3c 新增）
+
+system 与 system_coarse 的值域必须在任何数据落地之前冻结。理由：值域、schema、
+壳层敏感性设定、p 值自由度口径这四项若晚于第一批数据确定，预注册即失效，
+且此失效不可逆。本约束不因"需要看数据才知道有哪些体系"而放宽——
+未见体系的处置走 exit 2 强 fail-loud 加预注册修订程序（新值走 v2，
+并在 SCHEMA_FREEZE 记录新值、影响行数、k_used 是否变化、需重算哪些冻结项）。

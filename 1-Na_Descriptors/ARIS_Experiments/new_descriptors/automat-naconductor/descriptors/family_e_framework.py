@@ -20,8 +20,15 @@ from descriptors._base import (
 )
 
 
-def _get_framework_data(struct: Structure) -> dict:
-    """收集骨架阳离子的配位信息。"""
+def _get_framework_data(
+    struct: Structure,
+    shell_tolerance: float = 0.70,
+    min_shell_size: int = 4,
+) -> dict:
+    """收集骨架阳离子的配位信息。
+
+    参数透传到 _shell_neighbors，默认值与参数化前逐位一致。
+    """
     fw_indices = get_framework_sites(struct)
     species_symbols = {element_symbol(el) for el in struct.composition.elements}
     anions = species_symbols & ANION_ELEMENTS
@@ -42,7 +49,11 @@ def _get_framework_data(struct: Structure) -> dict:
     na_indices = get_na_sites(struct)
 
     for fw_idx in fw_indices:
-        shell = _shell_neighbors(struct, fw_idx, anions)
+        shell = _shell_neighbors(
+            struct, fw_idx, anions,
+            shell_tolerance=shell_tolerance,
+            min_shell_size=min_shell_size,
+        )
         if not shell:
             continue
 
@@ -88,12 +99,21 @@ def compute_framework_bond_rigidity(struct: Structure) -> float:
     return _safe_mean(data["bond_ratios"])
 
 
-def compute_framework_poly_distortion(struct: Structure) -> float:
+def compute_framework_poly_distortion(
+    struct: Structure,
+    shell_tolerance: float = 0.70,
+    min_shell_size: int = 4,
+) -> float:
     """骨架多面体畸变均值。
 
     骨架阳离子配位多面体键长的变异系数。
+    参数透传到 _get_framework_data → _shell_neighbors，默认值与参数化前逐位一致。
     """
-    data = _get_framework_data(struct)
+    data = _get_framework_data(
+        struct,
+        shell_tolerance=shell_tolerance,
+        min_shell_size=min_shell_size,
+    )
     return _safe_mean(data["poly_distortions"])
 
 

@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import warnings
+from pathlib import Path
 
 import numpy as np
 from pymatgen.core import Structure
@@ -19,6 +20,23 @@ from descriptors._base import (
     get_na_sites,
     site_occupancies_by_symbol,
 )
+from descriptors.exceptions import ConfigurationError
+
+
+def _get_symprec() -> float:
+    """从 run_info.yaml 读取 symmetry.symprec，读不到抛 ConfigurationError。
+
+    不得取默认值——symprec 必须由配置显式提供。
+    每次调用读一次文件，无缓存。
+    """
+    from run_config import load_run_info, config_get
+    config = load_run_info(Path(__file__).resolve().parent.parent / "run_info.yaml")
+    try:
+        return float(config_get(config, "symmetry.symprec"))
+    except KeyError as exc:
+        raise ConfigurationError(
+            f"run_info.yaml 缺少 symmetry.symprec: {exc}"
+        ) from exc
 
 
 def compute_space_group_number(struct: Structure) -> float:
@@ -27,10 +45,11 @@ def compute_space_group_number(struct: Structure) -> float:
     高风险: 空间群序号本身可能不直接关联离子传导，
     仅作为结构复杂性的代理指标。
     """
+    symprec = _get_symprec()  # 移到 try 之外：配置缺失时 ValueError 必须逃出
     try:
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", DeprecationWarning)
-            sga = SpacegroupAnalyzer(struct, symprec=0.01)
+            sga = SpacegroupAnalyzer(struct, symprec=symprec)
             return float(sga.get_space_group_number())
     except Exception:
         return float("nan")
@@ -42,10 +61,11 @@ def compute_wyckoff_diversity(struct: Structure) -> float:
     统计不等价 Wyckoff 位置的数量。
     高风险: 与电导率的物理关联不明确。
     """
+    symprec = _get_symprec()  # 移到 try 之外：配置缺失时 ValueError 必须逃出
     try:
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", DeprecationWarning)
-            sga = SpacegroupAnalyzer(struct, symprec=0.01)
+            sga = SpacegroupAnalyzer(struct, symprec=symprec)
             symm_struct = sga.get_symmetrized_structure()
         # 等价位点组的数量 = 不等价 Wyckoff 位置数
         return float(len(symm_struct.equivalent_indices))

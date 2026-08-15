@@ -1,0 +1,718 @@
+{
+  "per_descriptor": {
+    "a2_max_dist": [
+      "_collect_na_x_data",
+      "_safe_mean",
+      "_shell_neighbors",
+      "compute_polyhedron_volume",
+      "element_symbol",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "min"
+    ],
+    "poly_distortion_mean": [
+      "_collect_na_x_data",
+      "_safe_mean",
+      "_shell_neighbors",
+      "compute_polyhedron_volume",
+      "element_symbol",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "min"
+    ],
+    "max_bond_length": [
+      "_collect_na_x_data",
+      "_safe_mean",
+      "_shell_neighbors",
+      "compute_a2_max_dist",
+      "compute_polyhedron_volume",
+      "element_symbol",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "min"
+    ],
+    "min_bond_length": [
+      "_collect_na_x_data",
+      "_safe_mean",
+      "_shell_neighbors",
+      "compute_polyhedron_volume",
+      "element_symbol",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "min"
+    ],
+    "mean_bond_length": [
+      "_collect_na_x_data",
+      "_safe_mean",
+      "_shell_neighbors",
+      "compute_polyhedron_volume",
+      "element_symbol",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "min"
+    ],
+    "target_bond_center": [
+      "Counter",
+      "_collect_na_x_data",
+      "_effective_anion_radius",
+      "_effective_na_radius",
+      "_shell_neighbors",
+      "compute_polyhedron_volume",
+      "element_symbol",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "min"
+    ],
+    "poly_volume_mean": [
+      "_collect_na_x_data",
+      "_safe_mean",
+      "_shell_neighbors",
+      "compute_polyhedron_volume",
+      "element_symbol",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "min"
+    ],
+    "coordination_number_mean": [
+      "_collect_na_x_data",
+      "_shell_neighbors",
+      "compute_polyhedron_volume",
+      "element_symbol",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "min"
+    ],
+    "ellipsoid_oblateness": [
+      "_collect_na_x_data",
+      "_safe_mean",
+      "_shell_neighbors",
+      "compute_polyhedron_volume",
+      "element_symbol",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "min"
+    ],
+    "direction_ratio": [
+      "_safe_mean",
+      "_shell_neighbors",
+      "element_symbol",
+      "float",
+      "get_na_sites",
+      "len",
+      "sorted"
+    ],
+    "bottleneck_anisotropy": [
+      "float"
+    ],
+    "nana_composite": [
+      "_build_na_graph",
+      "any",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "min",
+      "range",
+      "set",
+      "sorted"
+    ],
+    "avg_na_neighbors": [
+      "_build_na_graph",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "range",
+      "set",
+      "sorted"
+    ],
+    "largest_component_ratio": [
+      "_build_na_graph",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "range",
+      "set",
+      "sorted"
+    ],
+    "network_dimension": [
+      "_build_na_graph",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "range",
+      "set",
+      "sorted"
+    ],
+    "component_count": [
+      "_build_na_graph",
+      "float",
+      "get_na_sites",
+      "len",
+      "max",
+      "range",
+      "set",
+      "sorted"
+    ],
+    "na_concentration": [
+      "float",
+      "get_na_sites",
+      "len"
+    ],
+    "na_occupancy_sum": [
+      "float",
+      "get_na_sites",
+      "site_occupancies_by_symbol"
+    ],
+    "na_site_count": [
+      "float",
+      "get_na_sites",
+      "len"
+    ],
+    "interstitial_count": [
+      "_get_interstitial_data",
+      "find_interstitial_sites",
+      "float",
+      "len"
+    ],
+    "interstitial_na_distance": [
+      "_get_interstitial_data",
+      "_safe_mean",
+      "find_interstitial_sites",
+      "float",
+      "get_na_sites",
+      "min"
+    ],
+    "interstitial_channel_access": [
+      "_get_interstitial_data",
+      "find_interstitial_sites",
+      "float",
+      "get_na_sites",
+      "len",
+      "min"
+    ],
+    "interstitial_network_dim": [
+      "_get_interstitial_data",
+      "find_interstitial_sites",
+      "float",
+      "len",
+      "max",
+      "range",
+      "set"
+    ],
+    "bvse_barrier_estimate": [
+      "float"
+    ],
+    "framework_bond_rigidity": [
+      "_effective_anion_radius",
+      "_get_framework_data",
+      "_safe_mean",
+      "_shell_neighbors",
+      "element_symbol",
+      "float",
+      "get_framework_sites",
+      "get_na_sites",
+      "len",
+      "max",
+      "site_occupancies_by_symbol"
+    ],
+    "framework_poly_distortion": [
+      "_effective_anion_radius",
+      "_get_framework_data",
+      "_safe_mean",
+      "_shell_neighbors",
+      "element_symbol",
+      "float",
+      "get_framework_sites",
+      "get_na_sites",
+      "len",
+      "max",
+      "site_occupancies_by_symbol"
+    ],
+    "framework_na_distance_stability": [
+      "_effective_anion_radius",
+      "_get_framework_data",
+      "_safe_cv",
+      "_shell_neighbors",
+      "element_symbol",
+      "float",
+      "get_framework_sites",
+      "get_na_sites",
+      "len",
+      "max",
+      "site_occupancies_by_symbol"
+    ],
+    "framework_sharing_topology": [
+      "_shell_neighbors",
+      "element_symbol",
+      "float",
+      "get_framework_sites",
+      "len",
+      "set",
+      "sum"
+    ],
+    "nana_nana_angle_mean": [
+      "_safe_mean",
+      "float",
+      "get_na_sites",
+      "len"
+    ],
+    "nana_second_neighbor_dist": [
+      "_safe_mean",
+      "float",
+      "get_na_sites",
+      "len"
+    ],
+    "path_tortuosity": [
+      "_safe_mean",
+      "float",
+      "get_na_sites",
+      "len"
+    ],
+    "nana_spacing_uniformity": [
+      "_safe_cv",
+      "float",
+      "get_na_sites",
+      "len",
+      "range"
+    ],
+    "na_x_en_diff": [
+      "_safe_mean",
+      "_shell_neighbors",
+      "element_symbol",
+      "float",
+      "get_na_sites"
+    ],
+    "charge_balance_deviation": [
+      "abs",
+      "element_symbol",
+      "float",
+      "getattr",
+      "max"
+    ],
+    "covalency_index": [
+      "_safe_mean",
+      "_shell_neighbors",
+      "element_symbol",
+      "float",
+      "get_na_sites"
+    ],
+    "framework_d_electron_weighted": [
+      "float",
+      "get_framework_sites",
+      "site_occupancies_by_symbol"
+    ],
+    "space_group_number": [
+      "Path",
+      "SpacegroupAnalyzer",
+      "ValueError",
+      "_get_symprec",
+      "config_get",
+      "float",
+      "load_run_info"
+    ],
+    "wyckoff_diversity": [
+      "Path",
+      "SpacegroupAnalyzer",
+      "ValueError",
+      "_get_symprec",
+      "config_get",
+      "float",
+      "len",
+      "load_run_info"
+    ],
+    "partial_occupancy_ratio": [
+      "abs",
+      "float",
+      "len",
+      "site_occupancies_by_symbol",
+      "sum"
+    ],
+    "coordination_cv": [
+      "VoronoiNN",
+      "_safe_cv",
+      "float",
+      "get_na_sites",
+      "len"
+    ],
+    "volume_cv": [
+      "_safe_cv",
+      "compute_polyhedron_volume",
+      "float",
+      "get_na_sites",
+      "len"
+    ]
+  },
+  "helper_dependents": {
+    "_collect_na_x_data": [
+      "a2_max_dist",
+      "poly_distortion_mean",
+      "max_bond_length",
+      "min_bond_length",
+      "mean_bond_length",
+      "target_bond_center",
+      "poly_volume_mean",
+      "coordination_number_mean",
+      "ellipsoid_oblateness"
+    ],
+    "_safe_mean": [
+      "a2_max_dist",
+      "poly_distortion_mean",
+      "max_bond_length",
+      "min_bond_length",
+      "mean_bond_length",
+      "poly_volume_mean",
+      "ellipsoid_oblateness",
+      "direction_ratio",
+      "interstitial_na_distance",
+      "framework_bond_rigidity",
+      "framework_poly_distortion",
+      "nana_nana_angle_mean",
+      "nana_second_neighbor_dist",
+      "path_tortuosity",
+      "na_x_en_diff",
+      "covalency_index"
+    ],
+    "_shell_neighbors": [
+      "a2_max_dist",
+      "poly_distortion_mean",
+      "max_bond_length",
+      "min_bond_length",
+      "mean_bond_length",
+      "target_bond_center",
+      "poly_volume_mean",
+      "coordination_number_mean",
+      "ellipsoid_oblateness",
+      "direction_ratio",
+      "framework_bond_rigidity",
+      "framework_poly_distortion",
+      "framework_na_distance_stability",
+      "framework_sharing_topology",
+      "na_x_en_diff",
+      "covalency_index"
+    ],
+    "compute_polyhedron_volume": [
+      "a2_max_dist",
+      "poly_distortion_mean",
+      "max_bond_length",
+      "min_bond_length",
+      "mean_bond_length",
+      "target_bond_center",
+      "poly_volume_mean",
+      "coordination_number_mean",
+      "ellipsoid_oblateness",
+      "volume_cv"
+    ],
+    "element_symbol": [
+      "a2_max_dist",
+      "poly_distortion_mean",
+      "max_bond_length",
+      "min_bond_length",
+      "mean_bond_length",
+      "target_bond_center",
+      "poly_volume_mean",
+      "coordination_number_mean",
+      "ellipsoid_oblateness",
+      "direction_ratio",
+      "framework_bond_rigidity",
+      "framework_poly_distortion",
+      "framework_na_distance_stability",
+      "framework_sharing_topology",
+      "na_x_en_diff",
+      "charge_balance_deviation",
+      "covalency_index"
+    ],
+    "float": [
+      "a2_max_dist",
+      "poly_distortion_mean",
+      "max_bond_length",
+      "min_bond_length",
+      "mean_bond_length",
+      "target_bond_center",
+      "poly_volume_mean",
+      "coordination_number_mean",
+      "ellipsoid_oblateness",
+      "direction_ratio",
+      "bottleneck_anisotropy",
+      "nana_composite",
+      "avg_na_neighbors",
+      "largest_component_ratio",
+      "network_dimension",
+      "component_count",
+      "na_concentration",
+      "na_occupancy_sum",
+      "na_site_count",
+      "interstitial_count",
+      "interstitial_na_distance",
+      "interstitial_channel_access",
+      "interstitial_network_dim",
+      "bvse_barrier_estimate",
+      "framework_bond_rigidity",
+      "framework_poly_distortion",
+      "framework_na_distance_stability",
+      "framework_sharing_topology",
+      "nana_nana_angle_mean",
+      "nana_second_neighbor_dist",
+      "path_tortuosity",
+      "nana_spacing_uniformity",
+      "na_x_en_diff",
+      "charge_balance_deviation",
+      "covalency_index",
+      "framework_d_electron_weighted",
+      "space_group_number",
+      "wyckoff_diversity",
+      "partial_occupancy_ratio",
+      "coordination_cv",
+      "volume_cv"
+    ],
+    "get_na_sites": [
+      "a2_max_dist",
+      "poly_distortion_mean",
+      "max_bond_length",
+      "min_bond_length",
+      "mean_bond_length",
+      "target_bond_center",
+      "poly_volume_mean",
+      "coordination_number_mean",
+      "ellipsoid_oblateness",
+      "direction_ratio",
+      "nana_composite",
+      "avg_na_neighbors",
+      "largest_component_ratio",
+      "network_dimension",
+      "component_count",
+      "na_concentration",
+      "na_occupancy_sum",
+      "na_site_count",
+      "interstitial_na_distance",
+      "interstitial_channel_access",
+      "framework_bond_rigidity",
+      "framework_poly_distortion",
+      "framework_na_distance_stability",
+      "nana_nana_angle_mean",
+      "nana_second_neighbor_dist",
+      "path_tortuosity",
+      "nana_spacing_uniformity",
+      "na_x_en_diff",
+      "covalency_index",
+      "coordination_cv",
+      "volume_cv"
+    ],
+    "len": [
+      "a2_max_dist",
+      "poly_distortion_mean",
+      "max_bond_length",
+      "min_bond_length",
+      "mean_bond_length",
+      "target_bond_center",
+      "poly_volume_mean",
+      "coordination_number_mean",
+      "ellipsoid_oblateness",
+      "direction_ratio",
+      "nana_composite",
+      "avg_na_neighbors",
+      "largest_component_ratio",
+      "network_dimension",
+      "component_count",
+      "na_concentration",
+      "na_site_count",
+      "interstitial_count",
+      "interstitial_channel_access",
+      "interstitial_network_dim",
+      "framework_bond_rigidity",
+      "framework_poly_distortion",
+      "framework_na_distance_stability",
+      "framework_sharing_topology",
+      "nana_nana_angle_mean",
+      "nana_second_neighbor_dist",
+      "path_tortuosity",
+      "nana_spacing_uniformity",
+      "wyckoff_diversity",
+      "partial_occupancy_ratio",
+      "coordination_cv",
+      "volume_cv"
+    ],
+    "max": [
+      "a2_max_dist",
+      "poly_distortion_mean",
+      "max_bond_length",
+      "min_bond_length",
+      "mean_bond_length",
+      "target_bond_center",
+      "poly_volume_mean",
+      "coordination_number_mean",
+      "ellipsoid_oblateness",
+      "nana_composite",
+      "avg_na_neighbors",
+      "largest_component_ratio",
+      "network_dimension",
+      "component_count",
+      "interstitial_network_dim",
+      "framework_bond_rigidity",
+      "framework_poly_distortion",
+      "framework_na_distance_stability",
+      "charge_balance_deviation"
+    ],
+    "min": [
+      "a2_max_dist",
+      "poly_distortion_mean",
+      "max_bond_length",
+      "min_bond_length",
+      "mean_bond_length",
+      "target_bond_center",
+      "poly_volume_mean",
+      "coordination_number_mean",
+      "ellipsoid_oblateness",
+      "nana_composite",
+      "interstitial_na_distance",
+      "interstitial_channel_access"
+    ],
+    "compute_a2_max_dist": [
+      "max_bond_length"
+    ],
+    "Counter": [
+      "target_bond_center"
+    ],
+    "_effective_anion_radius": [
+      "target_bond_center",
+      "framework_bond_rigidity",
+      "framework_poly_distortion",
+      "framework_na_distance_stability"
+    ],
+    "_effective_na_radius": [
+      "target_bond_center"
+    ],
+    "sorted": [
+      "direction_ratio",
+      "nana_composite",
+      "avg_na_neighbors",
+      "largest_component_ratio",
+      "network_dimension",
+      "component_count"
+    ],
+    "_build_na_graph": [
+      "nana_composite",
+      "avg_na_neighbors",
+      "largest_component_ratio",
+      "network_dimension",
+      "component_count"
+    ],
+    "any": [
+      "nana_composite"
+    ],
+    "range": [
+      "nana_composite",
+      "avg_na_neighbors",
+      "largest_component_ratio",
+      "network_dimension",
+      "component_count",
+      "interstitial_network_dim",
+      "nana_spacing_uniformity"
+    ],
+    "set": [
+      "nana_composite",
+      "avg_na_neighbors",
+      "largest_component_ratio",
+      "network_dimension",
+      "component_count",
+      "interstitial_network_dim",
+      "framework_sharing_topology"
+    ],
+    "site_occupancies_by_symbol": [
+      "na_occupancy_sum",
+      "framework_bond_rigidity",
+      "framework_poly_distortion",
+      "framework_na_distance_stability",
+      "framework_d_electron_weighted",
+      "partial_occupancy_ratio"
+    ],
+    "_get_interstitial_data": [
+      "interstitial_count",
+      "interstitial_na_distance",
+      "interstitial_channel_access",
+      "interstitial_network_dim"
+    ],
+    "find_interstitial_sites": [
+      "interstitial_count",
+      "interstitial_na_distance",
+      "interstitial_channel_access",
+      "interstitial_network_dim"
+    ],
+    "_get_framework_data": [
+      "framework_bond_rigidity",
+      "framework_poly_distortion",
+      "framework_na_distance_stability"
+    ],
+    "get_framework_sites": [
+      "framework_bond_rigidity",
+      "framework_poly_distortion",
+      "framework_na_distance_stability",
+      "framework_sharing_topology",
+      "framework_d_electron_weighted"
+    ],
+    "_safe_cv": [
+      "framework_na_distance_stability",
+      "nana_spacing_uniformity",
+      "coordination_cv",
+      "volume_cv"
+    ],
+    "sum": [
+      "framework_sharing_topology",
+      "partial_occupancy_ratio"
+    ],
+    "abs": [
+      "charge_balance_deviation",
+      "partial_occupancy_ratio"
+    ],
+    "getattr": [
+      "charge_balance_deviation"
+    ],
+    "Path": [
+      "space_group_number",
+      "wyckoff_diversity"
+    ],
+    "SpacegroupAnalyzer": [
+      "space_group_number",
+      "wyckoff_diversity"
+    ],
+    "ValueError": [
+      "space_group_number",
+      "wyckoff_diversity"
+    ],
+    "_get_symprec": [
+      "space_group_number",
+      "wyckoff_diversity"
+    ],
+    "config_get": [
+      "space_group_number",
+      "wyckoff_diversity"
+    ],
+    "load_run_info": [
+      "space_group_number",
+      "wyckoff_diversity"
+    ],
+    "VoronoiNN": [
+      "coordination_cv"
+    ]
+  }
+}

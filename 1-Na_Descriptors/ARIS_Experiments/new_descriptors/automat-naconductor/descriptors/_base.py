@@ -211,11 +211,17 @@ def _shell_neighbors(
     struct: Structure,
     center_index: int,
     anion_symbols: set[str],
+    shell_tolerance: float = 0.70,
+    min_shell_size: int = 4,
 ) -> list[dict]:
     """提取 Na 位点的第一配位壳层 Na-X 近邻。
 
-    沿用 part1.py 的简化规则: 取最短键长 +0.70Å 内的阴离子，
-    若不足 4 个则补至 4。
+    沿用 part1.py 的简化规则: 取最短键长 +shell_tolerance Å 内的阴离子，
+    若不足 min_shell_size 个则补至 min_shell_size。
+
+    参数:
+        shell_tolerance: 截断增量 (Å)，默认 0.70（与 part1.py 一致）
+        min_shell_size: 最小壳层大小，不足时补至此数，默认 4
     """
     center = struct[center_index]
     cutoff = _anion_cutoff(anion_symbols)
@@ -241,9 +247,9 @@ def _shell_neighbors(
     if not neighbors:
         return []
     first = neighbors[0]["distance"]
-    kept = [n for n in neighbors if n["distance"] <= first + 0.70]
-    if len(kept) <= 3 and len(neighbors) > len(kept):
-        kept = neighbors[:min(4, len(neighbors))]
+    kept = [n for n in neighbors if n["distance"] <= first + shell_tolerance]
+    if len(kept) < min_shell_size and len(neighbors) > len(kept):
+        kept = neighbors[:min(min_shell_size, len(neighbors))]
     return kept
 
 

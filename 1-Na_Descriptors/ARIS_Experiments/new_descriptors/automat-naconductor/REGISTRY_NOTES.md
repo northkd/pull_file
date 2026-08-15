@@ -23,3 +23,7 @@
 ### 闸门处置
 
 注册表闸门（`descriptors/registry.py`）对 `AVAILABLE_STRUCTURE_DESCRIPTORS` 的 41 条做双向覆盖（并集 = AVAILABLE，因 SEARCHABLE ⊂ AVAILABLE）。每条新增字段 `in_searchable` 标记是否在 SEARCHABLE 中，机械可填，不算 TODO。
+
+### shared_intermediates 字段口径
+
+`shared_intermediates` 的口径定为 **AST 传递闭包**（不是直接调用）：对每个注册的 `compute_*`，用 `ast` 求其函数体中全部 `ast.Call(Name)` 被调用名的传递闭包，含 `float`/`len`/`max` 等内置与 pymatgen 类名，排除描述符自身，按字典序排序。唯一真相源是 `descriptors/registry.py:compute_helper_closures`，闸门校验 5 强制 YAML 值等于其重算值。

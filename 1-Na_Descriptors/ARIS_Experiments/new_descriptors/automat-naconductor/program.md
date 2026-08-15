@@ -29,7 +29,6 @@
    ```bash
    python train.py --descriptor-name <descriptor-key> --run-id <iteration-id>
    ```
-
 4. 审阅 TSV 中的 `raw_spearman`、`rank_corr_of_linear_residuals`。
    被标为 `skipped` 的策略应保持显式，不可补零或当作支持证据。
 5. 在人工复核后，可用下一次命令的 `--status keep|discard|crash` 标记结果；默认

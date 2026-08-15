@@ -221,3 +221,6 @@ c9_cross_track_review:
   interpretation: >
     结果一致仅是独立三角验证或优先复核线索，不构成因果证据；
     两条轨道均不建立因果关系。
+
+symmetry:
+  symprec: 0.01
