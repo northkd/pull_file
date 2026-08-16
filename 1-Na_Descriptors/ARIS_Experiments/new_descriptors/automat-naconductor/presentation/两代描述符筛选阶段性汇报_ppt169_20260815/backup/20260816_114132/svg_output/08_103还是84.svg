@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">Q1｜数据口径</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">第一轮到底是 103 条，还是 84 条？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="formal-dataset" data-pptx-bounds="48 190 516 326">
+    <rect x="48" y="190" width="516" height="326" fill="#EFF3F1"/>
+    <text x="80" y="236" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#2E7D6E">第一轮正式主数据</text>
+    <text x="80" y="366" font-family="Georgia, 'Songti SC', serif" font-size="112" font-weight="bold" fill="#113B4A">103</text>
+    <text x="84" y="416" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#182229">条材料记录</text>
+    <text x="84" y="454" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#647176">与 103 个 CIF 一一对应</text>
+    <line x1="80" y1="480" x2="532" y2="480" stroke="#2E7D6E" stroke-width="3"/>
+    <text x="80" y="504" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">第一轮筛选结果使用这一口径</text>
+  </g>
+  <g id="cache-dataset" data-pptx-bounds="716 190 516 326">
+    <rect x="716" y="190" width="516" height="326" fill="#FBE5DF"/>
+    <text x="748" y="236" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#C75B39">第二代目录中的历史缓存</text>
+    <text x="748" y="366" font-family="Georgia, 'Songti SC', serif" font-size="112" font-weight="bold" fill="#C75B39">84</text>
+    <text x="752" y="416" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#182229">行旧输入 / 特征缓存</text>
+    <text x="752" y="454" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#647176">不是第一轮主数据，也不是新扩充数据集</text>
+    <line x1="748" y1="480" x2="1200" y2="480" stroke="#C75B39" stroke-width="3"/>
+    <text x="748" y="504" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">不能用来替代正式运行口径</text>
+  </g>
+  <g id="dataset-conclusion" data-pptx-bounds="190 552 900 64">
+    <rect x="190" y="552" width="900" height="64" fill="#113B4A"/>
+    <text x="640" y="593" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">两个数字来自不同文件角色，不能直接相加或互换</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Q&amp;A附录｜先确认样本口径，再解释任何结果</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">08 / 13</text>
+  </g>
+</svg>

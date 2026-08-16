@@ -1,0 +1,7142 @@
+{
+  "schema": "template_fill_pptx_library.v1",
+  "source_pptx": "/Users/north./Documents/JXNU/research/1-NASICON/1-data-select/因果推断/experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/sources/11_描述符阈值研究流程分享PPT_20260723_225801.pptx",
+  "slide_count": 11,
+  "canvas_px": {
+    "width": 1920,
+    "height": 1080
+  },
+  "slides": [
+    {
+      "slide_index": 1,
+      "page_type": "cover_candidate",
+      "text_summary": "研究流程分享\nNa 快离子导体的结构描述符与筛选流程\n数据集 → 描述符构建 → 阈值筛选→ DFT 材料选择\n本次主要说明\n四个筛选描述符表示什么，以及阈值如何从 103 个已知材料中确定。\n103\n已知材料\n57\n初始字段\n8\n新结构描述符\n4\n初筛描述符\n837\n候选结构\n10\nDFT 候选\n这次主要回答两个问题：描述符表示什么？阈值是怎样选出来的？\n01 / 11",
+      "slots": [
+        {
+          "slot_id": "s01_sh2",
+          "role": "title_candidate",
+          "text": "研究流程分享",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 68,
+            "width": 149,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh4",
+          "role": "title_candidate",
+          "text": "Na 快离子导体的结构描述符与筛选流程",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 70,
+            "y": 145,
+            "width": 613,
+            "height": 169
+          },
+          "text_metrics": {
+            "font_size_px": 58.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh5",
+          "role": "label_candidate",
+          "text": "数据集 → 描述符构建 → 阈值筛选→ DFT 材料选择",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 72,
+            "y": 307,
+            "width": 604,
+            "height": 119
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh8",
+          "role": "label_candidate",
+          "text": "本次主要说明",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1179,
+            "y": 172,
+            "width": 203,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh9",
+          "role": "label_candidate",
+          "text": "四个筛选描述符表示什么，以及阈值如何从 103 个已知材料中确定。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1179,
+            "y": 226,
+            "width": 550,
+            "height": 90
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh14",
+          "role": "label_candidate",
+          "text": "103",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 86,
+            "y": 782,
+            "width": 80,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh15",
+          "role": "label_candidate",
+          "text": "已知材料",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 74,
+            "y": 862,
+            "width": 104,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh17",
+          "role": "label_candidate",
+          "text": "57",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 393,
+            "y": 722,
+            "width": 55,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh18",
+          "role": "label_candidate",
+          "text": "初始字段",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 368,
+            "y": 796,
+            "width": 104,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh20",
+          "role": "label_candidate",
+          "text": "8",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 687,
+            "y": 643,
+            "width": 29,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh21",
+          "role": "label_candidate",
+          "text": "新结构描述符",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 625,
+            "y": 700,
+            "width": 155,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh23",
+          "role": "label_candidate",
+          "text": "4",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 957,
+            "y": 583,
+            "width": 29,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh24",
+          "role": "label_candidate",
+          "text": "初筛描述符",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 907,
+            "y": 643,
+            "width": 129,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh26",
+          "role": "label_candidate",
+          "text": "837",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1304,
+            "y": 491,
+            "width": 80,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh27",
+          "role": "label_candidate",
+          "text": "候选结构",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1292,
+            "y": 575,
+            "width": 104,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh30",
+          "role": "label_candidate",
+          "text": "10",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1710,
+            "y": 426,
+            "width": 68,
+            "height": 80
+          },
+          "text_metrics": {
+            "font_size_px": 52.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh31",
+          "role": "label_candidate",
+          "text": "DFT 候选",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1687,
+            "y": 537,
+            "width": 113,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh34",
+          "role": "label_candidate",
+          "text": "这次主要回答两个问题：描述符表示什么？阈值是怎样选出来的？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 972,
+            "width": 925,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh35",
+          "role": "label_candidate",
+          "text": "01 / 11",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1783,
+            "y": 982,
+            "width": 65,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 2,
+      "page_type": "content_candidate",
+      "text_summary": "01 · 数据集与初始描述符\n数据集包含 103 个已知材料和 57 个初始字段\n标签与体系构成\n目标：log₁₀(σ / mS·cm⁻¹)　快导体：σ ≥ 0.1 mS·cm⁻¹\n103\n已知材料\nNASICON　30\n硫化物　41\n卤化物　13\n氢化物类　14\n其他　5\n快慢标签\n快 46\n慢 57\n样本量不大，后续还需要结合跨体系验证来判断。\n初始字段主要包括五类信息\n01\nSoftBV\n能量地形\n02\nZeo++\n宏观瓶颈\n03\nNa–X\n局域配位\n04\n空位\n占位信息\n05\n化学\n半径参照\n先看单变量相关，作为后续构造描述符的参考\nSpearman ρ｜SoftBV n=91，其余 n=103\n0\nSoftBV 2D\n−0.545\nZeo++ Df\n+0.436\nNa–X 最长键\n+0.397\n畸变均值\n+0.464\n材料体系与快慢标签存在关联，因此不能只看全样本相关性。\n口径：快导体阈值用于二分类审计；连续目标仍为 log₁₀(σ / mS·cm⁻¹)。\n02 / 11",
+      "slots": [
+        {
+          "slot_id": "s02_sh2",
+          "role": "title_candidate",
+          "text": "01 · 数据集与初始描述符",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 55,
+            "width": 227,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh3",
+          "role": "title_candidate",
+          "text": "数据集包含 103 个已知材料和 57 个初始字段",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 70,
+            "y": 88,
+            "width": 1365,
+            "height": 89
+          },
+          "text_metrics": {
+            "font_size_px": 58.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh7",
+          "role": "label_candidate",
+          "text": "标签与体系构成",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 218,
+            "width": 236,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh8",
+          "role": "label_candidate",
+          "text": "目标：log₁₀(σ / mS·cm⁻¹)　快导体：σ ≥ 0.1 mS·cm⁻¹",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 265,
+            "width": 600,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh15",
+          "role": "label_candidate",
+          "text": "103",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 300,
+            "y": 446,
+            "width": 99,
+            "height": 80
+          },
+          "text_metrics": {
+            "font_size_px": 52.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh16",
+          "role": "label_candidate",
+          "text": "已知材料",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 302,
+            "y": 512,
+            "width": 95,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh18",
+          "role": "label_candidate",
+          "text": "NASICON　30",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 579,
+            "y": 338,
+            "width": 147,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh20",
+          "role": "label_candidate",
+          "text": "硫化物　41",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 579,
+            "y": 383,
+            "width": 121,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh22",
+          "role": "label_candidate",
+          "text": "卤化物　13",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 579,
+            "y": 428,
+            "width": 121,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh24",
+          "role": "label_candidate",
+          "text": "氢化物类　14",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 579,
+            "y": 473,
+            "width": 144,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh26",
+          "role": "label_candidate",
+          "text": "其他　5",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 579,
+            "y": 518,
+            "width": 85,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh27",
+          "role": "label_candidate",
+          "text": "快慢标签",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 701,
+            "width": 100,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh31",
+          "role": "label_candidate",
+          "text": "快 46",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 186,
+            "y": 757,
+            "width": 66,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh32",
+          "role": "label_candidate",
+          "text": "慢 57",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 444,
+            "y": 757,
+            "width": 66,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh34",
+          "role": "label_candidate",
+          "text": "样本量不大，后续还需要结合跨体系验证来判断。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 818,
+            "width": 515,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh36",
+          "role": "label_candidate",
+          "text": "初始字段主要包括五类信息",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 787,
+            "y": 212,
+            "width": 403,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh39",
+          "role": "label_candidate",
+          "text": "01",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 811,
+            "y": 317,
+            "width": 29,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh40",
+          "role": "label_candidate",
+          "text": "SoftBV",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 811,
+            "y": 362,
+            "width": 93,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh41",
+          "role": "label_candidate",
+          "text": "能量地形",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 811,
+            "y": 399,
+            "width": 95,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh43",
+          "role": "label_candidate",
+          "text": "02",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1032,
+            "y": 317,
+            "width": 29,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh44",
+          "role": "label_candidate",
+          "text": "Zeo++",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1032,
+            "y": 362,
+            "width": 77,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh45",
+          "role": "label_candidate",
+          "text": "宏观瓶颈",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1032,
+            "y": 399,
+            "width": 95,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh47",
+          "role": "label_candidate",
+          "text": "03",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1253,
+            "y": 317,
+            "width": 29,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh48",
+          "role": "label_candidate",
+          "text": "Na–X",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1253,
+            "y": 362,
+            "width": 63,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh49",
+          "role": "label_candidate",
+          "text": "局域配位",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1253,
+            "y": 399,
+            "width": 95,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh51",
+          "role": "label_candidate",
+          "text": "04",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1474,
+            "y": 317,
+            "width": 29,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh52",
+          "role": "label_candidate",
+          "text": "空位",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1474,
+            "y": 362,
+            "width": 55,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh53",
+          "role": "label_candidate",
+          "text": "占位信息",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1474,
+            "y": 399,
+            "width": 95,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh55",
+          "role": "label_candidate",
+          "text": "05",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1671,
+            "y": 317,
+            "width": 29,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh56",
+          "role": "label_candidate",
+          "text": "化学",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1671,
+            "y": 362,
+            "width": 55,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh57",
+          "role": "label_candidate",
+          "text": "半径参照",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1671,
+            "y": 399,
+            "width": 95,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh59",
+          "role": "label_candidate",
+          "text": "先看单变量相关，作为后续构造描述符的参考",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 787,
+            "y": 546,
+            "width": 670,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh60",
+          "role": "label_candidate",
+          "text": "Spearman ρ｜SoftBV n=91，其余 n=103",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1415,
+            "y": 553,
+            "width": 434,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh63",
+          "role": "label_candidate",
+          "text": "0",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1312,
+            "y": 837,
+            "width": 12,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh64",
+          "role": "label_candidate",
+          "text": "SoftBV 2D",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 787,
+            "y": 640,
+            "width": 125,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh66",
+          "role": "label_candidate",
+          "text": "−0.545",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 940,
+            "y": 640,
+            "width": 90,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh67",
+          "role": "label_candidate",
+          "text": "Zeo++ Df",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 787,
+            "y": 698,
+            "width": 110,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh69",
+          "role": "label_candidate",
+          "text": "+0.436",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1553,
+            "y": 698,
+            "width": 90,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh70",
+          "role": "label_candidate",
+          "text": "Na–X 最长键",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 787,
+            "y": 756,
+            "width": 147,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh72",
+          "role": "label_candidate",
+          "text": "+0.397",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1534,
+            "y": 756,
+            "width": 90,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh73",
+          "role": "label_candidate",
+          "text": "畸变均值",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 787,
+            "y": 814,
+            "width": 104,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh75",
+          "role": "label_candidate",
+          "text": "+0.464",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1567,
+            "y": 814,
+            "width": 90,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh79",
+          "role": "label_candidate",
+          "text": "材料体系与快慢标签存在关联，因此不能只看全样本相关性。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 827,
+            "y": 920,
+            "width": 904,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh81",
+          "role": "label_candidate",
+          "text": "口径：快导体阈值用于二分类审计；连续目标仍为 log₁₀(σ / mS·cm⁻¹)。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 1022,
+            "width": 633,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh82",
+          "role": "label_candidate",
+          "text": "02 / 11",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1783,
+            "y": 1022,
+            "width": 65,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 3,
+      "page_type": "chapter_candidate",
+      "text_summary": "02 · 研究问题\n原有描述符缺少局域宽松程度和 Na 位点连通信息\n原有研究\n已有描述符能否跨材料体系预测电导率？\nSoftBV\n能量连通代价\nZeo++\n宏观几何瓶颈\n多面体畸变\nNa–X 键长离散程度\n这次补充的结构信息\n缺口 1\n相对宽松程度\n最长 Na–X 键相对正常配位键长偏长多少？\n缺口 2\nNa 位点网络\n相邻 Na 位点之间能否形成连续路径？\n缺口 3\n组合信息\n局域宽松和配位畸变是否同时出现？\n本次研究\n从 CIF 中构造新的结构描述符，并检查能否跨体系使用\n01\n从 CIF 计算\n02\n构造组合描述符\n03\n稳健性检验\n04\n确定筛选阈值\n05\nDFT 验证\n这部分工作的重点是补充结构信息，而不是重新比较模型高低\n多面体畸变沿用旧研究结果；局域宽松因子和 Na 位点网络是本次新增内容。\n03 / 11",
+      "slots": [
+        {
+          "slot_id": "s03_sh2",
+          "role": "title_candidate",
+          "text": "02 · 研究问题",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 55,
+            "width": 127,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh3",
+          "role": "title_candidate",
+          "text": "原有描述符缺少局域宽松程度和 Na 位点连通信息",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 70,
+            "y": 88,
+            "width": 1643,
+            "height": 89
+          },
+          "text_metrics": {
+            "font_size_px": 58.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh7",
+          "role": "label_candidate",
+          "text": "原有研究",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 107,
+            "y": 255,
+            "width": 100,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh8",
+          "role": "label_candidate",
+          "text": "已有描述符能否跨材料体系预测电导率？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 106,
+            "y": 306,
+            "width": 488,
+            "height": 119
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh10",
+          "role": "label_candidate",
+          "text": "SoftBV",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 107,
+            "y": 474,
+            "width": 116,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh11",
+          "role": "label_candidate",
+          "text": "能量连通代价",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 107,
+            "y": 520,
+            "width": 155,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh12",
+          "role": "label_candidate",
+          "text": "Zeo++",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 107,
+            "y": 592,
+            "width": 96,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh13",
+          "role": "label_candidate",
+          "text": "宏观几何瓶颈",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 107,
+            "y": 638,
+            "width": 155,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh14",
+          "role": "label_candidate",
+          "text": "多面体畸变",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 107,
+            "y": 710,
+            "width": 169,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh15",
+          "role": "label_candidate",
+          "text": "Na–X 键长离散程度",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 107,
+            "y": 756,
+            "width": 226,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh17",
+          "role": "label_candidate",
+          "text": "这次补充的结构信息",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 774,
+            "y": 242,
+            "width": 303,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh22",
+          "role": "label_candidate",
+          "text": "缺口 1",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 675,
+            "y": 353,
+            "width": 72,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh23",
+          "role": "label_candidate",
+          "text": "相对宽松程度",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 675,
+            "y": 412,
+            "width": 203,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh24",
+          "role": "label_candidate",
+          "text": "最长 Na–X 键相对正常配位键长偏长多少？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 675,
+            "y": 459,
+            "width": 261,
+            "height": 66
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh28",
+          "role": "label_candidate",
+          "text": "缺口 2",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 675,
+            "y": 539,
+            "width": 72,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh29",
+          "role": "label_candidate",
+          "text": "Na 位点网络",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 675,
+            "y": 598,
+            "width": 188,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh30",
+          "role": "label_candidate",
+          "text": "相邻 Na 位点之间能否形成连续路径？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 675,
+            "y": 644,
+            "width": 439,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh34",
+          "role": "label_candidate",
+          "text": "缺口 3",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 675,
+            "y": 725,
+            "width": 72,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh35",
+          "role": "label_candidate",
+          "text": "组合信息",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 675,
+            "y": 784,
+            "width": 136,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh36",
+          "role": "label_candidate",
+          "text": "局域宽松和配位畸变是否同时出现？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 675,
+            "y": 830,
+            "width": 409,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh40",
+          "role": "label_candidate",
+          "text": "本次研究",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1337,
+            "y": 255,
+            "width": 100,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh41",
+          "role": "label_candidate",
+          "text": "从 CIF 中构造新的结构描述符，并检查能否跨体系使用",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1336,
+            "y": 288,
+            "width": 444,
+            "height": 165
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh43",
+          "role": "label_candidate",
+          "text": "01",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1337,
+            "y": 472,
+            "width": 31,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh44",
+          "role": "label_candidate",
+          "text": "从 CIF 计算",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1391,
+            "y": 466,
+            "width": 170,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh46",
+          "role": "label_candidate",
+          "text": "02",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1337,
+            "y": 536,
+            "width": 31,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh47",
+          "role": "label_candidate",
+          "text": "构造组合描述符",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1391,
+            "y": 530,
+            "width": 225,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh48",
+          "role": "label_candidate",
+          "text": "03",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1337,
+            "y": 600,
+            "width": 31,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh49",
+          "role": "label_candidate",
+          "text": "稳健性检验",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1391,
+            "y": 594,
+            "width": 161,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh50",
+          "role": "label_candidate",
+          "text": "04",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1337,
+            "y": 664,
+            "width": 31,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh51",
+          "role": "label_candidate",
+          "text": "确定筛选阈值",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1391,
+            "y": 658,
+            "width": 193,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh52",
+          "role": "label_candidate",
+          "text": "05",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1337,
+            "y": 728,
+            "width": 31,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh53",
+          "role": "label_candidate",
+          "text": "DFT 验证",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1391,
+            "y": 722,
+            "width": 142,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh56",
+          "role": "label_candidate",
+          "text": "这部分工作的重点是补充结构信息，而不是重新比较模型高低",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 292,
+            "y": 909,
+            "width": 1337,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh58",
+          "role": "label_candidate",
+          "text": "多面体畸变沿用旧研究结果；局域宽松因子和 Na 位点网络是本次新增内容。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 1022,
+            "width": 663,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh59",
+          "role": "label_candidate",
+          "text": "03 / 11",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1783,
+            "y": 1022,
+            "width": 65,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 4,
+      "page_type": "content_candidate",
+      "text_summary": "03 · 相关性与跨体系验证\n局域宽松因子样本内最强，多面体畸变跨体系更稳\n有符号 Spearman ρ；同一描述符并列比较全样本、LOFO、LOAO\n全样本\nLOFO\nLOAO\n−0.6\n0\n+0.6\n局域宽松\n0.597\n0.196\n0.271\n畸变均值\n0.464\n0.519\n0.557\nZeo++ Df\n0.436\n0.300\n0.328\nSoftBV 2D\n−0.545\n−0.223\n0.010\n组合描述符结果\n0.755\n局域宽松 + Na 网络\nSpearman\n0.793\n加入已发表基线\nSpearman\n0.897\n分类 ROC-AUC\n组合模型\n98%\nBootstrap Top3\n特征排序稳定性\nCl 组 ρ≈−0.035\nDML 只能说明控制混杂后仍有关联。\n先看全样本结果，再比较 LOFO、LOAO，最后检查不同化学体系中的适用性。\n04 / 11",
+      "slots": [
+        {
+          "slot_id": "s04_sh2",
+          "role": "title_candidate",
+          "text": "03 · 相关性与跨体系验证",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 55,
+            "width": 227,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh3",
+          "role": "title_candidate",
+          "text": "局域宽松因子样本内最强，多面体畸变跨体系更稳",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 70,
+            "y": 88,
+            "width": 1505,
+            "height": 89
+          },
+          "text_metrics": {
+            "font_size_px": 58.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh6",
+          "role": "label_candidate",
+          "text": "有符号 Spearman ρ；同一描述符并列比较全样本、LOFO、LOAO",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 229,
+            "width": 697,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh8",
+          "role": "label_candidate",
+          "text": "全样本",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 803,
+            "y": 214,
+            "width": 72,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh10",
+          "role": "label_candidate",
+          "text": "LOFO",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 959,
+            "y": 214,
+            "width": 66,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh12",
+          "role": "label_candidate",
+          "text": "LOAO",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1099,
+            "y": 214,
+            "width": 66,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh18",
+          "role": "label_candidate",
+          "text": "−0.6",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 408,
+            "y": 837,
+            "width": 43,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh19",
+          "role": "label_candidate",
+          "text": "0",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 829,
+            "y": 837,
+            "width": 12,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh20",
+          "role": "label_candidate",
+          "text": "+0.6",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1218,
+            "y": 837,
+            "width": 43,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh21",
+          "role": "label_candidate",
+          "text": "局域宽松",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 312,
+            "width": 136,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh25",
+          "role": "label_candidate",
+          "text": "0.597",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1184,
+            "y": 301,
+            "width": 57,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh26",
+          "role": "label_candidate",
+          "text": "0.196",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 978,
+            "y": 335,
+            "width": 57,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh27",
+          "role": "label_candidate",
+          "text": "0.271",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1029,
+            "y": 369,
+            "width": 57,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh29",
+          "role": "label_candidate",
+          "text": "畸变均值",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 448,
+            "width": 136,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh33",
+          "role": "label_candidate",
+          "text": "0.464",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1161,
+            "y": 437,
+            "width": 57,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh34",
+          "role": "label_candidate",
+          "text": "0.519",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1198,
+            "y": 471,
+            "width": 57,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh35",
+          "role": "label_candidate",
+          "text": "0.557",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1155,
+            "y": 505,
+            "width": 57,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh37",
+          "role": "label_candidate",
+          "text": "Zeo++ Df",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 584,
+            "width": 144,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh41",
+          "role": "label_candidate",
+          "text": "0.436",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1141,
+            "y": 573,
+            "width": 57,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh42",
+          "role": "label_candidate",
+          "text": "0.300",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1049,
+            "y": 607,
+            "width": 57,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh43",
+          "role": "label_candidate",
+          "text": "0.328",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1068,
+            "y": 641,
+            "width": 57,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh45",
+          "role": "label_candidate",
+          "text": "SoftBV 2D",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 720,
+            "width": 164,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh49",
+          "role": "label_candidate",
+          "text": "−0.545",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 479,
+            "y": 709,
+            "width": 68,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh50",
+          "role": "label_candidate",
+          "text": "−0.223",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 695,
+            "y": 743,
+            "width": 68,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh51",
+          "role": "label_candidate",
+          "text": "0.010",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 853,
+            "y": 777,
+            "width": 57,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh54",
+          "role": "label_candidate",
+          "text": "组合描述符结果",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1325,
+            "y": 222,
+            "width": 236,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh56",
+          "role": "label_candidate",
+          "text": "0.755",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1324,
+            "y": 312,
+            "width": 163,
+            "height": 80
+          },
+          "text_metrics": {
+            "font_size_px": 52.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh57",
+          "role": "label_candidate",
+          "text": "局域宽松 + Na 网络",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1509,
+            "y": 328,
+            "width": 226,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh58",
+          "role": "label_candidate",
+          "text": "Spearman",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1509,
+            "y": 363,
+            "width": 110,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh60",
+          "role": "label_candidate",
+          "text": "0.793",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1324,
+            "y": 448,
+            "width": 163,
+            "height": 80
+          },
+          "text_metrics": {
+            "font_size_px": 52.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh61",
+          "role": "label_candidate",
+          "text": "加入已发表基线",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1509,
+            "y": 464,
+            "width": 180,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh62",
+          "role": "label_candidate",
+          "text": "Spearman",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1509,
+            "y": 499,
+            "width": 110,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh64",
+          "role": "label_candidate",
+          "text": "0.897",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1324,
+            "y": 584,
+            "width": 163,
+            "height": 80
+          },
+          "text_metrics": {
+            "font_size_px": 52.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh65",
+          "role": "label_candidate",
+          "text": "分类 ROC-AUC",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1509,
+            "y": 600,
+            "width": 173,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh66",
+          "role": "label_candidate",
+          "text": "组合模型",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1509,
+            "y": 635,
+            "width": 95,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh69",
+          "role": "label_candidate",
+          "text": "98%",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1360,
+            "y": 720,
+            "width": 90,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh70",
+          "role": "label_candidate",
+          "text": "Bootstrap Top3",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1509,
+            "y": 732,
+            "width": 203,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh71",
+          "role": "label_candidate",
+          "text": "特征排序稳定性",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1509,
+            "y": 771,
+            "width": 165,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh75",
+          "role": "label_candidate",
+          "text": "Cl 组 ρ≈−0.035",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1359,
+            "y": 886,
+            "width": 188,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh76",
+          "role": "label_candidate",
+          "text": "DML 只能说明控制混杂后仍有关联。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1359,
+            "y": 925,
+            "width": 400,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh78",
+          "role": "label_candidate",
+          "text": "先看全样本结果，再比较 LOFO、LOAO，最后检查不同化学体系中的适用性。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 1022,
+            "width": 697,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh79",
+          "role": "label_candidate",
+          "text": "04 / 11",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1783,
+            "y": 1022,
+            "width": 65,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 5,
+      "page_type": "content_candidate",
+      "text_summary": "04 · 描述符含义与阈值选择\n四个初筛描述符主要反映局域宽松和配位畸变\n结构信息 1\n局域宽松因子 L\n分子：第一配位壳层最长 Na–X 键分母：主配位数对应 Shannon 半径 + 阴离子半径\nNa\ndmax\n最长键相对正常键长是否偏长\n只表示局域结构，不等于迁移势垒\n结构信息 2\n多面体畸变均值 D\n同一 Na 位点：键长标准差 / 均值再对所有 Na 位点取平均\nNa\nNa–X 键长的离散程度\n过大也可能对应局域陷阱\n两个组合描述符\nD × L ≥ 0.040\n畸变加权宽松比\nD × dmax ≥ 0.127\n保留绝对键长尺度\n同时保留畸变和键长信息，不是两个新机制\n阈值选择方法\n01\n定义快导体\nσ ≥ 0.1 mS·cm⁻¹\n02\n遍历候选 t\n遍历每个描述符值\n03\n按阈值分类\ndescriptor ≥ t\n04\n选择最优阈值\nBalanced Accuracy 最大\nL ≥ 1.118\nD ≥ 0.043\nD×L ≥ 0.040\nD×dmax ≥ 0.127\n<1.09\n慢导体富集 ≈4%\n1.118\n本数据集筛选阈值\n≥1.19\n快导体富集 ≈77%–79%\n边界：",
+      "slots": [
+        {
+          "slot_id": "s05_sh2",
+          "role": "title_candidate",
+          "text": "04 · 描述符含义与阈值选择",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 55,
+            "width": 247,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh3",
+          "role": "title_candidate",
+          "text": "四个初筛描述符主要反映局域宽松和配位畸变",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 70,
+            "y": 88,
+            "width": 1368,
+            "height": 89
+          },
+          "text_metrics": {
+            "font_size_px": 58.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh8",
+          "role": "label_candidate",
+          "text": "结构信息 1",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 111,
+            "y": 223,
+            "width": 121,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh9",
+          "role": "label_candidate",
+          "text": "局域宽松因子 L",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 110,
+            "y": 258,
+            "width": 414,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh11",
+          "role": "label_candidate",
+          "text": "分子：第一配位壳层最长 Na–X 键分母：主配位数对应 Shannon 半径 + 阴离子半径",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 111,
+            "y": 455,
+            "width": 477,
+            "height": 70
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh18",
+          "role": "label_candidate",
+          "text": "Na",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 669,
+            "y": 340,
+            "width": 29,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh24",
+          "role": "label_candidate",
+          "text": "dmax",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 789,
+            "y": 373,
+            "width": 61,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh25",
+          "role": "label_candidate",
+          "text": "最长键相对正常键长是否偏长",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 571,
+            "y": 465,
+            "width": 320,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh26",
+          "role": "label_candidate",
+          "text": "只表示局域结构，不等于迁移势垒",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 571,
+            "y": 503,
+            "width": 352,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh30",
+          "role": "label_candidate",
+          "text": "结构信息 2",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1003,
+            "y": 223,
+            "width": 121,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh31",
+          "role": "label_candidate",
+          "text": "多面体畸变均值 D",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1002,
+            "y": 258,
+            "width": 474,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh33",
+          "role": "label_candidate",
+          "text": "同一 Na 位点：键长标准差 / 均值再对所有 Na 位点取平均",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1003,
+            "y": 455,
+            "width": 328,
+            "height": 70
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh41",
+          "role": "label_candidate",
+          "text": "Na",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1681,
+            "y": 352,
+            "width": 29,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh42",
+          "role": "label_candidate",
+          "text": "Na–X 键长的离散程度",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1587,
+            "y": 465,
+            "width": 243,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh43",
+          "role": "label_candidate",
+          "text": "过大也可能对应局域陷阱",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1587,
+            "y": 503,
+            "width": 258,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh46",
+          "role": "label_candidate",
+          "text": "两个组合描述符",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 107,
+            "y": 612,
+            "width": 236,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh47",
+          "role": "label_candidate",
+          "text": "D × L ≥ 0.040",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 519,
+            "y": 618,
+            "width": 175,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh48",
+          "role": "label_candidate",
+          "text": "畸变加权宽松比",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 785,
+            "y": 619,
+            "width": 165,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh50",
+          "role": "label_candidate",
+          "text": "D × dmax ≥ 0.127",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1123,
+            "y": 618,
+            "width": 218,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh51",
+          "role": "label_candidate",
+          "text": "保留绝对键长尺度",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1437,
+            "y": 619,
+            "width": 188,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh52",
+          "role": "label_candidate",
+          "text": "同时保留畸变和键长信息，不是两个新机制",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1447,
+            "y": 623,
+            "width": 364,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh54",
+          "role": "label_candidate",
+          "text": "阈值选择方法",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 712,
+            "width": 203,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh57",
+          "role": "label_candidate",
+          "text": "01",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 134,
+            "y": 808,
+            "width": 31,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh58",
+          "role": "label_candidate",
+          "text": "定义快导体",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 199,
+            "y": 788,
+            "width": 135,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh59",
+          "role": "label_candidate",
+          "text": "σ ≥ 0.1 mS·cm⁻¹",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 199,
+            "y": 823,
+            "width": 188,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh62",
+          "role": "label_candidate",
+          "text": "02",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 538,
+            "y": 808,
+            "width": 31,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh63",
+          "role": "label_candidate",
+          "text": "遍历候选 t",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 603,
+            "y": 788,
+            "width": 131,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh64",
+          "role": "label_candidate",
+          "text": "遍历每个描述符值",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 603,
+            "y": 823,
+            "width": 188,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh67",
+          "role": "label_candidate",
+          "text": "03",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 954,
+            "y": 808,
+            "width": 31,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh68",
+          "role": "label_candidate",
+          "text": "按阈值分类",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1019,
+            "y": 788,
+            "width": 135,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh69",
+          "role": "label_candidate",
+          "text": "descriptor ≥ t",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1019,
+            "y": 823,
+            "width": 164,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh72",
+          "role": "label_candidate",
+          "text": "04",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1398,
+            "y": 808,
+            "width": 31,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh73",
+          "role": "label_candidate",
+          "text": "选择最优阈值",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1463,
+            "y": 788,
+            "width": 162,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh74",
+          "role": "label_candidate",
+          "text": "Balanced Accuracy 最大",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1463,
+            "y": 823,
+            "width": 264,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh76",
+          "role": "label_candidate",
+          "text": "L ≥ 1.118",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 877,
+            "width": 117,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh77",
+          "role": "label_candidate",
+          "text": "D ≥ 0.043",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 275,
+            "y": 877,
+            "width": 117,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh78",
+          "role": "label_candidate",
+          "text": "D×L ≥ 0.040",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1439,
+            "y": 877,
+            "width": 145,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh79",
+          "role": "label_candidate",
+          "text": "D×dmax ≥ 0.127",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1653,
+            "y": 877,
+            "width": 185,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh84",
+          "role": "label_candidate",
+          "text": "<1.09",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 961,
+            "width": 69,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh85",
+          "role": "label_candidate",
+          "text": "慢导体富集 ≈4%",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 221,
+            "y": 961,
+            "width": 168,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh86",
+          "role": "label_candidate",
+          "text": "1.118",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 677,
+            "y": 961,
+            "width": 69,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh87",
+          "role": "label_candidate",
+          "text": "本数据集筛选阈值",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 791,
+            "y": 961,
+            "width": 188,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh88",
+          "role": "label_candidate",
+          "text": "≥1.19",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1149,
+            "y": 961,
+            "width": 69,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh89",
+          "role": "label_candidate",
+          "text": "快导体富集 ≈77%–79%",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1271,
+            "y": 961,
+            "width": 249,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh91",
+          "role": "label_candidate",
+          "text": "边界：阈值是当前 103 个样本上的经验操作线，不是普适物理常数。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 1022,
+            "width": 579,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s05_sh92",
+          "role": "label_candidate",
+          "text": "05 / 11",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1783,
+            "y": 1022,
+            "width": 65,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 6,
+      "page_type": "content_candidate",
+      "text_summary": "05 · 开源数据库筛选\n四阈值筛出 837 个结构，复筛后保留 10 个做 DFT\n四阈值筛选结果\n按材料体系统计\nNASICON\n697\n硫化物\n41\n卤化物\n99\n四个筛选条件\n同时满足四个条件\n局域宽松\nL ≥ 1.118\n多面体畸变\nD ≥ 0.043\n畸变加权宽松比\nD×L ≥ 0.040\n畸变加权最长键\nD×dmax ≥ 0.127\n满足四个条件后进入材料复筛\n进一步复筛\n四阈值均通过\n837\n复筛条件\n较大带隙　·　可能存在 Na / 空位迁移路径覆盖不同材料体系　·　没有明确电导率先例计算规模可承受\n第一轮 DFT 候选\n10\n837 只是四阈值筛选结果，不代表这些结构已经被证明为快离子导体或可以合成。\n复筛还考虑带隙、迁移路径、文献先例和计算成本。\n06 / 11",
+      "slots": [
+        {
+          "slot_id": "s06_sh2",
+          "role": "title_candidate",
+          "text": "05 · 开源数据库筛选",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 55,
+            "width": 187,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh3",
+          "role": "title_candidate",
+          "text": "四阈值筛出 837 个结构，复筛后保留 10 个做 DFT",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 70,
+            "y": 65,
+            "width": 689,
+            "height": 153
+          },
+          "text_metrics": {
+            "font_size_px": 58.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh6",
+          "role": "label_candidate",
+          "text": "四阈值筛选结果",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 244,
+            "width": 236,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh7",
+          "role": "label_candidate",
+          "text": "按材料体系统计",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 287,
+            "width": 165,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh9",
+          "role": "label_candidate",
+          "text": "NASICON",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 375,
+            "width": 109,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh10",
+          "role": "label_candidate",
+          "text": "697",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 299,
+            "y": 388,
+            "width": 80,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh13",
+          "role": "label_candidate",
+          "text": "硫化物",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 525,
+            "width": 82,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh14",
+          "role": "label_candidate",
+          "text": "41",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 325,
+            "y": 538,
+            "width": 55,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh17",
+          "role": "label_candidate",
+          "text": "卤化物",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 675,
+            "width": 82,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh18",
+          "role": "label_candidate",
+          "text": "99",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 325,
+            "y": 688,
+            "width": 55,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh21",
+          "role": "label_candidate",
+          "text": "四个筛选条件",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 529,
+            "y": 244,
+            "width": 203,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh22",
+          "role": "label_candidate",
+          "text": "同时满足四个条件",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1051,
+            "y": 251,
+            "width": 188,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh28",
+          "role": "label_candidate",
+          "text": "局域宽松",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 547,
+            "y": 360,
+            "width": 109,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh29",
+          "role": "label_candidate",
+          "text": "L ≥ 1.118",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1061,
+            "y": 360,
+            "width": 128,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh30",
+          "role": "label_candidate",
+          "text": "多面体畸变",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 565,
+            "y": 450,
+            "width": 135,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh31",
+          "role": "label_candidate",
+          "text": "D ≥ 0.043",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1043,
+            "y": 450,
+            "width": 128,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh32",
+          "role": "label_candidate",
+          "text": "畸变加权宽松比",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 583,
+            "y": 540,
+            "width": 189,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh33",
+          "role": "label_candidate",
+          "text": "D×L ≥ 0.040",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 994,
+            "y": 540,
+            "width": 159,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh34",
+          "role": "label_candidate",
+          "text": "畸变加权最长键",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 601,
+            "y": 630,
+            "width": 189,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh35",
+          "role": "label_candidate",
+          "text": "D×dmax ≥ 0.127",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 933,
+            "y": 630,
+            "width": 202,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh36",
+          "role": "label_candidate",
+          "text": "满足四个条件后进入材料复筛",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 715,
+            "y": 731,
+            "width": 305,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh39",
+          "role": "label_candidate",
+          "text": "进一步复筛",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1307,
+            "y": 244,
+            "width": 169,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh41",
+          "role": "label_candidate",
+          "text": "四阈值均通过",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1345,
+            "y": 352,
+            "width": 155,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh42",
+          "role": "label_candidate",
+          "text": "837",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1676,
+            "y": 377,
+            "width": 136,
+            "height": 110
+          },
+          "text_metrics": {
+            "font_size_px": 72.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh45",
+          "role": "label_candidate",
+          "text": "复筛条件",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1343,
+            "y": 538,
+            "width": 109,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh46",
+          "role": "label_candidate",
+          "text": "较大带隙　·　可能存在 Na / 空位迁移路径覆盖不同材料体系　·　没有明确电导率先例计算规模可承受",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1343,
+            "y": 583,
+            "width": 432,
+            "height": 110
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh49",
+          "role": "label_candidate",
+          "text": "第一轮 DFT 候选",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1345,
+            "y": 772,
+            "width": 207,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh50",
+          "role": "label_candidate",
+          "text": "10",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1737,
+            "y": 783,
+            "width": 75,
+            "height": 89
+          },
+          "text_metrics": {
+            "font_size_px": 58.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh54",
+          "role": "label_candidate",
+          "text": "837 只是四阈值筛选结果，不代表这些结构已经被证明为快离子导体或可以合成。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 119,
+            "y": 907,
+            "width": 883,
+            "height": 77
+          },
+          "text_metrics": {
+            "font_size_px": 28.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh56",
+          "role": "label_candidate",
+          "text": "复筛还考虑带隙、迁移路径、文献先例和计算成本。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 1022,
+            "width": 440,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s06_sh57",
+          "role": "label_candidate",
+          "text": "06 / 11",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1783,
+            "y": 1022,
+            "width": 65,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 7,
+      "page_type": "content_candidate",
+      "text_summary": "06 · 第一轮 DFT 材料\n第一轮选择 10 个材料，分别比较四类结构中的迁移问题\nNASICON｜高局域宽松和畸变是否对应低迁移势垒？\nNa₃YZrSiP₂O₁₂\nNa₆Hf₃ZnSi₂P₄O₂₄\nNa₃CaHf(PO₄)₃\n同一骨架内比较局域信号、Na 网络和刚性窗口的影响。\n硫化物｜软晶格是否有利于 Na 迁移？\nNa₃TaS₄\nNa₄Ga₂S₅\nNa₆Sn₂S₇\n还需要检查带隙和缺陷态，避免把电子导电误认为离子导电。\n氟化物｜检查 Na⁺ 迁移，并排除 F⁻ 作为主要载流子\nNa₇Zr₆F₃₁\nNa₂MgInF₇\nC2/c-Na₂ZnGaF₇\nCl 子集结果不能直接外推到氟化物，因此将其作为描述符边界测试。\nNa 与 F 缺陷需要分别计算。\n混合阴离子\nNa₃Sn(PO₄)(CO₃)\n检查 CO₃ 基团的摆动 / 转动是否影响 Na 迁移路径？\n第一轮 DFT 先回答每个材料最关键的一个问题\n结构弛豫与稳定性\n缺陷 / 空位形成能\nBVSE / CAVD\nCI-NEB\n势垒 ≤ 约 0.45 eV → AIMD\n这 10 个材料不是按单一分数排名，而是兼顾正向候选、边界对照",
+      "slots": [
+        {
+          "slot_id": "s07_sh2",
+          "role": "title_candidate",
+          "text": "06 · 第一轮 DFT 材料",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 55,
+            "width": 203,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh3",
+          "role": "title_candidate",
+          "text": "第一轮选择 10 个材料，分别比较四类结构中的迁移问题",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 70,
+            "y": 65,
+            "width": 899,
+            "height": 153
+          },
+          "text_metrics": {
+            "font_size_px": 58.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh8",
+          "role": "label_candidate",
+          "text": "NASICON｜高局域宽松和畸变是否对应低迁移势垒？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 218,
+            "width": 645,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh11",
+          "role": "label_candidate",
+          "text": "Na₃YZrSiP₂O₁₂",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 129,
+            "y": 411,
+            "width": 182,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh14",
+          "role": "label_candidate",
+          "text": "Na₆Hf₃ZnSi₂P₄O₂₄",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 385,
+            "y": 411,
+            "width": 223,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh17",
+          "role": "label_candidate",
+          "text": "Na₃CaHf(PO₄)₃",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 680,
+            "y": 411,
+            "width": 188,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh18",
+          "role": "label_candidate",
+          "text": "同一骨架内比较局域信号、Na 网络和刚性窗口的影响。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 455,
+            "width": 480,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh22",
+          "role": "label_candidate",
+          "text": "硫化物｜软晶格是否有利于 Na 迁移？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 528,
+            "width": 461,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh25",
+          "role": "label_candidate",
+          "text": "Na₃TaS₄",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 170,
+            "y": 721,
+            "width": 99,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh28",
+          "role": "label_candidate",
+          "text": "Na₄Ga₂S₅",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 440,
+            "y": 721,
+            "width": 113,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh31",
+          "role": "label_candidate",
+          "text": "Na₆Sn₂S₇",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 717,
+            "y": 721,
+            "width": 113,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh32",
+          "role": "label_candidate",
+          "text": "还需要检查带隙和缺陷态，避免把电子导电误认为离子导电。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 765,
+            "width": 517,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh36",
+          "role": "label_candidate",
+          "text": "氟化物｜检查 Na⁺ 迁移，并排除 F⁻ 作为主要载流子",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 983,
+            "y": 218,
+            "width": 638,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh39",
+          "role": "label_candidate",
+          "text": "Na₇Zr₆F₃₁",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1047,
+            "y": 433,
+            "width": 127,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh42",
+          "role": "label_candidate",
+          "text": "Na₂MgInF₇",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1331,
+            "y": 433,
+            "width": 126,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh45",
+          "role": "label_candidate",
+          "text": "C2/c-Na₂ZnGaF₇",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1587,
+            "y": 433,
+            "width": 196,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh46",
+          "role": "label_candidate",
+          "text": "Cl 子集结果不能直接外推到氟化物，因此将其作为描述符边界测试。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 983,
+            "y": 493,
+            "width": 659,
+            "height": 31
+          },
+          "text_metrics": {
+            "font_size_px": 20.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh47",
+          "role": "label_candidate",
+          "text": "Na 与 F 缺陷需要分别计算。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 983,
+            "y": 527,
+            "width": 250,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh52",
+          "role": "label_candidate",
+          "text": "混合阴离子",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1331,
+            "y": 613,
+            "width": 124,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh53",
+          "role": "label_candidate",
+          "text": "Na₃Sn(PO₄)(CO₃)",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1331,
+            "y": 654,
+            "width": 357,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh54",
+          "role": "label_candidate",
+          "text": "检查 CO₃ 基团的摆动 / 转动是否影响 Na 迁移路径？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1331,
+            "y": 705,
+            "width": 279,
+            "height": 68
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh56",
+          "role": "label_candidate",
+          "text": "第一轮 DFT 先回答每个材料最关键的一个问题",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 848,
+            "width": 717,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh59",
+          "role": "label_candidate",
+          "text": "结构弛豫与稳定性",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 128,
+            "y": 941,
+            "width": 198,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh62",
+          "role": "label_candidate",
+          "text": "缺陷 / 空位形成能",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 473,
+            "y": 941,
+            "width": 201,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh65",
+          "role": "label_candidate",
+          "text": "BVSE / CAVD",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 812,
+            "y": 941,
+            "width": 145,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh68",
+          "role": "label_candidate",
+          "text": "CI-NEB",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1125,
+            "y": 941,
+            "width": 81,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh71",
+          "role": "label_candidate",
+          "text": "势垒 ≤ 约 0.45 eV → AIMD",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1441,
+            "y": 941,
+            "width": 293,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh73",
+          "role": "label_candidate",
+          "text": "这 10 个材料不是按单一分数排名，而是兼顾正向候选、边界对照和计算风险。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 1022,
+            "width": 664,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s07_sh74",
+          "role": "label_candidate",
+          "text": "07 / 11",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1783,
+            "y": 1022,
+            "width": 65,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 8,
+      "page_type": "content_candidate",
+      "text_summary": "备份 1 · 描述符定义\n备份｜八个新结构描述符的计算方式和使用范围\n局域键长\n局域宽松因子\nL = dmax / dtarget\n含义：最长键相对正常键长的偏离\n范围：跨体系初筛\n≥ 1.118107\n配位不对称\n畸变均值\nD = mean(std / mean)\n含义：Na–X 键长离散程度\n范围：跨体系初筛\n≥ 0.043210\nNa 位点网络\nNa 位点连通因子\n邻居数百分位 + 最大连通分量百分位，二者取均值\n含义：Na 位点网络的连通程度\n范围：网络可计算结构\n≥ 0.482324\n局域与网络组合\n局域—连通组合\nL × 连通因子\n含义：同时考虑局域宽松与网络连通\n范围：网络可计算结构\n≥ 0.577777\n两个局域量的乘积\n畸变加权宽松比\nD × L\n含义：同时考虑宽松与畸变\n范围：跨体系初筛\n≥ 0.040056\n保留最长键尺度\n畸变加权最长键\nD × dmax\n含义：同时考虑畸变与最长键\n范围：跨体系初筛\n≥ 0.126580\n按 Na 浓度归一化\n畸变密度\nD / Na 浓度\n含义：按 Na 浓度归一化的畸变\n边界：尺度敏感\n≥ 2.314122\n硫化物专用\n硫化物",
+      "slots": [
+        {
+          "slot_id": "s08_sh2",
+          "role": "title_candidate",
+          "text": "备份 1 · 描述符定义",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 55,
+            "width": 182,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh3",
+          "role": "title_candidate",
+          "text": "备份｜八个新结构描述符的计算方式和使用范围",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 70,
+            "y": 88,
+            "width": 1436,
+            "height": 89
+          },
+          "text_metrics": {
+            "font_size_px": 58.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh8",
+          "role": "label_candidate",
+          "text": "局域键长",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 237,
+            "width": 82,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh9",
+          "role": "label_candidate",
+          "text": "局域宽松因子",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 274,
+            "width": 214,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh11",
+          "role": "label_candidate",
+          "text": "L = dmax / dtarget",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 347,
+            "width": 226,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh12",
+          "role": "label_candidate",
+          "text": "含义：最长键相对正常键长的偏离",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 395,
+            "width": 352,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh13",
+          "role": "label_candidate",
+          "text": "范围：跨体系初筛",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 443,
+            "width": 188,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh14",
+          "role": "label_candidate",
+          "text": "≥ 1.118107",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 494,
+            "width": 142,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh18",
+          "role": "label_candidate",
+          "text": "配位不对称",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 549,
+            "y": 237,
+            "width": 102,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh19",
+          "role": "label_candidate",
+          "text": "畸变均值",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 549,
+            "y": 274,
+            "width": 144,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh21",
+          "role": "label_candidate",
+          "text": "D = mean(std / mean)",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 549,
+            "y": 347,
+            "width": 258,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh22",
+          "role": "label_candidate",
+          "text": "含义：Na–X 键长离散程度",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 549,
+            "y": 395,
+            "width": 280,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh23",
+          "role": "label_candidate",
+          "text": "范围：跨体系初筛",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 549,
+            "y": 443,
+            "width": 188,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh24",
+          "role": "label_candidate",
+          "text": "≥ 0.043210",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 549,
+            "y": 494,
+            "width": 142,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh28",
+          "role": "label_candidate",
+          "text": "Na 位点网络",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 999,
+            "y": 237,
+            "width": 113,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh29",
+          "role": "label_candidate",
+          "text": "Na 位点连通因子",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 999,
+            "y": 274,
+            "width": 291,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh31",
+          "role": "label_candidate",
+          "text": "邻居数百分位 + 最大连通分量百分位，二者取均值",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 999,
+            "y": 343,
+            "width": 247,
+            "height": 68
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh32",
+          "role": "label_candidate",
+          "text": "含义：Na 位点网络的连通程度",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 999,
+            "y": 425,
+            "width": 323,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh33",
+          "role": "label_candidate",
+          "text": "范围：网络可计算结构",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 999,
+            "y": 467,
+            "width": 235,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh34",
+          "role": "label_candidate",
+          "text": "≥ 0.482324",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 999,
+            "y": 506,
+            "width": 142,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh38",
+          "role": "label_candidate",
+          "text": "局域与网络组合",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1449,
+            "y": 237,
+            "width": 142,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh39",
+          "role": "label_candidate",
+          "text": "局域—连通组合",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1449,
+            "y": 274,
+            "width": 233,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh41",
+          "role": "label_candidate",
+          "text": "L × 连通因子",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1449,
+            "y": 347,
+            "width": 149,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh42",
+          "role": "label_candidate",
+          "text": "含义：同时考虑局域宽松与网络连通",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1449,
+            "y": 395,
+            "width": 375,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh43",
+          "role": "label_candidate",
+          "text": "范围：网络可计算结构",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1449,
+            "y": 443,
+            "width": 235,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh44",
+          "role": "label_candidate",
+          "text": "≥ 0.577777",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1449,
+            "y": 494,
+            "width": 142,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh48",
+          "role": "label_candidate",
+          "text": "两个局域量的乘积",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 613,
+            "width": 162,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh49",
+          "role": "label_candidate",
+          "text": "畸变加权宽松比",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 650,
+            "width": 249,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh51",
+          "role": "label_candidate",
+          "text": "D × L",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 723,
+            "width": 60,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh52",
+          "role": "label_candidate",
+          "text": "含义：同时考虑宽松与畸变",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 771,
+            "width": 282,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh53",
+          "role": "label_candidate",
+          "text": "范围：跨体系初筛",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 819,
+            "width": 188,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh54",
+          "role": "label_candidate",
+          "text": "≥ 0.040056",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 99,
+            "y": 870,
+            "width": 142,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh58",
+          "role": "label_candidate",
+          "text": "保留最长键尺度",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 549,
+            "y": 613,
+            "width": 142,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh59",
+          "role": "label_candidate",
+          "text": "畸变加权最长键",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 549,
+            "y": 650,
+            "width": 249,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh61",
+          "role": "label_candidate",
+          "text": "D × dmax",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 549,
+            "y": 723,
+            "width": 103,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh62",
+          "role": "label_candidate",
+          "text": "含义：同时考虑畸变与最长键",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 549,
+            "y": 771,
+            "width": 305,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh63",
+          "role": "label_candidate",
+          "text": "范围：跨体系初筛",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 549,
+            "y": 819,
+            "width": 188,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh64",
+          "role": "label_candidate",
+          "text": "≥ 0.126580",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 549,
+            "y": 870,
+            "width": 142,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh68",
+          "role": "label_candidate",
+          "text": "按 Na 浓度归一化",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 999,
+            "y": 613,
+            "width": 160,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh69",
+          "role": "label_candidate",
+          "text": "畸变密度",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 999,
+            "y": 650,
+            "width": 144,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh71",
+          "role": "label_candidate",
+          "text": "D / Na 浓度",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 999,
+            "y": 723,
+            "width": 131,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh72",
+          "role": "label_candidate",
+          "text": "含义：按 Na 浓度归一化的畸变",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 999,
+            "y": 771,
+            "width": 330,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh73",
+          "role": "label_candidate",
+          "text": "边界：尺度敏感",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 999,
+            "y": 819,
+            "width": 165,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh74",
+          "role": "label_candidate",
+          "text": "≥ 2.314122",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 999,
+            "y": 870,
+            "width": 142,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh78",
+          "role": "label_candidate",
+          "text": "硫化物专用",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1449,
+            "y": 613,
+            "width": 102,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh79",
+          "role": "label_candidate",
+          "text": "硫化物键长归一化",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1449,
+            "y": 650,
+            "width": 285,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh81",
+          "role": "label_candidate",
+          "text": "mean(Na–S) / dtarget",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1449,
+            "y": 723,
+            "width": 266,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh82",
+          "role": "label_candidate",
+          "text": "含义：硫化物中平均 Na–S 键长",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1449,
+            "y": 771,
+            "width": 336,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh83",
+          "role": "label_candidate",
+          "text": "边界：仅族内使用",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1449,
+            "y": 819,
+            "width": 188,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh84",
+          "role": "label_candidate",
+          "text": "≥ 1.039905",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1449,
+            "y": 870,
+            "width": 142,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh87",
+          "role": "label_candidate",
+          "text": "阈值只适用于当前数据集，后续仍需用 DFT 验证。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 995,
+            "width": 577,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s08_sh88",
+          "role": "label_candidate",
+          "text": "08 / 11",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1783,
+            "y": 1022,
+            "width": 65,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 9,
+      "page_type": "content_candidate",
+      "text_summary": "备份 2 · 阈值复算\n备份｜阈值由平衡准确率最大值确定\n局域宽松因子的三段经验区间\n三个区间来自当前样本统计\n<1.09\n慢导体富集\n1.118107\n筛选阈值\n≥1.19\n快导体富集\n四个阈值的分类权衡\n平衡准确率\n灵敏度\n特异度\n1.0\n0.5\n0\n0.978\n局域宽松\nt=1.118107\n畸变均值\nt=0.043210\nD×L\n0.040056 / 058\nD×dmax\n0.126580 / 582\n局域宽松：有效样本 102\n预测快\n预测慢\n真实快\n真实慢\n45\nTP\n1\nFN\n25\nFP\n31\nTN\n局域宽松阈值只漏掉 1 个快导体，但同时保留了25 个慢导体，因此还需要 DFT 复筛。\n小数精度说明\nD×L：0.040056 → CSV 峰值 0.040058\nD×dmax 同理：0.126580 → 0.126582\n两组阈值相差约 2×10⁻⁶，是 CSV 保存精度造成的，不代表结构差异。\n09 / 11",
+      "slots": [
+        {
+          "slot_id": "s09_sh2",
+          "role": "title_candidate",
+          "text": "备份 2 · 阈值复算",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 55,
+            "width": 162,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh3",
+          "role": "title_candidate",
+          "text": "备份｜阈值由平衡准确率最大值确定",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 70,
+            "y": 88,
+            "width": 1095,
+            "height": 89
+          },
+          "text_metrics": {
+            "font_size_px": 58.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh6",
+          "role": "label_candidate",
+          "text": "局域宽松因子的三段经验区间",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 210,
+            "width": 436,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh7",
+          "role": "label_candidate",
+          "text": "三个区间来自当前样本统计",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1567,
+            "y": 217,
+            "width": 282,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh11",
+          "role": "label_candidate",
+          "text": "<1.09",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 288,
+            "width": 75,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh12",
+          "role": "label_candidate",
+          "text": "慢导体富集",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 237,
+            "y": 288,
+            "width": 129,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh13",
+          "role": "label_candidate",
+          "text": "1.118107",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 699,
+            "y": 288,
+            "width": 119,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh14",
+          "role": "label_candidate",
+          "text": "筛选阈值",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 873,
+            "y": 288,
+            "width": 104,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh15",
+          "role": "label_candidate",
+          "text": "≥1.19",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1137,
+            "y": 288,
+            "width": 75,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh16",
+          "role": "label_candidate",
+          "text": "快导体富集",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1271,
+            "y": 288,
+            "width": 135,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh18",
+          "role": "label_candidate",
+          "text": "四个阈值的分类权衡",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 398,
+            "width": 303,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh20",
+          "role": "label_candidate",
+          "text": "平衡准确率",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 735,
+            "y": 398,
+            "width": 118,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh22",
+          "role": "label_candidate",
+          "text": "灵敏度",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1011,
+            "y": 398,
+            "width": 72,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh24",
+          "role": "label_candidate",
+          "text": "特异度",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1199,
+            "y": 398,
+            "width": 72,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh28",
+          "role": "label_candidate",
+          "text": "1.0",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 52,
+            "y": 491,
+            "width": 33,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh29",
+          "role": "label_candidate",
+          "text": "0.5",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 52,
+            "y": 671,
+            "width": 33,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh30",
+          "role": "label_candidate",
+          "text": "0",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 73,
+            "y": 851,
+            "width": 12,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh34",
+          "role": "label_candidate",
+          "text": "0.978",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 240,
+            "y": 471,
+            "width": 57,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh44",
+          "role": "label_candidate",
+          "text": "局域宽松",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 218,
+            "y": 881,
+            "width": 100,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh45",
+          "role": "label_candidate",
+          "text": "t=1.118107",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 215,
+            "y": 913,
+            "width": 106,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh46",
+          "role": "label_candidate",
+          "text": "畸变均值",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 498,
+            "y": 881,
+            "width": 100,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh47",
+          "role": "label_candidate",
+          "text": "t=0.043210",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 495,
+            "y": 913,
+            "width": 106,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh48",
+          "role": "label_candidate",
+          "text": "D×L",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 806,
+            "y": 881,
+            "width": 44,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh49",
+          "role": "label_candidate",
+          "text": "0.040056 / 058",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 759,
+            "y": 913,
+            "width": 139,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh50",
+          "role": "label_candidate",
+          "text": "D×dmax",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1064,
+            "y": 881,
+            "width": 88,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh51",
+          "role": "label_candidate",
+          "text": "0.126580 / 582",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1039,
+            "y": 913,
+            "width": 139,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh54",
+          "role": "label_candidate",
+          "text": "局域宽松：有效样本 102",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1321,
+            "y": 398,
+            "width": 368,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh55",
+          "role": "label_candidate",
+          "text": "预测快",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1500,
+            "y": 459,
+            "width": 75,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh56",
+          "role": "label_candidate",
+          "text": "预测慢",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1724,
+            "y": 459,
+            "width": 75,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh57",
+          "role": "label_candidate",
+          "text": "真实快",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1349,
+            "y": 563,
+            "width": 75,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh58",
+          "role": "label_candidate",
+          "text": "真实慢",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1349,
+            "y": 691,
+            "width": 75,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh63",
+          "role": "label_candidate",
+          "text": "45",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1511,
+            "y": 516,
+            "width": 55,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh64",
+          "role": "label_candidate",
+          "text": "TP",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1526,
+            "y": 569,
+            "width": 24,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh65",
+          "role": "label_candidate",
+          "text": "1",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1736,
+            "y": 516,
+            "width": 29,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh66",
+          "role": "label_candidate",
+          "text": "FN",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1739,
+            "y": 569,
+            "width": 24,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh67",
+          "role": "label_candidate",
+          "text": "25",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1511,
+            "y": 636,
+            "width": 55,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh68",
+          "role": "label_candidate",
+          "text": "FP",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1526,
+            "y": 689,
+            "width": 24,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh69",
+          "role": "label_candidate",
+          "text": "31",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1724,
+            "y": 636,
+            "width": 55,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh70",
+          "role": "label_candidate",
+          "text": "TN",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1739,
+            "y": 689,
+            "width": 24,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh71",
+          "role": "label_candidate",
+          "text": "局域宽松阈值只漏掉 1 个快导体，但同时保留了25 个慢导体，因此还需要 DFT 复筛。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1321,
+            "y": 741,
+            "width": 425,
+            "height": 61
+          },
+          "text_metrics": {
+            "font_size_px": 20.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh75",
+          "role": "label_candidate",
+          "text": "小数精度说明",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1361,
+            "y": 837,
+            "width": 149,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh76",
+          "role": "label_candidate",
+          "text": "D×L：0.040056 → CSV 峰值 0.040058",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1361,
+            "y": 875,
+            "width": 417,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh77",
+          "role": "label_candidate",
+          "text": "D×dmax 同理：0.126580 → 0.126582",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1361,
+            "y": 909,
+            "width": 325,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh80",
+          "role": "label_candidate",
+          "text": "两组阈值相差约 2×10⁻⁶，是 CSV 保存精度造成的，不代表结构差异。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 1001,
+            "width": 800,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s09_sh81",
+          "role": "label_candidate",
+          "text": "09 / 11",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1783,
+            "y": 1022,
+            "width": 65,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 10,
+      "page_type": "content_candidate",
+      "text_summary": "备份 3 · 验证方法\n备份｜不同验证方法分别检查哪些问题\n方法\n检查的风险\n能够说明什么\n交叉验证\n模型在不同数据划分下是否稳定？\n样本内预测是否可重复\nBootstrap\n描述符排名是否受少数样本影响？\n描述符排名的稳定性\nLOFO\n留出一个材料体系后，结果是否仍成立？\n跨材料体系外推能力\nLOAO\n留出一种阴离子后，结果是否仍成立？\n跨阴离子外推能力\n偏相关 / DML\n控制已知混杂后，关联是否仍存在？\n控制已知混杂后仍存在统计关联，但不能证明因果\nDFT\n候选结构中是否存在可行迁移路径？\n迁移路径及其对应势垒\n不用于求阈值\n这些方法用于检查稳定性，不直接给出\n1.118\n0.043\n0.040\n0.127\n四个阈值来自平衡准确率扫描。\n统计检验用于判断描述符是否稳定；DFT 用于验证迁移路径和势垒。\n10 / 11",
+      "slots": [
+        {
+          "slot_id": "s10_sh2",
+          "role": "title_candidate",
+          "text": "备份 3 · 验证方法",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 55,
+            "width": 162,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh3",
+          "role": "title_candidate",
+          "text": "备份｜不同验证方法分别检查哪些问题",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 70,
+            "y": 88,
+            "width": 1164,
+            "height": 89
+          },
+          "text_metrics": {
+            "font_size_px": 58.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh8",
+          "role": "label_candidate",
+          "text": "方法",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 236,
+            "width": 55,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh9",
+          "role": "label_candidate",
+          "text": "检查的风险",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 373,
+            "y": 236,
+            "width": 135,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh10",
+          "role": "label_candidate",
+          "text": "能够说明什么",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 961,
+            "y": 236,
+            "width": 162,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh14",
+          "role": "label_candidate",
+          "text": "交叉验证",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 324,
+            "width": 136,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh15",
+          "role": "label_candidate",
+          "text": "模型在不同数据划分下是否稳定？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 373,
+            "y": 330,
+            "width": 384,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh16",
+          "role": "label_candidate",
+          "text": "样本内预测是否可重复",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 961,
+            "y": 330,
+            "width": 269,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh19",
+          "role": "label_candidate",
+          "text": "Bootstrap",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 432,
+            "width": 169,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh20",
+          "role": "label_candidate",
+          "text": "描述符排名是否受少数样本影响？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 373,
+            "y": 438,
+            "width": 384,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh21",
+          "role": "label_candidate",
+          "text": "描述符排名的稳定性",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 961,
+            "y": 438,
+            "width": 242,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh24",
+          "role": "label_candidate",
+          "text": "LOFO",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 540,
+            "width": 94,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh25",
+          "role": "label_candidate",
+          "text": "留出一个材料体系后，结果是否仍成立？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 373,
+            "y": 546,
+            "width": 460,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh26",
+          "role": "label_candidate",
+          "text": "跨材料体系外推能力",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 961,
+            "y": 546,
+            "width": 242,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh29",
+          "role": "label_candidate",
+          "text": "LOAO",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 648,
+            "width": 94,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh30",
+          "role": "label_candidate",
+          "text": "留出一种阴离子后，结果是否仍成立？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 373,
+            "y": 654,
+            "width": 434,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh31",
+          "role": "label_candidate",
+          "text": "跨阴离子外推能力",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 961,
+            "y": 654,
+            "width": 216,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh34",
+          "role": "label_candidate",
+          "text": "偏相关 / DML",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 764,
+            "width": 214,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh35",
+          "role": "label_candidate",
+          "text": "控制已知混杂后，关联是否仍存在？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 373,
+            "y": 754,
+            "width": 194,
+            "height": 73
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh36",
+          "role": "label_candidate",
+          "text": "控制已知混杂后仍存在统计关联，但不能证明因果",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 961,
+            "y": 754,
+            "width": 362,
+            "height": 73
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh39",
+          "role": "label_candidate",
+          "text": "DFT",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 892,
+            "width": 61,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh40",
+          "role": "label_candidate",
+          "text": "候选结构中是否存在可行迁移路径？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 373,
+            "y": 882,
+            "width": 218,
+            "height": 73
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh41",
+          "role": "label_candidate",
+          "text": "迁移路径及其对应势垒",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 961,
+            "y": 898,
+            "width": 269,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh45",
+          "role": "label_candidate",
+          "text": "不用于求阈值",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1633,
+            "y": 257,
+            "width": 149,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh47",
+          "role": "label_candidate",
+          "text": "这些方法用于检查稳定性，不直接给出",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1601,
+            "y": 351,
+            "width": 228,
+            "height": 126
+          },
+          "text_metrics": {
+            "font_size_px": 26.93,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh48",
+          "role": "label_candidate",
+          "text": "1.118",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1600,
+            "y": 478,
+            "width": 132,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh49",
+          "role": "label_candidate",
+          "text": "0.043",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1600,
+            "y": 548,
+            "width": 132,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh50",
+          "role": "label_candidate",
+          "text": "0.040",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1600,
+            "y": 618,
+            "width": 132,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh51",
+          "role": "label_candidate",
+          "text": "0.127",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1600,
+            "y": 688,
+            "width": 132,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh53",
+          "role": "label_candidate",
+          "text": "四个阈值来自平衡准确率扫描。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1601,
+            "y": 811,
+            "width": 178,
+            "height": 70
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh55",
+          "role": "label_candidate",
+          "text": "统计检验用于判断描述符是否稳定；DFT 用于验证迁移路径和势垒。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 1011,
+            "width": 740,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s10_sh56",
+          "role": "label_candidate",
+          "text": "10 / 11",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1783,
+            "y": 1022,
+            "width": 65,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 11,
+      "page_type": "ending_candidate",
+      "text_summary": "备份 4 · 候选材料\n备份｜10 个候选的结构信号与第一项 DFT 问题\n体系\n材料\n局域宽松 L\n畸变 D\n第一项验证问题\nNASICON\nNa₃YZrSiP₂O₁₂\n1.29\n0.082\n高局域信号是否对应低势垒？\nNASICON\nNa₆Hf₃ZnSi₂P₄O₂₄\n1.27\n0.066\n复杂的 Na 配位是否仍能形成连续路径？\nNASICON\nNa₃CaHf(PO₄)₃\n1.32\n0.066\n磷酸根窗口会不会限制 Na 迁移？\n硫化物\nNa₃TaS₄\n1.28\n0.048\n软晶格中是否出现低势垒路径？\n硫化物\nNa₄Ga₂S₅\n1.18\n0.051\n链间是否存在连续 Na 迁移路径？\n硫化物\nNa₆Sn₂S₇\n1.20\n0.055\n迁移计算前是否存在电子态风险？\n氟化物\nNa₇Zr₆F₃₁\n1.28\n0.057\n主要迁移离子是 Na⁺ 还是 F⁻？\n氟化物\nNa₂MgInF₇\n1.18\n0.061\nNaF₇ 和 NaF₈ 位点之间的迁移势垒多高？\n氟化物\nC2/c-Na₂ZnGaF₇\n1.15\n0.072\n较高畸变能否对应较低 Na 迁移势垒？\n混合阴离子\nNa₃Sn(PO₄)(",
+      "slots": [
+        {
+          "slot_id": "s11_sh2",
+          "role": "title_candidate",
+          "text": "备份 4 · 候选材料",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 55,
+            "width": 162,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh3",
+          "role": "title_candidate",
+          "text": "备份｜10 个候选的结构信号与第一项 DFT 问题",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 70,
+            "y": 88,
+            "width": 1714,
+            "height": 89
+          },
+          "text_metrics": {
+            "font_size_px": 58.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh8",
+          "role": "label_candidate",
+          "text": "体系",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 228,
+            "width": 51,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh9",
+          "role": "label_candidate",
+          "text": "材料",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 287,
+            "y": 228,
+            "width": 51,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh10",
+          "role": "label_candidate",
+          "text": "局域宽松 L",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 670,
+            "y": 228,
+            "width": 127,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh11",
+          "role": "label_candidate",
+          "text": "畸变 D",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 891,
+            "y": 228,
+            "width": 75,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh12",
+          "role": "label_candidate",
+          "text": "第一项验证问题",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1021,
+            "y": 228,
+            "width": 173,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh19",
+          "role": "label_candidate",
+          "text": "NASICON",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 294,
+            "width": 100,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh20",
+          "role": "label_candidate",
+          "text": "Na₃YZrSiP₂O₁₂",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 287,
+            "y": 294,
+            "width": 182,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh21",
+          "role": "label_candidate",
+          "text": "1.29",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 736,
+            "y": 293,
+            "width": 61,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh22",
+          "role": "label_candidate",
+          "text": "0.082",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 895,
+            "y": 293,
+            "width": 72,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh23",
+          "role": "label_candidate",
+          "text": "高局域信号是否对应低势垒？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1021,
+            "y": 294,
+            "width": 305,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh27",
+          "role": "label_candidate",
+          "text": "NASICON",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 358,
+            "width": 100,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh28",
+          "role": "label_candidate",
+          "text": "Na₆Hf₃ZnSi₂P₄O₂₄",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 287,
+            "y": 358,
+            "width": 223,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh29",
+          "role": "label_candidate",
+          "text": "1.27",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 736,
+            "y": 357,
+            "width": 61,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh30",
+          "role": "label_candidate",
+          "text": "0.066",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 895,
+            "y": 357,
+            "width": 72,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh31",
+          "role": "label_candidate",
+          "text": "复杂的 Na 配位是否仍能形成连续路径？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1021,
+            "y": 358,
+            "width": 426,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh35",
+          "role": "label_candidate",
+          "text": "NASICON",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 422,
+            "width": 100,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh36",
+          "role": "label_candidate",
+          "text": "Na₃CaHf(PO₄)₃",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 287,
+            "y": 422,
+            "width": 188,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh37",
+          "role": "label_candidate",
+          "text": "1.32",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 736,
+            "y": 421,
+            "width": 61,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh38",
+          "role": "label_candidate",
+          "text": "0.066",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 895,
+            "y": 421,
+            "width": 72,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh39",
+          "role": "label_candidate",
+          "text": "磷酸根窗口会不会限制 Na 迁移？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1021,
+            "y": 422,
+            "width": 354,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh43",
+          "role": "label_candidate",
+          "text": "硫化物",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 486,
+            "width": 75,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh44",
+          "role": "label_candidate",
+          "text": "Na₃TaS₄",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 287,
+            "y": 486,
+            "width": 99,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh45",
+          "role": "label_candidate",
+          "text": "1.28",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 736,
+            "y": 485,
+            "width": 61,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh46",
+          "role": "label_candidate",
+          "text": "0.048",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 895,
+            "y": 485,
+            "width": 72,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh47",
+          "role": "label_candidate",
+          "text": "软晶格中是否出现低势垒路径？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1021,
+            "y": 486,
+            "width": 328,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh51",
+          "role": "label_candidate",
+          "text": "硫化物",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 550,
+            "width": 75,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh52",
+          "role": "label_candidate",
+          "text": "Na₄Ga₂S₅",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 287,
+            "y": 550,
+            "width": 113,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh53",
+          "role": "label_candidate",
+          "text": "1.18",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 736,
+            "y": 549,
+            "width": 61,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh54",
+          "role": "label_candidate",
+          "text": "0.051",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 895,
+            "y": 549,
+            "width": 72,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh55",
+          "role": "label_candidate",
+          "text": "链间是否存在连续 Na 迁移路径？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1021,
+            "y": 550,
+            "width": 354,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh59",
+          "role": "label_candidate",
+          "text": "硫化物",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 614,
+            "width": 75,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh60",
+          "role": "label_candidate",
+          "text": "Na₆Sn₂S₇",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 287,
+            "y": 614,
+            "width": 113,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh61",
+          "role": "label_candidate",
+          "text": "1.20",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 736,
+            "y": 613,
+            "width": 61,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh62",
+          "role": "label_candidate",
+          "text": "0.055",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 895,
+            "y": 613,
+            "width": 72,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh63",
+          "role": "label_candidate",
+          "text": "迁移计算前是否存在电子态风险？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1021,
+            "y": 614,
+            "width": 352,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh67",
+          "role": "label_candidate",
+          "text": "氟化物",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 678,
+            "width": 75,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh68",
+          "role": "label_candidate",
+          "text": "Na₇Zr₆F₃₁",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 287,
+            "y": 678,
+            "width": 127,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh69",
+          "role": "label_candidate",
+          "text": "1.28",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 736,
+            "y": 677,
+            "width": 61,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh70",
+          "role": "label_candidate",
+          "text": "0.057",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 895,
+            "y": 677,
+            "width": 72,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh71",
+          "role": "label_candidate",
+          "text": "主要迁移离子是 Na⁺ 还是 F⁻？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1021,
+            "y": 678,
+            "width": 332,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh75",
+          "role": "label_candidate",
+          "text": "氟化物",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 742,
+            "width": 75,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh76",
+          "role": "label_candidate",
+          "text": "Na₂MgInF₇",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 287,
+            "y": 742,
+            "width": 126,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh77",
+          "role": "label_candidate",
+          "text": "1.18",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 736,
+            "y": 741,
+            "width": 61,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh78",
+          "role": "label_candidate",
+          "text": "0.061",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 895,
+            "y": 741,
+            "width": 72,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh79",
+          "role": "label_candidate",
+          "text": "NaF₇ 和 NaF₈ 位点之间的迁移势垒多高？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1021,
+            "y": 742,
+            "width": 445,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh83",
+          "role": "label_candidate",
+          "text": "氟化物",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 806,
+            "width": 75,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh84",
+          "role": "label_candidate",
+          "text": "C2/c-Na₂ZnGaF₇",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 287,
+            "y": 806,
+            "width": 196,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh85",
+          "role": "label_candidate",
+          "text": "1.15",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 736,
+            "y": 805,
+            "width": 61,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh86",
+          "role": "label_candidate",
+          "text": "0.072",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 895,
+            "y": 805,
+            "width": 72,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh87",
+          "role": "label_candidate",
+          "text": "较高畸变能否对应较低 Na 迁移势垒？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1021,
+            "y": 806,
+            "width": 402,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh91",
+          "role": "label_candidate",
+          "text": "混合阴离子",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 103,
+            "y": 870,
+            "width": 124,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh92",
+          "role": "label_candidate",
+          "text": "Na₃Sn(PO₄)(CO₃)",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 287,
+            "y": 870,
+            "width": 223,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh93",
+          "role": "label_candidate",
+          "text": "1.27",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 736,
+            "y": 869,
+            "width": 61,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh94",
+          "role": "label_candidate",
+          "text": "0.070",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 895,
+            "y": 869,
+            "width": 72,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh95",
+          "role": "label_candidate",
+          "text": "CO₃ 基团运动是否会降低 Na 迁移势垒？",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1021,
+            "y": 870,
+            "width": 436,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh98",
+          "role": "label_candidate",
+          "text": "目前这 10 个材料都只作为第一轮 DFT 候选，尚不能判断离子电导率。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 962,
+            "width": 875,
+            "height": 37
+          },
+          "text_metrics": {
+            "font_size_px": 24.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh100",
+          "role": "label_candidate",
+          "text": "表中问题决定每个材料最先做哪项计算。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 71,
+            "y": 1022,
+            "width": 345,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s11_sh101",
+          "role": "label_candidate",
+          "text": "11 / 11",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1783,
+            "y": 1022,
+            "width": 65,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    }
+  ],
+  "plan_contract": {
+    "schema": "template_fill_pptx_plan.v1",
+    "slides": [
+      {
+        "source_slide": 1,
+        "purpose": "封面 / 章节 / 内容 / 结尾",
+        "replacements": [
+          {
+            "slot_id": "s01_sh2",
+            "text": "替换后的文字"
+          }
+        ],
+        "table_edits": [
+          {
+            "table_id": "s01_tbl3",
+            "cells": [
+              {
+                "row": 0,
+                "col": 0,
+                "text": "替换后的单元格"
+              }
+            ]
+          }
+        ],
+        "chart_edits": [
+          {
+            "chart_id": "s01_ch4",
+            "categories": [
+              "A",
+              "B"
+            ],
+            "series": [
+              {
+                "name": "系列1",
+                "values": [
+                  1,
+                  2
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

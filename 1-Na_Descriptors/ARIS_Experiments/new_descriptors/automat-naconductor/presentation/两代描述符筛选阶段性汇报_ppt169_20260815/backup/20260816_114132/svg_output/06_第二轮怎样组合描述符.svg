@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">05｜第二轮组合方式</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">第二轮怎样组合描述符？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="comparison-lead" data-pptx-bounds="48 150 1184 46">
+    <text x="48" y="182" font-family="Arial, 'PingFang SC', sans-serif" font-size="26" fill="#182229">差别不在于“试得更多”，而在于“先规定什么样的组合有材料意义”。</text>
+  </g>
+  <g id="first-round" data-pptx-bounds="48 222 544 270">
+    <rect x="48" y="222" width="544" height="246" fill="#FBE5DF"/>
+    <text x="80" y="264" font-family="Arial, 'PingFang SC', sans-serif" font-size="26" font-weight="bold" fill="#C75B39">第一轮：先列出很多公式</text>
+    <text x="80" y="312" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">结构量先混合起来</text>
+    <text x="80" y="350" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">再统一比较谁的分数高</text>
+    <text x="80" y="388" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">最后留下看起来最好的组合</text>
+    <line x1="80" y1="416" x2="560" y2="416" stroke="#C75B39" stroke-width="2"/>
+    <text x="80" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">优点：能快速找到研究方向</text>
+    <text x="80" y="476" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">风险：同一信息可能重复，公式也可能难以解释</text>
+  </g>
+  <g id="second-round" data-pptx-bounds="688 222 544 270">
+    <rect x="688" y="222" width="544" height="246" fill="#EFF3F1"/>
+    <text x="720" y="264" font-family="Arial, 'PingFang SC', sans-serif" font-size="26" font-weight="bold" fill="#2E7D6E">第二轮：先按材料意义分组</text>
+    <text x="720" y="312" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">局域配位、Na 网络、骨架、组成等</text>
+    <text x="720" y="350" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">每类选能代表不同作用的结构量</text>
+    <text x="720" y="388" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">只允许物理解释和单位都说得通的加乘除</text>
+    <line x1="720" y1="416" x2="1200" y2="416" stroke="#2E7D6E" stroke-width="2"/>
+    <text x="720" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">优势：候选更少、更容易解释、更少重复信息</text>
+    <text x="720" y="476" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">仍需验证：选择过程本身会不会让分数偏乐观</text>
+  </g>
+  <g id="second-round-steps" data-pptx-bounds="48 510 1184 108">
+    <text x="48" y="538" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">第二轮实际怎样做：</text>
+    <rect x="236" y="510" width="218" height="70" fill="#113B4A"/>
+    <text x="345" y="542" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">每次换一半材料</text>
+    <text x="345" y="566" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#D9E4E1">重新挑选少量代表</text>
+    <line x1="454" y1="545" x2="484" y2="545" stroke="#2E7D6E" stroke-width="3"/>
+    <rect x="484" y="510" width="218" height="70" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="593" y="542" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">看哪些结构量反复出现</text>
+    <text x="593" y="566" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">而不是只出现一次</text>
+    <line x1="702" y1="545" x2="732" y2="545" stroke="#2E7D6E" stroke-width="3"/>
+    <rect x="732" y="510" width="218" height="70" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="841" y="542" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">再做允许的组合</text>
+    <text x="841" y="566" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">检查材料解释和单位</text>
+    <line x1="950" y1="545" x2="980" y2="545" stroke="#C75B39" stroke-width="3"/>
+    <rect x="980" y="510" width="252" height="70" fill="#FBE5DF" stroke="#C75B39" stroke-width="1"/>
+    <text x="1106" y="542" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">只把靠前者交给复查</text>
+    <text x="1106" y="566" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">当前仍属于探索性结果</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">正文｜第二轮先限制候选的材料含义，再比较分数</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">06 / 13</text>
+  </g>
+</svg>

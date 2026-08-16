@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 40 1184 140">
+    <text x="48" y="60" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">阶段性工作汇报｜两轮描述符筛选</text>
+    <text x="48" y="126" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">高分不难，难的是知道它为什么高</text>
+    <line x1="48" y1="150" x2="1232" y2="150" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="cover-message" data-pptx-bounds="48 206 730 300">
+    <text x="48" y="252" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" font-weight="bold" fill="#182229">找到一个高分描述符并不难。</text>
+    <text x="48" y="300" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" font-weight="bold" fill="#C75B39">难的是确认它反映的是材料结构。</text>
+    <text x="48" y="358" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#647176">本次汇报关注三个材料问题：</text>
+    <text x="48" y="402" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">不同体系中是否仍然成立？</text>
+    <text x="48" y="440" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">拿掉体系差异后是否仍然同向？</text>
+    <text x="48" y="478" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">名字、公式和实际计算是否一致？</text>
+  </g>
+  <g id="risk-convergence" data-pptx-bounds="792 214 440 320">
+    <text x="808" y="246" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">一个高相关，可能混进三种来源</text>
+    <rect x="808" y="270" width="300" height="50" fill="#EFF3F1"/>
+    <text x="832" y="302" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#113B4A">材料体系差异</text>
+    <line x1="1108" y1="295" x2="1160" y2="295" stroke="#2E7D6E" stroke-width="3"/>
+    <rect x="808" y="344" width="300" height="50" fill="#EFF3F1"/>
+    <text x="832" y="376" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#113B4A">测量口径差异</text>
+    <line x1="1108" y1="369" x2="1160" y2="369" stroke="#2E7D6E" stroke-width="3"/>
+    <rect x="808" y="418" width="300" height="50" fill="#FBE5DF"/>
+    <text x="832" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#C75B39">CIF 写法差异</text>
+    <line x1="1160" y1="295" x2="1160" y2="369" stroke="#2E7D6E" stroke-width="3"/>
+    <line x1="1160" y1="369" x2="1160" y2="443" stroke="#C75B39" stroke-width="3"/>
+    <circle cx="1160" cy="443" r="10" fill="#C75B39"/>
+    <text x="1004" y="506" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">高相关 ≠ 结构规律</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">材料筛选中的问题，推动了两轮方法的差别</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">01 / 13</text>
+  </g>
+</svg>

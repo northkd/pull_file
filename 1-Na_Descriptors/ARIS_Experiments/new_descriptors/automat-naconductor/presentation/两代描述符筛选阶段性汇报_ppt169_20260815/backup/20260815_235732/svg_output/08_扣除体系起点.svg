@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">08｜第一道防线</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">先把材料体系的起点扣掉</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 140 1184 46">
+    <text x="48" y="172" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" fill="#182229">先校正不同起跑线，再问结构量与电导率是否仍同向。</text>
+  </g>
+  <g id="mixed-system-view" data-pptx-bounds="48 212 440 330">
+    <text x="48" y="238" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">错误路径｜全样本直接比较</text>
+    <line x1="146" y1="322" x2="462" y2="322" stroke="#CFDAD7" stroke-width="4"/>
+    <line x1="146" y1="400" x2="462" y2="400" stroke="#CFDAD7" stroke-width="4"/>
+    <line x1="146" y1="478" x2="462" y2="478" stroke="#CFDAD7" stroke-width="4"/>
+    <text x="48" y="328" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">硫化物</text>
+    <text x="48" y="406" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">NASICON</text>
+    <text x="48" y="484" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">卤化物</text>
+    <circle cx="222" cy="296" r="9" fill="#C75B39"/>
+    <circle cx="306" cy="278" r="9" fill="#C75B39"/>
+    <circle cx="390" cy="260" r="9" fill="#C75B39"/>
+    <circle cx="222" cy="416" r="9" fill="#113B4A"/>
+    <circle cx="306" cy="396" r="9" fill="#113B4A"/>
+    <circle cx="390" cy="376" r="9" fill="#113B4A"/>
+    <circle cx="222" cy="510" r="9" fill="#2E7D6E"/>
+    <circle cx="306" cy="488" r="9" fill="#2E7D6E"/>
+    <circle cx="390" cy="466" r="9" fill="#2E7D6E"/>
+    <text x="48" y="536" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">体系身份本身就可能制造整体相关</text>
+  </g>
+  <g id="subtract-system" data-pptx-bounds="470 280 340 170">
+    <text x="620" y="350" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="78" font-weight="bold" fill="#C75B39">−</text>
+    <text x="620" y="398" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">system 起点</text>
+    <text x="620" y="430" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">必要时加入独立 anion_type 信息</text>
+  </g>
+  <g id="within-system-view" data-pptx-bounds="752 212 480 330">
+    <text x="752" y="238" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">第二代路径｜只看体系内部是否同向</text>
+    <text x="752" y="306" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">硫化物内部</text>
+    <line x1="870" y1="304" x2="1208" y2="304" stroke="#CFDAD7" stroke-width="2"/>
+    <circle cx="922" cy="318" r="9" fill="#C75B39"/>
+    <circle cx="1018" cy="298" r="9" fill="#C75B39"/>
+    <circle cx="1114" cy="278" r="9" fill="#C75B39"/>
+    <text x="752" y="402" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">NASICON内部</text>
+    <line x1="870" y1="400" x2="1208" y2="400" stroke="#CFDAD7" stroke-width="2"/>
+    <circle cx="922" cy="414" r="9" fill="#113B4A"/>
+    <circle cx="1018" cy="394" r="9" fill="#113B4A"/>
+    <circle cx="1114" cy="374" r="9" fill="#113B4A"/>
+    <text x="752" y="498" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">卤化物内部</text>
+    <line x1="870" y1="496" x2="1208" y2="496" stroke="#CFDAD7" stroke-width="2"/>
+    <circle cx="922" cy="510" r="9" fill="#2E7D6E"/>
+    <circle cx="1018" cy="490" r="9" fill="#2E7D6E"/>
+    <circle cx="1114" cy="470" r="9" fill="#2E7D6E"/>
+    <text x="752" y="536" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">再汇总“扣除体系差异后的排序一致性”</text>
+  </g>
+  <g id="method-boundary" data-pptx-bounds="48 572 1184 54">
+    <rect x="48" y="574" width="1184" height="50" fill="#EFF3F1"/>
+    <text x="66" y="598" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">准确名称：线性残差的秩相关，不是标准 partial Spearman。</text>
+    <text x="66" y="618" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">仍未控制：致密度、烧结条件、测试方法、total / bulk 差异。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">概念示意｜点位和高度不编码真实数据</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">08 / 18</text>
+  </g>
+</svg>

@@ -1,0 +1,232 @@
+{
+  "schema": "pptx_intake_index.v1",
+  "deck_count": 1,
+  "decks": [
+    {
+      "schema": "pptx_intake_profile.v1",
+      "stem": "11_描述符阈值研究流程分享PPT_20260723_225801",
+      "source_pptx": "/Users/north./Documents/JXNU/research/1-NASICON/1-data-select/因果推断/experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/sources/11_描述符阈值研究流程分享PPT_20260723_225801.pptx",
+      "slide_count": 11,
+      "usage_contract": {
+        "standard_generation": "Use identity and slide-library fields as source facts and recommendation candidates only; do not preserve original page count, order, or coordinates unless the user selected the beautify profile or Fill Native PPTX route.",
+        "beautify": "Promote source text, page order, page count, colors, fonts, and font sizes into locked constraints after user confirmation.",
+        "template_fill": "Use slide slots, tables, charts, diagrams, and geometry as the native PPTX fill contract; diagrams are inventory-only and remain unchanged."
+      },
+      "artifacts": {
+        "identity": "11_描述符阈值研究流程分享PPT_20260723_225801.identity.json",
+        "slide_library": "11_描述符阈值研究流程分享PPT_20260723_225801.slide_library.json"
+      },
+      "canvas": {
+        "width_px": 1920,
+        "height_px": 1080,
+        "aspect": 1.7778
+      },
+      "identity": {
+        "theme_palette": {
+          "background": "#F7F5F0",
+          "background_alt": "#EAE7DF",
+          "text": "#17202A",
+          "text_alt": "#1F497D",
+          "hyperlink": "#D1495B",
+          "accent1": "#16324F",
+          "accent2": "#D1495B",
+          "accent3": "#2E7D6E",
+          "accent4": "#16324F",
+          "accent5": "#C9C5BC",
+          "accent6": "#5E6670",
+          "primary": "#16324F"
+        },
+        "theme_fonts": {
+          "title": {
+            "latin": "Georgia",
+            "ea": "SimSun",
+            "cs": "Georgia"
+          },
+          "body": {
+            "latin": "Arial",
+            "ea": "Microsoft YaHei",
+            "cs": "Arial"
+          }
+        },
+        "theme_sizes": {
+          "title": 43.5,
+          "body": 22.5,
+          "body_levels": [
+            22.5,
+            21.0,
+            19.5,
+            18.5,
+            17.0,
+            15.5,
+            14.0,
+            12.5,
+            11.0
+          ]
+        },
+        "observed_colors": [
+          {
+            "value": "#FFFFFF",
+            "count": 106
+          },
+          {
+            "value": "#EAE7DF",
+            "count": 19
+          },
+          {
+            "value": "#5E6670",
+            "count": 17
+          },
+          {
+            "value": "#C9C5BC",
+            "count": 1
+          }
+        ],
+        "observed_fonts": {
+          "latin": [
+            {
+              "value": "Consolas",
+              "count": 165
+            }
+          ],
+          "ea": [
+            {
+              "value": "Consolas",
+              "count": 133
+            },
+            {
+              "value": "Microsoft YaHei",
+              "count": 32
+            }
+          ]
+        },
+        "observed_sizes_pt": [
+          {
+            "value": 16.5,
+            "count": 161
+          },
+          {
+            "value": 18.0,
+            "count": 114
+          },
+          {
+            "value": 13.5,
+            "count": 69
+          },
+          {
+            "value": 22.5,
+            "count": 48
+          },
+          {
+            "value": 31.5,
+            "count": 23
+          },
+          {
+            "value": 43.5,
+            "count": 12
+          },
+          {
+            "value": 39.0,
+            "count": 5
+          },
+          {
+            "value": 15.0,
+            "count": 2
+          }
+        ],
+        "layout_sizes_pt": []
+      },
+      "structure": {
+        "canvas_px": {
+          "width": 1920,
+          "height": 1080
+        },
+        "page_types": [
+          {
+            "slide_index": 1,
+            "page_type": "cover_candidate",
+            "slot_count": 19,
+            "diagram_count": 0
+          },
+          {
+            "slide_index": 2,
+            "page_type": "content_candidate",
+            "slot_count": 45,
+            "diagram_count": 0
+          },
+          {
+            "slide_index": 3,
+            "page_type": "chapter_candidate",
+            "slot_count": 35,
+            "diagram_count": 0
+          },
+          {
+            "slide_index": 4,
+            "page_type": "content_candidate",
+            "slot_count": 42,
+            "diagram_count": 0
+          },
+          {
+            "slide_index": 5,
+            "page_type": "content_candidate",
+            "slot_count": 46,
+            "diagram_count": 0
+          },
+          {
+            "slide_index": 6,
+            "page_type": "content_candidate",
+            "slot_count": 31,
+            "diagram_count": 0
+          },
+          {
+            "slide_index": 7,
+            "page_type": "content_candidate",
+            "slot_count": 29,
+            "diagram_count": 0
+          },
+          {
+            "slide_index": 8,
+            "page_type": "content_candidate",
+            "slot_count": 52,
+            "diagram_count": 0
+          },
+          {
+            "slide_index": 9,
+            "page_type": "content_candidate",
+            "slot_count": 45,
+            "diagram_count": 0
+          },
+          {
+            "slide_index": 10,
+            "page_type": "content_candidate",
+            "slot_count": 32,
+            "diagram_count": 0
+          },
+          {
+            "slide_index": 11,
+            "page_type": "ending_candidate",
+            "slot_count": 60,
+            "diagram_count": 0
+          }
+        ]
+      },
+      "tables": {
+        "table_count": 0,
+        "tables": []
+      },
+      "charts": {
+        "chart_count": 0,
+        "series_count": 0,
+        "multi_plot_chart_count": 0,
+        "charts": []
+      },
+      "diagrams": {
+        "diagram_count": 0,
+        "text_item_count": 0,
+        "unreadable_count": 0,
+        "warning_count": 0,
+        "slides_with_diagrams": [],
+        "diagrams": []
+      }
+    }
+  ]
+}

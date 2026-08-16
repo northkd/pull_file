@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 28 1184 104">
+    <text x="48" y="48" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">12｜正文结论</text>
+    <text x="48" y="102" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">阶段性成果：把“能否相信”变成流程</text>
+    <line x1="48" y1="124" x2="1232" y2="124" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 138 1184 46">
+    <text x="48" y="170" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" fill="#182229">框架已建立；统计闭环补齐前，结果不能进入论文结论。</text>
+  </g>
+  <g id="status-bands" data-pptx-bounds="48 208 500 346">
+    <rect x="48" y="208" width="500" height="104" fill="#E9F2EF"/>
+    <rect x="48" y="208" width="10" height="104" fill="#2E7D6E"/>
+    <text x="78" y="238" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">已实现</text>
+    <text x="78" y="268" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">41个计算入口 / 38个搜索入口｜体系差异控制排序</text>
+    <text x="78" y="294" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">半样本稳定性｜受约束组合｜组合分体系探索检查</text>
+
+    <rect x="48" y="328" width="500" height="104" fill="#EFF3F1"/>
+    <rect x="48" y="328" width="10" height="104" fill="#113B4A"/>
+    <text x="78" y="358" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">已记录，待接入</text>
+    <text x="78" y="388" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">两表数据契约｜7种等价写法探针</text>
+    <text x="78" y="414" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">5结构数值指纹｜相关簇阈值</text>
+
+    <rect x="48" y="448" width="500" height="104" fill="#F8EDE9"/>
+    <rect x="48" y="448" width="10" height="104" fill="#C75B39"/>
+    <text x="78" y="478" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">必须完成</text>
+    <text x="78" y="508" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">三类体系枚举｜205处身份字段｜主检验p值</text>
+    <text x="78" y="534" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">相关簇选择｜真正LOSO｜治理工具串入主流程</text>
+  </g>
+  <g id="execution-roadmap" data-pptx-bounds="604 200 628 356">
+    <text x="604" y="228" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">新数据到位后的正确执行顺序</text>
+    <line x1="638" y1="258" x2="638" y2="536" stroke="#CFDAD7" stroke-width="4"/>
+    <circle cx="638" cy="268" r="16" fill="#2E7D6E"/>
+    <circle cx="638" cy="312" r="16" fill="#2E7D6E"/>
+    <circle cx="638" cy="356" r="16" fill="#2E7D6E"/>
+    <circle cx="638" cy="400" r="16" fill="#113B4A"/>
+    <circle cx="638" cy="444" r="16" fill="#113B4A"/>
+    <circle cx="638" cy="488" r="16" fill="#C75B39"/>
+    <circle cx="638" cy="532" r="16" fill="#C75B39"/>
+    <text x="638" y="274" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="638" y="318" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="638" y="362" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="638" y="406" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">4</text>
+    <text x="638" y="450" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">5</text>
+    <text x="638" y="494" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">6</text>
+    <text x="638" y="538" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">7</text>
+    <text x="678" y="274" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">数据字段与体系值域定稿</text>
+    <text x="678" y="318" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">数据契约校验 + 室温测量选择</text>
+    <text x="678" y="362" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">CIF路径和解析预检</text>
+    <text x="678" y="406" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">身份 / 写法敏感性审计</text>
+    <text x="678" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">按覆盖率形成实际候选集</text>
+    <text x="678" y="494" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#C75B39">修复p值 / 相关簇 / LOSO</text>
+    <text x="678" y="538" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">正式运行，并如实报告结果</text>
+  </g>
+  <g id="main-closing" data-pptx-bounds="48 574 1184 54">
+    <rect x="48" y="574" width="1184" height="52" fill="#113B4A"/>
+    <text x="640" y="607" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">不是已经找到更强描述符，而是让“哪些结果有资格被相信”变得可追溯。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">正文结束｜以下为5分钟问答附录</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">12 / 18</text>
+  </g>
+</svg>

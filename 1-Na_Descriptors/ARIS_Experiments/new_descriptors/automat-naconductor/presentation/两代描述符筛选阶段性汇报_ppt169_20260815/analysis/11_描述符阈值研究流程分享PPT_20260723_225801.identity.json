@@ -1,0 +1,125 @@
+{
+  "source": "/Users/north./Documents/JXNU/research/1-NASICON/1-data-select/因果推断/experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/sources/11_描述符阈值研究流程分享PPT_20260723_225801.pptx",
+  "slide_count": 11,
+  "canvas": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "aspect": 1.7778
+  },
+  "theme": {
+    "palette": {
+      "background": "#F7F5F0",
+      "background_alt": "#EAE7DF",
+      "text": "#17202A",
+      "text_alt": "#1F497D",
+      "hyperlink": "#D1495B",
+      "accent1": "#16324F",
+      "accent2": "#D1495B",
+      "accent3": "#2E7D6E",
+      "accent4": "#16324F",
+      "accent5": "#C9C5BC",
+      "accent6": "#5E6670",
+      "primary": "#16324F"
+    },
+    "fonts": {
+      "title": {
+        "latin": "Georgia",
+        "ea": "SimSun",
+        "cs": "Georgia"
+      },
+      "body": {
+        "latin": "Arial",
+        "ea": "Microsoft YaHei",
+        "cs": "Arial"
+      }
+    },
+    "sizes": {
+      "title": 43.5,
+      "body": 22.5,
+      "body_levels": [
+        22.5,
+        21.0,
+        19.5,
+        18.5,
+        17.0,
+        15.5,
+        14.0,
+        12.5,
+        11.0
+      ]
+    }
+  },
+  "observed": {
+    "fonts": {
+      "latin": [
+        {
+          "value": "Consolas",
+          "count": 165
+        }
+      ],
+      "ea": [
+        {
+          "value": "Consolas",
+          "count": 133
+        },
+        {
+          "value": "Microsoft YaHei",
+          "count": 32
+        }
+      ]
+    },
+    "sizes_pt": [
+      {
+        "value": 16.5,
+        "count": 161
+      },
+      {
+        "value": 18.0,
+        "count": 114
+      },
+      {
+        "value": 13.5,
+        "count": 69
+      },
+      {
+        "value": 22.5,
+        "count": 48
+      },
+      {
+        "value": 31.5,
+        "count": 23
+      },
+      {
+        "value": 43.5,
+        "count": 12
+      },
+      {
+        "value": 39.0,
+        "count": 5
+      },
+      {
+        "value": 15.0,
+        "count": 2
+      }
+    ],
+    "colors": [
+      {
+        "value": "#FFFFFF",
+        "count": 106
+      },
+      {
+        "value": "#EAE7DF",
+        "count": 19
+      },
+      {
+        "value": "#5E6670",
+        "count": 17
+      },
+      {
+        "value": "#C9C5BC",
+        "count": 1
+      }
+    ]
+  },
+  "layout_sizes_pt": []
+}

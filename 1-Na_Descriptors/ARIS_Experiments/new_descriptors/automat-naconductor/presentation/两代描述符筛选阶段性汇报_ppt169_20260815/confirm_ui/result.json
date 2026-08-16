@@ -1,0 +1,60 @@
+{
+  "canvas": "ppt169",
+  "audience": "从事固态电解质设计、熟悉材料结构与离子输运问题，但不要求精通机器学习算法的课题组研究者。",
+  "communication_intent": "先从材料筛选中的真实困难出发，说明第一代方法为什么会遇到瓶颈；再沿着问题逐步讲清第二代方法加入每一步的原因、解决了什么、仍留下什么，完成一次可核查的阶段性工作汇报。",
+  "audience_outcome": "听众能够用材料研究语言复述两代方法的差别，理解第二代的价值主要在于让描述符筛选结果更可信，而不是把算法复杂度或单个分数当作进步，并能判断下一步验证重点。",
+  "core_message": "这次升级的核心不是换一个更复杂的模型，而是逐步堵住描述符筛选中容易产生假相关、重复信息和过度乐观结论的漏洞，使最终留下的结构线索更值得交给材料研究继续解释和验证。",
+  "delivery_context": "课题组现场工作汇报：20分钟正文讲完整故事，随后5分钟问答；以主讲为主，页面辅助理解。",
+  "artifact_afterlife": "会后作为阶段性进展记录、算法核查依据和下一轮描述符验证工作的交接材料。",
+  "content_divergence": "",
+  "delivery_purpose": "balanced",
+  "page_count": "18页（12页正文 + 6页问答附录）",
+  "mode": "narrative",
+  "visual_style": "data-journalism",
+  "color": {
+    "name": "冷白·矿物青",
+    "palette": {
+      "background": "#FFFFFF",
+      "secondary_bg": "#EFF3F1",
+      "primary": "#113B4A",
+      "accent": "#C75B39",
+      "secondary_accent": "#2E7D6E",
+      "body_text": "#182229"
+    }
+  },
+  "icons": "none",
+  "typography": {
+    "name": "宋体标题·黑体正文",
+    "heading": {
+      "cjk": "Songti SC",
+      "css": "Georgia, 'Songti SC', serif",
+      "latin": "Georgia",
+      "sample_cjk": "",
+      "sample_latin": ""
+    },
+    "body": {
+      "cjk": "PingFang SC",
+      "css": "Arial, 'PingFang SC', sans-serif",
+      "latin": "Arial",
+      "sample_cjk": "",
+      "sample_latin": ""
+    },
+    "body_size": 24,
+    "sizes": {
+      "annotation": 18,
+      "subtitle": 32,
+      "title": 42
+    },
+    "body_size_unit": "px"
+  },
+  "image_usage": [
+    "none"
+  ],
+  "image_notes": "不使用外部图片或装饰性AI插图；由原生SVG流程图、两代方法对照、指标卡和少量数据表承担视觉解释，材料结构概念只画成简洁示意，不冒充真实晶体图。",
+  "formula_policy": "text-only",
+  "generation_mode": "continuous",
+  "refine_spec": false,
+  "stage": "final",
+  "status": "confirmed",
+  "confirmed_at": "2026-08-15T23:23:13"
+}

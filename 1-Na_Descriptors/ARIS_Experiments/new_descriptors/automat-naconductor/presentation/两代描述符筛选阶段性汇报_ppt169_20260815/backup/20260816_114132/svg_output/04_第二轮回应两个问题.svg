@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">03｜第二轮为什么改变</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">第二轮如何回应两个材料学问题？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="common-question" data-pptx-bounds="48 150 1184 46">
+    <text x="48" y="182" font-family="Arial, 'PingFang SC', sans-serif" font-size="28" font-weight="bold" fill="#182229">两个问题都在问：这个信息到底来自哪里？</text>
+  </g>
+  <g id="redundancy-column" data-pptx-bounds="48 222 548 336">
+    <rect x="48" y="222" width="548" height="336" fill="#EFF3F1"/>
+    <text x="80" y="264" font-family="Arial, 'PingFang SC', sans-serif" font-size="26" font-weight="bold" fill="#113B4A">问题一｜描述符会不会重复？</text>
+    <text x="80" y="306" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">第二轮按信息来源逐层检查，而不是只看相关系数。</text>
+    <line x1="80" y1="326" x2="564" y2="326" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="80" y="366" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#2E7D6E">第一层：同名是否调用同一个计算</text>
+    <text x="80" y="398" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">能直接排除精确别名，避免一个量换个名字重复进入。</text>
+    <text x="80" y="444" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#2E7D6E">第二层：是否共享同一段结构信息</text>
+    <text x="80" y="476" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">先标记共同来源，再看它们是否真的数值相近。</text>
+    <text x="80" y="522" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#C75B39">第三层：新数据中是否高度相关</text>
+    <text x="80" y="550" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">这一步还没有自动完成，不能说已经完全去重。</text>
+  </g>
+  <g id="vacancy-column" data-pptx-bounds="684 222 548 336">
+    <rect x="684" y="222" width="548" height="336" fill="#FBE5DF"/>
+    <text x="716" y="264" font-family="Arial, 'PingFang SC', sans-serif" font-size="26" font-weight="bold" fill="#113B4A">问题二｜CIF中的占位就是空位吗？</text>
+    <text x="716" y="306" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">第二轮把“文件里看到的占位”与“真正能迁移的空位”分开。</text>
+    <line x1="716" y1="326" x2="1200" y2="326" stroke="#E3B4A6" stroke-width="1"/>
+    <text x="716" y="366" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#2E7D6E">第一层：晶体文件中的占位</text>
+    <text x="716" y="398" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">能告诉我们文件怎样记录结构，但不保证是有效迁移空位。</text>
+    <text x="716" y="444" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#2E7D6E">第二层：框架中的几何空腔</text>
+    <text x="716" y="476" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">可以筛出“可能放得下钠”的位置<tspan x="716" dy="24">二代还未自动接入完整程序</tspan></text>
+    <text x="716" y="522" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#C75B39">第三层：能量与动态验证</text>
+    <text x="716" y="550" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">需要能量或动态验证，属于下一步更强证据。</text>
+  </g>
+  <g id="common-principle" data-pptx-bounds="208 584 864 42">
+    <text x="640" y="612" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">第二轮先审查信息来源，再让结构量进入比较</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">正文｜两个问题合并为两条证据检查路线</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">04 / 13</text>
+  </g>
+</svg>

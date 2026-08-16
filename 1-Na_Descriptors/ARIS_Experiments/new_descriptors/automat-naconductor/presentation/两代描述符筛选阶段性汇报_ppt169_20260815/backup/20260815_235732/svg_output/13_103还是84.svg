@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">Q1｜数据口径</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">到底是103条，还是84条？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="main-dataset" data-pptx-bounds="48 168 532 340">
+    <text x="48" y="200" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">第一代正式口径</text>
+    <text x="48" y="288" font-family="Georgia, 'Songti SC', serif" font-size="78" font-weight="bold" fill="#113B4A">103 + 103</text>
+    <text x="48" y="330" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#182229">有效材料记录 + 根目录 CIF</text>
+    <line x1="48" y1="352" x2="520" y2="352" stroke="#2E7D6E" stroke-width="4"/>
+    <text x="48" y="392" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">data/快慢离子导体数据集_107.xlsx</text>
+    <text x="48" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">“汇报主表”实际保留103行；cif/同样103个文件</text>
+    <text x="48" y="464" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#C75B39">文件名仍叫_107：历史上删去4个含Li结构，未改名</text>
+  </g>
+  <g id="historical-cache" data-pptx-bounds="700 168 532 340">
+    <text x="700" y="200" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">第二代目录中的历史缓存</text>
+    <text x="700" y="288" font-family="Georgia, 'Songti SC', serif" font-size="78" font-weight="bold" fill="#C75B39">84 + 84</text>
+    <text x="700" y="330" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#182229">raw 行 + featurized 行</text>
+    <line x1="700" y1="352" x2="1232" y2="352" stroke="#C75B39" stroke-width="4"/>
+    <text x="700" y="392" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">automat-naconductor/data/ 下的旧输入与特征缓存</text>
+    <text x="700" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">可说明第二代接触过历史真实数据</text>
+    <text x="700" y="464" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">不能替代新扩充数据集的正式输入和最终结果</text>
+  </g>
+  <g id="dataset-divider" data-pptx-bounds="608 188 64 278">
+    <line x1="640" y1="188" x2="640" y2="466" stroke="#CFDAD7" stroke-width="2"/>
+    <text x="640" y="340" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#647176">≠</text>
+  </g>
+  <g id="historical-distribution" data-pptx-bounds="48 532 1184 94">
+    <rect x="48" y="532" width="1184" height="92" fill="#EFF3F1"/>
+    <text x="66" y="558" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">103条历史数据的七类分布</text>
+    <text x="66" y="590" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">NASICON 30　硫化物 41　卤化物 13　氢化物/硼氢化物 14</text>
+    <text x="66" y="616" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">β-Al₂O₃ 2　反钙钛矿 2　氧化物 1</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Q&amp;A附录｜数字必须和文件角色一起说</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">13 / 18</text>
+  </g>
+</svg>

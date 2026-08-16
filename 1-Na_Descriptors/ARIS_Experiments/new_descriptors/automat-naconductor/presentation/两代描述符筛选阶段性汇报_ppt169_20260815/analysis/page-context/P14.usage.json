@@ -1,0 +1,87 @@
+{
+  "schema": "ppt-master.page-context-usage.v2",
+  "page": "P14",
+  "output_mode": "compact",
+  "route": {
+    "mode": "flat",
+    "template_reuse_scope": "style"
+  },
+  "encoding": "o200k_base",
+  "token_status": "unavailable",
+  "image_selection": "none",
+  "inputs": [
+    {
+      "scope": "project",
+      "path": "spec_lock.md",
+      "exists": true,
+      "sha256": "e75b42af00c811b4422e5602b5d621493fba7048e843350b76cc63e717ded5d6"
+    },
+    {
+      "scope": "project",
+      "path": "design_spec.md",
+      "exists": true,
+      "sha256": "49ce863ed369f9f2ec793cddf42c6f7aae4aba613a6d9e5f2d71d6c512ddfd14"
+    },
+    {
+      "scope": "skill",
+      "path": "templates/charts/comparison_table.svg",
+      "exists": true,
+      "sha256": "b1d5dfbef1ab0e12546e23049544324790268aa7579f76df31e98a345048ac46"
+    }
+  ],
+  "references": [
+    {
+      "kind": "design-spec",
+      "scope": "project",
+      "path": "design_spec.md",
+      "sha256": "49ce863ed369f9f2ec793cddf42c6f7aae4aba613a6d9e5f2d71d6c512ddfd14",
+      "load_policy": "once-per-execution-context"
+    },
+    {
+      "kind": "chart-svg",
+      "scope": "skill",
+      "path": "templates/charts/comparison_table.svg",
+      "sha256": "b1d5dfbef1ab0e12546e23049544324790268aa7579f76df31e98a345048ac46",
+      "load_policy": "once-per-execution-context"
+    }
+  ],
+  "documents": [
+    {
+      "kind": "page-context",
+      "scope": "page",
+      "path": "stdout:page-context",
+      "sha256": "0a0f80106b58535666b024ab99736356a4cdd9ed7abbb5e2a693cb2808aa5635",
+      "utf8_bytes": 3894,
+      "characters": 2971,
+      "tokens": null
+    },
+    {
+      "kind": "lock-projection",
+      "scope": "component",
+      "path": "stdout:global",
+      "sha256": "05b5908ed995c5039bebdc7d7026c92b88585794f4e08f90b4a1d309ce0f0721",
+      "utf8_bytes": 1915,
+      "characters": 1630,
+      "tokens": null
+    }
+  ],
+  "controlled_output": {
+    "sha256": "0a0f80106b58535666b024ab99736356a4cdd9ed7abbb5e2a693cb2808aa5635",
+    "utf8_bytes": 3894,
+    "characters": 2971,
+    "tokens": null
+  },
+  "totals": {
+    "page_context": null,
+    "lock_projection": null
+  },
+  "targets": {
+    "page_context_max_tokens": 2000,
+    "lock_projection_max_tokens": 1000
+  },
+  "untracked": [
+    "source-material reads",
+    "once-per-execution-context reference payloads",
+    "other session-level prompt references"
+  ]
+}

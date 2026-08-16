@@ -1,0 +1,28 @@
+{
+  "schema": "ppt-master.source_to_md.profile.v1",
+  "converter": "ppt_to_md.py",
+  "conversion_type": "pptx",
+  "source": {
+    "path": "11_描述符阈值研究流程分享PPT_20260723_225801.pptx",
+    "name": "11_描述符阈值研究流程分享PPT_20260723_225801.pptx",
+    "suffix": ".pptx",
+    "kind": "file",
+    "exists": true,
+    "size_bytes": 390483
+  },
+  "outputs": {
+    "markdown": "11_描述符阈值研究流程分享PPT_20260723_225801.md",
+    "asset_dir": "11_描述符阈值研究流程分享PPT_20260723_225801_files",
+    "image_manifest": "11_描述符阈值研究流程分享PPT_20260723_225801_files/image_manifest.json",
+    "image_count": 13
+  },
+  "markdown": {
+    "line_count": 968,
+    "char_count": 8714,
+    "heading_count": 23,
+    "table_count": 0,
+    "image_ref_count": 13,
+    "link_count": 0
+  },
+  "warnings": []
+}

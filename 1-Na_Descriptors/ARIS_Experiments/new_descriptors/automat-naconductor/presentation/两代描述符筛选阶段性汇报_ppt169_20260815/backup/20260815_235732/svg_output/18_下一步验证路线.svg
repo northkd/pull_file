@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="ending">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">Q6｜行动收束</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">冗余与空位，下一步怎样验证才够？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="evidence-ladders-title" data-pptx-bounds="48 152 778 36">
+    <text x="48" y="180" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">先用低成本线索缩小范围，再向上补更强证据</text>
+    <text x="826" y="180" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">证据强度 ↑</text>
+  </g>
+  <g id="redundancy-pyramid" data-pptx-bounds="48 198 372 316">
+    <text x="234" y="222" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">冗余：两个变量是不是一回事？</text>
+    <path d="M 48 514 L 78 450 L 390 450 L 420 514 Z" fill="#113B4A"/>
+    <path d="M 80 440 L 110 376 L 358 376 L 388 440 Z" fill="#2E7D6E"/>
+    <path d="M 112 366 L 142 302 L 326 302 L 356 366 Z" fill="#EFF3F1" stroke="#2E7D6E" stroke-width="2"/>
+    <path d="M 144 292 L 234 238 L 324 292 Z" fill="#FFFFFF" stroke="#C75B39" stroke-width="3"/>
+    <text x="234" y="274" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">新数据相关簇</text>
+    <text x="234" y="340" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#182229">共同 helper + 物理类别</text>
+    <text x="234" y="414" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">公式 / 确定性变换</text>
+    <text x="234" y="488" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">精确别名</text>
+  </g>
+  <g id="vacancy-pyramid" data-pptx-bounds="454 198 372 316">
+    <text x="640" y="222" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">空位：通道真的可通行吗？</text>
+    <path d="M 454 514 L 484 450 L 796 450 L 826 514 Z" fill="#113B4A"/>
+    <path d="M 486 440 L 516 376 L 764 376 L 794 440 Z" fill="#EFF3F1" stroke="#2E7D6E" stroke-width="2"/>
+    <path d="M 518 366 L 548 302 L 732 302 L 762 366 Z" fill="#FFFFFF" stroke="#C75B39" stroke-width="3"/>
+    <path d="M 550 292 L 640 238 L 730 292 Z" fill="#FFFFFF" stroke="#C75B39" stroke-width="3"/>
+    <text x="640" y="274" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">少量 DFT / AIMD</text>
+    <text x="640" y="340" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">BVS / BVSE / SoftBV 能量</text>
+    <text x="640" y="414" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#182229">Voronoi / Zeo++ 几何空腔</text>
+    <text x="640" y="488" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">CIF 占位信息</text>
+  </g>
+  <g id="formal-run-gates" data-pptx-bounds="874 152 358 362">
+    <rect x="874" y="152" width="358" height="362" fill="#EFF3F1"/>
+    <text x="902" y="188" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">正式运行前三道门</text>
+    <text x="902" y="246" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">01</text>
+    <text x="968" y="244" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#182229">修正主检验 p 值</text>
+    <line x1="902" y1="270" x2="1204" y2="270" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="902" y="326" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">02</text>
+    <text x="968" y="324" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#182229">实现相关簇选择</text>
+    <line x1="902" y1="350" x2="1204" y2="350" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="902" y="406" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">03</text>
+    <text x="968" y="404" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#182229">补回真正 LOSO</text>
+    <line x1="902" y1="430" x2="1204" y2="430" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="902" y="464" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">当前实现缺口</text>
+    <text x="902" y="486" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">无 Zeo++ 自动后端｜BVSE 返回 NaN<tspan x="902" dy="24">SoftBV 仍需外部程序</tspan></text>
+  </g>
+  <g id="closing-takeaway" data-pptx-bounds="48 548 1184 82">
+    <rect x="48" y="548" width="1184" height="82" fill="#113B4A"/>
+    <text x="640" y="582" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#D9E4E1">低成本线索不是结论；跨层验证之后，候选才进入材料机制解释</text>
+    <text x="640" y="614" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">第二代让每个“强相关”都说清：证据来自哪一层，还缺哪一层</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Q&amp;A附录｜下一步优先补证据链，而不是继续堆更多候选</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">18 / 18</text>
+  </g>
+</svg>

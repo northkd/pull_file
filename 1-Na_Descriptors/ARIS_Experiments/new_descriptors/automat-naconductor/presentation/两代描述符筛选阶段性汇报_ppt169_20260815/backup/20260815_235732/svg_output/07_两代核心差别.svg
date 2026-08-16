@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">07｜两代逻辑对照</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">所以第二代先问：这些分数能不能比</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 140 1184 42">
+    <text x="48" y="170" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" fill="#182229">核心差别是检查顺序，不是模型复杂度。</text>
+  </g>
+  <g id="generation-comparison-table" data-pptx-replace-with="table" data-pptx-bounds="48 198 1184 410">
+    <metadata type="application/json">{"x":48,"y":198,"width":1184,"height":410,"columns":["环节","第一代","第二代","当前边界"],"rows":[["数据入口","一材料一行；口径较粗","材料表/测量表分开；室温值选择","来源与体系标签仍需人工核实"],["第一轮比较","全样本直接排序","扣除体系差异；再看体系内排序","致密度与测试方法未控制"],["描述符身份","计算后直接使用","登记公式、单位、来源与写法敏感性","205处身份字段待完成"],["稳定性","200次重采样看排名","反复半样本；每次重做稀疏选择","仍属探索性选择"],["冗余","没有系统去重","别名、共同来源、物理类别分层","相关簇未自动实现"],["组合","大量手写公式后排名","限制类别、算符与量纲","选择后不确定性仍需加强"],["跨体系","少量候选做过留出","当前没有真正 LOSO","不能宣称外推"]],"column_widths":[1.2,2.1,2.8,2.5],"header_rows":1,"strict_grid":true,"style":{"font_family":"PingFang SC","font_size":16,"header_font_size":18,"band_row":false,"border_color":"#CFDAD7","border_width":1}}</metadata>
+    <rect x="48" y="198" width="1184" height="48" fill="#113B4A"/>
+    <rect x="198" y="246" width="260" height="350" fill="#F6F8F7"/>
+    <rect x="458" y="246" width="410" height="350" fill="#E9F2EF"/>
+    <rect x="868" y="246" width="364" height="350" fill="#F8EDE9"/>
+    <line x1="198" y1="198" x2="198" y2="596" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="458" y1="198" x2="458" y2="596" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="868" y1="198" x2="868" y2="596" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="48" y1="246" x2="1232" y2="246" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="48" y1="296" x2="1232" y2="296" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="48" y1="346" x2="1232" y2="346" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="48" y1="396" x2="1232" y2="396" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="48" y1="446" x2="1232" y2="446" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="48" y1="496" x2="1232" y2="496" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="48" y1="546" x2="1232" y2="546" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="48" y1="596" x2="1232" y2="596" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="123" y="229" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">环节</text>
+    <text x="328" y="229" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">第一代</text>
+    <text x="663" y="229" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">第二代</text>
+    <text x="1050" y="229" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">当前边界</text>
+
+    <text x="64" y="276" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">数据入口</text>
+    <text x="214" y="276" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">一材料一行；口径较粗</text>
+    <text x="474" y="268" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">材料表/测量表分开；<tspan x="474" dy="20">室温值选择</tspan></text>
+    <text x="884" y="268" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">来源与体系标签<tspan x="884" dy="20">仍需人工核实</tspan></text>
+
+    <text x="64" y="326" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">第一轮比较</text>
+    <text x="214" y="326" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">全样本直接排序</text>
+    <text x="474" y="318" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">扣除体系差异；<tspan x="474" dy="20">再看体系内排序</tspan></text>
+    <text x="884" y="318" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">致密度与测试方法<tspan x="884" dy="20">未控制</tspan></text>
+
+    <text x="64" y="376" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">描述符身份</text>
+    <text x="214" y="376" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">计算后直接使用</text>
+    <text x="474" y="368" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">登记公式、单位、来源<tspan x="474" dy="20">与写法敏感性</tspan></text>
+    <text x="884" y="376" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">205处身份字段待完成</text>
+
+    <text x="64" y="426" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">稳定性</text>
+    <text x="214" y="426" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">200次重采样看排名</text>
+    <text x="474" y="418" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">反复半样本；<tspan x="474" dy="20">每次重做稀疏选择</tspan></text>
+    <text x="884" y="426" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">仍属探索性选择</text>
+
+    <text x="64" y="476" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">冗余</text>
+    <text x="214" y="476" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">没有系统去重</text>
+    <text x="474" y="468" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">别名、共同来源、<tspan x="474" dy="20">物理类别分层</tspan></text>
+    <text x="884" y="476" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">相关簇未自动实现</text>
+
+    <text x="64" y="526" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">组合</text>
+    <text x="214" y="526" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">大量手写公式后排名</text>
+    <text x="474" y="518" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">限制类别、算符<tspan x="474" dy="20">与量纲</tspan></text>
+    <text x="884" y="518" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">选择后不确定性<tspan x="884" dy="20">仍需加强</tspan></text>
+
+    <text x="64" y="576" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">跨体系</text>
+    <text x="214" y="576" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">少量候选做过留出</text>
+    <text x="474" y="576" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">当前没有真正 LOSO</text>
+    <text x="884" y="576" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">不能宣称外推</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">第一代回答“谁分数高”；第二代先问“这些分数是否具有可比性”</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">07 / 18</text>
+  </g>
+</svg>

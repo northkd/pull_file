@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 34 1184 110">
+    <text x="48" y="54" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">06｜风险地图</text>
+    <text x="48" y="112" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">进一步复盘，假相关有五个入口</text>
+    <line x1="48" y1="134" x2="1232" y2="134" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 150 1184 44">
+    <text x="48" y="181" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" fill="#182229">第二代的每一道新步骤，都对应一个具体的误判来源。</text>
+  </g>
+  <g id="risk-network" data-pptx-bounds="48 210 1184 410">
+    <line x1="298" y1="286" x2="575" y2="386" stroke="#CFDAD7" stroke-width="2"/>
+    <line x1="298" y1="440" x2="575" y2="410" stroke="#CFDAD7" stroke-width="2"/>
+    <line x1="640" y1="548" x2="640" y2="458" stroke="#CFDAD7" stroke-width="2"/>
+    <line x1="982" y1="286" x2="705" y2="386" stroke="#CFDAD7" stroke-width="2"/>
+    <line x1="982" y1="440" x2="705" y2="410" stroke="#CFDAD7" stroke-width="2"/>
+    <circle cx="640" cy="402" r="82" fill="#EFF3F1" stroke="#C75B39" stroke-width="4"/>
+    <text x="640" y="394" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">一个</text>
+    <text x="640" y="434" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#C75B39">高分结果</text>
+
+    <circle cx="90" cy="250" r="24" fill="#C75B39"/>
+    <text x="90" y="258" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">01</text>
+    <text x="132" y="246" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">体系差异</text>
+    <text x="132" y="278" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">材料类别同时推高描述符和电导量级</text>
+
+    <circle cx="90" cy="410" r="24" fill="#C75B39"/>
+    <text x="90" y="418" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">02</text>
+    <text x="132" y="406" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">测量口径</text>
+    <text x="132" y="438" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">total / bulk / 晶界 / 温度 / 致密度不统一</text>
+
+    <circle cx="640" cy="576" r="24" fill="#C75B39"/>
+    <text x="640" y="584" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">03</text>
+    <text x="688" y="568" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">反复挑选</text>
+    <text x="688" y="598" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">同一批样本既生成组合，又评价组合</text>
+
+    <circle cx="1188" cy="250" r="24" fill="#C75B39"/>
+    <text x="1188" y="258" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">04</text>
+    <text x="1146" y="246" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">名实不符</text>
+    <text x="1146" y="278" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">名称与代码实际返回量可能不一致</text>
+
+    <circle cx="1188" cy="410" r="24" fill="#C75B39"/>
+    <text x="1188" y="418" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">05</text>
+    <text x="1146" y="406" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">外推不足</text>
+    <text x="1146" y="438" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">每折都见过三类材料，只能说明内插</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">问题不是“有没有相关”，而是“相关从哪里来”</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">06 / 18</text>
+  </g>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">10｜第三道防线</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">换样本、限组合，再谈高分</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 140 1184 46">
+    <text x="48" y="172" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" fill="#182229">候选既要反复留下，也要能用材料语言解释组合关系。</text>
+  </g>
+  <g id="selection-flow" data-pptx-bounds="48 206 1184 340">
+    <rect x="48" y="326" width="168" height="86" fill="#113B4A"/>
+    <text x="132" y="360" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#DCE7E9">起点</text>
+    <text x="132" y="390" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">有效单描述符</text>
+
+    <line x1="216" y1="368" x2="302" y2="276" stroke="#CFDAD7" stroke-width="3"/>
+    <line x1="216" y1="368" x2="302" y2="462" stroke="#CFDAD7" stroke-width="3"/>
+
+    <text x="302" y="236" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">稳定性线｜换一半样本还能留下吗？</text>
+    <circle cx="330" cy="286" r="22" fill="#2E7D6E"/>
+    <text x="330" y="294" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="370" y="278" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">100</text>
+    <text x="370" y="308" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">次无放回半样本</text>
+    <line x1="516" y1="286" x2="600" y2="286" stroke="#CFDAD7" stroke-width="3"/>
+    <circle cx="628" cy="286" r="22" fill="#2E7D6E"/>
+    <text x="628" y="294" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="668" y="278" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">每次重新做稀疏选择</text>
+    <text x="668" y="308" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">观察候选是否持续出现</text>
+    <line x1="902" y1="286" x2="1022" y2="352" stroke="#2E7D6E" stroke-width="3"/>
+
+    <text x="302" y="430" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">解释线｜这个公式有材料意义吗？</text>
+    <circle cx="330" cy="476" r="22" fill="#2E7D6E"/>
+    <text x="330" y="484" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="370" y="468" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">先按物理类别选代表</text>
+    <text x="370" y="498" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">局域｜网络｜浓度｜骨架｜对称性</text>
+    <line x1="574" y1="476" x2="634" y2="476" stroke="#CFDAD7" stroke-width="3"/>
+    <circle cx="662" cy="476" r="22" fill="#2E7D6E"/>
+    <text x="662" y="484" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">4</text>
+    <text x="702" y="468" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">再限制算符与量纲</text>
+    <text x="702" y="498" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">只允许预先规定的跨类别加、乘、比值</text>
+    <line x1="972" y1="476" x2="1022" y2="390" stroke="#2E7D6E" stroke-width="3"/>
+
+    <circle cx="1080" cy="368" r="56" fill="#EFF3F1" stroke="#2E7D6E" stroke-width="4"/>
+    <text x="1080" y="358" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">最终保留</text>
+    <text x="1080" y="390" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">稳定 + 可解释</text>
+  </g>
+  <g id="comparison-and-boundary" data-pptx-bounds="48 560 1184 66">
+    <rect x="48" y="562" width="390" height="62" fill="#EFF3F1"/>
+    <text x="66" y="587" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">第一代｜两批各3544个公式后再排名</text>
+    <text x="66" y="612" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">重复抽样主要观察相关排名</text>
+    <rect x="454" y="562" width="778" height="62" fill="#F8EDE9"/>
+    <text x="472" y="587" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">当前边界｜“bootstrap”实为子抽样；top_k=10与簇阈值0.8尚无消费者</text>
+    <text x="472" y="612" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">没有嵌套LOSO，选择后的组合证据仍应标为探索性</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">先缩小可解释空间，再让数据选择候选</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">10 / 18</text>
+  </g>
+</svg>

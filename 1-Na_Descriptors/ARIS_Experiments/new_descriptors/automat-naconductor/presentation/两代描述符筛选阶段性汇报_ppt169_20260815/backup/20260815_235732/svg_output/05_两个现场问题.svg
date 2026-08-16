@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 34 1184 110">
+    <text x="48" y="54" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">05｜现场追问</text>
+    <text x="48" y="112" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">两个现场问题，把同一个漏洞点了出来</text>
+    <line x1="48" y1="134" x2="1232" y2="134" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="question-redundancy" data-pptx-bounds="48 176 500 300">
+    <text x="48" y="250" font-family="Georgia, 'Songti SC', serif" font-size="78" font-weight="bold" fill="#C75B39">01</text>
+    <text x="48" y="298" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">描述符会不会重复？</text>
+    <line x1="48" y1="320" x2="452" y2="320" stroke="#CFDAD7" stroke-width="2"/>
+    <text x="48" y="360" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">共享最长键长、畸变或 Na 浓度，</text>
+    <text x="48" y="396" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">可能把同一结构信息重复计票。</text>
+    <text x="48" y="442" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">要区分：同一公式｜共同来源｜数据相关</text>
+  </g>
+  <g id="question-vacancy" data-pptx-bounds="732 176 500 300">
+    <text x="732" y="250" font-family="Georgia, 'Songti SC', serif" font-size="78" font-weight="bold" fill="#C75B39">02</text>
+    <text x="732" y="298" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">空位能不能只靠 CIF？</text>
+    <line x1="732" y1="320" x2="1232" y2="320" stroke="#CFDAD7" stroke-width="2"/>
+    <text x="732" y="360" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">部分占位可能是真实缺陷，</text>
+    <text x="732" y="396" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">也可能来自无序或精修表达。</text>
+    <text x="732" y="442" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">要区分：占位亏缺｜几何空腔｜迁移有效空位</text>
+  </g>
+  <g id="convergence" data-pptx-bounds="396 454 488 168">
+    <line x1="456" y1="466" x2="606" y2="520" stroke="#C75B39" stroke-width="3"/>
+    <line x1="824" y1="466" x2="674" y2="520" stroke="#C75B39" stroke-width="3"/>
+    <circle cx="640" cy="528" r="14" fill="#C75B39"/>
+    <rect x="396" y="548" width="488" height="72" fill="#113B4A"/>
+    <text x="640" y="578" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#DCE7E9">第二代的起点</text>
+    <text x="640" y="607" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">先审查身份和来源，才有资格谈相关性</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">两个问题的共同核心：信息是否独立、物理身份是否可信</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">05 / 18</text>
+  </g>
+</svg>

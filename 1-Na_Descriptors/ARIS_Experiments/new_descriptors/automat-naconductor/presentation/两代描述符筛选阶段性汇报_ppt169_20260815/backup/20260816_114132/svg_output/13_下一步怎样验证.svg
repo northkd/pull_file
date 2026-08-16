@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="ending">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">Q6｜下一步验证</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">下一步怎样验证才够？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="evidence-lead" data-pptx-bounds="48 152 784 36">
+    <text x="48" y="180" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#647176">低成本线索先缩小范围，再用更强证据验证材料含义</text>
+  </g>
+  <g id="redundancy-ladder" data-pptx-bounds="48 204 366 308">
+    <text x="231" y="232" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">冗余：是不是同一信息？</text>
+    <path d="M 48 512 L 80 454 L 382 454 L 414 512 Z" fill="#113B4A"/>
+    <path d="M 80 444 L 112 390 L 350 390 L 382 444 Z" fill="#2E7D6E"/>
+    <path d="M 112 380 L 144 326 L 318 326 L 350 380 Z" fill="#EFF3F1" stroke="#2E7D6E" stroke-width="2"/>
+    <path d="M 144 316 L 231 258 L 318 316 Z" fill="#FFFFFF" stroke="#C75B39" stroke-width="3"/>
+    <text x="231" y="298" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">新数据中高度相似</text>
+    <text x="231" y="358" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#182229">共同结构输入</text>
+    <text x="231" y="420" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">同名同函数</text>
+    <text x="231" y="486" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">保留一个代表量</text>
+  </g>
+  <g id="vacancy-ladder" data-pptx-bounds="434 204 366 308">
+    <text x="617" y="232" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">空位：真的能帮助迁移吗？</text>
+    <path d="M 434 512 L 466 454 L 768 454 L 800 512 Z" fill="#113B4A"/>
+    <path d="M 466 444 L 498 390 L 736 390 L 768 444 Z" fill="#EFF3F1" stroke="#2E7D6E" stroke-width="2"/>
+    <path d="M 498 380 L 530 326 L 704 326 L 736 380 Z" fill="#FFFFFF" stroke="#C75B39" stroke-width="3"/>
+    <path d="M 530 316 L 617 258 L 704 316 Z" fill="#FFFFFF" stroke="#C75B39" stroke-width="3"/>
+    <text x="617" y="298" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">少量 DFT / AIMD 动态验证</text>
+    <text x="617" y="358" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">键价或能量是否合适</text>
+    <text x="617" y="420" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#182229">几何上是否有空腔</text>
+    <text x="617" y="486" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">CIF 中是否记录占位</text>
+  </g>
+  <g id="formal-gates" data-pptx-bounds="850 152 382 360">
+    <rect x="850" y="152" width="382" height="360" fill="#EFF3F1"/>
+    <text x="878" y="188" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#C75B39">正式运行前的三道门</text>
+    <text x="878" y="246" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">01</text>
+    <text x="940" y="244" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#182229">修正主检验的 p 值</text>
+    <line x1="878" y1="270" x2="1204" y2="270" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="878" y="326" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">02</text>
+    <text x="940" y="324" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#182229">自动识别重复信息</text>
+    <line x1="878" y1="350" x2="1204" y2="350" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="878" y="406" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">03</text>
+    <text x="940" y="404" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#182229">真正留出一个体系</text>
+    <line x1="878" y1="430" x2="1204" y2="430" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="878" y="466" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">当前缺口：几何空腔程序尚未自动接入<tspan x="878" dy="24">能量入口还需要外部程序</tspan></text>
+    <text x="878" y="504" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">这里只画路线，不表示能力已经完成。</text>
+  </g>
+  <g id="closing-takeaway" data-pptx-bounds="48 548 1184 82">
+    <rect x="48" y="548" width="1184" height="82" fill="#113B4A"/>
+    <text x="640" y="582" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#D9E4E1">低成本线索不是结论；跨层验证之后，候选才进入材料机制解释</text>
+    <text x="640" y="614" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">第二轮让每个“强相关”都说清：证据来自哪一层，还缺哪一层</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Q&amp;A附录｜下一步优先补证据链，而不是继续堆候选</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">13 / 13</text>
+  </g>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">06｜阶段性边界</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">目前能说到哪一步？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="status-lead" data-pptx-bounds="48 150 1184 46">
+    <text x="48" y="182" font-family="Arial, 'PingFang SC', sans-serif" font-size="26" fill="#182229">第二轮的筛选框架已经建立，但现在汇报的是“方法和边界”，不是“最终候选”。</text>
+  </g>
+  <g id="status-done" data-pptx-bounds="48 226 354 292">
+    <rect x="48" y="226" width="354" height="292" fill="#EFF3F1"/>
+    <rect x="48" y="226" width="354" height="58" fill="#2E7D6E"/>
+    <text x="76" y="264" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">已经能做</text>
+    <text x="76" y="332" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">先在同一材料体系内部比较</text>
+    <text x="76" y="374" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">换一批材料重新挑候选</text>
+    <text x="76" y="416" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">按材料意义组合结构量</text>
+    <line x1="76" y1="448" x2="374" y2="448" stroke="#B8D8CF" stroke-width="1"/>
+    <text x="76" y="484" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">方法骨架已具备</text>
+  </g>
+  <g id="status-checking" data-pptx-bounds="438 226 354 292">
+    <rect x="438" y="226" width="354" height="292" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="438" y="226" width="354" height="58" fill="#113B4A"/>
+    <text x="466" y="264" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">正在补</text>
+    <text x="466" y="332" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">逐个核对结构量的定义</text>
+    <text x="466" y="374" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">识别同一信息的不同名字</text>
+    <text x="466" y="416" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">把审计检查接入正式流程</text>
+    <line x1="466" y1="448" x2="764" y2="448" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="466" y="484" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">证据链还在补齐</text>
+  </g>
+  <g id="status-not-yet" data-pptx-bounds="828 226 404 292">
+    <rect x="828" y="226" width="404" height="292" fill="#FBE5DF"/>
+    <rect x="828" y="226" width="404" height="58" fill="#C75B39"/>
+    <text x="856" y="264" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">现在还不能说</text>
+    <text x="856" y="332" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">第二轮已经找到最终候选</text>
+    <text x="856" y="374" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">某个结构量在新数据上已被确认</text>
+    <text x="856" y="416" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">可以预测完全没见过的材料体系</text>
+    <line x1="856" y1="448" x2="1204" y2="448" stroke="#E3B4A6" stroke-width="1"/>
+    <text x="856" y="484" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">新数据和跨体系验证仍需完成</text>
+  </g>
+  <g id="status-takeaway" data-pptx-bounds="48 552 1184 64">
+    <rect x="48" y="552" width="1184" height="64" fill="#113B4A"/>
+    <text x="640" y="593" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">第二轮当前的成果，是把“什么时候可以相信”说清楚</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">正文结束｜下面进入精确口径与可能的追问</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">07 / 13</text>
+  </g>
+</svg>

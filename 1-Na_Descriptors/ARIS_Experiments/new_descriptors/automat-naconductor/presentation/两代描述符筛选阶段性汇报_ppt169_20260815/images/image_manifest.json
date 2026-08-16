@@ -1,0 +1,522 @@
+[
+  {
+    "index": 1,
+    "filename": "image_42ba45f59a209534.png",
+    "original_filename": "image_42ba45f59a209534.png",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".png",
+    "source_target": "ppt/media/image_42ba45f59a209534.png",
+    "content_type": "image/png",
+    "display_left_emu": 1066800,
+    "display_top_emu": 3028950,
+    "display_width_emu": 3981450,
+    "display_height_emu": 1143000,
+    "display_width_in": 4.3542,
+    "display_height_in": 1.25,
+    "display_ratio": 3.483333,
+    "pixel_width": 418,
+    "pixel_height": 120,
+    "pixel_ratio": 3.483333,
+    "occurrences": [
+      {
+        "slide_index": 5,
+        "shape_name": "Image 10",
+        "display_left_emu": 1066800,
+        "display_top_emu": 3028950,
+        "display_width_emu": 3981450,
+        "display_height_emu": 1143000,
+        "display_width_in": 4.3542,
+        "display_height_in": 1.25,
+        "display_ratio": 3.483333
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      3.483333
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  },
+  {
+    "index": 2,
+    "filename": "image_a69314a8a041cbaa.png",
+    "original_filename": "image_a69314a8a041cbaa.png",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".png",
+    "source_target": "ppt/media/image_a69314a8a041cbaa.png",
+    "content_type": "image/png",
+    "display_left_emu": 9563100,
+    "display_top_emu": 3028950,
+    "display_width_emu": 5619750,
+    "display_height_emu": 1143000,
+    "display_width_in": 6.1458,
+    "display_height_in": 1.25,
+    "display_ratio": 4.916667,
+    "pixel_width": 590,
+    "pixel_height": 120,
+    "pixel_ratio": 4.916667,
+    "occurrences": [
+      {
+        "slide_index": 5,
+        "shape_name": "Image 32",
+        "display_left_emu": 9563100,
+        "display_top_emu": 3028950,
+        "display_width_emu": 5619750,
+        "display_height_emu": 1143000,
+        "display_width_in": 6.1458,
+        "display_height_in": 1.25,
+        "display_ratio": 4.916667
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      4.916667
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  },
+  {
+    "index": 3,
+    "filename": "image_6a3c71f70effb705.png",
+    "original_filename": "image_6a3c71f70effb705.png",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".png",
+    "source_target": "ppt/media/image_6a3c71f70effb705.png",
+    "content_type": "image/png",
+    "display_left_emu": 5738581,
+    "display_top_emu": 8267700,
+    "display_width_emu": 6810837,
+    "display_height_emu": 714375,
+    "display_width_in": 7.4484,
+    "display_height_in": 0.7812,
+    "display_ratio": 9.53398,
+    "pixel_width": 982,
+    "pixel_height": 103,
+    "pixel_ratio": 9.533981,
+    "occurrences": [
+      {
+        "slide_index": 5,
+        "shape_name": "Image 75",
+        "display_left_emu": 5738581,
+        "display_top_emu": 8267700,
+        "display_width_emu": 6810837,
+        "display_height_emu": 714375,
+        "display_width_in": 7.4484,
+        "display_height_in": 0.7812,
+        "display_ratio": 9.53398
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      9.53398
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  },
+  {
+    "index": 4,
+    "filename": "image_f9f3e6761a690fe7.jpg",
+    "original_filename": "image_f9f3e6761a690fe7.jpg",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".jpg",
+    "source_target": "ppt/media/image_f9f3e6761a690fe7.jpg",
+    "content_type": "image/jpeg",
+    "display_left_emu": 1157452,
+    "display_top_emu": 2647950,
+    "display_width_emu": 1876097,
+    "display_height_emu": 1066800,
+    "display_width_in": 2.0517,
+    "display_height_in": 1.1667,
+    "display_ratio": 1.758621,
+    "pixel_width": 459,
+    "pixel_height": 261,
+    "pixel_ratio": 1.758621,
+    "occurrences": [
+      {
+        "slide_index": 7,
+        "shape_name": "Image 10",
+        "display_left_emu": 1157452,
+        "display_top_emu": 2647950,
+        "display_width_emu": 1876097,
+        "display_height_emu": 1066800,
+        "display_width_in": 2.0517,
+        "display_height_in": 1.1667,
+        "display_ratio": 1.758621
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      1.758621
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  },
+  {
+    "index": 5,
+    "filename": "image_2c4dbca19c0e3bf1.jpg",
+    "original_filename": "image_2c4dbca19c0e3bf1.jpg",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".jpg",
+    "source_target": "ppt/media/image_2c4dbca19c0e3bf1.jpg",
+    "content_type": "image/jpeg",
+    "display_left_emu": 3718890,
+    "display_top_emu": 2647950,
+    "display_width_emu": 2030071,
+    "display_height_emu": 1066800,
+    "display_width_in": 2.2201,
+    "display_height_in": 1.1667,
+    "display_ratio": 1.902954,
+    "pixel_width": 451,
+    "pixel_height": 237,
+    "pixel_ratio": 1.902954,
+    "occurrences": [
+      {
+        "slide_index": 7,
+        "shape_name": "Image 13",
+        "display_left_emu": 3718890,
+        "display_top_emu": 2647950,
+        "display_width_emu": 2030071,
+        "display_height_emu": 1066800,
+        "display_width_in": 2.2201,
+        "display_height_in": 1.1667,
+        "display_ratio": 1.902954
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      1.902954
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  },
+  {
+    "index": 6,
+    "filename": "image_612b1615e56c8357.jpg",
+    "original_filename": "image_612b1615e56c8357.jpg",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".jpg",
+    "source_target": "ppt/media/image_612b1615e56c8357.jpg",
+    "content_type": "image/jpeg",
+    "display_left_emu": 6462661,
+    "display_top_emu": 2647950,
+    "display_width_emu": 1819379,
+    "display_height_emu": 1066800,
+    "display_width_in": 1.9897,
+    "display_height_in": 1.1667,
+    "display_ratio": 1.705455,
+    "pixel_width": 469,
+    "pixel_height": 275,
+    "pixel_ratio": 1.705455,
+    "occurrences": [
+      {
+        "slide_index": 7,
+        "shape_name": "Image 16",
+        "display_left_emu": 6462661,
+        "display_top_emu": 2647950,
+        "display_width_emu": 1819379,
+        "display_height_emu": 1066800,
+        "display_width_in": 1.9897,
+        "display_height_in": 1.1667,
+        "display_ratio": 1.705455
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      1.705455
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  },
+  {
+    "index": 7,
+    "filename": "image_9927170747a1d21d.jpg",
+    "original_filename": "image_9927170747a1d21d.jpg",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".jpg",
+    "source_target": "ppt/media/image_9927170747a1d21d.jpg",
+    "content_type": "image/jpeg",
+    "display_left_emu": 12504127,
+    "display_top_emu": 2647950,
+    "display_width_emu": 1547446,
+    "display_height_emu": 1257300,
+    "display_width_in": 1.6923,
+    "display_height_in": 1.375,
+    "display_ratio": 1.230769,
+    "pixel_width": 336,
+    "pixel_height": 273,
+    "pixel_ratio": 1.230769,
+    "occurrences": [
+      {
+        "slide_index": 7,
+        "shape_name": "Image 41",
+        "display_left_emu": 12504127,
+        "display_top_emu": 2647950,
+        "display_width_emu": 1547446,
+        "display_height_emu": 1257300,
+        "display_width_in": 1.6923,
+        "display_height_in": 1.375,
+        "display_ratio": 1.230769
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      1.230769
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  },
+  {
+    "index": 8,
+    "filename": "image_d928610c1589f6a1.jpg",
+    "original_filename": "image_d928610c1589f6a1.jpg",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".jpg",
+    "source_target": "ppt/media/image_d928610c1589f6a1.jpg",
+    "content_type": "image/jpeg",
+    "display_left_emu": 15153026,
+    "display_top_emu": 2647950,
+    "display_width_emu": 1793198,
+    "display_height_emu": 1257300,
+    "display_width_in": 1.9611,
+    "display_height_in": 1.375,
+    "display_ratio": 1.426229,
+    "pixel_width": 348,
+    "pixel_height": 244,
+    "pixel_ratio": 1.42623,
+    "occurrences": [
+      {
+        "slide_index": 7,
+        "shape_name": "Image 44",
+        "display_left_emu": 15153026,
+        "display_top_emu": 2647950,
+        "display_width_emu": 1793198,
+        "display_height_emu": 1257300,
+        "display_width_in": 1.9611,
+        "display_height_in": 1.375,
+        "display_ratio": 1.426229
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      1.426229
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  },
+  {
+    "index": 9,
+    "filename": "image_d6029923a2702968.jpg",
+    "original_filename": "image_d6029923a2702968.jpg",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".jpg",
+    "source_target": "ppt/media/image_d6029923a2702968.jpg",
+    "content_type": "image/jpeg",
+    "display_left_emu": 9448800,
+    "display_top_emu": 2881202,
+    "display_width_emu": 2266950,
+    "display_height_emu": 790797,
+    "display_width_in": 2.4792,
+    "display_height_in": 0.8648,
+    "display_ratio": 2.866665,
+    "pixel_width": 516,
+    "pixel_height": 180,
+    "pixel_ratio": 2.866667,
+    "occurrences": [
+      {
+        "slide_index": 7,
+        "shape_name": "Image 38",
+        "display_left_emu": 9448800,
+        "display_top_emu": 2881202,
+        "display_width_emu": 2266950,
+        "display_height_emu": 790797,
+        "display_width_in": 2.4792,
+        "display_height_in": 0.8648,
+        "display_ratio": 2.866665
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      2.866665
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  },
+  {
+    "index": 10,
+    "filename": "image_35be9841a60de940.jpg",
+    "original_filename": "image_35be9841a60de940.jpg",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".jpg",
+    "source_target": "ppt/media/image_35be9841a60de940.jpg",
+    "content_type": "image/jpeg",
+    "display_left_emu": 1246374,
+    "display_top_emu": 5600700,
+    "display_width_emu": 1698251,
+    "display_height_emu": 1066800,
+    "display_width_in": 1.8572,
+    "display_height_in": 1.1667,
+    "display_ratio": 1.591911,
+    "pixel_width": 433,
+    "pixel_height": 272,
+    "pixel_ratio": 1.591912,
+    "occurrences": [
+      {
+        "slide_index": 7,
+        "shape_name": "Image 24",
+        "display_left_emu": 1246374,
+        "display_top_emu": 5600700,
+        "display_width_emu": 1698251,
+        "display_height_emu": 1066800,
+        "display_width_in": 1.8572,
+        "display_height_in": 1.1667,
+        "display_ratio": 1.591911
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      1.591911
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  },
+  {
+    "index": 11,
+    "filename": "image_55406d6930a47097.jpg",
+    "original_filename": "image_55406d6930a47097.jpg",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".jpg",
+    "source_target": "ppt/media/image_55406d6930a47097.jpg",
+    "content_type": "image/jpeg",
+    "display_left_emu": 3755069,
+    "display_top_emu": 5600700,
+    "display_width_emu": 1957712,
+    "display_height_emu": 1066800,
+    "display_width_in": 2.141,
+    "display_height_in": 1.1667,
+    "display_ratio": 1.835126,
+    "pixel_width": 512,
+    "pixel_height": 279,
+    "pixel_ratio": 1.835125,
+    "occurrences": [
+      {
+        "slide_index": 7,
+        "shape_name": "Image 27",
+        "display_left_emu": 3755069,
+        "display_top_emu": 5600700,
+        "display_width_emu": 1957712,
+        "display_height_emu": 1066800,
+        "display_width_in": 2.141,
+        "display_height_in": 1.1667,
+        "display_ratio": 1.835126
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      1.835126
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  },
+  {
+    "index": 12,
+    "filename": "image_e775750580b59e96.jpg",
+    "original_filename": "image_e775750580b59e96.jpg",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".jpg",
+    "source_target": "ppt/media/image_e775750580b59e96.jpg",
+    "content_type": "image/jpeg",
+    "display_left_emu": 6482136,
+    "display_top_emu": 5600700,
+    "display_width_emu": 1780427,
+    "display_height_emu": 1066800,
+    "display_width_in": 1.9471,
+    "display_height_in": 1.1667,
+    "display_ratio": 1.668942,
+    "pixel_width": 489,
+    "pixel_height": 293,
+    "pixel_ratio": 1.668942,
+    "occurrences": [
+      {
+        "slide_index": 7,
+        "shape_name": "Image 30",
+        "display_left_emu": 6482136,
+        "display_top_emu": 5600700,
+        "display_width_emu": 1780427,
+        "display_height_emu": 1066800,
+        "display_width_in": 1.9471,
+        "display_height_in": 1.1667,
+        "display_ratio": 1.668942
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      1.668942
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  },
+  {
+    "index": 13,
+    "filename": "image_fb6b94c1b1e59760.jpg",
+    "original_filename": "image_fb6b94c1b1e59760.jpg",
+    "asset_kind": "bitmap",
+    "svg_renderable": true,
+    "pptx_native_supported": true,
+    "source_kind": "pptx_picture",
+    "source_ext": ".jpg",
+    "source_target": "ppt/media/image_fb6b94c1b1e59760.jpg",
+    "content_type": "image/jpeg",
+    "display_left_emu": 9607372,
+    "display_top_emu": 5886450,
+    "display_width_emu": 2483207,
+    "display_height_emu": 1466850,
+    "display_width_in": 2.7157,
+    "display_height_in": 1.6042,
+    "display_ratio": 1.692884,
+    "pixel_width": 452,
+    "pixel_height": 267,
+    "pixel_ratio": 1.692884,
+    "occurrences": [
+      {
+        "slide_index": 7,
+        "shape_name": "Image 51",
+        "display_left_emu": 9607372,
+        "display_top_emu": 5886450,
+        "display_width_emu": 2483207,
+        "display_height_emu": 1466850,
+        "display_width_in": 2.7157,
+        "display_height_in": 1.6042,
+        "display_ratio": 1.692884
+      }
+    ],
+    "usage_count": 1,
+    "display_ratio_variants": [
+      1.692884
+    ],
+    "source_namespace": "11_描述符阈值研究流程分享PPT_20260723_225801"
+  }
+]

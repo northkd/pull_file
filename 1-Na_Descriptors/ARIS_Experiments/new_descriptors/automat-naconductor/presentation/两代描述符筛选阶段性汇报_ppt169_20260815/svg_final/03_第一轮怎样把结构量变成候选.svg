@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">02｜第一轮方法</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">第一轮怎样把结构量变成候选？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="process-lead" data-pptx-bounds="48 148 1184 44">
+    <text x="48" y="178" font-family="Arial, 'PingFang SC', sans-serif" font-size="26" fill="#182229">第一轮不是一个单独算法，而是几个环节接力回答不同问题。</text>
+  </g>
+  <g id="input-block" data-pptx-bounds="48 236 156 238">
+    <rect x="48" y="236" width="156" height="238" fill="#113B4A"/>
+    <text x="126" y="280" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">输入</text>
+    <text x="126" y="340" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="44" font-weight="bold" fill="#FFFFFF">CIF</text>
+    <text x="126" y="378" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#D9E4E1">结构文件</text>
+    <line x1="76" y1="402" x2="176" y2="402" stroke="#6EA89C" stroke-width="2"/>
+    <text x="126" y="438" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#FFFFFF">电导率</text>
+    <text x="126" y="462" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#D9E4E1">目标值</text>
+  </g>
+  <g id="step-1" data-pptx-bounds="232 236 176 238">
+    <rect x="232" y="236" width="176" height="238" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="232" y="236" width="176" height="46" fill="#2E7D6E"/>
+    <text x="250" y="266" font-family="Georgia, 'Songti SC', serif" font-size="20" font-weight="bold" fill="#FFFFFF">一</text>
+    <text x="280" y="266" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">构造结构量</text>
+    <text x="250" y="326" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#182229">把结构变成数字</text>
+    <text x="250" y="362" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">键长、畸变、</text>
+    <text x="250" y="390" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Na 网络、浓度等</text>
+    <line x1="250" y1="420" x2="390" y2="420" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="250" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#2E7D6E">回答：看哪些量？</text>
+  </g>
+  <g id="step-2" data-pptx-bounds="432 236 184 238">
+    <rect x="432" y="236" width="176" height="238" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="432" y="236" width="176" height="46" fill="#113B4A"/>
+    <text x="450" y="266" font-family="Georgia, 'Songti SC', serif" font-size="20" font-weight="bold" fill="#FFFFFF">二</text>
+    <text x="474" y="266" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">先做单项比较</text>
+    <text x="450" y="326" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#182229">看是否同向</text>
+    <text x="450" y="362" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">相关性比较</text>
+    <text x="450" y="390" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">简单预测复核</text>
+    <line x1="450" y1="420" x2="590" y2="420" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="450" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">回答：有没有关系？</text>
+  </g>
+  <g id="step-3" data-pptx-bounds="632 236 200 238">
+    <rect x="632" y="236" width="176" height="238" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="632" y="236" width="176" height="46" fill="#2E7D6E"/>
+    <text x="650" y="266" font-family="Georgia, 'Songti SC', serif" font-size="20" font-weight="bold" fill="#FFFFFF">三</text>
+    <text x="680" y="266" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">尝试组合</text>
+    <text x="650" y="326" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#182229">看两个因素一起时</text>
+    <text x="650" y="354" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#182229">是否更有解释力</text>
+    <text x="650" y="392" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">加、减、乘、除等形式</text>
+    <line x1="650" y1="420" x2="790" y2="420" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="650" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#2E7D6E">回答：能否互补？</text>
+  </g>
+  <g id="step-4" data-pptx-bounds="832 236 176 238">
+    <rect x="832" y="236" width="176" height="238" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="832" y="236" width="176" height="46" fill="#113B4A"/>
+    <text x="850" y="266" font-family="Georgia, 'Songti SC', serif" font-size="20" font-weight="bold" fill="#FFFFFF">四</text>
+    <text x="880" y="266" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">反复换样本</text>
+    <text x="850" y="326" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#182229">看结果是否偶然</text>
+    <text x="850" y="362" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">重复抽取材料</text>
+    <text x="850" y="390" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">重新观察排名</text>
+    <line x1="850" y1="420" x2="990" y2="420" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="850" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">回答：稳不稳定？</text>
+  </g>
+  <g id="step-5" data-pptx-bounds="1032 236 200 238">
+    <rect x="1032" y="236" width="200" height="238" fill="#FBE5DF" stroke="#C75B39" stroke-width="1"/>
+    <rect x="1032" y="236" width="200" height="46" fill="#C75B39"/>
+    <text x="1050" y="266" font-family="Georgia, 'Songti SC', serif" font-size="20" font-weight="bold" fill="#FFFFFF">五</text>
+    <text x="1080" y="266" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">按类别留出</text>
+    <text x="1050" y="326" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#182229">换一个体系</text>
+    <text x="1050" y="354" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#182229">还能不能成立？</text>
+    <text x="1050" y="392" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">留出一个材料类别</text>
+    <line x1="1050" y1="420" x2="1214" y2="420" stroke="#E3B4A6" stroke-width="1"/>
+    <text x="1050" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">回答：能否迁移？</text>
+  </g>
+  <g id="process-arrows" data-pptx-bounds="204 338 828 28">
+    <line x1="204" y1="350" x2="232" y2="350" stroke="#2E7D6E" stroke-width="3"/>
+    <line x1="408" y1="350" x2="432" y2="350" stroke="#2E7D6E" stroke-width="3"/>
+    <line x1="608" y1="350" x2="632" y2="350" stroke="#2E7D6E" stroke-width="3"/>
+    <line x1="808" y1="350" x2="832" y2="350" stroke="#2E7D6E" stroke-width="3"/>
+    <line x1="1008" y1="350" x2="1032" y2="350" stroke="#C75B39" stroke-width="3"/>
+  </g>
+  <g id="process-takeaway" data-pptx-bounds="48 526 1184 92">
+    <rect x="48" y="526" width="1184" height="92" fill="#EFF3F1"/>
+    <text x="640" y="562" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#647176">第一轮把“找候选、做比较、看稳定、看迁移”串成了可以运行的探索流程</text>
+    <text x="640" y="598" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">但这些环节使用的是同一批历史数据，仍需要第二轮重新检查</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">正文｜每个环节回答一个不同的材料问题</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">03 / 13</text>
+  </g>
+</svg>

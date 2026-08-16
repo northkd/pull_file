@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">Q5｜证据边界</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">为什么现在还只能叫探索性证据？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="evidence-direction" data-pptx-bounds="48 158 566 34">
+    <text x="48" y="184" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">越往上，越接近“可以外推到没见过的材料”</text>
+  </g>
+  <g id="evidence-pyramid" data-pptx-bounds="48 214 566 394">
+    <path d="M 48 608 L 128 518 L 534 518 L 614 608 Z" fill="#113B4A"/>
+    <path d="M 136 500 L 204 410 L 458 410 L 526 500 Z" fill="#2E7D6E"/>
+    <path d="M 212 392 L 270 302 L 392 302 L 450 392 Z" fill="#FFFFFF" stroke="#C75B39" stroke-width="3"/>
+    <path d="M 278 284 L 331 214 L 384 284 Z" fill="#FFFFFF" stroke="#C75B39" stroke-width="3"/>
+    <text x="331" y="260" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">完全没见过的体系</text>
+    <text x="331" y="340" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">选择后会不会过于乐观</text>
+    <text x="331" y="450" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" font-weight="bold" fill="#FFFFFF">对靠前组合做体系内复查</text>
+    <text x="331" y="558" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" font-weight="bold" fill="#FFFFFF">先扣除体系整体起点再比较</text>
+    <text x="331" y="586" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#D9E4E1">精确口径：线性残差的排序相关</text>
+  </g>
+  <g id="layer-details" data-pptx-bounds="686 206 546 402">
+    <rect x="686" y="206" width="546" height="86" fill="#FBE5DF" stroke="#C75B39" stroke-width="1"/>
+    <text x="710" y="238" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">还缺 2｜真正的跨体系检验</text>
+    <text x="710" y="270" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">当前不能宣称可以预测一个完全未见的材料体系。</text>
+    <rect x="686" y="310" width="546" height="98" fill="#FFFFFF" stroke="#C75B39" stroke-width="2"/>
+    <text x="710" y="342" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">还缺 1｜挑选过以后再检验，分数可能偏高</text>
+    <text x="710" y="374" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">主检验的 p 值偏小，尝试过多少候选还没有完整计入。</text>
+    <rect x="686" y="426" width="546" height="82" fill="#EFF3F1" stroke="#2E7D6E" stroke-width="1"/>
+    <text x="710" y="458" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">已有｜对排名靠前的组合做分体系复查</text>
+    <text x="710" y="490" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">样本太少的体系不报告，避免把离散值当成证据。</text>
+    <rect x="686" y="526" width="546" height="82" fill="#113B4A"/>
+    <text x="710" y="558" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">已有｜先把体系类别能够解释的部分拿掉</text>
+    <text x="710" y="590" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#D9E4E1">再比较结构量和电导率的剩余排序是否同向。</text>
+  </g>
+  <g id="naming-caution" data-pptx-bounds="686 618 546 28">
+    <text x="686" y="640" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">所以：已有检查能减少误判，但还没有闭合证据链。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Q&amp;A附录｜“稳定”不等于“可以外推”</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">12 / 13</text>
+  </g>
+</svg>

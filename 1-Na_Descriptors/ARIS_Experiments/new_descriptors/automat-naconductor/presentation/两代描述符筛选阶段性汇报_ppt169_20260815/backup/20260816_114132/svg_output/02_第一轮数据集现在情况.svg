@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">01｜第一轮数据</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">第一轮数据集现在是什么情况？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="data-anchor" data-pptx-bounds="48 190 440 326">
+    <rect x="48" y="190" width="440" height="326" fill="#EFF3F1"/>
+    <text x="82" y="248" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#647176">第一轮正式数据口径</text>
+    <text x="82" y="372" font-family="Georgia, 'Songti SC', serif" font-size="112" font-weight="bold" fill="#113B4A">103</text>
+    <text x="86" y="420" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#182229">条材料记录</text>
+    <text x="86" y="458" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#647176">对应 103 个 CIF 结构文件</text>
+    <line x1="82" y1="482" x2="450" y2="482" stroke="#2E7D6E" stroke-width="3"/>
+    <text x="82" y="506" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">第一轮筛选已在这套数据上完整运行</text>
+  </g>
+  <g id="data-interpretation" data-pptx-bounds="560 192 672 324">
+    <text x="560" y="236" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#113B4A">这套数据能支持什么？</text>
+    <line x1="560" y1="254" x2="1232" y2="254" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="560" y="302" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#2E7D6E">可以做探索</text>
+    <text x="560" y="338" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">比较不同结构量与室温钠离子电导率的关系</text>
+    <text x="560" y="374" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">观察哪些结构方向值得继续研究</text>
+    <text x="560" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#C75B39">还不能直接下结论</text>
+    <text x="560" y="460" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">样本量有限，跨文献测量口径也不完全一致</text>
+    <text x="560" y="496" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">本次重点是方法升级，不报告第二轮最终候选</text>
+  </g>
+  <g id="transition" data-pptx-bounds="48 552 1184 64">
+    <rect x="48" y="552" width="1184" height="64" fill="#113B4A"/>
+    <text x="640" y="593" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">下一步要问的不是“还能不能继续算”，而是“算出来能不能相信”</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">正文｜先说清楚第一轮结果所处的数据边界</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">02 / 13</text>
+  </g>
+</svg>

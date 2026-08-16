@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 34 1184 110">
+    <text x="48" y="54" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">04｜第一次转折</text>
+    <text x="48" y="112" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">但旧候选不能原样带进第二代</text>
+    <line x1="48" y1="134" x2="1232" y2="134" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="legacy-directions" data-pptx-bounds="48 170 252 400">
+    <text x="48" y="198" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">第一代留下的研究方向</text>
+    <line x1="48" y1="218" x2="272" y2="218" stroke="#113B4A" stroke-width="3"/>
+    <text x="48" y="278" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">局域宽松</text>
+    <text x="48" y="352" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">配位畸变</text>
+    <text x="48" y="426" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">Na 网络</text>
+    <text x="48" y="496" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">这些方向值得继续研究，</text>
+    <text x="48" y="524" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">但旧数字不能直接迁移。</text>
+  </g>
+  <g id="break-symbol" data-pptx-bounds="280 226 210 220">
+    <line x1="340" y1="248" x2="430" y2="418" stroke="#CFDAD7" stroke-width="2"/>
+    <text x="384" y="356" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="78" font-weight="bold" fill="#C75B39">≠</text>
+    <text x="384" y="410" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">同名，不等于同一量</text>
+  </g>
+  <g id="a2-definition-break" data-pptx-bounds="482 170 750 182">
+    <text x="482" y="202" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">A2</text>
+    <text x="556" y="202" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">公式、单位和聚合方式都改变</text>
+    <rect x="482" y="226" width="314" height="106" fill="#EFF3F1"/>
+    <text x="500" y="254" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">第一代｜无量纲比值</text>
+    <text x="500" y="286" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">全结构最大 Na–X 距离</text>
+    <text x="500" y="314" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">÷ 目标键长</text>
+    <text x="824" y="288" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#C75B39">→</text>
+    <rect x="892" y="226" width="340" height="106" fill="#FFFFFF" stroke="#2E7D6E" stroke-width="2"/>
+    <text x="910" y="254" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">第二代｜单位 Å</text>
+    <text x="910" y="286" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">各 Na 位点最大距离的均值</text>
+    <text x="910" y="314" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">没有目标键长分母</text>
+  </g>
+  <g id="nana-definition-break" data-pptx-bounds="482 374 750 184">
+    <text x="482" y="406" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">NaNa</text>
+    <text x="596" y="406" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">数据依赖方式改变</text>
+    <rect x="482" y="430" width="314" height="108" fill="#EFF3F1"/>
+    <text x="500" y="458" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">第一代｜整批样本</text>
+    <text x="500" y="490" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">两个网络量先做百分位秩</text>
+    <text x="500" y="518" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">同一结构会随同批材料改变</text>
+    <text x="824" y="492" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#C75B39">→</text>
+    <rect x="892" y="430" width="340" height="108" fill="#FFFFFF" stroke="#2E7D6E" stroke-width="2"/>
+    <text x="910" y="458" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">第二代｜单结构近似</text>
+    <text x="910" y="490" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">连通占比 × 邻居 × 维度</text>
+    <text x="910" y="518" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">不是第一代公式的直接实现</text>
+  </g>
+  <g id="takeaway" data-pptx-bounds="482 572 750 48">
+    <rect x="482" y="574" width="750" height="44" fill="#113B4A"/>
+    <text x="500" y="603" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">旧相关系数只能解释“为什么继续研究”，不能替第二代提前给出结论。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">身份核对发现：A2 与 NaNa 都发生了定义漂移</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">04 / 18</text>
+  </g>
+</svg>

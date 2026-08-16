@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">04｜第二轮第一步</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">先把体系差异拿掉，再比较结构量</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="explanation" data-pptx-bounds="48 154 1184 50">
+    <text x="48" y="188" font-family="Arial, 'PingFang SC', sans-serif" font-size="26" fill="#182229">如果某个结构量只是告诉我们“它属于哪一类材料”，它就不能被当成迁移规律。</text>
+  </g>
+  <g id="mixed-comparison" data-pptx-bounds="48 232 390 276">
+    <rect x="48" y="232" width="330" height="276" fill="#FBE5DF"/>
+    <text x="76" y="274" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#C75B39">全样本混在一起</text>
+    <text x="76" y="322" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">硫化物整体电导率较高</text>
+    <text x="76" y="358" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">某个结构量也整体较高</text>
+    <line x1="76" y1="388" x2="350" y2="388" stroke="#C75B39" stroke-width="2"/>
+    <text x="76" y="430" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#C75B39">看起来相关，可能只是类别标签</text>
+    <text x="76" y="468" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">这不是我们真正想找的结构规律</text>
+  </g>
+  <g id="within-system" data-pptx-bounds="468 232 338 276">
+    <rect x="468" y="232" width="338" height="276" fill="#EFF3F1"/>
+    <text x="496" y="274" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">第二轮先在体系内部比较</text>
+    <rect x="496" y="304" width="112" height="54" fill="#FFFFFF" stroke="#2E7D6E" stroke-width="2"/>
+    <text x="552" y="338" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">NASICON</text>
+    <rect x="628" y="304" width="112" height="54" fill="#FFFFFF" stroke="#2E7D6E" stroke-width="2"/>
+    <text x="684" y="338" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">硫化物</text>
+    <rect x="552" y="378" width="112" height="54" fill="#FFFFFF" stroke="#2E7D6E" stroke-width="2"/>
+    <text x="608" y="412" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">卤化物</text>
+    <text x="496" y="468" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">分别看每一类材料内部，结构量高低</text>
+    <text x="496" y="496" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">是否仍与电导率高低同向。</text>
+  </g>
+  <g id="remaining-trend" data-pptx-bounds="896 232 336 276">
+    <rect x="896" y="232" width="336" height="276" fill="#FFFFFF" stroke="#2E7D6E" stroke-width="2"/>
+    <text x="924" y="274" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#2E7D6E">最后汇总剩余趋势</text>
+    <text x="924" y="326" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">先去掉“属于哪一类”的整体起点</text>
+    <text x="924" y="364" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">再看不能由类别解释的部分</text>
+    <line x1="924" y1="390" x2="1204" y2="390" stroke="#2E7D6E" stroke-width="3"/>
+    <text x="924" y="434" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#113B4A">这样得到的相关性更接近</text>
+    <text x="924" y="468" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#113B4A">“结构量本身是否有用”</text>
+  </g>
+  <g id="boundary-note" data-pptx-bounds="48 542 1184 82">
+    <rect x="48" y="542" width="1184" height="82" fill="#EFF3F1"/>
+    <text x="72" y="576" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#C75B39">这一步能解决：</text>
+    <text x="236" y="576" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">材料类别起点不同造成的假相关。</text>
+    <text x="72" y="608" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">仍未解决：致密度、烧结条件、测试方法以及 total / bulk 的测量口径差异。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">正文｜先比较同一体系内部，再汇总跨体系仍然存在的趋势</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">05 / 13</text>
+  </g>
+</svg>

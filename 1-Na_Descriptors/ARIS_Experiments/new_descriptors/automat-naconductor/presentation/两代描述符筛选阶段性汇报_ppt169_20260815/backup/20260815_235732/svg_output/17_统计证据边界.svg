@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">Q5｜证据边界</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">当前统计证据为什么仍然是探索性的？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="evidence-direction" data-pptx-bounds="48 158 540 34">
+    <text x="48" y="184" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">越向上，越接近“可以外推到未见体系”的结论</text>
+    <line x1="560" y1="184" x2="588" y2="184" stroke="#C75B39" stroke-width="3"/>
+  </g>
+  <g id="evidence-pyramid" data-pptx-bounds="48 214 566 394">
+    <path d="M 48 608 L 128 518 L 534 518 L 614 608 Z" fill="#113B4A"/>
+    <path d="M 136 500 L 204 410 L 458 410 L 526 500 Z" fill="#2E7D6E"/>
+    <path d="M 212 392 L 270 302 L 392 302 L 450 392 Z" fill="#FFFFFF" stroke="#C75B39" stroke-width="3"/>
+    <path d="M 278 284 L 331 214 L 384 284 Z" fill="#FFFFFF" stroke="#C75B39" stroke-width="3"/>
+    <text x="331" y="260" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">未见体系外推</text>
+    <text x="331" y="340" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">选择过程不确定性</text>
+    <text x="331" y="450" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">优胜组合置换复查</text>
+    <text x="331" y="558" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">线性扣除体系起点后再排序</text>
+    <text x="331" y="586" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#D9E4E1">当前主量｜rank_corr_of_linear_residuals</text>
+  </g>
+  <g id="layer-4-detail" data-pptx-bounds="686 206 546 86">
+    <rect x="686" y="206" width="546" height="86" fill="#FBE5DF" stroke="#C75B39" stroke-width="1"/>
+    <text x="710" y="238" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">缺口 2｜真正 LOSO 尚未实现</text>
+    <text x="710" y="270" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">目前不能宣称可预测一个完全未见的材料体系</text>
+  </g>
+  <g id="layer-3-detail" data-pptx-bounds="686 310 546 98">
+    <rect x="686" y="310" width="546" height="98" fill="#FFFFFF" stroke="#C75B39" stroke-width="2"/>
+    <text x="710" y="342" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">缺口 1｜筛选过再检验，乐观程度未完整计入</text>
+    <text x="710" y="374" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">主检验 p 值偏小；多重比较与选择不确定性未闭环</text>
+  </g>
+  <g id="layer-2-detail" data-pptx-bounds="686 426 546 82">
+    <rect x="686" y="426" width="546" height="82" fill="#EFF3F1" stroke="#2E7D6E" stroke-width="1"/>
+    <text x="710" y="458" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">已有｜Stage 4 只复查排名靠前的组合</text>
+    <text x="710" y="490" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">按体系置换；单个体系少于 5 个样本时不报告</text>
+  </g>
+  <g id="layer-1-detail" data-pptx-bounds="686 526 546 82">
+    <rect x="686" y="526" width="546" height="82" fill="#113B4A"/>
+    <text x="710" y="558" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">已有｜先扣除 system 与独立 anion_type 信息</text>
+    <text x="710" y="590" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#D9E4E1">再对 X、Y 的两组线性残差做 Spearman 排序相关</text>
+  </g>
+  <g id="naming-caution" data-pptx-bounds="686 618 546 28">
+    <text x="686" y="640" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">准确叫法：线性残差的排序相关，不是标准 partial Spearman</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Q&amp;A附录｜已有检查能减少误判，但还不足以支撑跨体系外推</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">17 / 18</text>
+  </g>
+</svg>

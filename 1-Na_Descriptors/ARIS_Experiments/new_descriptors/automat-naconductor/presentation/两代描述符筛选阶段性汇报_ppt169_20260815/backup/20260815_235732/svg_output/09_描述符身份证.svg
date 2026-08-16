@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">09｜第二道防线</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">给每个描述符建立“身份证”</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 140 1184 46">
+    <text x="48" y="172" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" fill="#182229">名字、公式、来源和写法敏感性未对齐前，分数没有可靠物理解释。</text>
+  </g>
+  <g id="descriptor-identity" data-pptx-bounds="48 206 540 340">
+    <text x="48" y="234" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">DESCRIPTOR IDENTITY｜登记表字段</text>
+    <line x1="48" y1="250" x2="520" y2="250" stroke="#113B4A" stroke-width="3"/>
+    <text x="48" y="292" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">01 公式</text>
+    <text x="280" y="292" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">04 代码来源</text>
+    <text x="48" y="340" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">02 单位</text>
+    <text x="280" y="340" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">05 别名</text>
+    <text x="48" y="388" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">03 物理类别</text>
+    <text x="280" y="388" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">06 已知敏感性</text>
+    <line x1="48" y1="414" x2="520" y2="414" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="48" y="466" font-family="Georgia, 'Songti SC', serif" font-size="78" font-weight="bold" fill="#C75B39">205</text>
+    <text x="224" y="448" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#C75B39">处 TODO</text>
+    <text x="224" y="482" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">公式身份、名称匹配和参数出处仍待完成</text>
+  </g>
+  <g id="search-funnel" data-pptx-bounds="598 202 634 360">
+    <text x="598" y="234" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">注册入口不等于搜索入口</text>
+    <path d="M 598 264 L 1232 264 L 1168 344 L 662 344 Z" fill="#113B4A"/>
+    <text x="915" y="302" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#FFFFFF">41 个注册描述符</text>
+    <text x="915" y="329" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#DCE7E9">AVAILABLE</text>
+    <path d="M 662 364 L 1168 364 L 1112 434 L 718 434 Z" fill="#C75B39"/>
+    <text x="915" y="396" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">− 1 个兼容别名　− 2 个永久不可用</text>
+    <text x="915" y="420" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#FBE5DF">其中 BVSE 入口缺后端、当前返回 NaN</text>
+    <path d="M 718 454 L 1112 454 L 1064 518 L 766 518 Z" fill="#2E7D6E"/>
+    <text x="915" y="494" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#FFFFFF">38 个可搜索入口</text>
+    <text x="915" y="542" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">再按新数据有效覆盖率继续减少</text>
+  </g>
+  <g id="independent-audits" data-pptx-bounds="48 566 1184 62">
+    <rect x="48" y="568" width="1184" height="58" fill="#EFF3F1"/>
+    <text x="66" y="592" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">独立审计工具｜当前未自动串入 run_pipeline.py</text>
+    <text x="66" y="616" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">等价写法检查：换原点 / 超胞 / 占位写法　　数值指纹：5个固定合成结构逐格比较</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">典型发现：a2_max_dist 与第一代 A2 名称相近、物理量不同</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">09 / 18</text>
+  </g>
+</svg>

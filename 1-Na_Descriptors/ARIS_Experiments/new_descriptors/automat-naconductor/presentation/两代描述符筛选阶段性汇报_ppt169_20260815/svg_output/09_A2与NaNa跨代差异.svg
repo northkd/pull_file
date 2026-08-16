@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">Q2｜公式口径</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">A2 和 NaNa 为什么不能跨代对应？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 140 1184 42">
+    <text x="48" y="170" font-family="Arial, 'PingFang SC', sans-serif" font-size="28" fill="#182229">同名不代表同一个物理量：公式、单位、聚合方式和数据依赖都要核对。</text>
+  </g>
+  <g id="a2-native-table" data-pptx-replace-with="table" data-pptx-bounds="48 202 1184 158">
+    <metadata type="application/json">{"x":48,"y":202,"width":1184,"height":158,"columns":["描述符","第一代","第二代","不能直接对应"],"rows":[["A2","全结构最长 Na–X 键长 ÷（有效 Na 半径 + 有效阴离子半径）无量纲；取全结构最大值","a2_max_dist：每个 Na 位点最长 Na–X 键长的均值单位 Å；无目标键长分母","单位不同分母不同聚合方式不同"]],"column_widths":[1.1,3.3,3.3,2.4],"header_rows":1,"strict_grid":true,"style":{"font_family":"PingFang SC","font_size":16,"header_font_size":18,"band_row":false,"border_color":"#CFDAD7","border_width":1}}</metadata>
+    <rect x="48" y="202" width="1184" height="42" fill="#113B4A"/>
+    <rect x="48" y="244" width="130" height="116" fill="#EFF3F1"/>
+    <rect x="178" y="244" width="385" height="116" fill="#F6F8F7"/>
+    <rect x="563" y="244" width="385" height="116" fill="#E9F2EF"/>
+    <rect x="948" y="244" width="284" height="116" fill="#F8EDE9"/>
+    <line x1="178" y1="202" x2="178" y2="360" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="563" y1="202" x2="563" y2="360" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="948" y1="202" x2="948" y2="360" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="113" y="229" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">描述符</text>
+    <text x="370" y="229" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">第一代</text>
+    <text x="756" y="229" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">第二代</text>
+    <text x="1090" y="229" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">不能直接对应</text>
+    <text x="113" y="306" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">A2</text>
+    <text x="196" y="272" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">全结构最长 Na–X 键长 ÷<tspan x="196" dy="22">（有效 Na 半径 + 有效阴离子半径）</tspan><tspan x="196" dy="22">无量纲；取全结构最大值</tspan></text>
+    <text x="581" y="272" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">a2_max_dist：每个 Na 位点<tspan x="581" dy="22">最长 Na–X 键长的均值</tspan><tspan x="581" dy="22">单位 Å；无目标键长分母</tspan></text>
+    <text x="966" y="282" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">单位不同<tspan x="966" dy="24">分母不同</tspan><tspan x="966" dy="24">聚合方式不同</tspan></text>
+  </g>
+  <g id="nana-native-table" data-pptx-replace-with="table" data-pptx-bounds="48 382 1184 164">
+    <metadata type="application/json">{"x":48,"y":382,"width":1184,"height":164,"columns":["描述符","第一代","第二代","不能直接对应"],"rows":[["NaNa","两个网络量在整批样本中先做百分位秩，再取均值同一结构会随同批材料改变","最大连通分量占比 ×min(平均邻居数/8, 1) ×(估计维度+1)/4单结构近似","第一代依赖数据集第二代是另一套单结构公式"]],"column_widths":[1.1,3.3,3.3,2.4],"header_rows":1,"strict_grid":true,"style":{"font_family":"PingFang SC","font_size":16,"header_font_size":18,"band_row":false,"border_color":"#CFDAD7","border_width":1}}</metadata>
+    <rect x="48" y="382" width="1184" height="42" fill="#113B4A"/>
+    <rect x="48" y="424" width="130" height="122" fill="#EFF3F1"/>
+    <rect x="178" y="424" width="385" height="122" fill="#F6F8F7"/>
+    <rect x="563" y="424" width="385" height="122" fill="#E9F2EF"/>
+    <rect x="948" y="424" width="284" height="122" fill="#F8EDE9"/>
+    <line x1="178" y1="382" x2="178" y2="546" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="563" y1="382" x2="563" y2="546" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="948" y1="382" x2="948" y2="546" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="113" y="409" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">描述符</text>
+    <text x="370" y="409" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">第一代</text>
+    <text x="756" y="409" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">第二代</text>
+    <text x="1090" y="409" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">不能直接对应</text>
+    <text x="113" y="490" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">NaNa</text>
+    <text x="196" y="454" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">两个网络量在整批样本中<tspan x="196" dy="22">先做百分位秩，再取均值</tspan><tspan x="196" dy="22">同一结构会随同批材料改变</tspan></text>
+    <text x="581" y="448" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">最大连通分量占比 ×<tspan x="581" dy="22">min(平均邻居数/8, 1) ×</tspan><tspan x="581" dy="22">(估计维度+1)/4</tspan><tspan x="581" dy="22">单结构近似</tspan></text>
+    <text x="966" y="466" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">第一代依赖数据集<tspan x="966" dy="26">第二代是另一套</tspan><tspan x="966" dy="26">单结构公式</tspan></text>
+  </g>
+  <g id="takeaway" data-pptx-bounds="48 574 1184 50">
+    <rect x="48" y="574" width="1184" height="50" fill="#EFF3F1"/>
+    <text x="640" y="606" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">旧相关性不能直接贴到新变量名上，必须重新实现、重新检验。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Q&amp;A附录｜公式、单位和数据依赖必须同时核对</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">09 / 13</text>
+  </g>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 34 1184 110">
+    <text x="48" y="54" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">02｜为什么会有两代算法</text>
+    <text x="48" y="112" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">第一代跑通以后，问题才真正暴露</text>
+    <line x1="48" y1="134" x2="1232" y2="134" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 152 1184 48">
+    <text x="48" y="183" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" fill="#182229">扩数据和改算法必须并行；规则要在看见新结果前先定下来。</text>
+  </g>
+  <g id="data-anchor" data-pptx-bounds="48 220 420 258">
+    <text x="48" y="298" font-family="Georgia, 'Songti SC', serif" font-size="78" font-weight="bold" fill="#113B4A">103 + 103</text>
+    <text x="48" y="340" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#182229">有效记录 + CIF</text>
+    <line x1="48" y1="362" x2="272" y2="362" stroke="#2E7D6E" stroke-width="4"/>
+    <text x="48" y="402" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">第一代完整筛选已跑通</text>
+    <text x="48" y="432" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">_107.xlsx 删除4个含Li结构后</text>
+    <text x="48" y="462" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">实际保留103行</text>
+  </g>
+  <g id="timeline-branches" data-pptx-bounds="250 216 982 340">
+    <line x1="358" y1="366" x2="594" y2="366" stroke="#113B4A" stroke-width="4"/>
+    <line x1="626" y1="366" x2="798" y2="286" stroke="#CFDAD7" stroke-width="3"/>
+    <line x1="626" y1="366" x2="798" y2="446" stroke="#CFDAD7" stroke-width="3"/>
+    <line x1="998" y1="286" x2="1104" y2="366" stroke="#2E7D6E" stroke-width="3"/>
+    <line x1="998" y1="446" x2="1104" y2="366" stroke="#2E7D6E" stroke-width="3"/>
+    <circle cx="358" cy="366" r="18" fill="#113B4A"/>
+    <circle cx="610" cy="366" r="24" fill="#C75B39"/>
+    <circle cx="812" cy="286" r="14" fill="#2E7D6E"/>
+    <circle cx="812" cy="446" r="14" fill="#2E7D6E"/>
+    <circle cx="1118" cy="366" r="20" fill="#FFFFFF" stroke="#2E7D6E" stroke-width="4"/>
+    <text x="358" y="320" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">第一代完整筛选</text>
+    <text x="610" y="314" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#C75B39">问题暴露</text>
+    <text x="610" y="410" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">口径｜身份｜冗余｜外推</text>
+    <text x="842" y="268" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#2E7D6E">数据线</text>
+    <text x="842" y="304" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">扩充三类材料</text>
+    <text x="842" y="330" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">补齐来源与测量口径</text>
+    <text x="842" y="428" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#2E7D6E">算法线</text>
+    <text x="842" y="464" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">冻结筛选与审计顺序</text>
+    <text x="842" y="490" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">避免看结果后改判据</text>
+    <text x="1118" y="320" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#113B4A">汇合</text>
+    <text x="1118" y="414" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">新数据通过检查</text>
+    <text x="1118" y="440" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">再进入第二代</text>
+    <rect x="338" y="520" width="874" height="36" fill="#EFF3F1"/>
+    <text x="356" y="545" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#C75B39">当前边界：第二代尚无新扩充数据集上的最终筛选结果。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">强相关描述符筛选｜两代方法对比</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">02 / 18</text>
+  </g>
+</svg>

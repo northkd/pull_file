@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="cover">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="kicker" data-pptx-bounds="48 38 680 30">
+    <rect x="48" y="42" width="54" height="4" fill="#2E7D6E"/>
+    <text x="116" y="55" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">强相关描述符筛选｜阶段性工作汇报</text>
+  </g>
+  <g id="title-block" data-pptx-bounds="48 96 748 468">
+    <text x="48" y="178" font-family="Georgia, 'Songti SC', serif" font-size="78" font-weight="bold" fill="#113B4A">高分 <tspan fill="#C75B39">≠</tspan> 规律</text>
+    <text x="48" y="252" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#182229">高分不难，难的是知道它为什么高</text>
+    <line x1="48" y1="278" x2="314" y2="278" stroke="#CFDAD7" stroke-width="2"/>
+    <text x="48" y="330" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" fill="#182229">找到一个高分描述符不难，<tspan x="48" dy="42">难的是确认它反映的是材料结构。</tspan></text>
+    <text x="48" y="430" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">两代方法对比｜从“谁分数高”到“哪些结果有资格被相信”</text>
+  </g>
+  <g id="risk-convergence" data-pptx-bounds="770 126 462 430">
+    <text x="794" y="158" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">三个必须先排除的来源</text>
+    <line x1="812" y1="226" x2="1058" y2="334" stroke="#CFDAD7" stroke-width="2"/>
+    <line x1="812" y1="334" x2="1058" y2="334" stroke="#CFDAD7" stroke-width="2"/>
+    <line x1="812" y1="442" x2="1058" y2="334" stroke="#CFDAD7" stroke-width="2"/>
+    <circle cx="800" cy="226" r="10" fill="#C75B39"/>
+    <circle cx="800" cy="334" r="10" fill="#C75B39"/>
+    <circle cx="800" cy="442" r="10" fill="#C75B39"/>
+    <text x="824" y="233" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">材料体系</text>
+    <text x="824" y="341" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">测量口径</text>
+    <text x="824" y="449" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">CIF 写法</text>
+    <circle cx="1110" cy="334" r="82" fill="#EFF3F1" stroke="#113B4A" stroke-width="3"/>
+    <text x="1110" y="325" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="24" font-weight="bold" fill="#113B4A">高相关</text>
+    <text x="1110" y="391" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="78" font-weight="bold" fill="#C75B39">?</text>
+    <text x="792" y="528" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">跨体系稳定｜扣除体系差异｜名实一致</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 636 1184 52">
+    <line x1="48" y1="648" x2="1232" y2="648" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="48" y="680" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">固态电解质结构描述符筛选｜2026.08</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="680" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">01 / 18</text>
+  </g>
+</svg>

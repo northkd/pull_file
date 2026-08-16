@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 106">
+    <text x="48" y="50" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">Q3｜数字口径</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">0.793 和 41→38 分别代表什么？</text>
+    <line x1="48" y1="126" x2="1232" y2="126" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="historical-model-score" data-pptx-bounds="48 174 530 338">
+    <text x="48" y="206" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">第一代历史模型性能</text>
+    <text x="48" y="300" font-family="Georgia, 'Songti SC', serif" font-size="78" font-weight="bold" fill="#113B4A">0.793</text>
+    <text x="48" y="340" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#182229">交叉验证 Spearman</text>
+    <line x1="48" y1="362" x2="540" y2="362" stroke="#113B4A" stroke-width="3"/>
+    <text x="48" y="398" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">输入：A2 + NaNa + SoftBV / Zeo++</text>
+    <text x="48" y="432" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">仅 A2 + NaNa 网络量：0.755</text>
+    <text x="48" y="474" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">不是 A2×NaNa 单一描述符的相关性</text>
+  </g>
+  <g id="entry-status" data-pptx-bounds="702 174 530 338">
+    <text x="702" y="206" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">代码入口状态</text>
+    <text x="702" y="300" font-family="Georgia, 'Songti SC', serif" font-size="78" font-weight="bold" fill="#2E7D6E">41 → 38</text>
+    <text x="702" y="340" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#182229">注册入口 → 可搜索入口</text>
+    <line x1="702" y1="362" x2="1232" y2="362" stroke="#2E7D6E" stroke-width="3"/>
+    <text x="702" y="398" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">去掉一个兼容别名</text>
+    <text x="702" y="430" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">去掉两个当前不可用入口</text>
+    <text x="702" y="462" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">实际排序还会受有效覆盖率影响</text>
+    <text x="702" y="496" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">不是第二轮已经得到的结果数量</text>
+  </g>
+  <g id="not-second-generation-result" data-pptx-bounds="254 544 772 78">
+    <rect x="254" y="544" width="772" height="78" fill="#C75B39"/>
+    <text x="640" y="576" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#FBE5DF">一个回答“旧模型表现怎样”，一个回答“代码入口多少”</text>
+    <text x="640" y="608" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">都不回答“第二轮发现了什么”</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Q&amp;A附录｜数字必须和对象、阶段一起陈述</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">10 / 13</text>
+  </g>
+</svg>

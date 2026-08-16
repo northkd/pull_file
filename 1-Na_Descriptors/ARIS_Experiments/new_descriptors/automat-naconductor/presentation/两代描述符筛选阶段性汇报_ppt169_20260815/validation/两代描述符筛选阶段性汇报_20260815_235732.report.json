@@ -1,0 +1,272 @@
+{
+  "schema": "ppt-master.pptx-postflight-report.v1",
+  "status": "passed-with-warnings",
+  "output": {
+    "path": "/Users/north./Documents/JXNU/research/1-NASICON/1-data-select/因果推断/experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/exports/两代描述符筛选阶段性汇报_20260815_235732.pptx",
+    "bytes": 104718
+  },
+  "source": {
+    "svg_slide_count": 18,
+    "layout_definition_count": 0,
+    "fingerprint": {
+      "algorithm": "sha256",
+      "digest": "361959a82db261c4f9d30c4a10e1837c172935e19977f3f977a0bc9a3f376072",
+      "file_count": 18,
+      "files": [
+        {
+          "file": "01_高分不难.svg",
+          "sha256": "46d08ba4626fdb6968372131f439cef6d75cd132f11c3680feadb8375a193f80"
+        },
+        {
+          "file": "02_第一代跑通以后.svg",
+          "sha256": "6fb0260048c3cc4fe202868cc1bbd35c21c0081f390deea9f5cf0deb21a677ac"
+        },
+        {
+          "file": "03_第一代筛选流程.svg",
+          "sha256": "85d42aa936f91413e52981d3fca7e553ee5a0cc0de70e2b9b34e49241fea81bf"
+        },
+        {
+          "file": "04_旧候选不能迁移.svg",
+          "sha256": "c123740d7318a65b86d0d1e0e702da46962f9eb5c7594d8205c0af261f802bdb"
+        },
+        {
+          "file": "05_两个现场问题.svg",
+          "sha256": "d6d8a04df70c4949448d9ac95a97759634d8d3513401be0269a39ffff1f92f79"
+        },
+        {
+          "file": "06_五类误判.svg",
+          "sha256": "55ab6642f311dd03cf8f2ae4e35b211de8f54a8fc17d36eb6365be0fb650bcde"
+        },
+        {
+          "file": "07_两代核心差别.svg",
+          "sha256": "1138690e5b6a7a57a6c3d851c5e9117c36f1481b53736c782bf6066717abbda3"
+        },
+        {
+          "file": "08_扣除体系起点.svg",
+          "sha256": "8720c27e38cb855e506b5188e1fcf1c9e2e271b5471822b284f024110a1a002a"
+        },
+        {
+          "file": "09_描述符身份证.svg",
+          "sha256": "f318a20a92f842eb4639eaadbc6955bd9b1347a1d11c5ff3630320a66b59fca5"
+        },
+        {
+          "file": "10_换样本限组合.svg",
+          "sha256": "f8900fe11ed84611e6f01da4587b423be523f8bd7518a02db660d2ca4d455348"
+        },
+        {
+          "file": "11_能回答与不能回答.svg",
+          "sha256": "f77c71b52a2cbfd19852968226d18b2930965119e5696a0ee2ad13c912986ea4"
+        },
+        {
+          "file": "12_阶段性成果.svg",
+          "sha256": "cb484cbb40ea3ae1d7e1cc74d5549fe03ee857da2f72f67d59c16d8cf2bf8eaa"
+        },
+        {
+          "file": "13_103还是84.svg",
+          "sha256": "02da3453ad596c52d38997f0f0c8d235ec1a7e3c1a49f0265fe175762052d0b4"
+        },
+        {
+          "file": "14_A2与NaNa跨代差异.svg",
+          "sha256": "f2af1b61ac7dac57f6d0af31212cdc0c7532cee767a5db562f5bbac75b5cfa38"
+        },
+        {
+          "file": "15_数字口径.svg",
+          "sha256": "8abe81239c54425bd0b76b122246ee2e404b174772874fe4f05c9d28b9b400ec"
+        },
+        {
+          "file": "16_主程序真正执行范围.svg",
+          "sha256": "6f8fa4066158abf377b7987728aad8cea818bf4bfdcd3057d0783e4412cde523"
+        },
+        {
+          "file": "17_统计证据边界.svg",
+          "sha256": "679519ebe0d27f910e01a9b4818820ce9fa9d7228b4bc77a17eeff370f48b1a5"
+        },
+        {
+          "file": "18_下一步验证路线.svg",
+          "sha256": "d545d4b709b49131059a04b6360b90acd7c9af341fdcf2127542cd084e9381a7"
+        }
+      ]
+    }
+  },
+  "package": {
+    "zip_integrity": "passed",
+    "corrupt_member": null,
+    "slides": 18,
+    "notes": 18,
+    "masters": 1,
+    "layouts": 1
+  },
+  "checks": {
+    "zip_integrity": "passed",
+    "slide_count": "passed",
+    "internal_relationships": "enforced-at-build",
+    "structured_package": "not-applicable",
+    "transitions": "enforced-at-build",
+    "animations": "enforced-at-build",
+    "quality_gate": "passed",
+    "quality_warnings": "warning",
+    "template_tokens": "passed",
+    "external_images": "passed",
+    "font_portability": "passed"
+  },
+  "quality": {
+    "status": "loaded",
+    "path": "/Users/north./Documents/JXNU/research/1-NASICON/1-data-select/因果推断/experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/validation/svg_quality_report.json",
+    "schema": "ppt-master.svg-quality-report.v1",
+    "stage": "final",
+    "source_match": "passed",
+    "source_fingerprint": {
+      "algorithm": "sha256",
+      "digest": "361959a82db261c4f9d30c4a10e1837c172935e19977f3f977a0bc9a3f376072",
+      "file_count": 18,
+      "files": [
+        {
+          "file": "01_高分不难.svg",
+          "sha256": "46d08ba4626fdb6968372131f439cef6d75cd132f11c3680feadb8375a193f80"
+        },
+        {
+          "file": "02_第一代跑通以后.svg",
+          "sha256": "6fb0260048c3cc4fe202868cc1bbd35c21c0081f390deea9f5cf0deb21a677ac"
+        },
+        {
+          "file": "03_第一代筛选流程.svg",
+          "sha256": "85d42aa936f91413e52981d3fca7e553ee5a0cc0de70e2b9b34e49241fea81bf"
+        },
+        {
+          "file": "04_旧候选不能迁移.svg",
+          "sha256": "c123740d7318a65b86d0d1e0e702da46962f9eb5c7594d8205c0af261f802bdb"
+        },
+        {
+          "file": "05_两个现场问题.svg",
+          "sha256": "d6d8a04df70c4949448d9ac95a97759634d8d3513401be0269a39ffff1f92f79"
+        },
+        {
+          "file": "06_五类误判.svg",
+          "sha256": "55ab6642f311dd03cf8f2ae4e35b211de8f54a8fc17d36eb6365be0fb650bcde"
+        },
+        {
+          "file": "07_两代核心差别.svg",
+          "sha256": "1138690e5b6a7a57a6c3d851c5e9117c36f1481b53736c782bf6066717abbda3"
+        },
+        {
+          "file": "08_扣除体系起点.svg",
+          "sha256": "8720c27e38cb855e506b5188e1fcf1c9e2e271b5471822b284f024110a1a002a"
+        },
+        {
+          "file": "09_描述符身份证.svg",
+          "sha256": "f318a20a92f842eb4639eaadbc6955bd9b1347a1d11c5ff3630320a66b59fca5"
+        },
+        {
+          "file": "10_换样本限组合.svg",
+          "sha256": "f8900fe11ed84611e6f01da4587b423be523f8bd7518a02db660d2ca4d455348"
+        },
+        {
+          "file": "11_能回答与不能回答.svg",
+          "sha256": "f77c71b52a2cbfd19852968226d18b2930965119e5696a0ee2ad13c912986ea4"
+        },
+        {
+          "file": "12_阶段性成果.svg",
+          "sha256": "cb484cbb40ea3ae1d7e1cc74d5549fe03ee857da2f72f67d59c16d8cf2bf8eaa"
+        },
+        {
+          "file": "13_103还是84.svg",
+          "sha256": "02da3453ad596c52d38997f0f0c8d235ec1a7e3c1a49f0265fe175762052d0b4"
+        },
+        {
+          "file": "14_A2与NaNa跨代差异.svg",
+          "sha256": "f2af1b61ac7dac57f6d0af31212cdc0c7532cee767a5db562f5bbac75b5cfa38"
+        },
+        {
+          "file": "15_数字口径.svg",
+          "sha256": "8abe81239c54425bd0b76b122246ee2e404b174772874fe4f05c9d28b9b400ec"
+        },
+        {
+          "file": "16_主程序真正执行范围.svg",
+          "sha256": "6f8fa4066158abf377b7987728aad8cea818bf4bfdcd3057d0783e4412cde523"
+        },
+        {
+          "file": "17_统计证据边界.svg",
+          "sha256": "679519ebe0d27f910e01a9b4818820ce9fa9d7228b4bc77a17eeff370f48b1a5"
+        },
+        {
+          "file": "18_下一步验证路线.svg",
+          "sha256": "d545d4b709b49131059a04b6360b90acd7c9af341fdcf2127542cd084e9381a7"
+        }
+      ]
+    },
+    "summary": {
+      "total": 18,
+      "passed": 11,
+      "warnings": 7,
+      "errors": 0
+    },
+    "categories": {
+      "blocking": {
+        "count": 0,
+        "issues": []
+      },
+      "introduced": {
+        "count": 7,
+        "issues": [
+          {
+            "file": "02_第一代跑通以后.svg",
+            "message": "Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id=\"data-anchor\"> x=48.0, y=402.0..462.0, 3 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          },
+          {
+            "file": "04_旧候选不能迁移.svg",
+            "message": "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"legacy-directions\"> x=48.0, y=496.0..524.0, 2 lines; <g id=\"a2-definition-break\"> x=500.0, y=286.0..314.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          },
+          {
+            "file": "05_两个现场问题.svg",
+            "message": "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"question-redundancy\"> x=48.0, y=360.0..396.0, 2 lines; <g id=\"question-vacancy\"> x=732.0, y=360.0..396.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          },
+          {
+            "file": "12_阶段性成果.svg",
+            "message": "Detected 3 paragraph-like line run(s) split across sibling <text> elements (<g id=\"status-bands\"> x=78.0, y=268.0..294.0, 2 lines; <g id=\"status-bands\"> x=78.0, y=388.0..414.0, 2 lines; <g id=\"status-bands\"> x=78.0, y=508.0..534.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          },
+          {
+            "file": "13_103还是84.svg",
+            "message": "Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id=\"historical-distribution\"> x=66.0, y=590.0..616.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          },
+          {
+            "file": "15_数字口径.svg",
+            "message": "Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id=\"entry-status\"> x=702.0, y=398.0..462.0, 3 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          },
+          {
+            "file": "16_主程序真正执行范围.svg",
+            "message": "Detected 4 paragraph-like line run(s) split across sibling <text> elements (<g id=\"stage-1\"> x=308.0, y=326.0..356.0, 2 lines; <g id=\"stage-2\"> x=548.0, y=326.0..356.0, 2 lines; <g id=\"stage-4\"> x=1028.0, y=326.0..356.0, 2 lines; +1 more). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          }
+        ]
+      },
+      "inherited": {
+        "count": 0,
+        "issues": []
+      },
+      "source-import": {
+        "count": 0,
+        "summary": {
+          "warning_count": 0,
+          "by_code": {}
+        }
+      }
+    }
+  },
+  "resources": {
+    "unresolved_template_tokens": [],
+    "fonts": {
+      "stacks": [
+        "Arial, 'PingFang SC', sans-serif",
+        "Georgia, 'Songti SC', serif"
+      ],
+      "generic_only_stacks": []
+    },
+    "images": {
+      "data_uri": 0,
+      "local": 0,
+      "external": 0,
+      "external_references": []
+    }
+  },
+  "backup_path": "/Users/north./Documents/JXNU/research/1-NASICON/1-data-select/因果推断/experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/backup/20260815_235732/svg_output",
+  "conversion_trace_path": null
+}
