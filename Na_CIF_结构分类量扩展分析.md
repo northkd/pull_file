@@ -767,3 +767,35 @@ y_i=\alpha_{\mathrm{system}[i]}+\beta x_i+\mathbf c_i^T\boldsymbol\eta
 34. Wohlmuth et al., *Chemistry of Materials* (2016), [curved Li migration pathways in gamma-LiAlO2](https://doi.org/10.1021/acs.chemmater.5b04608).
 35. Zeng et al., *Journal of the American Chemical Society* (2025), [Disorder-Mediated Ionic Conductivity in Irreducible Solid Electrolytes](https://doi.org/10.1021/jacs.5c02784).
 36. Deng et al., *Chemistry of Materials* (2015), [local halide channel chemistry in Li3OCl1−xBrx](https://doi.org/10.1021/acs.chemmater.5b00988).
+参考了。更准确地说：这些候选是从已发表的一手论文中抽取物理机制和计算构件，再将其重组为尚待你验证的 CIF 离散分类量；不能表述成“文献已经证明这些新分类与 Na 电导率相关”。
+
+截至 2026-08-17 的专项核查结果如下，未依赖预印本：
+
+| 新候选 | 已发表文献基础 | 精确分类是否已有直接验证 |
+|---|---|---|
+| 周期路径冗余 | 动态“路径多样性/路径熵”已与 Li 电导联系；带跨胞平移标签的周期迁移图也已成熟 | **未找到**删除整条边/位点对称轨道后，以 winding-rank 损失或最小 orbit cut 分类并检验电导的工作 |
+| 笼—窗口净空剖面 | Na 的贯通半径、大瓶颈、高配位面共享通道已有直接验证；路径均匀性也已有 Li 筛选先例 | **精确三分类未找到**；但“均匀通道”和“大瓶颈有利”不能声称新 |
+| 通道中心线形态 | 螺旋、弯曲、直线/曲折路径都有单材料机制案例；Voronoi/CAVD 提取方法成熟 | **未找到**统一的 `直线/平面曲折/螺旋/三维弯曲` 跨材料电导检验；这是四项中依据最弱的 |
+| 关键窗口 rim 化学 | 局部瓶颈的 S/N、Cl/Br 化学组成影响跳跃势垒和宏观电导已有直接证据 | **未找到**把 rim 循环顺序分类为 `单一/交替/分块/混合` 并系统检验电导的工作 |
+
+关键文献包括：
+
+- [Guan et al., Path entropy-driven design of solid-state electrolytes, Nature Communications, 2026](https://doi.org/10.1038/s41467-026-71316-z)：动力学路径多样性与 Li 输运。
+- [Shen et al., Topological graph-based analysis of solid-state ion migration, npj Computational Materials, 2023](https://doi.org/10.1038/s41524-023-01051-2)：带胞移标签的周期迁移图。
+- [Wang et al., Design principles for sodium superionic conductors, Nature Communications, 2023](https://doi.org/10.1038/s41467-023-43436-3)：Na 大瓶颈、面共享高配位通道及实验验证。
+- [Xiao et al., Advanced Energy Materials, 2021](https://doi.org/10.1002/aenm.202101437)：Li 迁移通道的 homogeneity 概念及 AIMD 筛选。
+- [Zeng et al., Disorder-Mediated Ionic Conductivity in Irreducible Solid Electrolytes, JACS, 2025](https://doi.org/10.1021/jacs.5c02784)：直接区分 SSS/NSS/NNS/NNN 等瓶颈化学环境，并联系局部跳跃势垒和宏观电导。
+- [He et al., CAVD, Scientific Data, 2020](https://doi.org/10.1038/s41597-020-0491-x)：从 CIF 提取间隙、通道和瓶颈的成熟方法。
+
+因此，最严谨的表述应是：
+
+> 这些是“有已发表机制和方法依据、但精确离散定义尚未被系统检验”的候选量。
+
+对候选池也需要稍作区别：
+
+- 路径冗余：可保留为较强的 `selection-ready` 候选。
+- 笼—窗口：可保留，但应改名为“净空/收窄剖面”；创新点是完整剖面分类，而不是“大瓶颈”本身。
+- rim 化学：有很强机制依据，但只适合完全有序且窗口确有化学变化的 CIF。
+- 中心线形态：目前更适合探索层，不能预设直或弯哪一种更有利。
+
+这四项仍然都必须通过你规定的体系内类别普查、双构造一致率和参数稳定性检验，才能决定是否进入最终 5–6 条主检验。
