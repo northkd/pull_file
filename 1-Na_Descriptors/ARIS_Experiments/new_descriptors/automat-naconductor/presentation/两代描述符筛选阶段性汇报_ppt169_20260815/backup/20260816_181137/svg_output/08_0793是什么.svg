@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 100">
+    <text x="48" y="52" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">问答附录 Q2</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">0.793 是什么？主程序执行到哪？</text>
+    <line x1="48" y1="124" x2="1232" y2="124" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="number-clarify" data-pptx-bounds="48 146 1184 160">
+    <text x="48" y="172" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#C75B39">0.793 是第一代模型预测性能，不是“A2×NaNa 组合描述符的相关系数”</text>
+    <rect x="48" y="190" width="384" height="104" fill="#EFF3F1"/>
+    <text x="64" y="222" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">0.793</text>
+    <text x="64" y="250" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">第一代 ExtraTrees 模型的</text>
+    <text x="64" y="272" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">交叉验证 Spearman</text>
+    <text x="64" y="290" font-family="Arial, 'PingFang SC', sans-serif" font-size="13" fill="#647176">（A2 + NaNa + SoftBV + Zeo++）</text>
+    <rect x="448" y="190" width="384" height="104" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="464" y="222" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">0.755</text>
+    <text x="464" y="250" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">仅 A2 + NaNa 的历史值</text>
+    <text x="464" y="272" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#647176">（不是 0.793）</text>
+    <rect x="848" y="190" width="384" height="104" fill="#FBE5DF"/>
+    <text x="864" y="222" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">正文不把 0.793</text>
+    <text x="864" y="250" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">当组合描述符结果用</text>
+    <text x="864" y="278" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#C75B39">是模型预测性能，不是描述符相关</text>
+  </g>
+  <g id="pipeline" data-pptx-bounds="48 322 1184 224">
+    <text x="48" y="346" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#113B4A">run_pipeline.py 当前执行到 Stage 4</text>
+    <rect x="48" y="362" width="216" height="68" fill="#EFF3F1"/>
+    <text x="60" y="386" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#2E7D6E">Stage 0</text>
+    <text x="60" y="408" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">算描述符</text>
+    <text x="60" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="13" fill="#647176">CIF → 结构量</text>
+    <line x1="264" y1="396" x2="280" y2="396" stroke="#2E7D6E" stroke-width="2"/>
+    <polygon points="280,391 290,396 280,401" fill="#2E7D6E"/>
+    <rect x="292" y="362" width="216" height="68" fill="#EFF3F1"/>
+    <text x="304" y="386" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#2E7D6E">Stage 1</text>
+    <text x="304" y="408" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">原始相关 + 扣体系</text>
+    <text x="304" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="13" fill="#647176">差异相关</text>
+    <line x1="508" y1="396" x2="524" y2="396" stroke="#2E7D6E" stroke-width="2"/>
+    <polygon points="524,391 534,396 524,401" fill="#2E7D6E"/>
+    <rect x="536" y="362" width="216" height="68" fill="#EFF3F1"/>
+    <text x="548" y="386" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#2E7D6E">Stage 2</text>
+    <text x="548" y="408" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">半样本稳定性</text>
+    <text x="548" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="13" fill="#647176">+ 物理类别代表</text>
+    <line x1="752" y1="396" x2="768" y2="396" stroke="#2E7D6E" stroke-width="2"/>
+    <polygon points="768,391 778,396 768,401" fill="#2E7D6E"/>
+    <rect x="780" y="362" width="216" height="68" fill="#EFF3F1"/>
+    <text x="792" y="386" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#2E7D6E">Stage 3</text>
+    <text x="792" y="408" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">受约束组合搜索</text>
+    <text x="792" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="13" fill="#647176">二/三描述符</text>
+    <line x1="996" y1="396" x2="1012" y2="396" stroke="#2E7D6E" stroke-width="2"/>
+    <polygon points="1012,391 1022,396 1012,401" fill="#2E7D6E"/>
+    <rect x="1024" y="362" width="208" height="68" fill="#113B4A"/>
+    <text x="1036" y="386" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#FFFFFF">Stage 4</text>
+    <text x="1036" y="408" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#FFFFFF">靠前组合的</text>
+    <text x="1036" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="13" fill="#CFDAD7">探索性验证</text>
+    <text x="48" y="460" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#647176">主程序到此为止。以下工具已实现但不是主程序自动调的：</text>
+    <rect x="48" y="476" width="1184" height="60" fill="#FFFFFF" stroke="#C75B39" stroke-width="1"/>
+    <text x="64" y="500" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">数据校验 ｜ 室温选择 ｜ 等价写法探针 ｜ 数值指纹 ｜ 注册表闸门</text>
+    <text x="64" y="524" font-family="Arial, 'PingFang SC', sans-serif" font-size="13" fill="#C75B39">可以画“完整研究治理流程”，但要和“一键能跑的主程序”分开说。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">Q&amp;A 附录｜区分模型性能与描述符相关；区分主程序与独立审计工具</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">08 / 12</text>
+  </g>
+</svg>

@@ -22,6 +22,9 @@ venv/
 .DS_Store
 Thumbs.db
 
+# Office 临时锁定文件
+~$*
+
 # 密钥和敏感文件
 .env
 *.pem

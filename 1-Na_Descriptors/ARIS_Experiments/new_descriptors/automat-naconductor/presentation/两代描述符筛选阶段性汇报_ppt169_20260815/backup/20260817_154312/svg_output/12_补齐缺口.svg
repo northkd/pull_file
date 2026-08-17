@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 40 1184 116">
+    <text x="48" y="64" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">Q&amp;A 附录</text>
+    <text x="48" y="124" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">补齐哪些缺口，结果才能写进论文</text>
+    <line x1="48" y1="148" x2="1232" y2="148" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="two-paths" data-pptx-bounds="48 176 1184 232">
+    <text x="48" y="200" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">两条分层路线：从低成本线索逐层走向更强证据</text>
+    <rect x="48" y="216" width="580" height="184" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="64" y="244" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#113B4A">冗余分层</text>
+    <line x1="64" y1="256" x2="200" y2="256" stroke="#113B4A" stroke-width="2"/>
+    <text x="64" y="288" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">精确别名 → 共用底层 → 同数学形式 → 数据相关</text>
+    <text x="64" y="324" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">关键缺口：相关簇自动去重未实现</text>
+    <text x="64" y="352" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#647176">阈值已定，但没有代码在用</text>
+    <text x="64" y="380" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#647176">第四档要等新数据到位才能做</text>
+    <rect x="652" y="216" width="580" height="184" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="668" y="244" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#113B4A">空位分层</text>
+    <line x1="668" y1="256" x2="804" y2="256" stroke="#113B4A" stroke-width="2"/>
+    <text x="668" y="288" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">几何空腔 → 键价能垒 → DFT → AIMD</text>
+    <text x="668" y="324" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">关键缺口：低成本两层未接通</text>
+    <text x="668" y="352" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#647176">第一层有旧数据但未接后端</text>
+    <text x="668" y="380" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#647176">第二层注册入口永远返回空值</text>
+  </g>
+  <g id="three-gates" data-pptx-bounds="48 432 1184 176">
+    <text x="48" y="456" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">三道门：补齐之前，第二代结果不进论文结论</text>
+    <rect x="48" y="472" width="384" height="120" fill="#FFFFFF" stroke="#C75B39" stroke-width="2"/>
+    <text x="64" y="500" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">门一</text>
+    <text x="120" y="500" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">主检验统计显著性</text>
+    <text x="64" y="532" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">p 值计算方式已冻结</text>
+    <text x="64" y="558" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">代码还没改，自由度未按控制列数扣</text>
+    <text x="64" y="582" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">当前 p 值偏小，不能直接用</text>
+    <rect x="448" y="472" width="384" height="120" fill="#FFFFFF" stroke="#C75B39" stroke-width="2"/>
+    <text x="464" y="500" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">门二</text>
+    <text x="520" y="500" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">相关簇自动去重</text>
+    <text x="464" y="532" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">阈值已定，代码未实现</text>
+    <text x="464" y="558" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">候选是否完全去重未验证</text>
+    <text x="464" y="582" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">跨代同名量不能直接搬</text>
+    <rect x="848" y="472" width="384" height="120" fill="#FFFFFF" stroke="#C75B39" stroke-width="2"/>
+    <text x="864" y="500" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">门三</text>
+    <text x="920" y="500" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">留一体系验证</text>
+    <text x="864" y="532" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">拿两类材料训练，预测第三类</text>
+    <text x="864" y="558" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">当前被删，必须补回</text>
+    <text x="864" y="582" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">谈“跨体系外推”的前提</text>
+  </g>
+  <g id="conclusion-bar" data-pptx-bounds="48 620 1184 32">
+    <rect x="48" y="620" width="1184" height="32" fill="#113B4A"/>
+    <text x="640" y="642" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="18" font-weight="bold" fill="#FFFFFF">三道门补齐之前，第二代结果不进论文结论</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Q&amp;A 附录｜精确细节</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">12 / 12</text>
+  </g>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 100">
+    <text x="48" y="52" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">问答附录 Q3</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">为什么统计证据仍是探索性的？</text>
+    <line x1="48" y1="124" x2="1232" y2="124" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 148 1184 44">
+    <text x="48" y="180" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">当前检查能减少误判，但没覆盖两件事——所以结果标为 exploratory，不能当定论。</text>
+  </g>
+  <g id="gap-1" data-pptx-bounds="48 212 584 226">
+    <rect x="48" y="212" width="584" height="226" fill="#EFF3F1"/>
+    <text x="72" y="250" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#113B4A">① 选择不确定性没覆盖</text>
+    <line x1="72" y1="268" x2="608" y2="268" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="72" y="306" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">整个选择过程试了多少候选，</text>
+    <text x="72" y="334" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">没有体现在显著性里。</text>
+    <text x="72" y="378" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">35 候选 + 7000 多个组合在全样本上</text>
+    <text x="72" y="402" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">选和评，试多了必然撞上巧合，</text>
+    <text x="72" y="426" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">但当前 p 值没按这个校正。</text>
+  </g>
+  <g id="gap-2" data-pptx-bounds="648 212 584 226">
+    <rect x="648" y="212" width="584" height="226" fill="#EFF3F1"/>
+    <text x="672" y="250" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#113B4A">② 外推未覆盖</text>
+    <line x1="672" y1="268" x2="1208" y2="268" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="672" y="306" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">完全没见过的体系能不能预测，</text>
+    <text x="672" y="334" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">当前检查回答不了。</text>
+    <text x="672" y="378" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">扣体系差异只比同类内部高低，</text>
+    <text x="672" y="402" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">不等于证明能预测新体系。</text>
+    <text x="672" y="426" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">跨体系外推是独立的更强要求。</text>
+  </g>
+  <g id="key-gap" data-pptx-bounds="48 458 1184 96">
+    <rect x="48" y="458" width="1184" height="96" fill="#113B4A"/>
+    <text x="72" y="492" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#FBE5DF">关键缺口：留一体系验证被删了</text>
+    <text x="72" y="524" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#FFFFFF">这是能谈“跨体系外推”的前提，必须补回；补齐之前第二代结果不进论文结论。</text>
+    <text x="72" y="546" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#CFDAD7">同时还有：主检验 p 值的计算方式、统计相关簇自动去重</text>
+  </g>
+  <g id="conclusion" data-pptx-bounds="48 572 1184 60">
+    <rect x="48" y="572" width="1184" height="60" fill="#FBE5DF"/>
+    <text x="72" y="600" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#C75B39">结论：所有结果标为 exploratory，不能当定论。</text>
+    <text x="72" y="624" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">哪怕最后没有任何描述符通过，也如实报告，不回头调规则。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">Q&amp;A 附录｜选择不确定性和外推未覆盖，留一体系验证是关键缺口</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">09 / 12</text>
+  </g>
+</svg>

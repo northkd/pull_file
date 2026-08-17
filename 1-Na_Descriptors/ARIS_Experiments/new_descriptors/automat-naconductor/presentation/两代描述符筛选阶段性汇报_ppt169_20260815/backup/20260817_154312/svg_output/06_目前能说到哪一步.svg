@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 40 1184 116">
+    <text x="48" y="64" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">强相关描述符筛选｜阶段性汇报</text>
+    <text x="48" y="124" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">目前能说到哪一步</text>
+    <line x1="48" y1="148" x2="1232" y2="148" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 176 1184 72">
+    <text x="48" y="208" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">最准确的状态不是“算法封版、数据一到就出结论”，</text>
+    <text x="48" y="236" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">而是框架建起来了，一部分规则在看新数据前冻结了，但统计上还有几个必须补的口子。</text>
+  </g>
+  <g id="three-blocks" data-pptx-bounds="48 264 1184 360">
+    <rect x="48" y="264" width="384" height="360" fill="#EFF3F1" stroke="#2E7D6E" stroke-width="2"/>
+    <rect x="48" y="264" width="384" height="44" fill="#2E7D6E"/>
+    <text x="64" y="294" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">已经能做</text>
+    <text x="64" y="338" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">• 41 个描述符的计算入口</text>
+    <text x="80" y="362" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">38 个进入搜索、3 个排除</text>
+    <text x="64" y="394" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">• 扣体系差异后的主排序指标</text>
+    <text x="64" y="426" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">• 反复换一半样本看稳定</text>
+    <text x="64" y="458" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">• 受约束的二/三描述符组合</text>
+    <text x="64" y="490" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">• 组合的分体系小样本检查</text>
+    <text x="64" y="552" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#647176">框架可用，规则部分冻结</text>
+    <rect x="448" y="264" width="384" height="360" fill="#FFFFFF" stroke="#C75B39" stroke-width="2"/>
+    <rect x="448" y="264" width="384" height="44" fill="#C75B39"/>
+    <text x="464" y="294" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">正在补</text>
+    <text x="464" y="338" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">• 205 处身份字段未查完</text>
+    <text x="464" y="370" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">• 留一体系验证被删，必须补回</text>
+    <text x="480" y="394" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">是谈“跨体系外推”的前提</text>
+    <text x="464" y="426" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">• 主检验 p 值偏小</text>
+    <text x="480" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">自由度未按控制列数扣，规则已冻结代码未改</text>
+    <text x="464" y="482" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">• 相关簇自动去重没实现</text>
+    <text x="480" y="506" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">阈值定了但没有代码在用</text>
+    <text x="464" y="552" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#647176">统计口子必须补，否则结论不稳</text>
+    <rect x="848" y="264" width="384" height="360" fill="#FFFFFF" stroke="#113B4A" stroke-width="2"/>
+    <rect x="848" y="264" width="384" height="44" fill="#113B4A"/>
+    <text x="864" y="294" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">还不能说</text>
+    <text x="864" y="338" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#C75B39">• 第二代在新数据上零结果</text>
+    <text x="864" y="378" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#C75B39">• 不能说复现第一代的 0.597</text>
+    <text x="864" y="418" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#C75B39">• 不能说预测未见体系</text>
+    <line x1="864" y1="448" x2="1216" y2="448" stroke="#CFDAD7" stroke-width="1" stroke-dasharray="2 4"/>
+    <text x="864" y="482" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">哪怕最后没有任何描述符</text>
+    <text x="864" y="510" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">通过检验，也如实报告，</text>
+    <text x="864" y="538" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">不回头调规则。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">第一轮做了什么、发现问题 → 第二轮怎么逐条解决</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">06 / 12</text>
+  </g>
+</svg>

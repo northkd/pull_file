@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 100">
+    <text x="48" y="52" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">问答附录 Q1</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">103 条还是 84 条？A2 和 NaNa 为什么不能跨代对应？</text>
+    <line x1="48" y1="124" x2="1232" y2="124" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="data-count" data-pptx-bounds="48 146 1184 176">
+    <text x="48" y="172" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#113B4A">第一轮正式数据是 103 条记录、103 个 CIF</text>
+    <rect x="48" y="190" width="580" height="124" fill="#EFF3F1"/>
+    <text x="72" y="222" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">103 条（正式记录）</text>
+    <text x="72" y="252" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">Excel 文件名仍叫 _107.xlsx</text>
+    <text x="72" y="276" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">删了 4 个含 Li 结构后实际 103 行</text>
+    <text x="72" y="300" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">文件名没跟着改，但数据是 103</text>
+    <rect x="652" y="190" width="580" height="124" fill="#FBE5DF"/>
+    <text x="676" y="222" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">84 条（历史缓存，不能替代）</text>
+    <text x="676" y="252" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">第二代目录里的 naconductor_raw.csv</text>
+    <text x="676" y="276" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">是历史输入缓存</text>
+    <text x="676" y="300" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">不能拿来替代第一轮的 103 条正式记录</text>
+  </g>
+  <g id="distribution" data-pptx-bounds="48 334 1184 30">
+    <text x="48" y="356" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">历史七类分布：NASICON 30、硫化物 41、卤化物 13、氢化物/硼氢化物 14、β-Al₂O₃ 2、反钙钛矿 2、氧化物 1。第二代新研究锁定前三类。</text>
+  </g>
+  <g id="cross-gen-table" data-pptx-bounds="48 378 1184 254">
+    <text x="48" y="402" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#C75B39">两代 A2 / NaNa：名字像，公式单位聚合都不同</text>
+    <rect x="48" y="414" width="120" height="40" fill="#113B4A"/>
+    <text x="108" y="440" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">量</text>
+    <rect x="168" y="414" width="516" height="40" fill="#113B4A"/>
+    <text x="426" y="440" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">第一代</text>
+    <rect x="684" y="414" width="548" height="40" fill="#113B4A"/>
+    <text x="958" y="440" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">第二代</text>
+    <line x1="48" y1="500" x2="1232" y2="500" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="64" y="474" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">A2</text>
+    <text x="184" y="470" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">全结构最长 Na-X 键长</text>
+    <text x="184" y="490" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">÷（有效 Na 半径 + 有效阴离子半径），无量纲</text>
+    <text x="700" y="470" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">a2_max_dist：每个 Na 位点最长键长的均值</text>
+    <text x="700" y="490" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">单位 Å，无目标键长分母，非全结构最大值</text>
+    <text x="64" y="540" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">NaNa</text>
+    <text x="184" y="536" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">整批样本做百分位秩</text>
+    <text x="184" y="556" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">换一批材料同结构的值会变</text>
+    <text x="700" y="536" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">单结构上的另一套近似公式</text>
+    <text x="700" y="556" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">不是同一个量</text>
+    <rect x="48" y="580" width="1184" height="46" fill="#FBE5DF"/>
+    <text x="64" y="610" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#C75B39">第一代 A2 的历史相关系数 0.597 不能直接算到第二代头上；代码里“已知 Spearman 0.597”的注释是错误沿用，要改。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">Q&amp;A 附录｜区分正式主数据和目录缓存；同名量跨代不对应</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">07 / 12</text>
+  </g>
+</svg>

@@ -1,70 +1,66 @@
 {
   "schema": "ppt-master.svg-quality-report.v1",
   "stage": "final",
-  "target": "/Users/north./Documents/JXNU/research/1-NASICON/1-data-select/因果推断/experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815",
+  "target": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815",
   "source_fingerprint": {
     "algorithm": "sha256",
-    "digest": "6e0fc3825d08a3c6ce347c4dac220f5ba365b16c2c9a12c28381e58b85b35089",
-    "file_count": 13,
+    "digest": "6e707c074580bb71c05880ee96f424c4386d0f05eebf11ca871d39571aa25283",
+    "file_count": 12,
     "files": [
       {
-        "file": "01_高分不难.svg",
-        "sha256": "5938f5cb704b16134c37bf9a343c4178f2edab2cf5758d847353730caa9b9951"
+        "file": "01_不是最高相关.svg",
+        "sha256": "9c37f5f10427cfe607027e75b20e60287a2d38da179eabff9b31836ecaf759bd"
       },
       {
-        "file": "02_第一轮数据集现在情况.svg",
-        "sha256": "a7127b629d2f056353f30ebc322448a03a591b262b9ca14179aa1c1cbf63e542"
+        "file": "02_第一轮与五个问题.svg",
+        "sha256": "ee2d8f1691b5e2bc348cef73a9bdbfa2fbe67b3d6a08e06da4199741ee4d3917"
       },
       {
-        "file": "03_第一轮怎样把结构量变成候选.svg",
-        "sha256": "d5c2d7dd827c45cd8079028f2cc79b8402edef21e5fdac7ff89f69821d91a638"
+        "file": "03_两条线规则先定.svg",
+        "sha256": "b68358b95d5f82b54e73a3468c68c07a4368114afdec3e59c0228dbf503416dc"
       },
       {
-        "file": "04_第二轮回应两个问题.svg",
-        "sha256": "ea353c0fa6c3d140658844e7ce7b3b8a0da53cf7d53ddbc0427ae351666ae50f"
+        "file": "04_第二代怎么解决.svg",
+        "sha256": "92fd3b2d253dc2f620afc50c1c638dd6a50a906e0ed1e4658c9927404672960b"
       },
       {
-        "file": "05_第二轮先把体系差异拿掉.svg",
-        "sha256": "73b6ec9350bbcd1122002628fb72105f86759a789f8a309084e90ff5a31cbc57"
+        "file": "05_怎样组合描述符.svg",
+        "sha256": "8ddf52839a589a5f9155266807afcc1ee3730a7185da8e03dce45721f7baf372"
       },
       {
-        "file": "06_第二轮怎样组合描述符.svg",
-        "sha256": "0dcf0a2c0970dce5d41b0ab8eba045be2a72aa8356b1787102bd78351e8b9dbe"
+        "file": "06_目前能说到哪一步.svg",
+        "sha256": "4a4d94f85b4419ea3a2b9c21a484fd201a2ec81fe2f5119dc5adf021681eb665"
       },
       {
-        "file": "07_目前能说到哪一步.svg",
-        "sha256": "72a6ed6bc62f9abf87f7a6b1f3819c566b0254051a456423f678fb3ae4baab82"
+        "file": "07_数据量与同名量.svg",
+        "sha256": "5619c08438fa325a85e73e7371a3e71436814d22bf46f17407be04795978980e"
       },
       {
-        "file": "08_103还是84.svg",
-        "sha256": "7ef3734d3717ba5128620a12ddd37a4bfdeabf1a2d10ae072d2248c42a505aa1"
+        "file": "08_0793与主程序.svg",
+        "sha256": "c090fa62bbc53b795efd700e941e94b5462bf4ac09d9a04062c7131af88ed7ac"
       },
       {
-        "file": "09_A2与NaNa跨代差异.svg",
-        "sha256": "cb61cf09e3f2b45f7b9bb44573a821cb75636ef977826659d7cdadcb4e2c6062"
+        "file": "09_冗余与探索性.svg",
+        "sha256": "59fa9ecc9c48f753c93ff23cd197da5c7945c7456a9c5db8cab4a69a66696792"
       },
       {
-        "file": "10_数字口径.svg",
-        "sha256": "afd8840e0ff65f37d8dd316f8d1fc297b5591a92af0ab939bb72ba8400de16db"
+        "file": "10_空位探针与低成本.svg",
+        "sha256": "a5be92f64327f38dedc5e2b488188887fadc7e67f097659e99bcd9a2bdbe6648"
       },
       {
-        "file": "11_主程序实际执行范围.svg",
-        "sha256": "97a40803b4c76c16f959715e61a4ae952a1804f4c0d9692d5434f02bccc1247c"
+        "file": "11_扣体系排序相关.svg",
+        "sha256": "1fde13afa2b04915324e02a3e78854be562ca9607b2144e83c9a953391655bfa"
       },
       {
-        "file": "12_为什么仍是探索性证据.svg",
-        "sha256": "743efe72217ae692bb9b458ab2a9d5576b3f31a753d7ac6fe267620994c8f5a8"
-      },
-      {
-        "file": "13_下一步怎样验证.svg",
-        "sha256": "99c592bf5e898c8a5794c630c4a5b18565aabb99de5f7c4a74ea53b2448ba11f"
+        "file": "12_补齐缺口.svg",
+        "sha256": "98a5875e6fa6ce7710079c7b9b0904fed6c40ed2875cf3ffbf5398e06a634bad"
       }
     ]
   },
   "summary": {
-    "total": 13,
-    "passed": 6,
-    "warnings": 7,
+    "total": 12,
+    "passed": 1,
+    "warnings": 11,
     "errors": 0
   },
   "issue_types": {},
@@ -74,35 +70,55 @@
       "issues": []
     },
     "introduced": {
-      "count": 7,
+      "count": 12,
       "issues": [
         {
-          "file": "02_第一轮数据集现在情况.svg",
-          "message": "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"data-interpretation\"> x=560.0, y=338.0..374.0, 2 lines; <g id=\"data-interpretation\"> x=560.0, y=460.0..496.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          "file": "01_不是最高相关.svg",
+          "message": "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"lead-message\"> x=48.0, y=290.0..330.0, 2 lines; <g id=\"three-goals\"> x=48.0, y=612.0..644.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
         },
         {
-          "file": "03_第一轮怎样把结构量变成候选.svg",
-          "message": "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"step-1\"> x=250.0, y=362.0..390.0, 2 lines; <g id=\"step-3\"> x=650.0, y=326.0..354.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          "file": "02_第一轮与五个问题.svg",
+          "message": "<text> (x=48, y=644; text='这五个问题加数据解决不了，得重建筛选规则') exceeds <g id=\"five-problems\"> data-pptx-bounds on the vertical axis: content (48.0, 628.7)-(448.7, 650.3), container (48.0, 344.0)-(1232.0, 640.0), overflow horizontal 0.0%, vertical 3.5%; expand the root module bounds into available non-overlapping space; otherwise reflow the text"
         },
         {
-          "file": "05_第二轮先把体系差异拿掉.svg",
-          "message": "Detected 4 paragraph-like line run(s) split across sibling <text> elements (<g id=\"mixed-comparison\"> x=76.0, y=322.0..358.0, 2 lines; <g id=\"within-system\"> x=496.0, y=468.0..496.0, 2 lines; <g id=\"remaining-trend\"> x=924.0, y=326.0..364.0, 2 lines; +1 more). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          "file": "03_两条线规则先定.svg",
+          "message": "Detected 3 paragraph-like line run(s) split across sibling <text> elements (<g id=\"two-lines\"> x=72.0, y=528.0..552.0, 2 lines; <g id=\"two-lines\"> x=676.0, y=382.0..412.0, 2 lines; <g id=\"two-lines\"> x=676.0, y=494.0..520.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
         },
         {
-          "file": "06_第二轮怎样组合描述符.svg",
-          "message": "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"first-round\"> x=80.0, y=312.0..388.0, 3 lines; <g id=\"second-round\"> x=720.0, y=312.0..388.0, 3 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          "file": "04_第二代怎么解决.svg",
+          "message": "Detected 3 paragraph-like line run(s) split across sibling <text> elements (<g id=\"comparison-table\"> x=376.0, y=284.0..308.0, 2 lines; <g id=\"comparison-table\"> x=376.0, y=352.0..376.0, 2 lines; <g id=\"comparison-table\"> x=376.0, y=556.0..580.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
         },
         {
-          "file": "07_目前能说到哪一步.svg",
-          "message": "Detected 3 paragraph-like line run(s) split across sibling <text> elements (<g id=\"status-done\"> x=76.0, y=332.0..416.0, 3 lines; <g id=\"status-checking\"> x=466.0, y=332.0..416.0, 3 lines; <g id=\"status-not-yet\"> x=856.0, y=332.0..416.0, 3 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          "file": "05_怎样组合描述符.svg",
+          "message": "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"comparison-table\"> x=448.0, y=494.0..518.0, 2 lines; <g id=\"comparison-table\"> x=864.0, y=494.0..518.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
         },
         {
-          "file": "10_数字口径.svg",
-          "message": "Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id=\"entry-status\"> x=702.0, y=398.0..462.0, 3 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          "file": "06_目前能说到哪一步.svg",
+          "message": "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"lead\"> x=48.0, y=208.0..236.0, 2 lines; <g id=\"three-blocks\"> x=864.0, y=482.0..510.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
         },
         {
-          "file": "11_主程序实际执行范围.svg",
-          "message": "Detected 5 paragraph-like line run(s) split across sibling <text> elements (<g id=\"stage-0\"> x=68.0, y=326.0..356.0, 2 lines; <g id=\"stage-1\"> x=308.0, y=326.0..356.0, 2 lines; <g id=\"stage-2\"> x=548.0, y=326.0..356.0, 2 lines; +2 more). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+          "file": "07_数据量与同名量.svg",
+          "message": "<text> (x=48, y=412; text='β-氧化铝 2、反钙钛矿 2、氧化物 1…') exceeds <g id=\"count-clarify\"> data-pptx-bounds on the vertical axis: content (48.0, 399.2)-(454.0, 417.2), container (48.0, 176.0)-(672.0, 408.0), overflow horizontal 0.0%, vertical 4.0%; expand the root module bounds into available non-overlapping space; otherwise reflow the text"
+        },
+        {
+          "file": "07_数据量与同名量.svg",
+          "message": "Detected 3 paragraph-like line run(s) split across sibling <text> elements (<g id=\"count-clarify\"> x=48.0, y=392.0..412.0, 2 lines; <g id=\"name-clash-table\"> x=816.0, y=296.0..316.0, 2 lines; <g id=\"name-clash-table\"> x=1064.0, y=296.0..316.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+        },
+        {
+          "file": "09_冗余与探索性.svg",
+          "message": "Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id=\"pyramid-explain\"> x=496.0, y=360.0..378.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+        },
+        {
+          "file": "10_空位探针与低成本.svg",
+          "message": "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"probe-section\"> x=64.0, y=272.0..294.0, 2 lines; <g id=\"probe-section\"> x=64.0, y=384.0..406.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+        },
+        {
+          "file": "11_扣体系排序相关.svg",
+          "message": "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"lead\"> x=48.0, y=208.0..236.0, 2 lines; <g id=\"vs-standard\"> x=816.0, y=352.0..374.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+        },
+        {
+          "file": "12_补齐缺口.svg",
+          "message": "Detected 5 paragraph-like line run(s) split across sibling <text> elements (<g id=\"two-paths\"> x=64.0, y=352.0..380.0, 2 lines; <g id=\"two-paths\"> x=668.0, y=352.0..380.0, 2 lines; <g id=\"three-gates\"> x=64.0, y=532.0..558.0, 2 lines; +2 more). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
         }
       ]
     },
@@ -120,47 +136,36 @@
   },
   "drift": {
     "colors": {
-      "#6EA89C": [
-        "03_第一轮怎样把结构量变成候选.svg"
-      ],
-      "#B8D8CF": [
-        "07_目前能说到哪一步.svg"
-      ],
-      "#D9E4E1": [
-        "03_第一轮怎样把结构量变成候选.svg",
-        "06_第二轮怎样组合描述符.svg",
-        "12_为什么仍是探索性证据.svg",
-        "13_下一步怎样验证.svg"
-      ],
-      "#E3B4A6": [
-        "03_第一轮怎样把结构量变成候选.svg",
-        "04_第二轮回应两个问题.svg",
-        "07_目前能说到哪一步.svg"
-      ],
-      "#E9F2EF": [
-        "09_A2与NaNa跨代差异.svg"
-      ],
-      "#F6F8F7": [
-        "09_A2与NaNa跨代差异.svg"
-      ],
-      "#F8EDE9": [
-        "09_A2与NaNa跨代差异.svg"
+      "#F7F9F8": [
+        "04_第二代怎么解决.svg",
+        "05_怎样组合描述符.svg",
+        "07_数据量与同名量.svg",
+        "08_0793与主程序.svg"
       ],
       "#FBE5DF": [
-        "01_高分不难.svg",
-        "03_第一轮怎样把结构量变成候选.svg",
-        "04_第二轮回应两个问题.svg",
-        "05_第二轮先把体系差异拿掉.svg",
-        "06_第二轮怎样组合描述符.svg",
-        "07_目前能说到哪一步.svg",
-        "08_103还是84.svg",
-        "10_数字口径.svg",
-        "11_主程序实际执行范围.svg",
-        "12_为什么仍是探索性证据.svg"
+        "01_不是最高相关.svg",
+        "05_怎样组合描述符.svg",
+        "07_数据量与同名量.svg",
+        "08_0793与主程序.svg",
+        "09_冗余与探索性.svg",
+        "10_空位探针与低成本.svg",
+        "11_扣体系排序相关.svg"
       ]
     },
-    "fonts": {},
-    "sizes": {}
+    "fonts": {
+      "Georgia, serif": [
+        "11_扣体系排序相关.svg"
+      ]
+    },
+    "sizes": {
+      "36": [
+        "09_冗余与探索性.svg",
+        "11_扣体系排序相关.svg"
+      ],
+      "48": [
+        "07_数据量与同名量.svg"
+      ]
+    }
   },
   "project_issues": {
     "template": [],
@@ -171,158 +176,12 @@
   },
   "files": [
     {
-      "file": "01_高分不难.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/01_高分不难.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "fonts": [
-          "Arial, 'PingFang SC', sans-serif",
-          "Georgia, 'Songti SC', serif"
-        ],
-        "text_elements": 15,
-        "tspan_elements": 0,
-        "contextual_values": {
-          "colors": [
-            "#FBE5DF"
-          ]
-        }
-      },
-      "passed": true,
-      "source_sha256": "5938f5cb704b16134c37bf9a343c4178f2edab2cf5758d847353730caa9b9951"
-    },
-    {
-      "file": "02_第一轮数据集现在情况.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/02_第一轮数据集现在情况.svg",
+      "file": "01_不是最高相关.svg",
+      "path": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815\\svg_output\\01_不是最高相关.svg",
       "exists": true,
       "errors": [],
       "warnings": [
-        "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"data-interpretation\"> x=560.0, y=338.0..374.0, 2 lines; <g id=\"data-interpretation\"> x=560.0, y=460.0..496.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
-      ],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "fonts": [
-          "Arial, 'PingFang SC', sans-serif",
-          "Georgia, 'Songti SC', serif"
-        ],
-        "text_elements": 17,
-        "tspan_elements": 0
-      },
-      "passed": true,
-      "source_sha256": "a7127b629d2f056353f30ebc322448a03a591b262b9ca14179aa1c1cbf63e542"
-    },
-    {
-      "file": "03_第一轮怎样把结构量变成候选.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/03_第一轮怎样把结构量变成候选.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [
-        "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"step-1\"> x=250.0, y=362.0..390.0, 2 lines; <g id=\"step-3\"> x=650.0, y=326.0..354.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
-      ],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "fonts": [
-          "Arial, 'PingFang SC', sans-serif",
-          "Georgia, 'Songti SC', serif"
-        ],
-        "text_elements": 42,
-        "tspan_elements": 0,
-        "contextual_values": {
-          "colors": [
-            "#6EA89C",
-            "#D9E4E1",
-            "#E3B4A6",
-            "#FBE5DF"
-          ]
-        }
-      },
-      "passed": true,
-      "source_sha256": "d5c2d7dd827c45cd8079028f2cc79b8402edef21e5fdac7ff89f69821d91a638"
-    },
-    {
-      "file": "04_第二轮回应两个问题.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/04_第二轮回应两个问题.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "fonts": [
-          "Arial, 'PingFang SC', sans-serif",
-          "Georgia, 'Songti SC', serif"
-        ],
-        "text_elements": 22,
-        "tspan_elements": 1,
-        "contextual_values": {
-          "colors": [
-            "#E3B4A6",
-            "#FBE5DF"
-          ]
-        }
-      },
-      "passed": true,
-      "source_sha256": "ea353c0fa6c3d140658844e7ce7b3b8a0da53cf7d53ddbc0427ae351666ae50f"
-    },
-    {
-      "file": "05_第二轮先把体系差异拿掉.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/05_第二轮先把体系差异拿掉.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [
-        "Detected 4 paragraph-like line run(s) split across sibling <text> elements (<g id=\"mixed-comparison\"> x=76.0, y=322.0..358.0, 2 lines; <g id=\"within-system\"> x=496.0, y=468.0..496.0, 2 lines; <g id=\"remaining-trend\"> x=924.0, y=326.0..364.0, 2 lines; +1 more). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
-      ],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "fonts": [
-          "Arial, 'PingFang SC', sans-serif",
-          "Georgia, 'Songti SC', serif"
-        ],
-        "text_elements": 24,
-        "tspan_elements": 0,
-        "contextual_values": {
-          "colors": [
-            "#FBE5DF"
-          ]
-        }
-      },
-      "passed": true,
-      "source_sha256": "73b6ec9350bbcd1122002628fb72105f86759a789f8a309084e90ff5a31cbc57"
-    },
-    {
-      "file": "06_第二轮怎样组合描述符.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/06_第二轮怎样组合描述符.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [
-        "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"first-round\"> x=80.0, y=312.0..388.0, 3 lines; <g id=\"second-round\"> x=720.0, y=312.0..388.0, 3 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
-      ],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "fonts": [
-          "Arial, 'PingFang SC', sans-serif",
-          "Georgia, 'Songti SC', serif"
-        ],
-        "text_elements": 26,
-        "tspan_elements": 0,
-        "contextual_values": {
-          "colors": [
-            "#D9E4E1",
-            "#FBE5DF"
-          ]
-        }
-      },
-      "passed": true,
-      "source_sha256": "0dcf0a2c0970dce5d41b0ab8eba045be2a72aa8356b1787102bd78351e8b9dbe"
-    },
-    {
-      "file": "07_目前能说到哪一步.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/07_目前能说到哪一步.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [
-        "Detected 3 paragraph-like line run(s) split across sibling <text> elements (<g id=\"status-done\"> x=76.0, y=332.0..416.0, 3 lines; <g id=\"status-checking\"> x=466.0, y=332.0..416.0, 3 lines; <g id=\"status-not-yet\"> x=856.0, y=332.0..416.0, 3 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+        "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"lead-message\"> x=48.0, y=290.0..330.0, 2 lines; <g id=\"three-goals\"> x=48.0, y=612.0..644.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
       ],
       "info": {
         "viewbox": "0 0 1280 720",
@@ -334,70 +193,20 @@
         "tspan_elements": 0,
         "contextual_values": {
           "colors": [
-            "#B8D8CF",
-            "#E3B4A6",
             "#FBE5DF"
           ]
         }
       },
       "passed": true,
-      "source_sha256": "72a6ed6bc62f9abf87f7a6b1f3819c566b0254051a456423f678fb3ae4baab82"
+      "source_sha256": "9c37f5f10427cfe607027e75b20e60287a2d38da179eabff9b31836ecaf759bd"
     },
     {
-      "file": "08_103还是84.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/08_103还是84.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "fonts": [
-          "Arial, 'PingFang SC', sans-serif",
-          "Georgia, 'Songti SC', serif"
-        ],
-        "text_elements": 15,
-        "tspan_elements": 0,
-        "contextual_values": {
-          "colors": [
-            "#FBE5DF"
-          ]
-        }
-      },
-      "passed": true,
-      "source_sha256": "7ef3734d3717ba5128620a12ddd37a4bfdeabf1a2d10ae072d2248c42a505aa1"
-    },
-    {
-      "file": "09_A2与NaNa跨代差异.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/09_A2与NaNa跨代差异.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "fonts": [
-          "Arial, 'PingFang SC', sans-serif",
-          "Georgia, 'Songti SC', serif"
-        ],
-        "text_elements": 22,
-        "tspan_elements": 13,
-        "contextual_values": {
-          "colors": [
-            "#E9F2EF",
-            "#F6F8F7",
-            "#F8EDE9"
-          ]
-        }
-      },
-      "passed": true,
-      "source_sha256": "cb61cf09e3f2b45f7b9bb44573a821cb75636ef977826659d7cdadcb4e2c6062"
-    },
-    {
-      "file": "10_数字口径.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/10_数字口径.svg",
+      "file": "02_第一轮与五个问题.svg",
+      "path": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815\\svg_output\\02_第一轮与五个问题.svg",
       "exists": true,
       "errors": [],
       "warnings": [
-        "Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id=\"entry-status\"> x=702.0, y=398.0..462.0, 3 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+        "<text> (x=48, y=644; text='这五个问题加数据解决不了，得重建筛选规则') exceeds <g id=\"five-problems\"> data-pptx-bounds on the vertical axis: content (48.0, 628.7)-(448.7, 650.3), container (48.0, 344.0)-(1232.0, 640.0), overflow horizontal 0.0%, vertical 3.5%; expand the root module bounds into available non-overlapping space; otherwise reflow the text"
       ],
       "info": {
         "viewbox": "0 0 1280 720",
@@ -405,24 +214,19 @@
           "Arial, 'PingFang SC', sans-serif",
           "Georgia, 'Songti SC', serif"
         ],
-        "text_elements": 19,
-        "tspan_elements": 0,
-        "contextual_values": {
-          "colors": [
-            "#FBE5DF"
-          ]
-        }
+        "text_elements": 35,
+        "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "afd8840e0ff65f37d8dd316f8d1fc297b5591a92af0ab939bb72ba8400de16db"
+      "source_sha256": "ee2d8f1691b5e2bc348cef73a9bdbfa2fbe67b3d6a08e06da4199741ee4d3917"
     },
     {
-      "file": "11_主程序实际执行范围.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/11_主程序实际执行范围.svg",
+      "file": "03_两条线规则先定.svg",
+      "path": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815\\svg_output\\03_两条线规则先定.svg",
       "exists": true,
       "errors": [],
       "warnings": [
-        "Detected 5 paragraph-like line run(s) split across sibling <text> elements (<g id=\"stage-0\"> x=68.0, y=326.0..356.0, 2 lines; <g id=\"stage-1\"> x=308.0, y=326.0..356.0, 2 lines; <g id=\"stage-2\"> x=548.0, y=326.0..356.0, 2 lines; +2 more). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+        "Detected 3 paragraph-like line run(s) split across sibling <text> elements (<g id=\"two-lines\"> x=72.0, y=528.0..552.0, 2 lines; <g id=\"two-lines\"> x=676.0, y=382.0..412.0, 2 lines; <g id=\"two-lines\"> x=676.0, y=494.0..520.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
       ],
       "info": {
         "viewbox": "0 0 1280 720",
@@ -430,20 +234,116 @@
           "Arial, 'PingFang SC', sans-serif",
           "Georgia, 'Songti SC', serif"
         ],
-        "text_elements": 43,
+        "text_elements": 21,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "b68358b95d5f82b54e73a3468c68c07a4368114afdec3e59c0228dbf503416dc"
+    },
+    {
+      "file": "04_第二代怎么解决.svg",
+      "path": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815\\svg_output\\04_第二代怎么解决.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Detected 3 paragraph-like line run(s) split across sibling <text> elements (<g id=\"comparison-table\"> x=376.0, y=284.0..308.0, 2 lines; <g id=\"comparison-table\"> x=376.0, y=352.0..376.0, 2 lines; <g id=\"comparison-table\"> x=376.0, y=556.0..580.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "fonts": [
+          "Arial, 'PingFang SC', sans-serif",
+          "Georgia, 'Songti SC', serif"
+        ],
+        "text_elements": 34,
         "tspan_elements": 0,
         "contextual_values": {
           "colors": [
+            "#F7F9F8"
+          ]
+        }
+      },
+      "passed": true,
+      "source_sha256": "92fd3b2d253dc2f620afc50c1c638dd6a50a906e0ed1e4658c9927404672960b"
+    },
+    {
+      "file": "05_怎样组合描述符.svg",
+      "path": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815\\svg_output\\05_怎样组合描述符.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"comparison-table\"> x=448.0, y=494.0..518.0, 2 lines; <g id=\"comparison-table\"> x=864.0, y=494.0..518.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "fonts": [
+          "Arial, 'PingFang SC', sans-serif",
+          "Georgia, 'Songti SC', serif"
+        ],
+        "text_elements": 29,
+        "tspan_elements": 0,
+        "contextual_values": {
+          "colors": [
+            "#F7F9F8",
             "#FBE5DF"
           ]
         }
       },
       "passed": true,
-      "source_sha256": "97a40803b4c76c16f959715e61a4ae952a1804f4c0d9692d5434f02bccc1247c"
+      "source_sha256": "8ddf52839a589a5f9155266807afcc1ee3730a7185da8e03dce45721f7baf372"
     },
     {
-      "file": "12_为什么仍是探索性证据.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/12_为什么仍是探索性证据.svg",
+      "file": "06_目前能说到哪一步.svg",
+      "path": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815\\svg_output\\06_目前能说到哪一步.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"lead\"> x=48.0, y=208.0..236.0, 2 lines; <g id=\"three-blocks\"> x=864.0, y=482.0..510.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "fonts": [
+          "Arial, 'PingFang SC', sans-serif",
+          "Georgia, 'Songti SC', serif"
+        ],
+        "text_elements": 30,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "4a4d94f85b4419ea3a2b9c21a484fd201a2ec81fe2f5119dc5adf021681eb665"
+    },
+    {
+      "file": "07_数据量与同名量.svg",
+      "path": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815\\svg_output\\07_数据量与同名量.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "<text> (x=48, y=412; text='β-氧化铝 2、反钙钛矿 2、氧化物 1…') exceeds <g id=\"count-clarify\"> data-pptx-bounds on the vertical axis: content (48.0, 399.2)-(454.0, 417.2), container (48.0, 176.0)-(672.0, 408.0), overflow horizontal 0.0%, vertical 4.0%; expand the root module bounds into available non-overlapping space; otherwise reflow the text",
+        "Detected 3 paragraph-like line run(s) split across sibling <text> elements (<g id=\"count-clarify\"> x=48.0, y=392.0..412.0, 2 lines; <g id=\"name-clash-table\"> x=816.0, y=296.0..316.0, 2 lines; <g id=\"name-clash-table\"> x=1064.0, y=296.0..316.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "fonts": [
+          "Arial, 'PingFang SC', sans-serif",
+          "Georgia, 'Songti SC', serif"
+        ],
+        "text_elements": 36,
+        "tspan_elements": 0,
+        "contextual_values": {
+          "colors": [
+            "#F7F9F8",
+            "#FBE5DF"
+          ]
+        },
+        "sparse_typography_sizes": {
+          "48": 2
+        }
+      },
+      "passed": true,
+      "source_sha256": "5619c08438fa325a85e73e7371a3e71436814d22bf46f17407be04795978980e"
+    },
+    {
+      "file": "08_0793与主程序.svg",
+      "path": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815\\svg_output\\08_0793与主程序.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -453,40 +353,122 @@
           "Arial, 'PingFang SC', sans-serif",
           "Georgia, 'Songti SC', serif"
         ],
-        "text_elements": 19,
+        "text_elements": 41,
         "tspan_elements": 0,
         "contextual_values": {
           "colors": [
-            "#D9E4E1",
+            "#F7F9F8",
             "#FBE5DF"
           ]
         }
       },
       "passed": true,
-      "source_sha256": "743efe72217ae692bb9b458ab2a9d5576b3f31a753d7ac6fe267620994c8f5a8"
+      "source_sha256": "c090fa62bbc53b795efd700e941e94b5462bf4ac09d9a04062c7131af88ed7ac"
     },
     {
-      "file": "13_下一步怎样验证.svg",
-      "path": "experiments/02_组合描述符搜索/automat-naconductor/presentation/两代描述符筛选阶段性汇报_ppt169_20260815/svg_output/13_下一步怎样验证.svg",
+      "file": "09_冗余与探索性.svg",
+      "path": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815\\svg_output\\09_冗余与探索性.svg",
       "exists": true,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        "Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id=\"pyramid-explain\"> x=496.0, y=360.0..378.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+      ],
       "info": {
         "viewbox": "0 0 1280 720",
         "fonts": [
           "Arial, 'PingFang SC', sans-serif",
           "Georgia, 'Songti SC', serif"
         ],
-        "text_elements": 26,
-        "tspan_elements": 1,
+        "text_elements": 23,
+        "tspan_elements": 0,
         "contextual_values": {
           "colors": [
-            "#D9E4E1"
+            "#FBE5DF"
+          ]
+        },
+        "sparse_typography_sizes": {
+          "36": 2
+        }
+      },
+      "passed": true,
+      "source_sha256": "59fa9ecc9c48f753c93ff23cd197da5c7945c7456a9c5db8cab4a69a66696792"
+    },
+    {
+      "file": "10_空位探针与低成本.svg",
+      "path": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815\\svg_output\\10_空位探针与低成本.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"probe-section\"> x=64.0, y=272.0..294.0, 2 lines; <g id=\"probe-section\"> x=64.0, y=384.0..406.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "fonts": [
+          "Arial, 'PingFang SC', sans-serif",
+          "Georgia, 'Songti SC', serif"
+        ],
+        "text_elements": 30,
+        "tspan_elements": 0,
+        "contextual_values": {
+          "colors": [
+            "#FBE5DF"
           ]
         }
       },
       "passed": true,
-      "source_sha256": "99c592bf5e898c8a5794c630c4a5b18565aabb99de5f7c4a74ea53b2448ba11f"
+      "source_sha256": "a5be92f64327f38dedc5e2b488188887fadc7e67f097659e99bcd9a2bdbe6648"
+    },
+    {
+      "file": "11_扣体系排序相关.svg",
+      "path": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815\\svg_output\\11_扣体系排序相关.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"lead\"> x=48.0, y=208.0..236.0, 2 lines; <g id=\"vs-standard\"> x=816.0, y=352.0..374.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "fonts": [
+          "Arial, 'PingFang SC', sans-serif",
+          "Georgia, 'Songti SC', serif",
+          "Georgia, serif"
+        ],
+        "text_elements": 27,
+        "tspan_elements": 0,
+        "contextual_values": {
+          "colors": [
+            "#FBE5DF"
+          ],
+          "font_families": [
+            "Georgia, serif"
+          ]
+        },
+        "sparse_typography_sizes": {
+          "36": 2
+        }
+      },
+      "passed": true,
+      "source_sha256": "1fde13afa2b04915324e02a3e78854be562ca9607b2144e83c9a953391655bfa"
+    },
+    {
+      "file": "12_补齐缺口.svg",
+      "path": "E:\\work\\worklist\\1-Na离子导体\\nasicon-causal-inference-main\\experiments\\02_组合描述符搜索\\automat-naconductor\\presentation\\两代描述符筛选阶段性汇报_ppt169_20260815\\svg_output\\12_补齐缺口.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Detected 5 paragraph-like line run(s) split across sibling <text> elements (<g id=\"two-paths\"> x=64.0, y=352.0..380.0, 2 lines; <g id=\"two-paths\"> x=668.0, y=352.0..380.0, 2 lines; <g id=\"three-gates\"> x=64.0, y=532.0..558.0, 2 lines; +2 more). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "fonts": [
+          "Arial, 'PingFang SC', sans-serif",
+          "Georgia, 'Songti SC', serif"
+        ],
+        "text_elements": 32,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "98a5875e6fa6ce7710079c7b9b0904fed6c40ed2875cf3ffbf5398e06a634bad"
     }
   ]
 }

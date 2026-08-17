@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 40 1184 116">
+    <text x="48" y="64" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">Q&amp;A 附录</text>
+    <text x="48" y="124" font-family="Georgia, 'Songti SC', serif" font-size="36" font-weight="bold" fill="#113B4A">冗余能识别到什么程度，统计证据为什么还只能算探索性</text>
+    <line x1="48" y1="148" x2="1232" y2="148" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="pyramid-title" data-pptx-bounds="48 176 720 32">
+    <text x="48" y="200" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">冗余识别四档，按证据强度从强到弱</text>
+  </g>
+  <g id="pyramid-levels" data-pptx-bounds="48 216 720 376">
+    <polygon points="312,216 456,216 432,296 336,296" fill="#113B4A"/>
+    <text x="384" y="252" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">第一档</text>
+    <text x="384" y="276" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#FFFFFF">精确别名</text>
+    <polygon points="336,304 432,304 408,384 360,384" fill="#2E7D6E"/>
+    <text x="384" y="340" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">第二档</text>
+    <text x="384" y="364" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#FFFFFF">共用底层计算</text>
+    <polygon points="360,392 408,392 396,472 372,472" fill="#C75B39"/>
+    <text x="384" y="428" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#FFFFFF">第三档</text>
+    <text x="384" y="452" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="13" fill="#FFFFFF">同数学形式</text>
+    <polygon points="372,480 396,480 392,560 376,560" fill="#647176"/>
+    <text x="384" y="516" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">第四档</text>
+    <text x="384" y="538" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="12" fill="#FFFFFF">数据相关</text>
+  </g>
+  <g id="pyramid-explain" data-pptx-bounds="480 216 752 376">
+    <rect x="480" y="216" width="752" height="76" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="496" y="244" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">第一档｜精确别名</text>
+    <text x="496" y="272" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">两个入口调用同一个函数，可以直接排除。</text>
+    <rect x="480" y="304" width="752" height="76" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="496" y="332" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#2E7D6E">第二档｜共用同一段底层计算</text>
+    <text x="496" y="360" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">16 个描述符共用同一套 Na–阴离子壳层规则，能标记同源风险，</text>
+    <text x="496" y="378" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">不能据此断言数值重复。</text>
+    <rect x="480" y="392" width="752" height="76" fill="#FBE5DF" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="496" y="420" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#C75B39">第三档｜同一数学形式作用在不同中心</text>
+    <text x="496" y="448" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">钠侧的畸变 vs 骨架侧的畸变，是同类量，不是别名。</text>
+    <rect x="480" y="480" width="752" height="76" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="496" y="508" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#647176">第四档｜等新数据到位后看取值是否高度相关</text>
+    <text x="496" y="536" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">再做相关簇分析，当前自动去重还没实现。</text>
+  </g>
+  <g id="exploratory-reason" data-pptx-bounds="48 608 1184 40">
+    <rect x="48" y="608" width="1184" height="40" fill="#113B4A"/>
+    <text x="640" y="635" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF">能说“哪里可能重复”，不能说“最终候选已完全去重”｜统计证据目前标探索性，不能当定论</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Q&amp;A 附录｜精确细节</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">09 / 12</text>
+  </g>
+</svg>

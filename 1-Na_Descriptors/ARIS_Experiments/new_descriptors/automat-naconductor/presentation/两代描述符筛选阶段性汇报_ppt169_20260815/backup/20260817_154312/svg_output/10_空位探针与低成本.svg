@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 40 1184 116">
+    <text x="48" y="64" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">Q&amp;A 附录</text>
+    <text x="48" y="124" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">空位探针证明了什么，低成本方案缺在哪</text>
+    <line x1="48" y1="148" x2="1232" y2="148" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="probe-section" data-pptx-bounds="48 176 608 448">
+    <text x="48" y="200" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">占位拆分检验：操作和边界</text>
+    <rect x="48" y="216" width="608" height="100" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="64" y="244" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">操作</text>
+    <text x="64" y="272" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">找一个满占的、不是钠的位点，</text>
+    <text x="64" y="294" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">拆成两个同坐标、各占 0.5 的同种元素位点。</text>
+    <text x="64" y="316" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">同一个晶体，只是 CIF 写法不同。</text>
+    <rect x="48" y="328" width="608" height="136" fill="#FFFFFF" stroke="#2E7D6E" stroke-width="2"/>
+    <text x="64" y="356" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#2E7D6E">它证明的</text>
+    <text x="64" y="384" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">多面体畸变、平均键长、钠浓度、</text>
+    <text x="64" y="406" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">部分占位比例会受 CIF 占位写法影响。</text>
+    <text x="64" y="442" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#113B4A">→ 部分描述符对结构文件写法敏感</text>
+    <rect x="48" y="476" width="608" height="148" fill="#FBE5DF" stroke="#C75B39" stroke-width="2"/>
+    <text x="64" y="504" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">它没证明的</text>
+    <text x="64" y="532" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">• 钠空位的实验真值</text>
+    <text x="64" y="558" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">• 结构文件没报告的潜在钠位点</text>
+    <text x="64" y="584" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">• 热平衡空位</text>
+    <text x="64" y="610" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">• pymatgen 识别真实钠空位的准确率</text>
+  </g>
+  <g id="layered-pyramid" data-pptx-bounds="688 176 544 464">
+    <text x="688" y="200" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">低成本方案四层当前状态</text>
+    <rect x="688" y="216" width="544" height="68" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="704" y="244" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">第一层｜几何空腔（Zeo++）</text>
+    <text x="704" y="272" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">旧数据有预计算列，第二代新流程未接可执行后端</text>
+    <rect x="688" y="296" width="544" height="68" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="704" y="324" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">第二代间隙点｜SciPy Voronoi</text>
+    <text x="704" y="352" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">另一种几何近似（空间分割），不等于 Zeo++ 本身</text>
+    <rect x="688" y="376" width="544" height="68" fill="#FBE5DF" stroke="#C75B39" stroke-width="1"/>
+    <text x="704" y="404" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">第二层｜键价能垒（BVSE）</text>
+    <text x="704" y="432" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">脚本在仓库里，但需外部程序；当前注册入口永远返回空值</text>
+    <rect x="688" y="456" width="544" height="68" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="704" y="484" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">第三层｜DFT 密度泛函计算</text>
+    <text x="704" y="512" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">从量子力学算材料性质的方法，要外部算力</text>
+    <rect x="688" y="536" width="544" height="68" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="704" y="564" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">第四层｜AIMD 分子动力学</text>
+    <text x="704" y="592" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">让原子在高温下运动观察离子迁移，要外部算力</text>
+    <text x="688" y="624" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#C75B39">分层路线能设计，但不能说已在第二代跑通。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Q&amp;A 附录｜精确细节</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">10 / 12</text>
+  </g>
+</svg>

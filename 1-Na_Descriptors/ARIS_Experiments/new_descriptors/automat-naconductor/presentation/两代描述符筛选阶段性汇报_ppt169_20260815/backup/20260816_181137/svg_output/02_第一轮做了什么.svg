@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 100">
+    <text x="48" y="52" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">第一轮做了什么</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="38" font-weight="bold" fill="#113B4A">第一轮做了什么，跑完以后发现了什么问题</text>
+    <line x1="48" y1="124" x2="1232" y2="124" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="flow-band" data-pptx-bounds="48 142 1184 108">
+    <text x="48" y="168" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">第一轮流程</text>
+    <rect x="48" y="184" width="216" height="46" fill="#EFF3F1"/>
+    <text x="156" y="213" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">数据集（CIF + 电导率记录）</text>
+    <line x1="264" y1="207" x2="284" y2="207" stroke="#2E7D6E" stroke-width="2"/>
+    <polygon points="284,202 296,207 284,212" fill="#2E7D6E"/>
+    <rect x="298" y="184" width="200" height="46" fill="#EFF3F1"/>
+    <text x="398" y="213" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">提取结构量 + 已有结果</text>
+    <line x1="498" y1="207" x2="518" y2="207" stroke="#2E7D6E" stroke-width="2"/>
+    <polygon points="518,202 530,207 518,212" fill="#2E7D6E"/>
+    <rect x="532" y="184" width="184" height="46" fill="#EFF3F1"/>
+    <text x="624" y="213" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">构造 35 个候选量</text>
+    <line x1="716" y1="207" x2="736" y2="207" stroke="#2E7D6E" stroke-width="2"/>
+    <polygon points="736,202 748,207 736,212" fill="#2E7D6E"/>
+    <rect x="750" y="184" width="216" height="46" fill="#EFF3F1"/>
+    <text x="858" y="213" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">重复抽样 200 次看排名</text>
+    <line x1="966" y1="207" x2="986" y2="207" stroke="#2E7D6E" stroke-width="2"/>
+    <polygon points="986,202 998,207 986,212" fill="#2E7D6E"/>
+    <rect x="1000" y="184" width="232" height="46" fill="#EFF3F1"/>
+    <text x="1116" y="213" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">留出一类材料看能否迁移</text>
+  </g>
+  <g id="first-round-note" data-pptx-bounds="48 258 1184 30">
+    <text x="48" y="280" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#2E7D6E">第一轮让结构量能被批量算和横向比较，做了重复抽样和留出检查，也诚实承认了小样本等局限——它不是失败的算法，是跑通后让问题显现出来。</text>
+  </g>
+  <g id="problems-table" data-pptx-bounds="48 300 1184 320">
+    <text x="48" y="324" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">跑完以后发现的五个问题</text>
+    <rect x="48" y="336" width="56" height="260" fill="#113B4A"/>
+    <text x="76" y="366" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="20" font-weight="bold" fill="#FFFFFF">①</text>
+    <text x="76" y="418" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="20" font-weight="bold" fill="#FFFFFF">②</text>
+    <text x="76" y="470" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="20" font-weight="bold" fill="#FFFFFF">③</text>
+    <text x="76" y="522" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="20" font-weight="bold" fill="#FFFFFF">④</text>
+    <text x="76" y="574" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="20" font-weight="bold" fill="#FFFFFF">⑤</text>
+    <line x1="48" y1="388" x2="1232" y2="388" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="48" y1="440" x2="1232" y2="440" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="48" y1="492" x2="1232" y2="492" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="48" y1="544" x2="1232" y2="544" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="116" y="366" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">全样本混在一起比</text>
+    <text x="116" y="384" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">能区分三类的量就会自动跟电导率“强相关”，那是体系身份不是结构规律</text>
+    <text x="116" y="418" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">测量标准不统一</text>
+    <text x="116" y="436" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">有的报 total 有的报 bulk，温度、方法、致密度都没记，当成同一种测量在比</text>
+    <text x="116" y="470" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">候选和评价用同一批数据</text>
+    <text x="116" y="488" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">35 候选加上 7000 多个组合，全在同一个数据集上选和评，没有独立验证集</text>
+    <text x="116" y="522" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">描述符名实不符</text>
+    <text x="116" y="540" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">名字叫“宽松度”，公式可能量的是别的，第一轮没人查这个</text>
+    <text x="116" y="574" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">空位只靠 CIF 占位</text>
+    <text x="116" y="592" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">CIF 只记被写出来的位点，没写的不算，混合价无序也看不清</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">正文｜第一轮跑通了完整流程，也暴露了五个具体问题</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">02 / 12</text>
+  </g>
+</svg>

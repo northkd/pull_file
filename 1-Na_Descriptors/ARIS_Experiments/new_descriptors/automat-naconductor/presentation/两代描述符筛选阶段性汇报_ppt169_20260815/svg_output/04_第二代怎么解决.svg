@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 40 1184 116">
+    <text x="48" y="64" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">强相关描述符筛选｜阶段性汇报</text>
+    <text x="48" y="124" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">第二代怎么解决这五个问题</text>
+    <line x1="48" y1="148" x2="1232" y2="148" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 172 1184 32">
+    <text x="48" y="196" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">直接对着上一页五个问题，一个一个处理；这张表说的是打算怎么做、做到哪一步，不是已经跑出结果。</text>
+  </g>
+  <g id="comparison-table" data-pptx-bounds="48 216 1184 380">
+    <rect x="48" y="216" width="1184" height="40" fill="#113B4A"/>
+    <text x="64" y="242" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">第一轮的问题</text>
+    <text x="376" y="242" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">第二代怎么解决</text>
+    <text x="864" y="242" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">现在能做到哪一步</text>
+    <line x1="360" y1="216" x2="360" y2="596" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="848" y1="216" x2="848" y2="596" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="256" width="1184" height="68" fill="#FFFFFF"/>
+    <text x="64" y="284" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#C75B39">一 全样本混在一起比</text>
+    <text x="376" y="284" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">先扣掉每一类体系的平均水平，</text>
+    <text x="376" y="308" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">只比同类材料内部谁高谁低</text>
+    <text x="864" y="284" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#2E7D6E">已实现</text>
+    <text x="864" y="308" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">致密度没进表就控不了</text>
+    <line x1="48" y1="324" x2="1232" y2="324" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="324" width="1184" height="68" fill="#F7F9F8"/>
+    <text x="64" y="352" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#C75B39">二 测量标准不统一</text>
+    <text x="376" y="352" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">新数据表把总/体相/晶界/方法/</text>
+    <text x="376" y="376" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">温度/形态/相对密度分开记</text>
+    <text x="864" y="352" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#2E7D6E">表已设计、室温挑选规则冻结</text>
+    <text x="864" y="376" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">体系分类枚举值待人工填定</text>
+    <line x1="48" y1="392" x2="1232" y2="392" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="392" width="1184" height="68" fill="#FFFFFF"/>
+    <text x="64" y="420" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#C75B39">三 候选评价同批数据</text>
+    <text x="376" y="420" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">阈值和判据在看数据前冻结；</text>
+    <text x="376" y="444" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">限制组合的物理意义和量纲</text>
+    <text x="864" y="420" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#2E7D6E">阈值已冻结</text>
+    <text x="864" y="444" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">留一体系验证被删，必须补回</text>
+    <line x1="48" y1="460" x2="1232" y2="460" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="460" width="1184" height="68" fill="#F7F9F8"/>
+    <text x="64" y="488" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#C75B39">四 描述符名实不符</text>
+    <text x="376" y="488" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">给每个描述符建“身份证”；</text>
+    <text x="376" y="512" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">七种等价写法探针看值变不变</text>
+    <text x="864" y="488" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#2E7D6E">41 个已登记、7 种探针已实现</text>
+    <text x="864" y="512" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">205 处身份字段未查完</text>
+    <line x1="48" y1="528" x2="1232" y2="528" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="528" width="1184" height="68" fill="#FFFFFF"/>
+    <text x="64" y="556" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#C75B39">五 空位只靠 CIF 占位</text>
+    <text x="376" y="556" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">分四层：几何空腔→键价能垒→</text>
+    <text x="376" y="580" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">密度泛函计算→分子动力学模拟</text>
+    <text x="864" y="556" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">第一层有旧数据未接后端</text>
+    <text x="864" y="580" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">第二层缺可执行文件、三四层要算力</text>
+  </g>
+  <g id="bottom-note" data-pptx-bounds="48 612 1184 32">
+    <text x="48" y="634" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">四层方案：Zeo++（几何）→ BVSE 键价能垒 → DFT 密度泛函 → AIMD 分子动力学，越往后越准越贵，低成本筛候选、高成本做验证。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">第一轮做了什么、发现问题 → 第二轮怎么逐条解决</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">04 / 12</text>
+  </g>
+</svg>

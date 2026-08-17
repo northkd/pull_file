@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="cover">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 40 1184 116">
+    <text x="48" y="64" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">强相关描述符筛选｜阶段性汇报</text>
+    <text x="48" y="124" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">这次要解决的不是“谁的相关系数最高”</text>
+    <line x1="48" y1="148" x2="1232" y2="148" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead-message" data-pptx-bounds="48 196 720 240">
+    <text x="48" y="244" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" font-weight="bold" fill="#182229">找到一个高分描述符不难。</text>
+    <text x="48" y="290" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" font-weight="bold" fill="#C75B39">难的是确认它反映的是材料结构，</text>
+    <text x="48" y="330" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" font-weight="bold" fill="#C75B39">而不是材料体系、数据记录方式或 CIF 写法。</text>
+    <text x="48" y="378" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#647176">CIF：晶体结构文件，记录原子种类与坐标的标准格式</text>
+  </g>
+  <g id="three-goals" data-pptx-bounds="48 452 720 200">
+    <line x1="48" y1="468" x2="320" y2="468" stroke="#113B4A" stroke-width="3"/>
+    <text x="48" y="506" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#647176">本次汇报关注三个材料问题</text>
+    <text x="48" y="546" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">① 在 NASICON、硫化物和卤化物里，找到与</text>
+    <text x="72" y="576" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">室温 Na 离子电导率稳定相关的结构量</text>
+    <text x="48" y="612" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">② 扣掉“材料属于哪一类”的影响后，相关性是否还在</text>
+    <text x="48" y="644" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">③ 描述符的名字、公式和实际算出的数是否一致</text>
+  </g>
+  <g id="risk-source-stack" data-pptx-bounds="816 196 416 432">
+    <text x="816" y="232" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">一个高分，可能混进三种来源</text>
+    <rect x="816" y="252" width="368" height="84" fill="#EFF3F1"/>
+    <text x="840" y="284" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#113B4A">材料体系差异</text>
+    <text x="840" y="316" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">NASICON 整体偏高，卤化物整体偏低</text>
+    <rect x="816" y="352" width="368" height="84" fill="#EFF3F1"/>
+    <text x="840" y="384" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#113B4A">数据记录方式差异</text>
+    <text x="840" y="416" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">总电导率、体相电导率未区分</text>
+    <rect x="816" y="452" width="368" height="84" fill="#FBE5DF"/>
+    <text x="840" y="484" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#C75B39">CIF 写法差异</text>
+    <text x="840" y="516" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">换原点、拆占位、抖坐标</text>
+    <rect x="816" y="556" width="368" height="56" fill="#113B4A"/>
+    <text x="1000" y="592" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="26" font-weight="bold" fill="#FFFFFF">高相关 ≠ 结构规律</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">第一轮做了什么、发现问题 → 第二轮怎么逐条解决</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">01 / 12</text>
+  </g>
+</svg>

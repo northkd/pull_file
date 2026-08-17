@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 100">
+    <text x="48" y="52" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">问答附录 Q4</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">冗余能识别到什么程度？空位探针证明了什么？</text>
+    <line x1="48" y1="124" x2="1232" y2="124" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="redundancy-pyramid" data-pptx-bounds="48 148 624 484">
+    <text x="48" y="174" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#113B4A">冗余识别：从强到弱四层</text>
+    <text x="48" y="206" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#2E7D6E">① 精确别名</text>
+    <text x="48" y="228" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">两个入口调同一函数</text>
+    <text x="48" y="248" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#2E7D6E">→ 能直接排除</text>
+    <polygon points="380,196 560,196 540,246 400,246" fill="#2E7D6E"/>
+    <text x="470" y="228" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">精确别名</text>
+    <line x1="48" y1="266" x2="624" y2="266" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="48" y="290" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#2E7D6E">② 共用底层计算</text>
+    <text x="48" y="312" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">16 个描述符共用 Na-X 壳层规则</text>
+    <text x="48" y="332" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">能标记同源风险，不能断言数值重复</text>
+    <polygon points="400,276 540,276 520,326 420,326" fill="#2E7D6E" fill-opacity="0.8"/>
+    <text x="470" y="308" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">同源计算</text>
+    <line x1="48" y1="346" x2="624" y2="346" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="48" y="370" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#C75B39">③ 同数学形式不同中心</text>
+    <text x="48" y="392" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">Na 侧畸变 vs 骨架侧畸变</text>
+    <text x="48" y="412" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">是同类量，不是别名</text>
+    <polygon points="420,356 520,356 500,406 440,406" fill="#C75B39" fill-opacity="0.6"/>
+    <text x="470" y="388" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">同类量</text>
+    <line x1="48" y1="426" x2="624" y2="426" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="48" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#C75B39">④ 数据相关</text>
+    <text x="48" y="472" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">新数据上取值高度相关</text>
+    <text x="48" y="492" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">自动去重没实现，要等数据到位</text>
+    <polygon points="440,436 500,436 480,486 460,486" fill="#C75B39"/>
+    <text x="470" y="468" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">相关</text>
+    <rect x="48" y="510" width="576" height="56" fill="#EFF3F1"/>
+    <text x="64" y="536" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">能说“哪里可能重复”</text>
+    <text x="64" y="558" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#C75B39">不能说“最终候选已经完全去重”</text>
+  </g>
+  <g id="vacancy-probe" data-pptx-bounds="672 148 560 484">
+    <text x="672" y="174" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#113B4A">occupancy_split 空位探针</text>
+    <text x="672" y="202" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">操作：满占非 Na 位点拆成两个各 0.5 占位<tspan x="672" dy="20">的同种元素位点——同一晶体，CIF 写法不同。</tspan></text>
+    <rect x="672" y="246" width="560" height="178" fill="#EFF3F1"/>
+    <text x="696" y="276" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#2E7D6E">证明了什么</text>
+    <line x1="696" y1="288" x2="1208" y2="288" stroke="#2E7D6E" stroke-width="1"/>
+    <text x="696" y="318" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">部分描述符会受等价 CIF 占位</text>
+    <text x="696" y="342" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">写法影响：</text>
+    <text x="696" y="372" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">多面体畸变、平均键长、</text>
+    <text x="696" y="394" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">Na 浓度、部分占位比例</text>
+    <text x="696" y="416" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#2E7D6E">→ 部分描述符对 CIF 写法敏感</text>
+    <rect x="672" y="436" width="560" height="180" fill="#FBE5DF"/>
+    <text x="696" y="466" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">没证明什么</text>
+    <line x1="696" y1="478" x2="1208" y2="478" stroke="#C75B39" stroke-width="1"/>
+    <text x="696" y="508" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">Na 空位的实验真值</text>
+    <text x="696" y="534" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">CIF 没报告的潜在 Na 位点</text>
+    <text x="696" y="560" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">热平衡空位</text>
+    <text x="696" y="586" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">pymatgen 识别真实 Na 空位准确率</text>
+    <text x="696" y="610" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#C75B39">→ 不能说“已实证 pymatgen 找空位不准”</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">Q&amp;A 附录｜冗余从别名到数据相关四层；探针证明 CIF 写法敏感，不等于测了空位准确率</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">10 / 12</text>
+  </g>
+</svg>

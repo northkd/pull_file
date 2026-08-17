@@ -7,8 +7,8 @@
 
 ## communication
 - audience: 从事固态电解质设计、熟悉材料结构与离子输运问题，但不要求精通机器学习算法的课题组研究者
-- objective: 用材料问题解释两轮描述符筛选为何不同，使听众理解第二轮增加的检查及其边界
-- core_message: 第二轮升级的核心是先确认结构量可比、可解释、可重复，再谈组合和高分
+- objective: 第一轮做了什么、跑完发现什么问题，每个问题后紧跟第二轮怎么解决，让听众看到完整逻辑链条
+- core_message: 第二轮每一步都对应第一轮暴露的一个具体问题：全样本混比→扣体系差异；测量标准不统一→分表记录；候选评价同批→封版+限制组合；名实不符→身份证+等价写法探针；空位只靠CIF→分层验证
 - consumption_mode: balanced
 
 ## mode
@@ -47,30 +47,30 @@
 
 ## page_rhythm
 - P01: anchor
-- P02: breathing
-- P03: dense
+- P02: dense
+- P03: breathing
 - P04: anchor
 - P05: breathing
-- P06: dense
-- P07: anchor
+- P06: anchor
+- P07: dense
 - P08: dense
 - P09: dense
 - P10: anchor
 - P11: dense
-- P12: dense
-- P13: anchor
+- P12: anchor
 
 ## pptx_structure
 - mode: flat
 - template_reuse_scope: style
 
 ## page_charts
-- P03: process_flow
-- P06: process_flow
-- P09: comparison_table
-- P11: pipeline_with_stages
-- P12: pyramid_chart
-- P13: pyramid_chart
+- P02: process_flow
+- P04: comparison_table
+- P05: comparison_table
+- P07: comparison_table
+- P08: pipeline_with_stages
+- P10: pyramid_chart
+- P11: pyramid_chart
 
 ## forbidden
 - Mixing icon libraries

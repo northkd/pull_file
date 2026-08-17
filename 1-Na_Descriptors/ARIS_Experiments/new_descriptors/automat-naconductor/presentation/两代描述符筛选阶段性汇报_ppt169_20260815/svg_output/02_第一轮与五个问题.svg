@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 40 1184 116">
+    <text x="48" y="64" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">强相关描述符筛选｜阶段性汇报</text>
+    <text x="48" y="124" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">第一轮做了什么，跑完以后发现了什么问题</text>
+    <line x1="48" y1="148" x2="1232" y2="148" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="pipeline-flow" data-pptx-bounds="48 176 1184 144">
+    <text x="48" y="200" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">第一轮流程（跑通可批量比较的筛选框架）</text>
+    <rect x="48" y="218" width="200" height="64" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="148" y="246" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#113B4A">数据集</text>
+    <text x="148" y="270" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">CIF + 电导率记录</text>
+    <rect x="280" y="218" width="200" height="64" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="380" y="246" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#113B4A">提取结构量</text>
+    <text x="380" y="270" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">键长、畸变、连通网络</text>
+    <rect x="512" y="218" width="200" height="64" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="612" y="246" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#113B4A">叠加现成工具</text>
+    <text x="612" y="270" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">SoftBV、Zeo++</text>
+    <rect x="744" y="218" width="200" height="64" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="844" y="246" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#113B4A">35 候选量</text>
+    <text x="844" y="270" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">看排序是否一致</text>
+    <rect x="976" y="218" width="256" height="64" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="1104" y="246" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#113B4A">重复抽样 + 留一类</text>
+    <text x="1104" y="270" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">看稳定、看迁移</text>
+    <line x1="248" y1="250" x2="280" y2="250" stroke="#113B4A" stroke-width="2"/>
+    <line x1="480" y1="250" x2="512" y2="250" stroke="#113B4A" stroke-width="2"/>
+    <line x1="712" y1="250" x2="744" y2="250" stroke="#113B4A" stroke-width="2"/>
+    <line x1="944" y1="250" x2="976" y2="250" stroke="#113B4A" stroke-width="2"/>
+    <text x="48" y="306" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">SoftBV：用键价模型估算离子迁移路径的方法；Zeo++：用几何方法找离子通道的程序</text>
+  </g>
+  <g id="five-problems" data-pptx-bounds="48 344 1184 296">
+    <text x="48" y="368" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">跑完以后暴露的五个问题</text>
+    <line x1="48" y1="384" x2="1232" y2="384" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="56" y="412" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#647176">问题</text>
+    <text x="200" y="412" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" font-weight="bold" fill="#647176">具体表现</text>
+    <line x1="48" y1="422" x2="1232" y2="422" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="56" y="448" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">一</text>
+    <text x="104" y="448" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">全样本混在一起比</text>
+    <text x="320" y="448" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">只要能区分 NASICON / 卤化物，全样本就自动跟电导率“强相关”</text>
+    <line x1="48" y1="462" x2="1232" y2="462" stroke="#CFDAD7" stroke-width="1" stroke-dasharray="2 4"/>
+    <text x="56" y="488" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">二</text>
+    <text x="104" y="488" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">测量标准不统一</text>
+    <text x="320" y="488" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">总电导率、体相电导率未区分；温度、方法、致密度也没记</text>
+    <line x1="48" y1="502" x2="1232" y2="502" stroke="#CFDAD7" stroke-width="1" stroke-dasharray="2 4"/>
+    <text x="56" y="528" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">三</text>
+    <text x="104" y="528" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">候选和评价同批数据</text>
+    <text x="320" y="528" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">35 候选 + 七千多符号组合全在同一样本上挑和打分，没有独立验证</text>
+    <line x1="48" y1="542" x2="1232" y2="542" stroke="#CFDAD7" stroke-width="1" stroke-dasharray="2 4"/>
+    <text x="56" y="568" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">四</text>
+    <text x="104" y="568" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">描述符名实不符</text>
+    <text x="320" y="568" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">名字叫“宽松度”，公式量到的可能是别的东西；第一轮没人查过</text>
+    <line x1="48" y1="582" x2="1232" y2="582" stroke="#CFDAD7" stroke-width="1" stroke-dasharray="2 4"/>
+    <text x="56" y="608" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">五</text>
+    <text x="104" y="608" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">空位只靠 CIF 占位</text>
+    <text x="320" y="608" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#182229">只记被精修或建模写出来的位点，没写的不算，混合价无序也看不清</text>
+    <text x="48" y="644" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">这五个问题加数据解决不了，得重建筛选规则</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">第一轮做了什么、发现问题 → 第二轮怎么逐条解决</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">02 / 12</text>
+  </g>
+</svg>

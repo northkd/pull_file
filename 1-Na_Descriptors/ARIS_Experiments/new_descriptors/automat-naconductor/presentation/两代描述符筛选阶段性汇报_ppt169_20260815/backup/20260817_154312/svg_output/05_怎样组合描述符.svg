@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 40 1184 116">
+    <text x="48" y="64" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">强相关描述符筛选｜阶段性汇报</text>
+    <text x="48" y="124" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">第二代怎样组合描述符</text>
+    <line x1="48" y1="148" x2="1232" y2="148" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 176 1184 32">
+    <text x="48" y="200" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">两个描述符搭在一起看，第一代和第二代的搭法完全不同。</text>
+  </g>
+  <g id="comparison-table" data-pptx-bounds="48 224 1184 312">
+    <rect x="48" y="224" width="1184" height="40" fill="#113B4A"/>
+    <text x="80" y="250" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">对比维度</text>
+    <text x="448" y="250" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">第一轮</text>
+    <text x="864" y="250" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">第二代</text>
+    <line x1="424" y1="224" x2="424" y2="536" stroke="#CFDAD7" stroke-width="1"/>
+    <line x1="840" y1="224" x2="840" y2="536" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="264" width="1184" height="68" fill="#FFFFFF"/>
+    <text x="80" y="292" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">怎么搭</text>
+    <text x="448" y="290" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">列出七千多个公式</text>
+    <text x="448" y="314" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">加减乘除任意组合，按分数挑</text>
+    <text x="864" y="290" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">先按材料意义分组挑代表</text>
+    <text x="864" y="314" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">只允许有物理意义的组合</text>
+    <line x1="48" y1="332" x2="1232" y2="332" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="332" width="1184" height="68" fill="#F7F9F8"/>
+    <text x="80" y="360" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">举个例子</text>
+    <text x="448" y="358" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">“畸变 × 最长键长 ÷ 目标键长”</text>
+    <text x="448" y="382" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">能算，但材料上说不清为什么这么乘</text>
+    <text x="864" y="358" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">局域配位配网络配骨架</text>
+    <text x="864" y="382" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">每类挑一个，看加减乘除是否说得通</text>
+    <line x1="48" y1="400" x2="1232" y2="400" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="400" width="1184" height="68" fill="#FFFFFF"/>
+    <text x="80" y="428" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">量纲</text>
+    <text x="448" y="428" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">不管，只看分数</text>
+    <text x="864" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#2E7D6E">长度加长度可以</text>
+    <text x="864" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#C75B39">长度加无量纲数不行</text>
+    <line x1="48" y1="468" x2="1232" y2="468" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="468" width="1184" height="68" fill="#F7F9F8"/>
+    <text x="80" y="496" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">结果</text>
+    <text x="448" y="494" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">容易拼出“高分但材料上</text>
+    <text x="448" y="518" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">解释不通”的公式</text>
+    <text x="864" y="494" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">组合空间小很多</text>
+    <text x="864" y="518" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">每个组合都有材料解释</text>
+  </g>
+  <g id="honest-caveat" data-pptx-bounds="48 556 1184 88">
+    <rect x="48" y="556" width="1184" height="80" fill="#FBE5DF" stroke="#C75B39" stroke-width="1"/>
+    <text x="72" y="584" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">诚实说明</text>
+    <text x="72" y="614" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">统计上自动去重和嵌套外推验证还没做，“试多了撞巧合”的问题还没有完全解决。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">第一轮做了什么、发现问题 → 第二轮怎么逐条解决</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">05 / 12</text>
+  </g>
+</svg>

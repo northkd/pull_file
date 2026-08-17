@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 40 1184 116">
+    <text x="48" y="64" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">强相关描述符筛选｜阶段性汇报</text>
+    <text x="48" y="124" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">两条线并行，规则先于数据定死</text>
+    <line x1="48" y1="148" x2="1232" y2="148" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead-line" data-pptx-bounds="48 196 1184 80">
+    <text x="48" y="232" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">第一轮的五个问题加数据解决不了：测量标准不统一会跟着新数据进来，全样本混比的毛病也是。</text>
+    <text x="48" y="262" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#182229">工作分两条线并行，规则必须在新数据到来之前定死。</text>
+  </g>
+  <g id="two-lines" data-pptx-bounds="48 296 1184 280">
+    <rect x="48" y="296" width="580" height="280" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="72" y="332" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#113B4A">第一条线：搭新数据集</text>
+    <line x1="72" y1="346" x2="240" y2="346" stroke="#113B4A" stroke-width="2"/>
+    <text x="72" y="382" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">把测量标准补全，分开记录：</text>
+    <text x="72" y="416" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">• 总电导率、体相电导率、晶界</text>
+    <text x="72" y="446" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">• 测试方法、温度、样品形态</text>
+    <text x="72" y="476" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">• 相对密度（致密度）</text>
+    <text x="72" y="528" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#647176">目的：把第一轮“当成同一种东西在比”</text>
+    <text x="72" y="552" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#647176">的毛病从源头堵住</text>
+    <rect x="652" y="296" width="580" height="280" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="676" y="332" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#113B4A">第二条线：重建筛选规则</text>
+    <line x1="676" y1="346" x2="844" y2="346" stroke="#113B4A" stroke-width="2"/>
+    <text x="676" y="382" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">所有阈值、判据、不变性检查</text>
+    <text x="676" y="412" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">在新数据到来之前冻结。</text>
+    <text x="676" y="462" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" font-weight="bold" fill="#C75B39">为什么必须先定死？</text>
+    <text x="676" y="494" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">先看数据再定阈值 = 用同一批数据</text>
+    <text x="676" y="520" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" fill="#182229">既选规则又验规则，相关性必然虚高</text>
+    <text x="676" y="552" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" fill="#647176">且事后无法补救——已经看过数据了</text>
+  </g>
+  <g id="bottom-stamp" data-pptx-bounds="48 600 1184 40">
+    <rect x="48" y="600" width="1184" height="40" fill="#113B4A"/>
+    <text x="640" y="627" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="22" font-weight="bold" fill="#FFFFFF">先封版再进数据，是统计纪律，不是进度慢</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">第一轮做了什么、发现问题 → 第二轮怎么逐条解决</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">03 / 12</text>
+  </g>
+</svg>

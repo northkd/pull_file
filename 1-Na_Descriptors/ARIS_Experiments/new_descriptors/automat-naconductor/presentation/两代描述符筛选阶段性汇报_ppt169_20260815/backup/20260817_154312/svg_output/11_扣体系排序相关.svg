@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 40 1184 116">
+    <text x="48" y="64" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">Q&amp;A 附录</text>
+    <text x="48" y="124" font-family="Georgia, 'Songti SC', serif" font-size="36" font-weight="bold" fill="#113B4A">“扣体系差异后的排序相关”到底是怎么算的</text>
+    <line x1="48" y1="148" x2="1232" y2="148" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="lead" data-pptx-bounds="48 176 1184 72">
+    <text x="48" y="208" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">正文里反复说的“扣体系差异后的排序相关”，准确指这样一种算法：</text>
+    <text x="48" y="236" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">把体系类别当作分组控制，从描述符和电导率里分别扣除控制能线性解释的部分，再对剩余算秩相关。</text>
+  </g>
+  <g id="three-steps" data-pptx-bounds="48 256 720 336">
+    <text x="48" y="280" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">算法三步</text>
+    <rect x="48" y="296" width="720" height="80" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <circle cx="80" cy="336" r="20" fill="#113B4A"/>
+    <text x="80" y="343" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="120" y="328" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">体系分组控制</text>
+    <text x="120" y="356" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">只保留体系之外还能提供独立信息的阴离子对比列</text>
+    <rect x="48" y="392" width="720" height="80" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <circle cx="80" cy="432" r="20" fill="#113B4A"/>
+    <text x="80" y="439" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="120" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">扣线性可解释部分</text>
+    <text x="120" y="452" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">从描述符和电导率里分别扣除控制变量能线性解释的部分</text>
+    <rect x="48" y="488" width="720" height="80" fill="#FBE5DF" stroke="#C75B39" stroke-width="1"/>
+    <circle cx="80" cy="528" r="20" fill="#C75B39"/>
+    <text x="80" y="535" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="120" y="520" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#C75B39">剩余算秩相关</text>
+    <text x="120" y="548" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">对残差算 Spearman 秩相关系数</text>
+  </g>
+  <g id="vs-standard" data-pptx-bounds="800 256 432 336">
+    <text x="800" y="280" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">与标准偏秩相关的区别</text>
+    <rect x="800" y="296" width="432" height="116" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="816" y="324" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">本程序的做法</text>
+    <text x="816" y="352" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">先扣线性可解释部分</text>
+    <text x="816" y="374" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">再对残差算秩相关</text>
+    <text x="816" y="396" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">程序内名：线性残差的秩相关</text>
+    <rect x="800" y="424" width="432" height="116" fill="#EFF3F1" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="816" y="452" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#647176">标准偏秩相关</text>
+    <text x="816" y="480" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">先排名再扣控制</text>
+    <text x="816" y="502" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">两者不是一回事</text>
+    <text x="816" y="524" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">不能混用名称</text>
+    <rect x="800" y="552" width="432" height="40" fill="#FBE5DF"/>
+    <text x="816" y="578" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">不能自动扣致密度、烧结、测试方法</text>
+  </g>
+  <g id="bottom-note" data-pptx-bounds="48 608 1184 40">
+    <text x="48" y="634" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">程序里叫“线性残差的秩相关”，不是标准的先排名再扣控制的偏秩相关；不能自动扣致密度、烧结、测试方法这些没进表的因素。</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">Q&amp;A 附录｜精确细节</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">11 / 12</text>
+  </g>
+</svg>

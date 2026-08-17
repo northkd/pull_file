@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 100">
+    <text x="48" y="52" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">第二轮逐条回应</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="38" font-weight="bold" fill="#113B4A">第二代怎么解决这五个问题</text>
+    <line x1="48" y1="124" x2="1232" y2="124" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="table-header" data-pptx-bounds="48 146 1184 40">
+    <rect x="48" y="146" width="316" height="40" fill="#113B4A"/>
+    <text x="206" y="172" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">第一轮的问题</text>
+    <rect x="364" y="146" width="516" height="40" fill="#113B4A"/>
+    <text x="622" y="172" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">第二代怎么解决</text>
+    <rect x="880" y="146" width="352" height="40" fill="#113B4A"/>
+    <text x="1056" y="172" text-anchor="middle" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">现在能做到哪一步</text>
+  </g>
+  <g id="row-1" data-pptx-bounds="48 186 1184 90">
+    <rect x="48" y="186" width="316" height="90" fill="#EFF3F1"/>
+    <text x="64" y="216" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">① 全样本混在一起比</text>
+    <text x="64" y="244" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">NASICON 整体高、卤化物整体低</text>
+    <text x="64" y="264" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">能区分三类的量就自动“强相关”</text>
+    <text x="380" y="216" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">先扣掉每一类体系的平均水平</text>
+    <text x="380" y="244" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">只比同一类材料内部谁高谁低</text>
+    <text x="380" y="272" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">再看这个高低和电导率高低是否同向</text>
+    <text x="896" y="216" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#2E7D6E">已实现</text>
+    <text x="896" y="244" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">致密度、烧结条件没进表</text>
+    <text x="896" y="264" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">算法替不了</text>
+  </g>
+  <g id="row-2" data-pptx-bounds="48 276 1184 90">
+    <line x1="48" y1="276" x2="1232" y2="276" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="276" width="316" height="90" fill="#EFF3F1"/>
+    <text x="64" y="306" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">② 测量标准不统一</text>
+    <text x="64" y="334" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">有的报 total 有的报 bulk</text>
+    <text x="64" y="354" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">温度方法致密度都没记</text>
+    <text x="380" y="306" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">新数据表把 total / bulk / 晶界</text>
+    <text x="380" y="334" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">测试方法、温度、样品形态、相对密度</text>
+    <text x="380" y="362" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">都分开记；定死怎么挑室温那条</text>
+    <text x="896" y="306" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#2E7D6E">数据表已设计好</text>
+    <text x="896" y="334" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">室温挑选规则已冻结</text>
+    <text x="896" y="354" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">体系分类枚举值要人工填</text>
+  </g>
+  <g id="row-3" data-pptx-bounds="48 366 1184 90">
+    <line x1="48" y1="366" x2="1232" y2="366" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="366" width="316" height="90" fill="#EFF3F1"/>
+    <text x="64" y="396" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">③ 候选评价同批数据</text>
+    <text x="64" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">35 候选 + 7000 多个组合</text>
+    <text x="64" y="444" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">全在同一数据集上选和评</text>
+    <text x="380" y="396" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">所有阈值和判据在看到数据前冻结</text>
+    <text x="380" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">限制组合的物理意义和量纲</text>
+    <text x="380" y="452" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">不让算法随便拼公式</text>
+    <text x="896" y="396" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#2E7D6E">阈值已冻结</text>
+    <text x="896" y="424" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">留一体系验证被删了</text>
+    <text x="896" y="444" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">是必须补的缺口</text>
+  </g>
+  <g id="row-4" data-pptx-bounds="48 456 1184 90">
+    <line x1="48" y1="456" x2="1232" y2="456" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="456" width="316" height="90" fill="#EFF3F1"/>
+    <text x="64" y="486" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">④ 描述符名实不符</text>
+    <text x="64" y="514" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">名字叫“宽松度”</text>
+    <text x="64" y="534" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">公式可能量的是别的</text>
+    <text x="380" y="486" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">给每个描述符建“身份证”</text>
+    <text x="380" y="514" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">（公式、单位、来源、是不是别名）</text>
+    <text x="380" y="542" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">用 7 种等价写法探针查是否变</text>
+    <text x="896" y="486" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#2E7D6E">41 个已登记</text>
+    <text x="896" y="514" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#2E7D6E">7 种等价写法检查已实现</text>
+    <text x="896" y="534" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">205 处身份字段还是 TODO</text>
+  </g>
+  <g id="row-5" data-pptx-bounds="48 546 1184 90">
+    <line x1="48" y1="546" x2="1232" y2="546" stroke="#CFDAD7" stroke-width="1"/>
+    <rect x="48" y="546" width="316" height="90" fill="#EFF3F1"/>
+    <text x="64" y="576" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">⑤ 空位只靠 CIF 占位</text>
+    <text x="64" y="604" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">CIF 只记被写出来的位点</text>
+    <text x="64" y="624" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">混合价无序也看不清</text>
+    <text x="380" y="576" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">分四层：几何空腔 → 键价能量</text>
+    <text x="380" y="604" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">→ DFT 静态 → AIMD 动态</text>
+    <text x="380" y="632" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#182229">低成本找候选，高成本验证</text>
+    <text x="896" y="576" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">第一层有旧数据未接后端</text>
+    <text x="896" y="604" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">第二层缺 BVSE 可执行文件</text>
+    <text x="896" y="624" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">三四层要外部算力</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">正文｜这些是“打算怎么做和做到哪一步”，不是“已经跑出结果”</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">04 / 12</text>
+  </g>
+</svg>

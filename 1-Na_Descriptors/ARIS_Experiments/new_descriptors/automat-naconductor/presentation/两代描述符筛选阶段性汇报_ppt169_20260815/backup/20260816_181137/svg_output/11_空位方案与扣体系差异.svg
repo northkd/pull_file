@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 30 1184 100">
+    <text x="48" y="52" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">问答附录 Q5</text>
+    <text x="48" y="104" font-family="Georgia, 'Songti SC', serif" font-size="32" font-weight="bold" fill="#113B4A">低成本空位方案缺在哪？“扣体系差异”准确指什么？</text>
+    <line x1="48" y1="124" x2="1232" y2="124" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="vacancy-layers" data-pptx-bounds="48 146 624 492">
+    <text x="48" y="170" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">空位分层：几何 → 键价 → DFT → AIMD</text>
+    <text x="48" y="192" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">低成本找候选，高成本验证。能设计，但不能说已经在二代跑通。</text>
+    <rect x="48" y="206" width="576" height="84" fill="#EFF3F1"/>
+    <text x="64" y="234" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#2E7D6E">第一层：几何空腔（Zeo++，不用 Na 坐标）</text>
+    <text x="64" y="262" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#C75B39">旧 103 条有预计算列，但二代没接 Zeo++ 可执行后端</text>
+    <text x="64" y="282" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">二代 D' 族间隙点用 SciPy Voronoi 近似，不等于 Zeo++</text>
+    <rect x="48" y="300" width="576" height="84" fill="#EFF3F1"/>
+    <text x="64" y="328" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#2E7D6E">第二层：键价能量（BVSE，不用 Na 坐标）</text>
+    <text x="64" y="356" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#C75B39">SoftBV 批处理脚本在仓库里，但要外部 softBV.x</text>
+    <text x="64" y="376" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#C75B39">二代注册的 BVSE 能垒入口当前永远返回空值</text>
+    <rect x="48" y="394" width="576" height="74" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="64" y="422" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">第三层：DFT 静态</text>
+    <text x="64" y="450" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#647176">要外部算力</text>
+    <rect x="48" y="478" width="576" height="74" fill="#FFFFFF" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="64" y="506" font-family="Arial, 'PingFang SC', sans-serif" font-size="17" font-weight="bold" fill="#113B4A">第四层：AIMD 动态</text>
+    <text x="64" y="534" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#647176">要外部算力</text>
+    <rect x="48" y="564" width="576" height="56" fill="#FBE5DF"/>
+    <text x="64" y="588" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#C75B39">“几何候选 → 键价筛选 → 少量 DFT/AIMD 验证”</text>
+    <text x="64" y="610" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#182229">这条分层路线能设计，但不能说已经在二代跑通</text>
+  </g>
+  <g id="residual-metric" data-pptx-bounds="672 146 560 492">
+    <text x="672" y="170" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#113B4A">“扣体系差异”准确指什么</text>
+    <rect x="672" y="186" width="560" height="44" fill="#113B4A"/>
+    <text x="688" y="214" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">主量：rank_corr_of_linear_residuals</text>
+    <text x="672" y="258" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#113B4A">它做什么</text>
+    <text x="672" y="288" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">① 体系类别转成分组控制</text>
+    <text x="672" y="314" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">② 只保留体系之外还能提供独立</text>
+    <text x="696" y="336" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">信息的阴离子对比列</text>
+    <text x="672" y="362" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">③ 分别从描述符 X 和电导率 Y 里</text>
+    <text x="696" y="384" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">扣除控制能线性解释的部分</text>
+    <text x="672" y="410" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">④ 对剩余量算 Spearman</text>
+    <line x1="672" y1="430" x2="1232" y2="430" stroke="#CFDAD7" stroke-width="1"/>
+    <text x="672" y="460" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" font-weight="bold" fill="#C75B39">它不是什么</text>
+    <text x="672" y="490" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">不是先排名再扣控制的</text>
+    <text x="696" y="512" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">标准 partial Spearman</text>
+    <text x="672" y="538" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">叫“线性残差的秩相关”</text>
+    <rect x="672" y="556" width="560" height="66" fill="#FBE5DF"/>
+    <text x="688" y="582" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" font-weight="bold" fill="#C75B39">它不能自动扣：</text>
+    <text x="688" y="606" font-family="Arial, 'PingFang SC', sans-serif" font-size="15" fill="#182229">致密度、烧结条件、测试方法</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">Q&amp;A 附录｜分层空位各层当前状态；主量是线性残差秩相关不是标准 partial Spearman</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">11 / 12</text>
+  </g>
+</svg>

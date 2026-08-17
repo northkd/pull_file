@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="cover">
+  <rect id="background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="48 40 1184 116">
+    <text x="48" y="64" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#C75B39">强相关描述符筛选｜阶段性汇报</text>
+    <text x="48" y="124" font-family="Georgia, 'Songti SC', serif" font-size="42" font-weight="bold" fill="#113B4A">这次要解决的不是“谁的相关系数最高”</text>
+    <line x1="48" y1="148" x2="1232" y2="148" stroke="#CFDAD7" stroke-width="1"/>
+  </g>
+  <g id="cover-message" data-pptx-bounds="48 200 720 360">
+    <text x="48" y="252" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" font-weight="bold" fill="#182229">找到一个高分描述符不难。</text>
+    <text x="48" y="300" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" font-weight="bold" fill="#C75B39">难的是确认它反映的是材料结构，</text>
+    <text x="48" y="340" font-family="Arial, 'PingFang SC', sans-serif" font-size="30" font-weight="bold" fill="#C75B39">而不是材料体系、数据记录方式或 CIF 写法。</text>
+    <line x1="48" y1="384" x2="320" y2="384" stroke="#113B4A" stroke-width="3"/>
+    <text x="48" y="426" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="bold" fill="#647176">本次汇报关注三个材料问题</text>
+    <text x="48" y="468" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">① 在 NASICON、硫化物和卤化物中，</text>
+    <text x="72" y="498" font-family="Arial, 'PingFang SC', sans-serif" font-size="20" fill="#182229">找到与室温 Na 离子电导率稳定相关的结构量</text>
+    <text x="48" y="534" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">② 扣掉“材料属于哪一类”的影响后，相关性是否还在</text>
+    <text x="48" y="570" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#182229">③ 描述符的名字、公式和实际算出的数是否一致</text>
+  </g>
+  <g id="risk-convergence" data-pptx-bounds="800 210 432 360">
+    <text x="816" y="244" font-family="Arial, 'PingFang SC', sans-serif" font-size="18" font-weight="bold" fill="#647176">一个高分，可能混进三种来源</text>
+    <rect x="816" y="266" width="368" height="56" fill="#EFF3F1"/>
+    <text x="840" y="300" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#113B4A">材料体系差异</text>
+    <rect x="816" y="338" width="368" height="56" fill="#EFF3F1"/>
+    <text x="840" y="372" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#113B4A">数据记录方式差异</text>
+    <rect x="816" y="410" width="368" height="56" fill="#FBE5DF"/>
+    <text x="840" y="444" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" fill="#C75B39">CIF 写法差异</text>
+    <line x1="1184" y1="294" x2="1184" y2="438" stroke="#113B4A" stroke-width="2"/>
+    <circle cx="1184" cy="438" r="8" fill="#C75B39"/>
+    <rect x="816" y="500" width="368" height="64" fill="#113B4A"/>
+    <text x="1000" y="540" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="28" font-weight="bold" fill="#FFFFFF">高相关 ≠ 结构规律</text>
+  </g>
+  <g id="footer" data-pptx-role="footer" data-pptx-bounds="48 650 1184 38">
+    <text x="48" y="681" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#647176">第一轮做了什么、发现问题 → 第二轮怎么逐条解决</text>
+    <text id="page-number" data-pptx-role="page-number" x="1232" y="681" text-anchor="end" font-family="Arial, 'PingFang SC', sans-serif" font-size="14" fill="#647176">01 / 12</text>
+  </g>
+</svg>
