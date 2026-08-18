@@ -1,0 +1,1778 @@
+{
+  "schema": "template_fill_pptx_library.v1",
+  "source_pptx": "/Users/north./Documents/JXNU/research/1-NASICON/0-描述符/机理性质描述符/projects/描述符筛选新增机理_ppt169_20260818/sources/描述符筛选.pptx",
+  "slide_count": 6,
+  "canvas_px": {
+    "width": 1280,
+    "height": 720
+  },
+  "slides": [
+    {
+      "slide_index": 1,
+      "page_type": "cover_candidate",
+      "text_summary": "强相关描述符筛选｜阶段性汇报\n这次要解决的不是“谁的相关性最强”\n找到一个高分描述符不难。\n难的是确认它反映的是材料结构，\n而不是材料体系、数据记录方式或 CIF\nCIF：晶体结构文件，记录原子种类与坐标的标准格式\n本次汇报关注三个材料问题\n① 在 NASICON、硫化物和卤化物里，找到与室温 Na 离子电导率稳定相关的结构量\n② 去掉“材料属于哪一类”的影响后，相关性是否还在\n③ 描述符的名字、公式和实际算出的数是否一致\n第一轮做了什么、发现问题 → 第二轮怎么逐条解决\n01 / 12",
+      "slots": [
+        {
+          "slot_id": "s01_sh2",
+          "role": "title_candidate",
+          "text": "强相关描述符筛选｜阶段性汇报",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 49,
+            "width": 282,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh3",
+          "role": "title_candidate",
+          "text": "这次要解决的不是“谁的相关性最强”",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 46,
+            "y": 88,
+            "width": 724,
+            "height": 51
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh6",
+          "role": "label_candidate",
+          "text": "找到一个高分描述符不难。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 218,
+            "width": 403,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh7",
+          "role": "label_candidate",
+          "text": "难的是确认它反映的是材料结构，",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 264,
+            "width": 503,
+            "height": 46
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh8",
+          "role": "label_candidate",
+          "text": "而不是材料体系、数据记录方式或 CIF",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 304,
+            "width": 512,
+            "height": 36
+          },
+          "text_metrics": {
+            "font_size_px": 30.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh9",
+          "role": "label_candidate",
+          "text": "CIF：晶体结构文件，记录原子种类与坐标的标准格式",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 363,
+            "width": 473,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh12",
+          "role": "label_candidate",
+          "text": "本次汇报关注三个材料问题",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 487,
+            "width": 296,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh13",
+          "role": "body_candidate",
+          "text": "① 在 NASICON、硫化物和卤化物里，找到与室温 Na 离子电导率稳定相关的结构量",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 527,
+            "width": 821,
+            "height": 53
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh14",
+          "role": "label_candidate",
+          "text": "",
+          "paragraph_count": 0,
+          "geometry": {
+            "x": 71,
+            "y": 559,
+            "width": 0,
+            "height": 24
+          },
+          "text_metrics": {
+            "font_size_px": null,
+            "paragraph_count": 0
+          }
+        },
+        {
+          "slot_id": "s01_sh15",
+          "role": "label_candidate",
+          "text": "② 去掉“材料属于哪一类”的影响后，相关性是否还在",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 46,
+            "y": 576,
+            "width": 542,
+            "height": 27
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh16",
+          "role": "label_candidate",
+          "text": "③ 描述符的名字、公式和实际算出的数是否一致",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 625,
+            "width": 488,
+            "height": 34
+          },
+          "text_metrics": {
+            "font_size_px": 22.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh31",
+          "role": "label_candidate",
+          "text": "第一轮做了什么、发现问题 → 第二轮怎么逐条解决",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 667,
+            "width": 377,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s01_sh32",
+          "role": "label_candidate",
+          "text": "01 / 12",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1182,
+            "y": 669,
+            "width": 51,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 2,
+      "page_type": "content_candidate",
+      "text_summary": "强相关描述符筛选｜阶段性汇报\n第一轮做了什么，跑完以后发现了什么问题\n第一轮流程（跑通可批量比较的筛选框架）\n数据集\nCIF + 电导率记录\n提取结构量\n键长、畸变、连通网络\n叠加现成工具\nSoftBV、Zeo++\n35 候选量\n看排序是否一致\n重复抽样 + 留一类\n看稳定、看迁移\nSoftBV：用键价模型估算离子迁移路径；Zeo++：用几何方法找离子通道\n跑完以后暴露的五个问题\n问题\n具体表现\n一\n全样本混在一起比\n只要能区分 NASICON / 卤化物，全样本就自动跟电导率“强相关”\n二\n三\n候选和评价同批数据\n35 候选 + 七千多符号组合全在同一样本上挑和打分，没有独立验证\n四\n外推描述符是否可靠\n通过LOFO，LOAO的手段计算描述符在不同体系，不同阴离子场景下的相关性，种类太少有过拟合风险\n五\n空位只靠 CIF 占位\n只记被精修或建模写出来的位点，没写的不算，混合价无序也看不清\n这五个问题只靠扩充数据集解决不了，需要添加新的筛选规则\n第一轮做了什么、发现问题 → 第二轮怎么逐条解决\n02 / 12\n描述符依靠精确CIF构建\n很难从材料设计上给出可靠指导",
+      "slots": [
+        {
+          "slot_id": "s02_sh2",
+          "role": "title_candidate",
+          "text": "强相关描述符筛选｜阶段性汇报",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 49,
+            "width": 282,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh3",
+          "role": "title_candidate",
+          "text": "第一轮做了什么，跑完以后发现了什么问题",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 46,
+            "y": 88,
+            "width": 942,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh6",
+          "role": "label_candidate",
+          "text": "第一轮流程（跑通可批量比较的筛选框架）",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 185,
+            "width": 382,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh8",
+          "role": "label_candidate",
+          "text": "数据集",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 119,
+            "y": 231,
+            "width": 59,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh9",
+          "role": "label_candidate",
+          "text": "CIF + 电导率记录",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 88,
+            "y": 258,
+            "width": 120,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh11",
+          "role": "label_candidate",
+          "text": "提取结构量",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 332,
+            "y": 231,
+            "width": 97,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh12",
+          "role": "label_candidate",
+          "text": "键长、畸变、连通网络",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 305,
+            "y": 258,
+            "width": 150,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh14",
+          "role": "label_candidate",
+          "text": "叠加现成工具",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 554,
+            "y": 231,
+            "width": 116,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh15",
+          "role": "label_candidate",
+          "text": "SoftBV、Zeo++",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 558,
+            "y": 258,
+            "width": 108,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh17",
+          "role": "label_candidate",
+          "text": "35 候选量",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 801,
+            "y": 231,
+            "width": 85,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh18",
+          "role": "label_candidate",
+          "text": "看排序是否一致",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 792,
+            "y": 258,
+            "width": 105,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh20",
+          "role": "label_candidate",
+          "text": "重复抽样 + 留一类",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1026,
+            "y": 231,
+            "width": 157,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh21",
+          "role": "label_candidate",
+          "text": "看稳定、看迁移",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1052,
+            "y": 258,
+            "width": 105,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh26",
+          "role": "label_candidate",
+          "text": "SoftBV：用键价模型估算离子迁移路径；Zeo++：用几何方法找离子通道",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 49,
+            "y": 305,
+            "width": 533,
+            "height": 19
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh28",
+          "role": "label_candidate",
+          "text": "跑完以后暴露的五个问题",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 353,
+            "width": 222,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh30",
+          "role": "label_candidate",
+          "text": "问题",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 55,
+            "y": 400,
+            "width": 32,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh31",
+          "role": "label_candidate",
+          "text": "具体表现",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 199,
+            "y": 400,
+            "width": 63,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh33",
+          "role": "label_candidate",
+          "text": "一",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 55,
+            "y": 433,
+            "width": 21,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh34",
+          "role": "label_candidate",
+          "text": "全样本混在一起比",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 137,
+            "y": 432,
+            "width": 154,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh35",
+          "role": "label_candidate",
+          "text": "只要能区分 NASICON / 卤化物，全样本就自动跟电导率“强相关”",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 353,
+            "y": 433,
+            "width": 543,
+            "height": 26
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh37",
+          "role": "label_candidate",
+          "text": "二",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 55,
+            "y": 473,
+            "width": 21,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh41",
+          "role": "label_candidate",
+          "text": "三",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 55,
+            "y": 513,
+            "width": 21,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh42",
+          "role": "label_candidate",
+          "text": "候选和评价同批数据",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 137,
+            "y": 473,
+            "width": 173,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh43",
+          "role": "label_candidate",
+          "text": "35 候选 + 七千多符号组合全在同一样本上挑和打分，没有独立验证",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 353,
+            "y": 471,
+            "width": 536,
+            "height": 26
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh45",
+          "role": "label_candidate",
+          "text": "四",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 55,
+            "y": 553,
+            "width": 21,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh46",
+          "role": "label_candidate",
+          "text": "外推描述符是否可靠",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 137,
+            "y": 552,
+            "width": 164,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh47",
+          "role": "body_candidate",
+          "text": "通过LOFO，LOAO的手段计算描述符在不同体系，不同阴离子场景下的相关性，种类太少有过拟合风险",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 353,
+            "y": 553,
+            "width": 783,
+            "height": 21
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh49",
+          "role": "label_candidate",
+          "text": "五",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 55,
+            "y": 593,
+            "width": 21,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh50",
+          "role": "label_candidate",
+          "text": "空位只靠 CIF 占位",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 137,
+            "y": 512,
+            "width": 163,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh51",
+          "role": "label_candidate",
+          "text": "只记被精修或建模写出来的位点，没写的不算，混合价无序也看不清",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 353,
+            "y": 513,
+            "width": 544,
+            "height": 26
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh52",
+          "role": "body_candidate",
+          "text": "这五个问题只靠扩充数据集解决不了，需要添加新的筛选规则",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 53,
+            "y": 630,
+            "width": 491,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh54",
+          "role": "label_candidate",
+          "text": "第一轮做了什么、发现问题 → 第二轮怎么逐条解决",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 667,
+            "width": 377,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh55",
+          "role": "label_candidate",
+          "text": "02 / 12",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1182,
+            "y": 669,
+            "width": 51,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh59",
+          "role": "label_candidate",
+          "text": "描述符依靠精确CIF构建",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 137,
+            "y": 593,
+            "width": 193,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s02_sh61",
+          "role": "label_candidate",
+          "text": "很难从材料设计上给出可靠指导",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 353,
+            "y": 593,
+            "width": 240,
+            "height": 21
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 3,
+      "page_type": "content_candidate",
+      "text_summary": "强相关描述符筛选｜阶段性汇报\n解决办法\n第一轮的问题\n第二代怎么解决\n现在能做到哪一步\n一 全样本混在一起比\n先扣掉每一类体系的平均水平，\n只比同类材料内部谁高谁低\n能做到分辨出这是 NASICON 导致拿到高分的\n二 候选和评价同批数据\n新数据表把总/体相/晶界/方法/\n温度/形态/相对密度分开记\n表已设计、室温挑选规则冻结\n体系分类枚举值待人工填定\n三 无物理意义组合描述符\n未找到低成本准确的解决方案\n四 外推描述符是否可靠\n第一代只对 8 个候选做了单变量 LOFO/LOAO\n每个体系内打乱标签算统计显著性\n打乱样本重组，组内少于5个样本的\n不报这个体系的结果\n五 描述符依靠精确CIF\n添加新的描述符\n第一层有旧数据未接后端\n第二层缺可执行文件、三四层要算力\n第一轮做了什么、发现问题 → 第二轮怎么逐条解决\n04 / 12\n把描述符按材料意义分组\n只允许有物理意义的组合",
+      "slots": [
+        {
+          "slot_id": "s03_sh2",
+          "role": "title_candidate",
+          "text": "强相关描述符筛选｜阶段性汇报",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 49,
+            "width": 282,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh3",
+          "role": "title_candidate",
+          "text": "解决办法",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 46,
+            "y": 88,
+            "width": 170,
+            "height": 51
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh9",
+          "role": "label_candidate",
+          "text": "第一轮的问题",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 63,
+            "y": 228,
+            "width": 108,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh10",
+          "role": "label_candidate",
+          "text": "第二代怎么解决",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 375,
+            "y": 228,
+            "width": 126,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh11",
+          "role": "label_candidate",
+          "text": "现在能做到哪一步",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 228,
+            "width": 144,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh15",
+          "role": "label_candidate",
+          "text": "一 全样本混在一起比",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 63,
+            "y": 270,
+            "width": 178,
+            "height": 26
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh16",
+          "role": "label_candidate",
+          "text": "先扣掉每一类体系的平均水平，",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 375,
+            "y": 270,
+            "width": 239,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh17",
+          "role": "label_candidate",
+          "text": "只比同类材料内部谁高谁低",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 375,
+            "y": 294,
+            "width": 205,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh19",
+          "role": "label_candidate",
+          "text": "能做到分辨出这是 NASICON 导致拿到高分的",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 280,
+            "width": 325,
+            "height": 19
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh22",
+          "role": "label_candidate",
+          "text": "二 候选和评价同批数据",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 63,
+            "y": 338,
+            "width": 176,
+            "height": 21
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh23",
+          "role": "label_candidate",
+          "text": "新数据表把总/体相/晶界/方法/",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 375,
+            "y": 338,
+            "width": 242,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh24",
+          "role": "label_candidate",
+          "text": "温度/形态/相对密度分开记",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 375,
+            "y": 362,
+            "width": 206,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh25",
+          "role": "label_candidate",
+          "text": "表已设计、室温挑选规则冻结",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 338,
+            "width": 222,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh26",
+          "role": "label_candidate",
+          "text": "体系分类枚举值待人工填定",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 364,
+            "width": 194,
+            "height": 19
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh29",
+          "role": "label_candidate",
+          "text": "三 无物理意义组合描述符",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 63,
+            "y": 415,
+            "width": 194,
+            "height": 21
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh30",
+          "role": "label_candidate",
+          "text": "未找到低成本准确的解决方案",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 375,
+            "y": 412,
+            "width": 210,
+            "height": 19
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh32",
+          "role": "label_candidate",
+          "text": "",
+          "paragraph_count": 0,
+          "geometry": {
+            "x": 863,
+            "y": 406,
+            "width": 0,
+            "height": 19
+          },
+          "text_metrics": {
+            "font_size_px": null,
+            "paragraph_count": 0
+          }
+        },
+        {
+          "slot_id": "s03_sh36",
+          "role": "body_candidate",
+          "text": "四 外推描述符是否可靠",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 63,
+            "y": 480,
+            "width": 176,
+            "height": 21
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh37",
+          "role": "body_candidate",
+          "text": "第一代只对 8 个候选做了单变量 LOFO/LOAO",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 375,
+            "y": 474,
+            "width": 326,
+            "height": 19
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh38",
+          "role": "label_candidate",
+          "text": "每个体系内打乱标签算统计显著性",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 375,
+            "y": 498,
+            "width": 242,
+            "height": 19
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh39",
+          "role": "body_candidate",
+          "text": "打乱样本重组，组内少于5个样本的\n不报这个体系的结果",
+          "paragraph_count": 2,
+          "geometry": {
+            "x": 863,
+            "y": 474,
+            "width": 251,
+            "height": 58
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 2
+          }
+        },
+        {
+          "slot_id": "s03_sh40",
+          "role": "label_candidate",
+          "text": "",
+          "paragraph_count": 0,
+          "geometry": {
+            "x": 863,
+            "y": 500,
+            "width": 0,
+            "height": 17
+          },
+          "text_metrics": {
+            "font_size_px": null,
+            "paragraph_count": 0
+          }
+        },
+        {
+          "slot_id": "s03_sh43",
+          "role": "label_candidate",
+          "text": "五 描述符依靠精确CIF",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 63,
+            "y": 542,
+            "width": 170,
+            "height": 21
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh45",
+          "role": "label_candidate",
+          "text": "添加新的描述符",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 375,
+            "y": 544,
+            "width": 113,
+            "height": 19
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh46",
+          "role": "label_candidate",
+          "text": "第一层有旧数据未接后端",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 542,
+            "width": 188,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh47",
+          "role": "label_candidate",
+          "text": "第二层缺可执行文件、三四层要算力",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 568,
+            "width": 239,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh51",
+          "role": "label_candidate",
+          "text": "第一轮做了什么、发现问题 → 第二轮怎么逐条解决",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 667,
+            "width": 377,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh52",
+          "role": "label_candidate",
+          "text": "04 / 12",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1182,
+            "y": 669,
+            "width": 51,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s03_sh54",
+          "role": "label_candidate",
+          "text": "把描述符按材料意义分组\n只允许有物理意义的组合",
+          "paragraph_count": 2,
+          "geometry": {
+            "x": 863,
+            "y": 382,
+            "width": 222,
+            "height": 39
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 2
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 4,
+      "page_type": "content_candidate",
+      "text_summary": "强相关描述符筛选｜阶段性汇报\n第二代怎样组合描述符\n两个描述符搭在一起看，第一代和第二代的搭法完全不同。\n对比维度\n第一轮\n第二代\n怎么搭\n列出七千多个公式\n加减乘除任意组合，按分数挑\n先按材料意义分组挑代表\n只允许有物理意义的组合\n举个例子\n“畸变 × 最长键长 ÷ 目标键长”\n能算，但材料上说不清为什么这么乘\n局域配位配网络配骨架\n每类挑一个，看加减乘除是否说得通\n量纲\n不管，只看分数\n长度加长度可以\n长度加无关参数不行\n结果\n容易拼出“高分但材料上\n解释不通”的公式\n组合空间小很多\n每个组合都有材料解释\n第一轮做了什么、发现问题 → 第二轮怎么逐条解决\n05 / 12",
+      "slots": [
+        {
+          "slot_id": "s04_sh2",
+          "role": "title_candidate",
+          "text": "强相关描述符筛选｜阶段性汇报",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 49,
+            "width": 282,
+            "height": 28
+          },
+          "text_metrics": {
+            "font_size_px": 18.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh3",
+          "role": "title_candidate",
+          "text": "第二代怎样组合描述符",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 46,
+            "y": 88,
+            "width": 497,
+            "height": 65
+          },
+          "text_metrics": {
+            "font_size_px": 42.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh6",
+          "role": "label_candidate",
+          "text": "两个描述符搭在一起看，第一代和第二代的搭法完全不同。",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 183,
+            "width": 553,
+            "height": 31
+          },
+          "text_metrics": {
+            "font_size_px": 20.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh9",
+          "role": "label_candidate",
+          "text": "对比维度",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 79,
+            "y": 236,
+            "width": 73,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh10",
+          "role": "label_candidate",
+          "text": "第一轮",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 447,
+            "y": 236,
+            "width": 55,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh11",
+          "role": "label_candidate",
+          "text": "第二代",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 236,
+            "width": 55,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh15",
+          "role": "label_candidate",
+          "text": "怎么搭",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 79,
+            "y": 278,
+            "width": 58,
+            "height": 26
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh16",
+          "role": "label_candidate",
+          "text": "列出七千多个公式",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 447,
+            "y": 276,
+            "width": 137,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh17",
+          "role": "label_candidate",
+          "text": "加减乘除任意组合，按分数挑",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 447,
+            "y": 302,
+            "width": 194,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh18",
+          "role": "label_candidate",
+          "text": "先按材料意义分组挑代表",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 276,
+            "width": 188,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh19",
+          "role": "label_candidate",
+          "text": "只允许有物理意义的组合",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 302,
+            "width": 164,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh22",
+          "role": "label_candidate",
+          "text": "举个例子",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 79,
+            "y": 346,
+            "width": 77,
+            "height": 26
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh23",
+          "role": "label_candidate",
+          "text": "“畸变 × 最长键长 ÷ 目标键长”",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 447,
+            "y": 344,
+            "width": 229,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh24",
+          "role": "label_candidate",
+          "text": "能算，但材料上说不清为什么这么乘",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 447,
+            "y": 370,
+            "width": 239,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh25",
+          "role": "label_candidate",
+          "text": "局域配位配网络配骨架",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 344,
+            "width": 171,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh26",
+          "role": "label_candidate",
+          "text": "每类挑一个，看加减乘除是否说得通",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 370,
+            "width": 239,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh29",
+          "role": "label_candidate",
+          "text": "量纲",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 79,
+            "y": 414,
+            "width": 39,
+            "height": 26
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh30",
+          "role": "label_candidate",
+          "text": "不管，只看分数",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 447,
+            "y": 427,
+            "width": 120,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh31",
+          "role": "label_candidate",
+          "text": "长度加长度可以",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 410,
+            "width": 120,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh32",
+          "role": "label_candidate",
+          "text": "长度加无关参数不行",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 436,
+            "width": 145,
+            "height": 19
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh35",
+          "role": "label_candidate",
+          "text": "结果",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 79,
+            "y": 482,
+            "width": 39,
+            "height": 26
+          },
+          "text_metrics": {
+            "font_size_px": 17.07,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh36",
+          "role": "label_candidate",
+          "text": "容易拼出“高分但材料上",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 447,
+            "y": 480,
+            "width": 180,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh37",
+          "role": "label_candidate",
+          "text": "解释不通”的公式",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 447,
+            "y": 504,
+            "width": 129,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh38",
+          "role": "label_candidate",
+          "text": "组合空间小很多",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 480,
+            "width": 120,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh39",
+          "role": "label_candidate",
+          "text": "每个组合都有材料解释",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 863,
+            "y": 504,
+            "width": 171,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh45",
+          "role": "label_candidate",
+          "text": "第一轮做了什么、发现问题 → 第二轮怎么逐条解决",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 47,
+            "y": 667,
+            "width": 377,
+            "height": 25
+          },
+          "text_metrics": {
+            "font_size_px": 16.0,
+            "paragraph_count": 1
+          }
+        },
+        {
+          "slot_id": "s04_sh46",
+          "role": "label_candidate",
+          "text": "05 / 12",
+          "paragraph_count": 1,
+          "geometry": {
+            "x": 1182,
+            "y": 669,
+            "width": 51,
+            "height": 22
+          },
+          "text_metrics": {
+            "font_size_px": 14.0,
+            "paragraph_count": 1
+          }
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 5,
+      "page_type": "chapter_candidate",
+      "text_summary": "",
+      "slots": [],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    },
+    {
+      "slide_index": 6,
+      "page_type": "ending_candidate",
+      "text_summary": "",
+      "slots": [],
+      "tables": [],
+      "charts": [],
+      "diagrams": []
+    }
+  ],
+  "plan_contract": {
+    "schema": "template_fill_pptx_plan.v1",
+    "slides": [
+      {
+        "source_slide": 1,
+        "purpose": "封面 / 章节 / 内容 / 结尾",
+        "replacements": [
+          {
+            "slot_id": "s01_sh2",
+            "text": "替换后的文字"
+          }
+        ],
+        "table_edits": [
+          {
+            "table_id": "s01_tbl3",
+            "cells": [
+              {
+                "row": 0,
+                "col": 0,
+                "text": "替换后的单元格"
+              }
+            ]
+          }
+        ],
+        "chart_edits": [
+          {
+            "chart_id": "s01_ch4",
+            "categories": [
+              "A",
+              "B"
+            ],
+            "series": [
+              {
+                "name": "系列1",
+                "values": [
+                  1,
+                  2
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

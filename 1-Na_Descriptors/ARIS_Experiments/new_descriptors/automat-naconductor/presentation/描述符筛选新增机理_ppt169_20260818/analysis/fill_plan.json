@@ -1,0 +1,188 @@
+{
+  "schema": "template_fill_pptx_plan.v1",
+  "status": "draft",
+  "source_pptx": "/Users/north./Documents/JXNU/research/1-NASICON/0-描述符/机理性质描述符/projects/描述符筛选新增机理_ppt169_20260818/sources/描述符筛选.pptx",
+  "accepted_warnings": [
+    {
+      "code": "source_reuse_concentration",
+      "reason": "三页新内容均为五项描述符的三列对照，统一复用源第 3 页最符合信息结构；源第 5、6 页为空白页。"
+    }
+  ],
+  "slides": [
+    {
+      "source_slide": 1,
+      "purpose": "保留原封面",
+      "layout_rationale": {
+        "layout_pattern": "原生封面",
+        "why_fit": "用户要求新内容从第五页开始，前四页原样保留。",
+        "risk": "无新文字填充。"
+      },
+      "transition": "keep",
+      "replacements": [],
+      "table_edits": [],
+      "chart_edits": []
+    },
+    {
+      "source_slide": 2,
+      "purpose": "保留原第一轮问题页",
+      "layout_rationale": {
+        "layout_pattern": "流程加问题清单",
+        "why_fit": "保留原汇报论证起点，不改变前四页叙事。",
+        "risk": "无新文字填充。"
+      },
+      "transition": "keep",
+      "replacements": [],
+      "table_edits": [],
+      "chart_edits": []
+    },
+    {
+      "source_slide": 3,
+      "purpose": "保留原解决办法页",
+      "layout_rationale": {
+        "layout_pattern": "五行三列对照表",
+        "why_fit": "保留原汇报对第二代方法的交代。",
+        "risk": "无新文字填充。"
+      },
+      "transition": "keep",
+      "replacements": [],
+      "table_edits": [],
+      "chart_edits": []
+    },
+    {
+      "source_slide": 4,
+      "purpose": "保留原描述符组合页",
+      "layout_rationale": {
+        "layout_pattern": "四行三列对比表",
+        "why_fit": "原页是新增机理库的直接上文，保留不改。",
+        "risk": "无新文字填充。"
+      },
+      "transition": "keep",
+      "replacements": [],
+      "table_edits": [],
+      "chart_edits": []
+    },
+    {
+      "source_slide": 3,
+      "purpose": "新增主候选 M01–M05",
+      "layout_rationale": {
+        "layout_pattern": "复用五行三列对照表",
+        "why_fit": "五项候选逐行对应结构现象和低成本判断，与原页的对照结构完全一致。",
+        "risk": "部分单行文本框容量较小，文案已压缩为短句，仍需导出后视觉核对。"
+      },
+      "transition": "keep",
+      "replacements": [
+        {"slot_id": "s03_sh2", "text": "强相关描述符筛选｜新增机理库"},
+        {"slot_id": "s03_sh3", "text": "通道机理"},
+        {"slot_id": "s03_sh9", "text": "结构描述符"},
+        {"slot_id": "s03_sh10", "text": "结构现象与作用"},
+        {"slot_id": "s03_sh11", "text": "低成本判断与边界"},
+        {"slot_id": "s03_sh15", "text": "M01 面共享贯通"},
+        {"slot_id": "s03_sh16", "text": "高配位钠位点面共享相连"},
+        {"slot_id": "s03_sh17", "text": "可能形成连续迁移段"},
+        {"slot_id": "s03_sh19", "text": "成网看贯通；钠体系正对照"},
+        {"slot_id": "s03_sh22", "text": "M02 方向开启"},
+        {"slot_id": "s03_sh23", "text": "狭窄窗口可能限制"},
+        {"slot_id": "s03_sh24", "text": "新增贯通方向"},
+        {"slot_id": "s03_sh25", "text": "扫描净空比较开启顺序"},
+        {"slot_id": "s03_sh26", "text": "几何贯通不等于低势垒"},
+        {"slot_id": "s03_sh29", "text": "M03 环境切换"},
+        {"slot_id": "s03_sh30", "text": "长程路径可能需换配位"},
+        {"slot_id": "s03_sh54", "text": "删跨环境连接后复核\n不预设切换有害"},
+        {"slot_id": "s03_sh36", "text": "M04 窗口连接"},
+        {"slot_id": "s03_sh37", "text": "窗口两侧多面体连接"},
+        {"slot_id": "s03_sh38", "text": "可能改变局部约束"},
+        {"slot_id": "s03_sh39", "text": "记录共顶、共棱、面共享\n钠体系作用仍待检验"},
+        {"slot_id": "s03_sh43", "text": "M05 关键窗口"},
+        {"slot_id": "s03_sh45", "text": "替代少更敏感"},
+        {"slot_id": "s03_sh46", "text": "逐组删除后复算"},
+        {"slot_id": "s03_sh47", "text": "不代表动态并联路径数"},
+        {"slot_id": "s03_sh51", "text": "15项候选 → 四关筛选 → 5—6项主检验"},
+        {"slot_id": "s03_sh52", "text": "06 / 12"}
+      ],
+      "table_edits": [],
+      "chart_edits": []
+    },
+    {
+      "source_slide": 3,
+      "purpose": "新增主候选 M06–M10",
+      "layout_rationale": {
+        "layout_pattern": "复用五行三列对照表",
+        "why_fit": "网络、骨架、通道形态和静态能量可按同一表格逻辑并列。",
+        "risk": "键价能量只能表述为静态近似，不得与自由能混用。"
+      },
+      "transition": "keep",
+      "replacements": [
+        {"slot_id": "s03_sh2", "text": "强相关描述符筛选｜新增机理库"},
+        {"slot_id": "s03_sh3", "text": "网络机理"},
+        {"slot_id": "s03_sh9", "text": "结构描述符"},
+        {"slot_id": "s03_sh10", "text": "结构现象与作用"},
+        {"slot_id": "s03_sh11", "text": "低成本判断与边界"},
+        {"slot_id": "s03_sh15", "text": "M06 迁移—骨架"},
+        {"slot_id": "s03_sh16", "text": "两类网络延展方向"},
+        {"slot_id": "s03_sh17", "text": "可能并不一致"},
+        {"slot_id": "s03_sh19", "text": "两种骨架构图复核；失配不预设利弊"},
+        {"slot_id": "s03_sh22", "text": "M07 宽窄变化"},
+        {"slot_id": "s03_sh23", "text": "通道可能均匀或"},
+        {"slot_id": "s03_sh24", "text": "单窄、收窄、交替"},
+        {"slot_id": "s03_sh25", "text": "沿代表通道比较净空"},
+        {"slot_id": "s03_sh26", "text": "净空变化不等于自由能"},
+        {"slot_id": "s03_sh29", "text": "M08 备用连接"},
+        {"slot_id": "s03_sh30", "text": "替代连接反映静态冗余"},
+        {"slot_id": "s03_sh54", "text": "整组删除后复算贯通\n不等于动态路径多样性"},
+        {"slot_id": "s03_sh36", "text": "M09 低起伏能网"},
+        {"slot_id": "s03_sh37", "text": "低位点能区域连续"},
+        {"slot_id": "s03_sh38", "text": "或提示景观较平缓"},
+        {"slot_id": "s03_sh39", "text": "先稀疏估算，再完整复核\n键价能量不是自由能"},
+        {"slot_id": "s03_sh43", "text": "M10 窗缘环境"},
+        {"slot_id": "s03_sh45", "text": "窗缘排列改窗口"},
+        {"slot_id": "s03_sh46", "text": "记录组成、净空和排列"},
+        {"slot_id": "s03_sh47", "text": "精确规律仍待检验"},
+        {"slot_id": "s03_sh51", "text": "15项候选 → 四关筛选 → 5—6项主检验"},
+        {"slot_id": "s03_sh52", "text": "07 / 12"}
+      ],
+      "table_edits": [],
+      "chart_edits": []
+    },
+    {
+      "source_slide": 3,
+      "purpose": "新增探索候选 X11–X15",
+      "layout_rationale": {
+        "layout_pattern": "复用五行三列对照表",
+        "why_fit": "五项探索机理均需同时表达结构启发和不可越过的证据边界。",
+        "risk": "转动、协同和缺陷相关项不能在页面上写成已证实动力学机制。"
+      },
+      "transition": "keep",
+      "replacements": [
+        {"slot_id": "s03_sh2", "text": "强相关描述符筛选｜探索机理库"},
+        {"slot_id": "s03_sh3", "text": "探索机理"},
+        {"slot_id": "s03_sh9", "text": "结构描述符"},
+        {"slot_id": "s03_sh10", "text": "结构现象与作用"},
+        {"slot_id": "s03_sh11", "text": "低成本判断与边界"},
+        {"slot_id": "s03_sh15", "text": "X11 阴离子笼"},
+        {"slot_id": "s03_sh16", "text": "孤立阴离子周围空隙"},
+        {"slot_id": "s03_sh17", "text": "可能形成迁移单元"},
+        {"slot_id": "s03_sh19", "text": "识别孤立单元并建笼网；仅作探索"},
+        {"slot_id": "s03_sh22", "text": "X12 转动开窗"},
+        {"slot_id": "s03_sh23", "text": "刚性单元转动"},
+        {"slot_id": "s03_sh24", "text": "可能改变局部开口"},
+        {"slot_id": "s03_sh25", "text": "从初始取向无碰撞采样"},
+        {"slot_id": "s03_sh26", "text": "不证明桨轮机制"},
+        {"slot_id": "s03_sh29", "text": "X13 协同开窗"},
+        {"slot_id": "s03_sh30", "text": "多面体协同微动开窗"},
+        {"slot_id": "s03_sh54", "text": "刚性约束求协同位移\n不是声子计算"},
+        {"slot_id": "s03_sh36", "text": "X14 填充—空位"},
+        {"slot_id": "s03_sh37", "text": "钠填充与近邻排斥"},
+        {"slot_id": "s03_sh38", "text": "制约可接收空位"},
+        {"slot_id": "s03_sh39", "text": "筛选满足约束的占位组合\n不等于平衡空位浓度"},
+        {"slot_id": "s03_sh43", "text": "X15 缺陷开路"},
+        {"slot_id": "s03_sh45", "text": "缺陷改变方向"},
+        {"slot_id": "s03_sh46", "text": "先记录候选缺陷位"},
+        {"slot_id": "s03_sh47", "text": "验证后才讨论掺杂"},
+        {"slot_id": "s03_sh51", "text": "15项候选 → 四关筛选 → 5—6项主检验"},
+        {"slot_id": "s03_sh52", "text": "08 / 12"}
+      ],
+      "table_edits": [],
+      "chart_edits": []
+    }
+  ]
+}

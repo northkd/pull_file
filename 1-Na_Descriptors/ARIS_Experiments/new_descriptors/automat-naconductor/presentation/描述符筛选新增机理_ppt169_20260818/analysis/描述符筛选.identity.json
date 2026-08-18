@@ -1,0 +1,108 @@
+{
+  "source": "/Users/north./Documents/JXNU/research/1-NASICON/0-描述符/机理性质描述符/projects/描述符筛选新增机理_ppt169_20260818/sources/描述符筛选.pptx",
+  "slide_count": 6,
+  "canvas": {
+    "width_px": 1280,
+    "height_px": 720,
+    "aspect": 1.7778
+  },
+  "theme": {
+    "palette": {
+      "background": "#FFFFFF",
+      "background_alt": "#EFF3F1",
+      "text": "#182229",
+      "text_alt": "#1F497D",
+      "hyperlink": "#C75B39",
+      "accent1": "#113B4A",
+      "accent2": "#C75B39",
+      "accent3": "#2E7D6E",
+      "accent4": "#113B4A",
+      "accent5": "#CFDAD7",
+      "accent6": "#647176",
+      "primary": "#113B4A"
+    },
+    "fonts": {
+      "title": {
+        "latin": "Georgia",
+        "ea": "SimSun",
+        "cs": "Georgia"
+      },
+      "body": {
+        "latin": "Arial",
+        "ea": "Microsoft YaHei",
+        "cs": "Arial"
+      }
+    },
+    "sizes": {
+      "title": 31.5,
+      "body": 18.0,
+      "body_levels": [
+        18.0,
+        17.0,
+        16.0,
+        14.5,
+        13.5,
+        12.5,
+        11.0,
+        10.0,
+        9.0
+      ]
+    }
+  },
+  "observed": {
+    "fonts": {
+      "latin": [
+        {
+          "value": "SF Pro Text",
+          "count": 1
+        }
+      ],
+      "ea": []
+    },
+    "sizes_pt": [
+      {
+        "value": 12.0,
+        "count": 48
+      },
+      {
+        "value": 13.5,
+        "count": 31
+      },
+      {
+        "value": 12.8,
+        "count": 26
+      },
+      {
+        "value": 10.5,
+        "count": 16
+      },
+      {
+        "value": 16.5,
+        "count": 9
+      },
+      {
+        "value": 31.5,
+        "count": 9
+      },
+      {
+        "value": 22.5,
+        "count": 3
+      },
+      {
+        "value": 15.0,
+        "count": 1
+      }
+    ],
+    "colors": [
+      {
+        "value": "#FFFFFF",
+        "count": 6
+      },
+      {
+        "value": "#F7F9F8",
+        "count": 4
+      }
+    ]
+  },
+  "layout_sizes_pt": []
+}
