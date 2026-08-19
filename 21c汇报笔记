@@ -461,3 +461,114 @@
 说话人02(00:55:34): 谢谢老师！
 
 说话人03(00:55:37): 好不是？
+
+
+可以。查了固态电解质高通量筛选、USGS 资源数据以及 NIOSH/PubChem 的化学危害资料后，我认为你现在的规则还应该补上几层，而且**不要只做“元素黑名单”**，还要做“危险基团 + 非常压相 + 电化学/化学稳定性”的结构级筛选。
+
+一个比较重要的先例是 Sendek 等人的固态电解质高通量筛选：除了带隙、凸包稳定性外，他们专门考虑了**电化学稳定性、过渡金属存在与否、原料成本和地壳丰度**。值得注意的是，他们当时把成本和丰度作为评价量，而没有简单地全部硬切掉，说明这些指标本身很适合分层使用。([Stanford University][1])
+
+### 我建议增加的剔除规则
+
+| 类别               | 建议处理            | 具体对象/判据                                                            | 原因                                                                                                                  |
+| ---------------- | --------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| **放射性元素**        | **硬剔除**         | `Tc、Pm`，以及原则上 `Z ≥ 84` 的元素，即 Po、At、Rn、Fr、Ra、Ac、Th、Pa、U 及超铀元素       | 电池材料没有必要承担放射性、监管和废弃处理成本。近年的材料高通量筛选也常直接去除 radioactive elements。([Nature][2])                                         |
+| **高毒元素补充**       | **硬剔除**         | 在 Be、Pb、Tl、Hg 之外，加入 **As、Cd**                                      | As/Cd/Pb/Hg 是最典型的高健康风险金属/类金属，Cd 还被 NIOSH 视为潜在职业致癌物。([疾病控制與預防中心][3])                                                 |
+| **Cr(VI) 化合物**   | **结构/价态条件剔除**   | `CrO4²⁻、Cr2O7²⁻` 等，而**不是把所有 Cr 都删掉**                               | 六价铬风险高，但 Cr³⁺ 氧化物不能与 Cr(VI) 一概而论，因此元素级 blacklist 太粗。([HERO][4])                                                     |
+| **贵金属/极端供应风险元素** | **硬剔除**         | Au、Pt、Pd、Rh、Ir、Ru、Os；通常 Ag、Re 也建议进入工业候选 blacklist                  | 与规模化电解质的低成本目标不匹配。USGS 对铂族、Ag、Re 等均单独作为重要矿产进行供应统计。([美國地質調查所][5])                                                     |
+| **氰化物**          | **硬剔除**         | 含独立 `CN⁻` 配体/基团，如 NaCN、复杂氰化物                                       | 酸或水环境下存在释放 HCN 的风险；NIOSH 明确指出氰化盐可造成快速致命暴露。([疾病控制與預防中心][6])                                                          |
+| **叠氮化物**         | **硬剔除**         | `N3⁻`                                                              | NaN₃ 可因加热、冲击等发生爆炸性分解，还能和某些金属形成敏感叠氮化物。([疾病控制與預防中心][7])                                                               |
+| **强氧化性含氧卤酸根**    | **硬剔除**         | `ClO⁻、ClO2⁻、ClO3⁻、ClO4⁻`；BrO₃⁻ 等同类体系也建议处理                          | 这类化合物不是普通氯化物；例如 NaClO₃ 可分解释放 O₂，NaClO₄ 是强氧化剂并具有热分解危险。([PubChem][8])                                                 |
+| **中性气体分子**       | **硬剔除**         | 你已有 O₂、Cl₂，建议扩展为 **F₂、Cl₂、Br₂、I₂、O₂、N₂、H₂、CO₂、SO₂** 等被识别为独立中性分子的结构 | 如果这些是晶格孔道里的独立客体而非骨架原子，通常代表分子晶体、包合物或非环境稳定组成，不符合常规室温无机 SSE 的目标                                                        |
+| **水合物/溶剂化物**     | **原则上硬剔除**      | CIF 中存在独立 `H2O`、NH₃、有机溶剂分子等                                        | 对你现在要找的无机、干态 Na⁺ 固态电解质而言，这类材料很容易出现脱溶剂、结构重排或电化学副反应                                                                   |
+| **仅高压稳定结构**      | **硬剔除**         | CIF/文献标注只有几十 GPa 等高压条件下稳定，且不能常压淬火                                  | 这一条尤其适合你说的“NaCl₃ 类”异常组成。例如 NaCl₃/NaCl₇ 是高压稳定相，研究表明不能稳定淬火到常压，并可能释放过量 Cl₂。([arXiv][9])                                |
+| **过渡金属强氧化还原骨架**  | **二级筛选，不建议一刀切** | Fe、Co、Ni、Mn、V、Cr、Cu 等存在可变价时，继续计算 Na 化学势下的还原/氧化稳定性                  | Sendek 在 Li-metal 筛选中甚至直接去掉了所有过渡金属，因为它们容易发生还原反应；但对 Na 体系这样做过于激进，建议改成电化学稳定窗口筛选。([Stanford University][1])            |
+| **遇水释放危险气体的体系**  | **风险标记，不硬删**    | 尤其硫化物，进一步判断 H₂S 生成倾向                                               | 不能把硫化物整体删掉，因为它本身就是重要 SSE 家族。2026 年综述明确指出 Na₃PS₄ 等硫化物受潮可水解并产生 H₂S，但不同结构的耐湿性差别很大，因此更适合做风险描述符。([ACS Publications][10]) |
+
+## 其中我认为最应该立即补上的，是 5 条
+
+如果你的目标是最后得到**“低成本、安全、可规模化的 Na⁺ 固态电解质候选库”**，我会把下面这些直接和你现有规则合并：
+
+**① 放射性元素全部删除；② As、Cd 加入毒性 blacklist；③ CN⁻、N₃⁻ 删除；④ 强氧化性含氧卤酸根删除；⑤ 所有非常压稳定、含中性气体/溶剂分子的结构删除。**
+
+这几项几乎不会误杀真正有工业价值的 NASICON、硫化物或常规氯化物 SSE。
+
+---
+
+## 但你的“地壳丰度 ≥ La”这一条，我建议特别处理
+
+这一条实际上**比看起来严格得多**。
+
+USGS 指出，元素的“平均地壳丰度”和“能够经济开采的矿床”不是一回事；即使一些稀土在地壳中不算特别稀少，经济矿床仍可能非常有限。([美國地質調查所][11]) 同样，Rb 就很好地说明了这个问题：单纯看地壳丰度，并不能代表供应链便宜或容易获得。
+
+更关键的是，如果你真的执行：
+
+> **任何组成元素的地壳丰度不得低于 La**
+
+那么会顺带把很多元素体系完全删掉，例如 **Br、I、Ge、Ga、In、Sc、Nb、Ta、Mo、W、Sn、Sb、Se、Te** 等很多元素都会因丰度或成本规则受到限制。于是：
+
+**Na 溴化物、碘化物基本会直接从候选空间消失。**
+
+这在“工业低成本候选库”里是合理的，但在“发现结构规律”的科研库里有一点危险，因为你可能先把某些非常好的结构原型删掉了，再也看不到它们为什么导得快。
+
+USGS 2026 的矿产资料也表明，Ga、Ge、Hf、In、Nb、Ta、W、Sc、稀土等均具有明显的供应或关键矿产属性；资源稀缺与市场供应并不能只靠一个地壳 ppm 数字表示。([美國地質調查所][5])
+
+### 所以我更建议你做成“两级库”
+
+不是把它们彻底从研究数据库中删除，而是：
+
+**研究候选库**
+
+只硬删除：
+
+`放射性 + 明确剧毒 + 爆炸/强氧化危险基团 + 过氧/超氧 + 中性气体/溶剂 + 常压不稳定结构`
+
+然后继续做你的结构描述符、Zeo++、softBV、ML 等分析。
+
+**应用候选库**
+
+在上面的基础上，再执行：
+
+`价格 ≤ Y2O3 + 丰度 ≥ La + 贵金属删除 + 供应链风险`
+
+这样一个材料即使因为 Ge、Br、Sc、In 等原因不能工业化，也仍然可以作为一个**“高离子电导结构原型”**存在。你可以进一步问：
+
+> 为什么这个 Ge/Br/In 材料导得这么快？
+> 能不能把 Ge → Si/Sn/Zr，Br → Cl，In → Al/Y/Zr，保留结构特征但降低成本？
+
+这实际上与你现在想做的“**结构描述符 → 定向替换/掺杂处方**”更吻合，而不是一开始把所有昂贵元素对应的结构信息全部丢掉。([DOI][12])
+
+## 最终我会把筛选流程改成
+
+**组成合法性 → 危险结构 → 常压稳定性 → 资源成本 → 电子绝缘性 → 热力学稳定性 → 电化学稳定性 → Na⁺ 迁移潜力**
+
+也就是：
+
+`radioactive/toxic`
+→ `CN/N3/ClOx/peroxide/superoxide`
+→ `neutral molecules / hydrate / solvent`
+→ `high-pressure-only phase`
+→ `cost & abundance`
+→ `Eg`
+→ `Ehull`
+→ `Na electrochemical stability`
+→ `你的结构描述符`
+→ `Zeo++ / softBV`
+→ `AIMD`
+
+其中前四步几乎都是**零成本规则筛选**，应该放在你目前“带隙 >1 eV、Ehull <50 meV/atom”之前。这样没必要给明显不合格的结构浪费后面的计算资源。
+
+如果你愿意，我下一步可以直接给你整理成一份**“Na 固态电解质数据库筛选 blacklist + whitelist + 结构判定规则”**，包括具体元素集合、SMARTS/键长判定思路、pymatgen 中怎样自动识别 `O–O`、`Cl–Cl`、`CN⁻`、`N₃⁻`、水分子和高压结构，直接可以接到你那几千个候选的筛选脚本里。
+
+[1]: https://web.stanford.edu/group/cui_group/papers/Austin_Cui_Reed_EES_2016.pdf "Holistic computational structure screening of more than 12&#x2009;000 candidates for solid lithium-ion conductor materials"
+[2]: https://www.nature.com/articles/s41467-025-57576-1?utm_source=chatgpt.com "Improving the fast-charging capability of NbWO-based Li ..."
+[3]: https://www.cdc.gov/niosh/engcontrols/ecd/detail134.html?utm_source=chatgpt.com "Control of Hazardous Material and Noise Exposure in ..."
+[4]: https://hero.epa.gov/reference/5870114/?utm_source=chatgpt.com "The relative impact of toxic heavy metals (THMs) (arsenic (As ..."
+[5]: https://www.usgs.gov/centers/national-minerals-information-center/commodity-statistics-and-information?utm_source=chatgpt.com "Commodity Statistics and Information"
+[6]: https://wwwn.cdc.gov/tsp/MMG/MMGDetails.aspx?mmgid=1141&toxid=249&utm_source=chatgpt.com "Medical Management Guidelines for Hydrogen Cyanide"
+[7]: https://www.cdc.gov/niosh/ershdb/emergencyresponsecard_29750027.html?utm_source=chatgpt.com "Sodium Azide: Systemic Agent | NIOSH"
+[8]: https://pubchem.ncbi.nlm.nih.gov/compound/Perchloric-acid_-sodium-salt?utm_source=chatgpt.com "Sodium Perchlorate | NaClO4 | CID 522606 - PubChem - NIH"
+[9]: https://arxiv.org/pdf/1211.3644?utm_source=chatgpt.com "Unexpected stable stoichiometries of sodium chlorides"
+[10]: https://pubs.acs.org/doi/10.1021/acsenergylett.5c03792?utm_source=chatgpt.com "From Mechanism to Metrics: Quantitative Insights into Moisture Stability of Solid-State Electrolytes | ACS Energy Letters | ACS Publications"
+[11]: https://www.usgs.gov/centers/national-minerals-information-center/rare-earths-statistics-and-information?utm_source=chatgpt.com "Rare Earths Statistics and Information"
+[12]: https://doi.org/10.1002/aenm.201902078?urlappend=%3Futm_source%3Dresearchgate.net%26utm_medium%3Darticle&utm_source=chatgpt.com "Crystal Structural Framework of Lithium Super‐Ionic ..."
+
